@@ -2,10 +2,10 @@
 
 Work In Progress - We're getting the framework ready for a maven repository.
 
-Steps to complete
-1. upload the open source code to github
-2. build the jar using maven script
-3. copy the jar to maven reposity.
+Steps to complete<br/>
+1. upload the open source code to github<br/>
+2. build the jar using maven script<br/>
+3. copy the jar to maven reposity.<br/>
 
 The AXEL Framework is a comprehensive suite of tools for building web-sites. Using the framework
 reduces and may even remove the need for server side code.
