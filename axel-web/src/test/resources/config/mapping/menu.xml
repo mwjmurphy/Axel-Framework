@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menubar 
+   xmlns="http://www.xmlactions.org/menu"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.xmlactions.org/menu http://www.xmlactions.org/schema/menu.xsd"
+   position="fixed" 
+   left="200px"
+   top="0px"
+   bottom=""
+   right=""
+   width="500px">
+   <menu
+      name="Home" 
+      position="fixed"
+      left="200px"
+      top="0px"
+      bottom=""
+      right=""
+      width="100px"
+      href="xxx.com"
+      >
+      <image src="css/chrome-logo.png" width="10" height="10"/>
+      <sub_menu
+         id="home_menus"
+         position="fixed"
+         left="200px"
+         top="0px"
+         bottom=""
+         right=""
+         width="100px">
+         <sub_menu_item name="home submenu 1" href="xxx.com">
+            <image src="css/chrome-logo.png" width="10" height="10"/>
+         </sub_menu_item>
+         <sub_menu_item name="home submenu 2" href="xxx.com">
+            <image src="css/chrome-logo.png" width="10" height="10"/>
+            <sub_menu
+               id="home_menus_side"
+               position="fixed"
+               width="100px">
+               <sub_menu_item name="home submenu 1" href="xxx.com">
+                  <image src="css/chrome-logo.png" width="10" height="10"/>
+               </sub_menu_item>
+               <sub_menu_item name="home submenu 2" href="xxx.com">
+                  <image src="css/chrome-logo.png" width="10" height="10"/>
+               </sub_menu_item>
+            </sub_menu>
+         </sub_menu_item>
+      </sub_menu>
+      
+   </menu>
+</menubar>
+

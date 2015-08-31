@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml_to_bean
+	xmlns="http://www.xmlactions.org/xml_to_bean" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=
+	"http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd">
+	
+	<bean element="first" clas="org.xmlactions.mapping.xml_to_bean.tutorial.First"/>
+	
+	<bean element="second" clas="org.xmlactions.mapping.xml_to_bean.tutorial.Second"/>
+
+</xml_to_bean>

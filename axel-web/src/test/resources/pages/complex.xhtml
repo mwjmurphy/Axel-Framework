@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+
+	<head>
+	</head>
+	<body>
+		<pager:code call="org.xmlactions.test.CodeCall.call">
+			<pager:param value="the value of param1"/>
+			<pager:param value="code class = ${code}"/>
+		</pager:code>
+		<!-- 
+		 -->
+		<pager:code call="org.xmlactions.test.CodeCall.toString"/>
+
+		<pager:echo>This is the echo content</pager:echo>
+
+	</body>
+</html>

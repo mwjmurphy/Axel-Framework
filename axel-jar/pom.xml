@@ -1,0 +1,581 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>axel-jar</artifactId>
+	<name>org-xmlactions-axel-jar</name>
+	<description>build jar containing all components except axel-web-theme</description>
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+            	<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>clean</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<echo>Not building without a profile use -P web on command line</echo>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>web</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>1.9.1</version>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${basedir}/../axel-common/src/main/java</source>
+										<source>${basedir}/../axel-action/src/main/java</source>
+										<source>${basedir}/../axel-email/src/main/java</source>
+										<source>${basedir}/../axel-mapping/src/main/java</source>
+										<source>${basedir}/../axel-web/src/main/java</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-resource</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>add-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>../axel-common/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-action/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-email/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-mapping/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web-theme/src/main/webapp/themes</directory>
+											<targetPath>themes</targetPath>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>db</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>1.9.1</version>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${basedir}/../axel-common/src/main/java</source>
+										<source>${basedir}/../axel-action/src/main/java</source>
+										<source>${basedir}/../axel-db/src/main/java</source>
+										<source>${basedir}/../axel-email/src/main/java</source>
+										<source>${basedir}/../axel-mapping/src/main/java</source>
+										<source>${basedir}/../axel-web/src/main/java</source>
+										<source>${basedir}/../axel-web-db/src/main/java</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-resource</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>add-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>../axel-common/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-action/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-db/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-email/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-mapping/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web-db/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web-theme/src/main/webapp/themes</directory>
+											<targetPath>themes</targetPath>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>ee</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>1.9.1</version>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${basedir}/../axel-common/src/main/java</source>
+										<source>${basedir}/../axel-action/src/main/java</source>
+										<source>${basedir}/../axel-db/src/main/java</source>
+										<source>${basedir}/../axel-ee/src/main/java</source>
+										<source>${basedir}/../axel-email/src/main/java</source>
+										<source>${basedir}/../axel-mapping/src/main/java</source>
+										<source>${basedir}/../axel-web/src/main/java</source>
+										<source>${basedir}/../axel-web-db/src/main/java</source>
+										<source>${basedir}/../axel-web-ee/src/main/java</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-resource</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>add-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>../axel-common/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-action/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-db/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-ee/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-email/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-mapping/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web-db/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web-ee/src/main/resources</directory>
+										</resource>
+										<resource>
+											<directory>../axel-web-theme/src/main/webapp/themes</directory>
+											<targetPath>themes</targetPath>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	<build>
+		<plugins>
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<phase>clean</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<tasks> -->
+<!-- 								<echo>basedir:${basedir}</echo> -->
+<!-- 							</tasks> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
+<!-- 		<plugin> -->
+<!-- 			<artifactId>maven-assembly-plugin</artifactId> -->
+<!-- 			<version>2.5.5</version> -->
+<!-- 			<configuration> -->
+<!-- 				<descriptors> -->
+<!-- 					<descriptor>web-assembly.xml</descriptor> -->
+<!-- 				</descriptors> -->
+<!-- 			</configuration> -->
+<!-- 		</plugin> -->
+<!--     	<plugin> -->
+<!-- 			<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 			<artifactId>maven-jar-plugin</artifactId> -->
+<!-- 			<version>2.6</version> -->
+<!-- 			<executions> -->
+<!-- 				<execution> -->
+<!-- 					<phase>package</phase> -->
+<!-- 					<goals> -->
+<!-- 						<goal>jar</goal> -->
+<!-- 					</goals> -->
+<!-- 					<configuration> -->
+<!-- 						<classifier>client</classifier> -->
+<!-- 						<includes> -->
+<!-- 							<include>org.xmlactions:axel-components</include> -->
+<!-- 							<include>${basedir}/../axel-common/src/main/java</include> -->
+<!-- 							<include>${basedir}/../axel-common/src/main/java/*</include> -->
+<!-- 							<include>${basedir}/../axel-common/src/main/java/**</include> -->
+<!-- 							<include>${basedir}/../axel-common/src/main/java/*.java</include> -->
+<!-- 							<include>${basedir}/../axel-common/src/main/java/org/xmlactions/common/collections/MapUtils.java</include> -->
+<!-- 		                    <include>src/main/java/**</include> -->
+<!-- 							<include>../axel-common/src/main/resources</include> -->
+<!-- 							<include>../axel-common/src/test/resources</include> -->
+<!-- 						</includes> -->
+<!-- 					</configuration> -->
+<!-- 				</execution> -->
+<!-- 			</executions> -->
+<!--  		</plugin> -->
+<!--       	<plugin> -->
+<!-- 			<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 			<artifactId>maven-jar-plugin</artifactId> -->
+<!--             <version>2.6</version> -->
+<!-- 			<configuration> -->
+<!--                 <archive> -->
+<!--                     <addMavenDescriptor>false</addMavenDescriptor> -->
+<!--                     <index>true</index> -->
+<!--                     <manifest> -->
+<!--                         <addClasspath>true</addClasspath> -->
+<!--                     </manifest> -->
+<!--                     <manifestEntries> -->
+<!--                         <mode>development</mode> -->
+<!--                         <url>${project.url}</url> -->
+<!--                         <key>value</key> -->
+<!--                     </manifestEntries> -->
+<!--                     <manifestFile /> -->
+<!--                 </archive> -->
+<!--                 <includes> -->
+<!--                     <include>src/main/java/**</include> -->
+<!-- 					<include>../axel-common/src/main/resources</include> -->
+<!-- 					<directory>../axel-action/src/main/resources</directory> -->
+<!-- 					<directory>../axel-db/src/main/resources</directory> -->
+<!-- 					<directory>../axel-email/src/main/resources</directory> -->
+<!-- 					<directory>../axel-mapping/src/main/resources</directory> -->
+<!-- 					<directory>../axel-web/src/main/resources</directory> -->
+<!-- 					<directory>../axel-web-db/src/main/resources</directory> -->
+<!-- 					<directory>../axel-web-theme/src/main/webapp/themes</directory> -->
+<!-- 					<targetPath>themes</targetPath> -->
+<!--                 </includes> -->
+<!-- 			</configuration> -->
+<!-- 		</plugin> -->
+<!-- 		<plugin> -->
+<!--             <groupId>org.apache.maven.plugins</groupId> -->
+<!--             <artifactId>maven-shade-plugin</artifactId> -->
+<!--             <version>2.0</version> -->
+<!--             <executions> -->
+<!--                 <execution> -->
+<!--                     <phase>package</phase> -->
+<!--                     <goals> -->
+<!--                         <goal>shade</goal> -->
+<!--                     </goals> -->
+<!--                     <configuration> -->
+<!--                         <finalName>${product.name}-${project.version}</finalName> -->
+<!--                         <artifactSet> -->
+<!--                             <includes> -->
+<!--                                 <include>org.xmlactions:axel-common:*</include> -->
+<!--                                 <include>org.xmlactions:axel-action:*</include> -->
+<!--                                 <include>org.xmlactions:axel-db:*</include> -->
+<!--                                 <include>org.xmlactions:axel-email:*</include> -->
+<!--                                 <include>org.xmlactions:axel-mapping:*</include> -->
+<!--                                 <include>org.xmlactions:axel-web:*</include> -->
+<!--                                 <include>org.xmlactions:axel-web-db:*</include> -->
+<!--                             </includes> -->
+<!--                         </artifactSet> -->
+<!--                     </configuration> -->
+<!--                 </execution> -->
+<!--             </executions> -->
+<!--       </plugin> -->
+    </plugins>
+  </build>  
+  <dependencies>
+		<dependency>
+			<groupId>jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+	     <dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20140107</version>
+	     </dependency>
+	     <dependency>
+	        <groupId>javax.mail</groupId>
+	        <artifactId>mail</artifactId>
+	        <version>1.4.7</version>
+	     </dependency>
+	     <dependency>
+	        <groupId>org.apache.tomcat</groupId>
+	        <artifactId>servlet-api</artifactId>
+	        <version>6.0.36</version>
+	     </dependency>
+	     <dependency>
+	        <groupId>commons-fileupload</groupId>
+	        <artifactId>commons-fileupload</artifactId>
+	        <version>1.3</version>
+	     </dependency>
+	     <dependency>
+	        <groupId>commons-digester</groupId>
+	        <artifactId>commons-digester</artifactId>
+	        <version>2.1</version>
+	     </dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+		<dependency>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>1.7R2</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>bsf</groupId>
+			<artifactId>bsf</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+        
+        <!-- Core utilities used by other modules. Define this if you use Spring Utility APIs (org.springframework.core.*/org.springframework.util.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Expression Language (depends on spring-core) Define this if you use Spring Expression APIs (org.springframework.expression.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Bean Factory and JavaBeans utilities (depends on spring-core) Define this if you use Spring Bean APIs (org.springframework.beans.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Aspect Oriented Programming (AOP) Framework (depends on spring-core, spring-beans) Define this if you use Spring 
+            AOP APIs (org.springframework.aop.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Application Context (depends on spring-core, spring-expression, spring-aop, spring-beans) This is the central artifact 
+            for Spring's Dependency Injection Container and is generally always defined -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Various Application Context utilities, including EhCache, JavaMail, Quartz, and Freemarker integration Define this 
+            if you need any of these integrations -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Transaction Management Abstraction (depends on spring-core, spring-beans, spring-aop, spring-context) Define this 
+            if you use Spring Transactions or DAO Exception Hierarchy (org.springframework.transaction.*/org.springframework.dao.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- JDBC Data Access Library (depends on spring-core, spring-beans, spring-context, spring-tx) Define this if you use 
+            Spring's JdbcTemplate API (org.springframework.jdbc.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Object-to-Relation-Mapping (ORM) integration with Hibernate, JPA, and iBatis. (depends on spring-core, spring-beans, 
+            spring-context, spring-tx) Define this if you need ORM (org.springframework.orm.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Object-to-XML Mapping (OXM) abstraction and integration with JAXB, JiBX, Castor, XStream, and XML Beans. (depends 
+            on spring-core, spring-beans, spring-context) Define this if you need OXM (org.springframework.oxm.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Web application development utilities applicable to both Servlet and Portlet Environments (depends on spring-core, 
+            spring-beans, spring-context) Define this if you use Spring MVC, or wish to use Struts, JSF, or another web framework with 
+            Spring (org.springframework.web.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Spring MVC for Servlet Environments (depends on spring-core, spring-beans, spring-context, spring-web) Define this 
+            if you use Spring MVC with a Servlet Container such as Apache Tomcat (org.springframework.web.servlet.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Spring MVC for Portlet Environments (depends on spring-core, spring-beans, spring-context, spring-web) Define this 
+            if you use Spring MVC with a Portlet Container (org.springframework.web.portlet.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc-portlet</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+    
+        <!-- Support for testing Spring applications with tools such as JUnit and TestNG This artifact is generally always defined 
+            with a 'test' scope for the integration testing framework and unit testing stubs -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springframework.version}</version>
+<!--             <scope>test</scope> -->
+        </dependency>
+
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+  </dependencies>
+
+
+
+	<properties>
+		<product.name>axel</product.name>
+	</properties>
+	<parent>
+		<groupId>org.xmlactions</groupId>
+		<artifactId>axel-components</artifactId>
+		<version>2.0.0.0</version>
+		<relativePath>../axel-components</relativePath>
+	</parent>
+	<organization>
+		<name>AXEL</name>
+	</organization>
+</project>

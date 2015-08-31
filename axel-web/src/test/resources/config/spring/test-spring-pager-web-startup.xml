@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:util="http://www.springframework.org/schema/util"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:jee="http://www.springframework.org/schema/jee"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-2.0.xsd
+        "
+>
+
+   <!-- All execution contexts are derived from this. -->
+   <bean id="pager.execContext" class="org.xmlactions.pager.context.PersistenceExecContext" scope="prototype">
+      <constructor-arg>
+         <!-- "actionMaps" -->
+         <list>
+            <util:properties location="classpath:config/pager/actions.properties" />
+         </list>
+      </constructor-arg>
+      <constructor-arg>
+         <!-- "localMaps" -->
+         <list>
+            <ref bean="application.xml" />
+            <util:properties location="classpath:config/project/web.properties" />
+            <util:properties location="classpath:themes/snippets/html_snippets.properties" />
+            <util:map>
+               <entry key="email_client_config" value-ref="email_client_config"/>
+            </util:map>
+         </list>
+      </constructor-arg>
+
+      <constructor-arg>
+         <!-- "themes" -->
+         <util:list>
+            <ref bean="riostlTheme" />
+            <ref bean="blueTheme" />
+            <ref bean="blackTheme" />
+            <ref bean="iceTheme" />
+            <ref bean="grayTheme" />
+         </util:list>
+      </constructor-arg>
+   </bean>
+
+   <bean id="riostlTheme" class="org.xmlactions.common.theme.Theme">
+      <constructor-arg>
+         <util:properties location="/themes/riostl.properties" />
+      </constructor-arg>
+   </bean>
+   <bean id="blackTheme" class="org.xmlactions.common.theme.Theme">
+      <constructor-arg>
+         <util:properties location="/themes/black.properties" />
+      </constructor-arg>
+   </bean>
+   <bean id="blueTheme" class="org.xmlactions.common.theme.Theme">
+      <constructor-arg>
+         <util:properties location="/themes/blue.properties" />
+      </constructor-arg>
+   </bean>
+   <bean id="iceTheme" class="org.xmlactions.common.theme.Theme">
+      <constructor-arg>
+         <util:properties location="/themes/ice.properties" />
+      </constructor-arg>
+   </bean>
+   <bean id="grayTheme" class="org.xmlactions.common.theme.Theme">
+      <constructor-arg>
+         <util:properties location="/themes/gray.properties" />
+      </constructor-arg>
+   </bean>
+
+
+   <bean id="application.xml" class="org.apache.commons.configuration.XMLConfiguration">
+      <constructor-arg type="java.net.URL" value="classpath:/config/pager/application.xml" />
+   </bean>
+
+   <bean id="email_client_config" class="org.xmlactions.email.EMailClientConfig" scope="singleton">
+      <property name="fromAddress" value="mike.murphy@email.abc" />
+      <property name="toAddress" value="mike.murphy@email.abc" />
+      <property name="host" value="email.abc" />
+      <property name="userName" value="mike.murphy" />
+      <property name="password" value="password" />
+   </bean>
+
+</beans>
