@@ -14,3 +14,5 @@ The framework uses actions to perform tasks inside a web html page. Tasks vary i
 and can be a simple page insert to a complex control panel with database search and list. This
 schema describes the core actions provided by the framework. Other schemas such as the "pager_db_actions"
 describe other more specific actions such as database access, mapping, navigation etc.
+
+<a href="xmlactions.org">Web Page</a>
