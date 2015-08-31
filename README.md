@@ -15,4 +15,4 @@ and can be a simple page insert to a complex control panel with database search 
 schema describes the core actions provided by the framework. Other schemas such as the "pager_db_actions"
 describe other more specific actions such as database access, mapping, navigation etc.
 
-<a href="xmlactions.org">Web Page</a>
+<a href="http://xmlactions.org">Axel Web Page</a>
