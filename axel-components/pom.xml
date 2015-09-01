@@ -273,7 +273,7 @@
 		                <artifactId>maven-jar-plugin</artifactId>
 		                <version>2.6</version>
 		                <configuration>
-		                	<finalName>axel-web</finalName>
+		                	<finalName>axel-web-${project.version}</finalName>
 		                    <archive>
 		                        <addMavenDescriptor>false</addMavenDescriptor>
 								<index>true</index>
@@ -281,7 +281,8 @@
 									<addClasspath>true</addClasspath>
 								</manifest>
 								<manifestEntries>
-									<target>Axel DB Version</target>
+									<target>Axel Web Version</target>
+									<axel_version>${project.version}</axel_version>
 									<url>http://xmlactions.org</url>
 								</manifestEntries>                        
 		                    </archive>
@@ -329,7 +330,7 @@
 		                <artifactId>maven-jar-plugin</artifactId>
 		                <version>2.6</version>
 		                <configuration>
-		                	<finalName>axel-db</finalName>
+		                	<finalName>axel-db-${project.version}</finalName>
 		                    <archive>
 		                        <addMavenDescriptor>false</addMavenDescriptor>
 								<index>true</index>
@@ -338,6 +339,7 @@
 								</manifest>
 								<manifestEntries>
 									<target>Axel DB Version</target>
+									<axel_version>${project.version}</axel_version>
 									<url>http://axelframework.com</url>
 								</manifestEntries>                        
 		                    </archive>
@@ -385,7 +387,7 @@
 		                <artifactId>maven-jar-plugin</artifactId>
 		                <version>2.6</version>
 		                <configuration>
-		                	<finalName>axel-ee</finalName>
+		                	<finalName>axel-ee-${project.version}</finalName>
 		                    <archive>
 		                        <addMavenDescriptor>false</addMavenDescriptor>
 								<index>true</index>
@@ -394,6 +396,7 @@
 								</manifest>
 								<manifestEntries>
 									<target>Axel EE Version</target>
+									<axel_version>${project.version}</axel_version>
 									<url>http://axelframework.com</url>
 								</manifestEntries>                        
 		                    </archive>
@@ -406,6 +409,6 @@
 			</build>
 		</profile>
 	</profiles>
-	<version>2.0.0.0</version>
+	<version>2.1.1-SNAPSHOT</version>
 	<name>org-xmlactions-axel-components</name>
 </project>
