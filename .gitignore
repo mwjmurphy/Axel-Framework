@@ -3,3 +3,9 @@
 
 # ignore all log files
 **/*.log
+**/*.log?
+
+# ignore all eclipse config files
+**/.settings/
+**/.classpath
+**/.project
