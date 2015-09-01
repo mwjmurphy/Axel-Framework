@@ -295,6 +295,51 @@
 			</build>
 		</profile>
 		<profile>
+			<id>package</id>
+			<modules>
+				<module>../axel-common</module>
+				<module>../axel-action</module>
+				<module>../axel-mapping</module>
+				<module>../axel-email</module>
+				<module>../axel-web-theme</module>
+				<module>../axel-web</module>
+		        
+				<module>../axel-shared-schema</module>
+				<module>../axel-jar</module>
+			</modules>
+			<build>
+			    <plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.3</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>		            
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.10.3</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
 			<id>db</id>
 			<modules>
 				<module>../axel-common</module>
@@ -409,6 +454,6 @@
 			</build>
 		</profile>
 	</profiles>
-	<version>2.1.1-SNAPSHOT</version>
+	<version>2.1.1</version>
 	<name>org-xmlactions-axel-components</name>
 </project>
