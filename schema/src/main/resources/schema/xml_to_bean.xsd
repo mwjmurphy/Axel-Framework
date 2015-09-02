@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.xmlactions.org/xml_to_bean"
+	xmlns="http://www.xmlactions.org/xml_to_bean"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+    <xsd:annotation><xsd:documentation><![CDATA[
+        <h4>Map XML to Java Beans 'xml_to_beans.xsd'</h4>
+
+        The framework provides a mapping tool that maps data from XML to Java Beans.  It is designed
+        to be non-intrusive and does not impose any requirements on the bean.
+        
+        The XML definition file is designed for simplicity and is extensible to accomodate any mapping
+        conditions that we have not considered.
+
+        Implementing a mapping from XML to Java Bean requires:<br/>
+         - An axel:map_xml_to_bean Action<br/>
+         - A definition file built in compliance with this schema<br/>
+         - The XML that will be mapped to the Java Beans<br/>
+        
+        An example mapping file can be seen in the examples page for "mapping".
+    
+    ]]></xsd:documentation></xsd:annotation>
+
+	<xsd:element name="xml_to_bean">
+		<xsd:annotation>
+			<xsd:documentation>
+				The root element for all xml to bean mapping.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="populator" minOccurs="0" />
+				<xsd:element ref="bean" minOccurs="1" maxOccurs="unbounded" />
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="bean">
+		<xsd:annotation>
+			<xsd:documentation>
+				A bean defines the properties of a class included in the xml mapping.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="creator" minOccurs="0" />
+				<xsd:element ref="property" minOccurs="0" />
+                <xsd:element ref="text" minOccurs="0" maxOccurs="1"/>
+			</xsd:choice>
+			<xsd:attribute name="element" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The name of the xml element for this bean.
+					</xsd:documentation>
+					<xsd:documentation>
+						A creator may also be used to name the xml element for this bean.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="clas" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The name of the java class that this bean represents.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="creator">
+		<xsd:annotation>
+			<xsd:documentation>
+				A creator is used when more than one xml element is managed by a bean.
+				This is in addition to the bean element attribute.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="element" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The name of the xml element that this bean will manage.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="property">
+		<xsd:annotation>
+			<xsd:documentation>
+				A property is used to select a property from a bean class. The name
+				of the property matches the bean name for the property.
+            </xsd:documentation>
+			<xsd:documentation>
+				<b>Code Example:</b><br/>
+				<code>
+				private int <b>anInteger</b>;<br/>
+				public int getAnInteger() {<br/>
+					return anIntegerl<br/>
+				};<br/>
+				public void setAnInteger(int value) {<br/>
+					anInteger = value;<br/>
+				}<br/>
+				</code>
+				<br/>
+				To map the property anInteger to an xml attribute we set the property
+				name to "anInteger"				
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="alias" minOccurs="0"/>
+			</xsd:choice>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The name of the xml element that this bean will manage.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="populator" type="xsd:string" use="optional">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A String representation of a Java class that is used to populate
+                        the bean property from xml.
+                    </xsd:documentation>
+                    <xsd:documentation>
+                        Used when a xml needs to be formatted or handled as a list,
+                        timestamp, date etc before population of the bean property.                   
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="populator_ref" type="xsd:string" use="optional">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A reference to a populator.
+                    </xsd:documentation>
+                    <xsd:documentation>
+                        Used when a xml to property needs to be formatted or handled as a list,
+                        timestamp, date etc.                   
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="alias">
+		<xsd:annotation>
+			<xsd:documentation>
+				An alias is used when an attribute name does not match the property name.  
+            </xsd:documentation>
+			<xsd:documentation>
+				Each property may have multiple aliases.  
+            </xsd:documentation>
+       </xsd:annotation>
+       <xsd:complexType>
+            <xsd:attribute name="name" type="xsd:string" use="required">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The attribute name that is stored into the bean property.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+       </xsd:complexType>
+	
+	</xsd:element>
+
+	<xsd:element name="populator">
+		<xsd:annotation>
+			<xsd:documentation>
+				A populator is used to set the derived element attribute in the bean.
+				Used when the object to be set in the bean is stored into a list, a
+				date, a timestamp etc.
+            </xsd:documentation>
+			<xsd:documentation>
+				A set of populators are delivered with the product, but additional
+				ones may be created and referenced from the configuration once they
+				are set in the java classpath.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="keyvalue" minOccurs="0" />
+			</xsd:choice>
+			<xsd:attribute name="id" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The reference identifier for this populater. Referenced from
+						the property populator_ref attribute.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="clas" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The name of the Java Class that performs the population.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="keyvalue">
+		<xsd:annotation>
+			<xsd:documentation>
+				A keyvalue is used to store parameters for
+				populators.
+			</xsd:documentation>
+			<xsd:documentation>
+				Example. when setting a timestamp or a date the
+				format of the
+				date may be set using key="time_format"
+				value="yyyy-MM-dd HH:mm:ss.SSS"
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="key" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The key to identifying this keyvalue
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="value" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The value for the key.
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+   <xsd:element name="text">
+      <xsd:annotation>
+         <xsd:documentation>
+            A text element is used to store the element text into a bean property.
+            </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The name of the bean property where the element text will be stored. 
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+   
+</xsd:schema>

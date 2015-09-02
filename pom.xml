@@ -2,10 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.xmlactions</groupId>
-	<artifactId>axel-components</artifactId>
+	<artifactId>components</artifactId>
+	<name>org-xmlactions-components</name>
+	<version>2.1.1</version>
 	<packaging>pom</packaging>
     <properties>
-
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+		<buildDate>${maven.build.timestamp}</buildDate>
         <!-- Generic properties -->
         <java.version>1.6</java.version>
         
@@ -160,15 +163,15 @@
 	</dependencies>
 	
 	<modules>
-		<module>axel-common</module>
-		<module>axel-action</module>
-		<module>axel-mapping</module>
-		<module>axel-email</module>
-		<module>axel-web-theme</module>
-		<module>axel-web</module>
+		<module>common</module>
+		<module>action</module>
+		<module>mapping</module>
+		<module>email</module>
+		<module>web-theme</module>
+		<module>web</module>
 		        
-		<module>axel-shared-schema</module>
-		<module>axel-framework</module>
+		<module>schema</module>
+		<module>axelframework</module>
 	</modules>
 	<distributionManagement>
 		<snapshotRepository>
@@ -230,7 +233,7 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
-					<finalName>axel-framework-${project.version}</finalName>
+					<!-- <finalName>axelframework-${project.version}</finalName> -->
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
 						<index>true</index>
@@ -240,6 +243,7 @@
 						<manifestEntries>
 							<target>Axel Web Version</target>
 							<axel_version>${project.version}</axel_version>
+							<build_date>${buildDate}</build_date>
 							<url>http://xmlactions.org</url>
 						</manifestEntries>                        
 					</archive>
@@ -253,7 +257,7 @@
 				<artifactId>maven-source-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
-					<finalName>axel-framework-${project.version}</finalName>
+					<!-- <finalName>axelframework-${project.version}</finalName> -->
 				</configuration>
 				<executions>
 					<execution>
@@ -269,7 +273,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.3</version>
 				<configuration>
-                	<finalName>axel-framework-${project.version}</finalName>
+                	<!-- <finalName>axelframework-${project.version}</finalName> -->
 				</configuration>
 				<executions>
 					<execution>
@@ -282,6 +286,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>2.1.1</version>
-	<name>org-xmlactions-axel-components</name>
 </project>
