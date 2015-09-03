@@ -58,10 +58,10 @@ public class TestMapFromClass extends TestCase {
 
 		execContext.put("map_classes", a1);
 
-		Action action = new Action("src/test/resources", "mapping/A1_bean_to_xml.xml", NAMESPACE);
- 		
-		String page = action.processPage(execContext);
-		log.debug("page:" + page);
+//		Action action = new Action("src/test/resources", "mapping/A1_bean_to_xml.xml", NAMESPACE);
+// 		
+//		String page = action.processPage(execContext);
+//		log.debug("page:" + page);
 	}
 
 

@@ -102,7 +102,6 @@ public class TestXmlToBeanAction extends TestCase {
             " xml_file_name=\"" + xml_filename + "\"" +
             " key=\"bean_key\"/>";
 
-        log.debug(execContext.show());
         Action action = new Action("", "", ActionConst.DEFAULT_PAGER_NAMESPACE);
         String newPage = action.processPage(execContext, page);
 

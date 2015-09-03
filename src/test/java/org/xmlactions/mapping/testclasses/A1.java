@@ -17,7 +17,6 @@ public class A1 extends A1a implements A1interface {
 	private Date date;
 	private java.sql.Date sqldate;
 	
-	
 	private String [] users;
 
 	private List<A1> listOfA1s = new ArrayList<A1>();
