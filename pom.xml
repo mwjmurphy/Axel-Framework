@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.xmlactions</groupId>
-	<artifactId>components</artifactId>
-	<name>org-xmlactions-components</name>
+	<artifactId>axelframework</artifactId>
+	<name>org-xmlactions-axelframework</name>
 	<version>2.1.1</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
     <properties>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 		<buildDate>${maven.build.timestamp}</buildDate>
@@ -25,6 +25,27 @@
     </properties>
     
 	<dependencies>
+	
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>6.0.36</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
@@ -50,6 +71,11 @@
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
         </dependency>
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>2.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -81,51 +107,24 @@
 			<version>2.4.0</version>
 		</dependency>
         
-        <!-- Core utilities used by other modules. Define this if you use Spring Utility APIs (org.springframework.core.*/org.springframework.util.*) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${springframework.version}</version>
         </dependency>
     
-        <!-- Expression Language (depends on spring-core) Define this if you use Spring Expression APIs (org.springframework.expression.*) -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.springframework</groupId> -->
+<!--             <artifactId>spring-expression</artifactId> -->
+<!--             <version>${springframework.version}</version> -->
+<!--         </dependency> -->
     
-        <!-- Bean Factory and JavaBeans utilities (depends on spring-core) Define this if you use Spring Bean APIs (org.springframework.beans.*) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>${springframework.version}</version>
         </dependency>
-    
-        <!-- Application Context (depends on spring-core, spring-expression, spring-aop, spring-beans) This is the central artifact 
-            for Spring's Dependency Injection Container and is generally always defined -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
-    
-        <!-- Various Application Context utilities, including EhCache, JavaMail, Quartz, and Freemarker integration Define this 
-            if you need any of these integrations -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
-    
-        <!-- Transaction Management Abstraction (depends on spring-core, spring-beans, spring-aop, spring-context) Define this 
-            if you use Spring Transactions or DAO Exception Hierarchy (org.springframework.transaction.*/org.springframework.dao.*) -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
-    
+
         <!-- Web application development utilities applicable to both Servlet and Portlet Environments (depends on spring-core, 
             spring-beans, spring-context) Define this if you use Spring MVC, or wish to use Struts, JSF, or another web framework with 
             Spring (org.springframework.web.*) -->
@@ -135,21 +134,6 @@
             <version>${springframework.version}</version>
         </dependency>
     
-        <!-- Spring MVC for Servlet Environments (depends on spring-core, spring-beans, spring-context, spring-web) Define this 
-            if you use Spring MVC with a Servlet Container such as Apache Tomcat (org.springframework.web.servlet.*) -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
-    
-        <!-- Spring MVC for Portlet Environments (depends on spring-core, spring-beans, spring-context, spring-web) Define this 
-            if you use Spring MVC with a Portlet Container (org.springframework.web.portlet.*) -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc-portlet</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
     
         <!-- Support for testing Spring applications with tools such as JUnit and TestNG This artifact is generally always defined 
             with a 'test' scope for the integration testing framework and unit testing stubs -->
@@ -157,22 +141,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${springframework.version}</version>
-            <scope>test</scope>
         </dependency>
-
+	
 	</dependencies>
 	
-	<modules>
-		<module>common</module>
-		<module>action</module>
-		<module>mapping</module>
-		<module>email</module>
-		<module>web-theme</module>
-		<module>web</module>
-		        
-		<module>schema</module>
-		<module>axelframework</module>
-	</modules>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -205,17 +177,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.3</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
