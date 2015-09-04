@@ -4,7 +4,7 @@
 	<groupId>org.xmlactions</groupId>
 	<artifactId>axelframework</artifactId>
 	<name>org-xmlactions-axelframework</name>
-	<version>2.2.1-RELEASE</version>
+	<version>2.2.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
     <properties>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
@@ -134,12 +134,6 @@
 	
 	</dependencies>
 	
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 	<build>
 		<resources>
 			<resource>
