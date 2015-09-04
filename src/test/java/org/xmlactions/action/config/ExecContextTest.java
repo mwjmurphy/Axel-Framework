@@ -111,11 +111,11 @@ public class ExecContextTest extends TestCase
 		assertEquals("We have a two line", value);
 
 		value = execContext.getLocalizedString("config/lang/test", "newline");
-		assertTrue(value.equals("Tenemos una\nnueva línea") || value.equals("We have a\n new line"));
+		assertTrue(value.equals("Tenemos una\nnueva lÃ­nea") || value.equals("We have a\n new line"));
 		
 		
 		value = execContext.getString("lang:newline:config/lang/test");
-		assertTrue(value.equals("Tenemos una\nnueva línea") || value.equals("We have a\n new line"));
+		assertTrue(value.equals("Tenemos una\nnueva lÃ­nea") || value.equals("We have a\n new line"));
 
 		try {
 			value = execContext.getString("lang:newline");
@@ -125,7 +125,7 @@ public class ExecContextTest extends TestCase
 
 		execContext.put(IExecContext.DEFAULT_LOCALE_FILE, "config/lang/test");
 		value = execContext.getString("lang:newline::");
-		assertTrue(value.equals("Tenemos una\nnueva línea") || value.equals("We have a\n new line"));
+		assertTrue(value.equals("Tenemos una\nnueva lÃ­nea") || value.equals("We have a\n new line"));
 
 		execContext.put(IExecContext.DEFAULT_LOCALE_FILE, "config/lang/test");
 		value = execContext.getString("lang:newline::ES");
