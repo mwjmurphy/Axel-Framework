@@ -133,6 +133,8 @@ public class Action
      * Process the page replacing any actions and / or markers. TODO add the
      * markers replacement code. e.g. add code to replace ${...};
      * 
+     * @param execContext
+     * @return the processedPage result.
      * @throws IOException
      *             , NestedPagerException, ClassNotFoundException,
      *             InstantiationException, IllegalAccessException,

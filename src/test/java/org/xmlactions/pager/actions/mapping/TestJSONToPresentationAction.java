@@ -1,6 +1,7 @@
 package org.xmlactions.pager.actions.mapping;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
@@ -65,5 +66,18 @@ public class TestJSONToPresentationAction extends TestCase {
     	jsonToPresentationAction.setForm(form);
     	String output = jsonToPresentationAction.execute(execContext);
     	logger.debug(output);
+    }
+    
+    public void testFileToPresentation() throws Exception {
+    	File resource = ResourceUtils.getFile("/log4j.properties");
+    	String root = resource.getParent();
+    	execContext.put("realPath", root);
+    	String jsonData = "/org/xmlactions/pager/actions/mapping/data.json";
+    	String presentationForm = "/org/xmlactions/pager/actions/mapping/list_of_people.html";
+    	Action action = new Action("", presentationForm, "axel");
+    	String result = action.processPage(execContext);
+    	assertNotNull(result);
+    	
+    	
     }
 }
