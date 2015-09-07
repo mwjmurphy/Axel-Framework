@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd">
+	
+	<axel:map_json_to_presentation json_path="persons" json_filename="${realPath}/org/xmlactions/pager/actions/mapping/person.json" sjson_ref="friends_json">
+		<axel:form>
+			name:${name}
+			age:${age}
+			mobile:${mobile}
+			address:${address}
+		</axel:form>
+	</axel:map_json_to_presentation>
+	
+</html>

@@ -69,10 +69,11 @@ public class TestJSONToPresentationAction extends TestCase {
     }
     
     public void testFileToPresentation() throws Exception {
-    	File resource = ResourceUtils.getFile("/log4j.properties");
-    	String root = resource.getParent();
+    	//File resource = ResourceUtils.getFile("/log4j.properties");
+    	File resource = new File("src/test/resources");
+    	String root = resource.getAbsolutePath();	 // resource.getParent();
     	execContext.put("realPath", root);
-    	String jsonData = "/org/xmlactions/pager/actions/mapping/data.json";
+    	// String jsonData = "/org/xmlactions/pager/actions/mapping/data.json";
     	String presentationForm = "/org/xmlactions/pager/actions/mapping/list_of_people.html";
     	Action action = new Action("", presentationForm, "axel");
     	String result = action.processPage(execContext);

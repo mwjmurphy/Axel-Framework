@@ -9,3 +9,6 @@
 **/.settings/
 **/.classpath
 **/.project
+/axel-commons.log.1
+/axel-commons.log.2
+/axel-commons.log.3

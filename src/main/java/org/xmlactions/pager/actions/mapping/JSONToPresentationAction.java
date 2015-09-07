@@ -23,6 +23,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.text.StrSubstitutor;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -110,7 +111,11 @@ public class JSONToPresentationAction extends CommonFormFields {
 		        jsonObject = new JSONObject(data);
 	        } else {
 	        	String  data = execContext.replace(getJson_data());
-		        jsonObject = new JSONObject(data);
+	        	try {
+	        		jsonObject = new JSONObject(data);
+	        	} catch (JSONException ex) {
+	    			throw new IllegalArgumentException("Unable to get data  for " + getJson_filename() + " or " + getJson_data(), ex);
+	        	}
 	        }
     	} catch (IOException ex) {
 			throw new IllegalArgumentException("Unable to get data  for " + getJson_filename() + " or " + getJson_data(), ex);

@@ -1,0 +1,12 @@
+{
+	"persons":[
+		{
+			"address":{	"country":"biggest place","city":"bedrock","street":"5 main street","state":"big place"},
+			"name":"Mr. Fred Flinstone","mobile":[123456,654321],"age":10
+		},
+		{
+			"address":{	"country":"biggest place","city":"bedrock","street":"5 main street","state":"big place"},
+			"name":"Mrs. Fred Flinstone","mobile":[123456,654321],"age":10
+		}
+	]
+}
