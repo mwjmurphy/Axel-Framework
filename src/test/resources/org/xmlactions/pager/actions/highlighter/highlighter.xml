@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd">
+	
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			<h3 class="panel-title">Panel - file name = axel_logic.html</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				This panel was inserted using <code>&lt;axel:insert page="${deployment.folder}/axel_logic.html"/&gt;</code>
+			</p>
+			<p>
+				The file name is <code>axel_logic.html</code>
+			</p>
+			<p>
+				<code>&lt;axel:if expression="Math.floor((Math.random() * 10) + 1) &gt; 5"&gt;</code>
+				<axel:if expression="Math.floor((Math.random() * 10) + 1) &gt; 5">
+					<h4>The random number is &gt; 5</h4>
+				<axel:else>
+					<h4>The random number is &lt;= 5</h4>
+				</axel:else>
+				</axel:if>
+			</p>
+			<axel:file_viewer file_name="${deployment.folder}/axel_logic.html" show_line_nos ="false" escape_content="true"/>
+			
+			
+		</div>
+	</div>
+	
+</html>

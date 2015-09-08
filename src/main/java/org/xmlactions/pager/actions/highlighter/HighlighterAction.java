@@ -110,8 +110,13 @@ public class HighlighterAction extends CommonFormFields implements FormDrawing, 
 		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(page);
 		
 		highlight(sb, "", xo);
+
+		String highlightedPage = sb.toString();
+		highlightedPage = highlightedPage.replaceAll("\n", "<br/>");
+		highlightedPage = highlightedPage.replaceAll(" ", "&nbsp;");
+		highlightedPage = highlightedPage.replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
 		
-		return sb.toString();
+		return highlightedPage;
 	}
 	
 	private String
