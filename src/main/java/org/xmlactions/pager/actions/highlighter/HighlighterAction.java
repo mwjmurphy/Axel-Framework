@@ -95,6 +95,19 @@ public class HighlighterAction extends CommonFormFields implements FormDrawing, 
 			return page;
 		}
 	}
+	
+	/**
+	 * Build a presentation of an xml style document.
+	 * @param page that we want prettified
+	 * @param attribute_per_line if we want attributes on new lines
+	 * @return the prettified page.
+	 */
+	public static String buildPresentation(IExecContext execContext, String page, boolean attribute_per_line) {
+		HighlighterAction highlighterAction = new HighlighterAction();
+		highlighterAction.setExecContext(execContext);
+		highlighterAction.setAttribute_per_line(attribute_per_line);
+		return highlighterAction.buildPresentation(page);
+	}
 
 	private String buildPresentation(String page) {
 		
@@ -113,7 +126,7 @@ public class HighlighterAction extends CommonFormFields implements FormDrawing, 
 
 		String highlightedPage = sb.toString();
 		highlightedPage = highlightedPage.replaceAll("\n", "<br/>");
-		highlightedPage = highlightedPage.replaceAll(" ", "&nbsp;");
+		highlightedPage = highlightedPage.replaceAll("  ", "&nbsp;&nbsp;");
 		highlightedPage = highlightedPage.replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
 		
 		return highlightedPage;
@@ -195,7 +208,8 @@ public class HighlighterAction extends CommonFormFields implements FormDrawing, 
 	
 	private void highlightElementAttribute(StringBuilder sb, XMLAttribute xo, String indent, boolean attributesPerLine) {
 		if (attributesPerLine) {
-			sb.append(CRLN);
+			//sb.append(CRLN);
+			sb.append(LN);
 			sb.append(indent);
 		} else {
 			sb.append(SPACE);
@@ -258,6 +272,10 @@ public class HighlighterAction extends CommonFormFields implements FormDrawing, 
 		setTheme(execContext.getThemes().getTheme(getTheme_name(execContext)));
 	}
 
+
+	public void setExecContext(IExecContext execContext) {
+		this.execContext = execContext;
+	}
 
 	public IExecContext getExecContext()
 	{

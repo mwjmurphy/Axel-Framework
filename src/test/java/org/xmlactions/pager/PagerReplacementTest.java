@@ -54,7 +54,7 @@ public class PagerReplacementTest extends TestCase
 		String page = action.loadPage("src/test/resources", "pages/actions_with_child_action.xhtml");
 		assertTrue("Missing html element", page.indexOf("<html") >= 0);
 		ActionMarkers markers = new ActionMarkers();
-		List<ReplacementMarker> list = markers.getReplacementList(page, PagerTest.NAMESPACE, execContext, null);
+		List<ReplacementMarker> list = markers.getReplacementList("pages/actions_with_child_action.xhtml", page, PagerTest.NAMESPACE, execContext, null);
 		assertEquals(2, list.size());
 		assertEquals(0, list.get(0).getNestedMarkers().size());
 		assertEquals(1, list.get(1).getNestedMarkers().size());

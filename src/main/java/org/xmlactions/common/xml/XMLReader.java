@@ -609,37 +609,29 @@ public class XMLReader {
 
 				// System.out.println("findBoth set to false");
 				findBoth = false;
-				if (found == 1) // element ends as '</'
-				{
+				if (found == 1) { // element ends as '</'
 					skipWhiteSpace();
 					if (equals(nodeName, true)) {
 						skipWhiteSpace();
 						if (read() != '>') {
 							// throw new Exception("terminating '>' for " + new
 							// String(nodeName) + " missing");
-							error.append("terminating '>' for "
-									+ new String(nodeName) + " missing");
+							error.append("terminating '>' for " + new String(nodeName) + " missing");
 							return (-1);
 						}
 						return (curPos);
 					}
-				} else if (found == 2) // element ends as '/>'
-				{
+				} else if (found == 2) { // element ends as '/>'
 					return (curPos);
-				} else // found == 0
-				{
-					// throw new Exception("end element for " + new
-					// String(nodeName) + " not found");
-					error.append("end element for " + new String(nodeName)
-							+ " not found");
+				} else { // found == 0
+					// throw new Exception("end element for " + new String(nodeName) + " not found");
+					error.append("end element for " + new String(nodeName) + " not found");
 					return (-1);
 				}
 			}
 		} catch (Exception ex) {
-			// throw new Exception("end element for " + new String(nodeName) +
-			// " not found", e);
-			error.append("end element for '" + new String(nodeName)
-					+ "' not found" + ":" + ex.getMessage());
+			// throw new Exception("end element for " + new String(nodeName) + " not found", e);
+			error.append("end element for '" + new String(nodeName)	+ "' not found" + ":" + ex.getMessage());
 			return (-1);
 		}
 	}

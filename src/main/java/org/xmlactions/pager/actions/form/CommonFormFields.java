@@ -249,7 +249,9 @@ public abstract class CommonFormFields extends BaseFormAction
 	{
 		if (theme == null) {
 			String themeName = execContext.getString(execContext.DEFAULT_THEME_NAME);
-			Theme theme = execContext.getThemes().getTheme(themeName);
+			// fix code - can't declare another Theme here as it wont get returned.
+			// code was Theme theme = execContext.getThemes().getTheme(themeName);
+			theme = execContext.getThemes().getTheme(themeName);
 			if (theme == null) {
 				throw new IllegalArgumentException("Theme not set, and no default theme found for [" + themeName + "]");
 			}

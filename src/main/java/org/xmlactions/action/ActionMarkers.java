@@ -58,7 +58,7 @@ public class ActionMarkers {
 	 *             exception if something goes wrong and we want to notify the
 	 *             caller.
 	 */
-	public List<ReplacementMarker> getReplacementList(String page, char [][]nameSpaces, IExecContext context, String actionMapName)
+	public List<ReplacementMarker> getReplacementList(String pageName, String page, char [][]nameSpaces, IExecContext context, String actionMapName)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, BadXMLException {
 
@@ -78,7 +78,7 @@ public class ActionMarkers {
                 list.add(rm);
                 // We may not have an action.
                 if (!StringUtils.isEmpty(rm.getAction().getContent())) {
-                    rm.setNestedMarkers(getReplacementList(rm.getAction().getContent(),
+                    rm.setNestedMarkers(getReplacementList(pageName, rm.getAction().getContent(),
                             nameSpaces,
                             context,
                             actionMapName));
@@ -86,7 +86,11 @@ public class ActionMarkers {
 			}
 		}
 		if (xmlParser.getErrorMessage() != null) {
-			throw new BadXMLException(xmlParser.getErrorMessage());
+			if (pageName != null) {
+				throw new BadXMLException(xmlParser.getErrorMessage() + "\nWhile processing [" + pageName + "] with content:\n" + page);
+			} else {
+				throw new BadXMLException(xmlParser.getErrorMessage() + "\nWhile processing content:\n" + page);
+			}
 			// log.error(xmlParser.getErrorMessage());
 		}
 		return (list);

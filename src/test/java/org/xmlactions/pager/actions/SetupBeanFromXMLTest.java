@@ -47,7 +47,7 @@ public class SetupBeanFromXMLTest extends TestCase
 	{
 
 		String page = "<pager:echo>This is the echo content</pager:echo>";
-		List<ReplacementMarker> markers = new ActionMarkers().getReplacementList(page, PagerTest.NAMESPACE, execContext, null);
+		List<ReplacementMarker> markers = new ActionMarkers().getReplacementList(null, page, PagerTest.NAMESPACE, execContext, null);
 		BaseAction action = markers.get(0).getAction();
 		assertEquals(EchoAction.class, action.getClass());
 	}
@@ -61,7 +61,7 @@ public class SetupBeanFromXMLTest extends TestCase
 				+ "<pager:param value=\"the value of param1\"/>" + "<pager:param value=\"code class = ${code}\"/>"
 				+ "</pager:code>";
 
-		List<ReplacementMarker> markers = new ActionMarkers().getReplacementList(page, PagerTest.NAMESPACE, execContext, null);
+		List<ReplacementMarker> markers = new ActionMarkers().getReplacementList(null, page, PagerTest.NAMESPACE, execContext, null);
 		Object action = markers.get(0).getAction();
 		assertEquals(CodeAction.class, action.getClass());
 	}

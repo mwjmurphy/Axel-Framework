@@ -208,9 +208,7 @@ public class XMLReaderChar {
 							}
 						} catch (Exception e) {
 							// Oops bad xml, can't find end of comment
-							throw new BadXMLException(
-									"bad XML, no end of comment for comment starting at position "
-											+ errorStart);
+							throw new BadXMLException("bad XML, no end of comment for comment starting at position " + errorStart);
 						}
 					}
 				}
@@ -247,9 +245,7 @@ public class XMLReaderChar {
 							}
 						} catch (Exception e) {
 							// Oops bad xml, can't find end of comment
-							throw new BadXMLException(
-									"bad XML, no end of CDATA for CDATA starting at position "
-											+ errorStart);
+							throw new BadXMLException("bad XML, no end of CDATA for CDATA starting at position " + errorStart);
 						}
 					}
 				} else if (readChar(curPos) == '!' || readChar(curPos) == '?') {
@@ -304,8 +300,7 @@ public class XMLReaderChar {
 					iLoop = -1; // back to beginning
 				}
 			}
-			// System.out.println(" ::: found:" + (char)b + ", curPos = " +
-			// curPos);
+			// System.out.println(" ::: found:" + (char)b + ", curPos = " + curPos);
 			return (curPos - b.length);
 		} catch (EndOfBufferException e) {
 			return (-1); // not found
@@ -322,6 +317,7 @@ public class XMLReaderChar {
 		while (true) {
 			try {
 				a = read();
+				// log.debug("DELETE ME I AM A PERFORMANCE ISSUE: find:" + a);
 				if (a == b) {
 					return (1); // found 1st char
 				} else if (a == c) {
@@ -363,6 +359,8 @@ public class XMLReaderChar {
 			while (true) {
 				if (both == true) {
 					// System.out.println("find both");
+					// log.debug("DELETE ME I AM A PERFORMANCE ISSUE:opens=" + opens + ":find start curPos:" + curPos + ":[" + buffer[curPos-1] + buffer[curPos] + buffer[curPos+1] + buffer[curPos+2] + ']');
+
 					int found = find('<', '/');
 					if (found == -1) {
 						return (-1);
@@ -383,7 +381,12 @@ public class XMLReaderChar {
 								return (1); // found </ terminating element
 							}
 						} else {
-							opens++;
+							if (isAlphaChar(b)) {
+								// log.debug("DELETE ME I AM A PERFORMANCE ISSUE:opens=" + opens + ": find isAlphaChar('" + b + "')");	// curPos:" + curPos + ":[" + buffer[curPos-1] + buffer[curPos] + buffer[curPos+1] + buffer[curPos+2] + ']');
+								opens++;
+							} else {
+								// log.debug("DELETE ME I AM A PERFORMANCE ISSUE:opens=" + opens + ":! isAlphaChar('" + b + "')");	// curPos:" + curPos + ":[" + buffer[curPos-1] + buffer[curPos] + buffer[curPos+1] + buffer[curPos+2] + ']');
+							}
 						}
 					} else if (found == 2) {
 						// System.out.println("found '/'");
@@ -587,6 +590,24 @@ public class XMLReaderChar {
 	}
 
 	/**
+	 * Checks if a char is valid alpha or underscore 
+	 * <p>
+	 * alpha = '_' || a-z|| A-Z
+	 * </p>
+	 * @param b - the char to check
+	 * @return true if char is a alpha else false if not
+	 */
+	public boolean isAlphaChar(char b) {
+		// _ or A-Z or a_z
+		if	(b == '_' ||
+			(b >= 'a' && b <= 'z') ||
+			(b >= 'A' && b <= '|')) {
+			return (true);
+		}
+		return (false);
+	}
+
+	/**
 	 * @param b
 	 *            is the xml character we want to check
 	 * @return true if character is a valid XML name character
@@ -716,7 +737,9 @@ public class XMLReaderChar {
 					return (-1);
 				}
 
-				skipWhiteSpace();
+				// skipWhiteSpace();
+				
+				// log.debug("DELETE ME I AM A PERFORMANCE ISSUE:" + buffer[curPos] + buffer[curPos+1]);
 
 				if (equals(nodeName, true) == true) {
 					return (startPos);
@@ -746,37 +769,28 @@ public class XMLReaderChar {
 
 				// System.out.println("findBoth set to false");
 				findBoth = false;
-				if (found == 1) // element ends as '</'
-				{
+				if (found == 1) { // element ends as '</'
 					skipWhiteSpace();
 					if (equals(nodeName, true)) {
 						skipWhiteSpace();
 						if (read() != '>') {
-							// throw new Exception("terminating '>' for " + new
-							// String(nodeName) + " missing");
-							error.append("terminating '>' for "
-									+ new String(nodeName) + " missing");
+							// throw new Exception("terminating '>' for " + new String(nodeName) + " missing");
+							error.append("terminating '>' for "	+ new String(nodeName) + " missing");
 							return (-1);
 						}
 						return (curPos);
 					}
-				} else if (found == 2) // element ends as '/>'
-				{
+				} else if (found == 2) { // element ends as '/>'
 					return (curPos);
-				} else // found == 0
-				{
-					// throw new Exception("end element for " + new
-					// String(nodeName) + " not found");
-					error.append("end element for " + new String(nodeName)
-							+ " not found");
+				} else { // found == 0
+					// throw new Exception("end element for " + new String(nodeName) + " not found");
+					error.append("end element for " + new String(nodeName) + " not found");
 					return (-1);
 				}
 			}
 		} catch (Exception ex) {
-			// throw new Exception("end element for " + new String(nodeName) +
-			// " not found", e);
-			error.append("end element for '" + new String(nodeName)
-					+ "' not found" + ":" + ex.getMessage());
+			// throw new Exception("end element for " + new String(nodeName) + " not found", e);
+			error.append("end element for '" + new String(nodeName) 	+ "' not found" + ":" + ex.getMessage());
 			return (-1);
 		}
 	}

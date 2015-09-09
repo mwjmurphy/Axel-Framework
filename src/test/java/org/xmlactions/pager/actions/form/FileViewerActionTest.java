@@ -25,8 +25,10 @@ public class FileViewerActionTest extends TestCase
 	{
 
 		if (execContext == null) {
+//			ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(new String[] {
+//					ActionConst.SPRING_STARTUP_CONFIG, "classpath*:/config/spring/test-spring-pager-web-startup.xml" });
 			ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(new String[] {
-					ActionConst.SPRING_STARTUP_CONFIG, "classpath*:/config/spring/test-spring-pager-web-startup.xml" });
+					"classpath*:/config/spring/test-spring-pager-web-startup.xml" });
 			execContext = (ExecContext)applicationContext.getBean(ActionConst.EXEC_CONTEXT_BEAN_REF);
 			execContext.setApplicationContext(applicationContext);
 		}
@@ -57,6 +59,7 @@ public class FileViewerActionTest extends TestCase
 
 		execContext.put(ActionConst.WEB_REAL_PATH_BEAN_REF, "src/test/resource");
 		FileViewerAction fileViewer = new FileViewerAction();
+		fileViewer.setFormat_xml_content(false);
 		fileViewer.setTheme_name("riostl");
 		fileViewer.setPath("/config/project");
 		fileViewer.setFile_name("addresses.xml");
@@ -73,6 +76,7 @@ public class FileViewerActionTest extends TestCase
 
 		execContext.put(ActionConst.WEB_REAL_PATH_BEAN_REF, "src/test/resource");
 		FileViewerAction fileViewer = new FileViewerAction();
+		fileViewer.setFormat_xml_content(false);
 		fileViewer.setTheme_name("riostl");
 		fileViewer.setPath("/config/project");
 		fileViewer.setFile_name("addresses.xml");
@@ -98,6 +102,8 @@ public class FileViewerActionTest extends TestCase
 			+ "</addresses>";
 
 		execContext.put(ActionConst.WEB_REAL_PATH_BEAN_REF, "src/test/resource");
+		execContext.put("default_theme_name", "ice");
+						
 		xml = StringEscapeUtils.escapeHtml(xml);
 		execContext.put("xml_content", xml);
 		FileViewerAction fileViewer = new FileViewerAction();

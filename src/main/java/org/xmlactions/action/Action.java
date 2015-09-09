@@ -318,7 +318,7 @@ public class Action
 	{
 		Validate.notNull(nameSpaces, "The nameSpace value is not set, try setting this to \"pager\" before calling.");
 		ActionMarkers actionMarkers = new ActionMarkers();
-		List<ReplacementMarker> markers = actionMarkers.getReplacementList(page, nameSpaces, execContext, actionMapName);
+		List<ReplacementMarker> markers = actionMarkers.getReplacementList(pageName, page, nameSpaces, execContext, actionMapName);
 		createActionHierarchy(null, markers);
 
 		processMarkers(page, markers, execContext);

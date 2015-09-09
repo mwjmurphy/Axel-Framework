@@ -59,7 +59,7 @@ public abstract class XML2ClassChar implements XML2ClassCharInterface {
 			try {
 				parseNode(name, new XMLParserChar(element), depth);
 			} catch (Exception ex) {
-				throw new IllegalArgumentException("Error processing xml for element [" + name + "]. Closing element for " + name + " not found, is the XML well former?. " + ex.getMessage() +
+				throw new IllegalArgumentException("Error processing xml for element [" + name + "]. Closing element for " + name + " not found, is the XML well formed?. " + ex.getMessage() +
 						"\nxml:" + new String (parser.buffer), ex);
 			}
 			depth = false;

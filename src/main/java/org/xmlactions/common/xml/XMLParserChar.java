@@ -78,7 +78,7 @@ public class XMLParserChar extends XMLReaderChar {
 		// Log.getInstance().debug("XML[" + this.getCurPos() + "]:" +
 		// this.toString());
 		if (this.findStartElement() > -1) {
-			this.skipWhiteSpace();
+			// this.skipWhiteSpace();
 			int iLoop = 0;
 			while (true) {
 				try {
@@ -86,11 +86,16 @@ public class XMLParserChar extends XMLReaderChar {
 					// Log.getInstance().debug("b:" + (char)b);
 					if (this.isWhiteSpace(b) == true) {
 						break;
-					} else if (iLoop == 0 && (b == '/' || b == '?')) {
-						this.findStartElement();
-						this.skipWhiteSpace();
-						iLoop = 0;
-						continue;
+					} else if (iLoop == 0) {
+						if ((b == '/' || b == '?')) {
+							this.findStartElement();
+							this.skipWhiteSpace();
+							iLoop = 0;
+							continue;
+						} else if (this.isAlphaChar(b) == false) {
+							// not a valid element name, ignore this '<'
+							return getNameOfNode();
+						}
 					} else if (b == '/' || b == '>') {
 						break;
 					}

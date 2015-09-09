@@ -43,6 +43,7 @@ import org.xmlactions.pager.actions.form.templates.HtmlPre;
 import org.xmlactions.pager.actions.form.templates.HtmlTable;
 import org.xmlactions.pager.actions.form.templates.HtmlTd;
 import org.xmlactions.pager.actions.form.templates.HtmlTr;
+import org.xmlactions.pager.actions.highlighter.HighlighterAction;
 
 
 /**
@@ -68,7 +69,7 @@ public class FileViewerAction extends CommonFormFields implements FormDrawing, I
 	private boolean escape_content = true;
 	private boolean show_header = true;
 	/** Will format xml content for presentation with line feeds and spaces */
-	private boolean format_xml_content = false;
+	private boolean format_xml_content = true;
 	
 	private IExecContext execContext;
 
@@ -90,9 +91,10 @@ public class FileViewerAction extends CommonFormFields implements FormDrawing, I
 		if (isFormat_xml_content() == true) {
 			try {
 				page = StringEscapeUtils.unescapeHtml(page);
-				LOG.debug("formatting xml object:" + page);
-				XMLObject xo = new XMLObject().mapXMLCharToXMLObject(page);
-				page = xo.mapXMLObject2XML(xo, true);
+				page = HighlighterAction.buildPresentation(execContext, page, false);
+				// LOG.debug("formatting xml object:" + page);
+				// XMLObject xo = new XMLObject().mapXMLCharToXMLObject(page);
+				// page = xo.mapXMLObject2XML(xo, true);
 				// page = xo.mapXMLObject2HTML();
 			} catch (Exception ex) {
 				// can't format this content so leave it as it is.

@@ -62,5 +62,23 @@ public class XMLReaderCharTest extends TestCase {
 		assertEquals(4,count);
 		
 	}
+	
+	public void testAlphaChar() {
+		XMLReaderChar xmlReaderChar = new XMLReaderChar();
+		assertTrue(xmlReaderChar.isAlphaChar('_'));
+		assertTrue(xmlReaderChar.isAlphaChar('A'));
+		assertTrue(xmlReaderChar.isAlphaChar('C'));
+		assertTrue(xmlReaderChar.isAlphaChar('Z'));
+		assertTrue(xmlReaderChar.isAlphaChar('a'));
+		assertTrue(xmlReaderChar.isAlphaChar('c'));
+		assertTrue(xmlReaderChar.isAlphaChar('z'));
+		assertFalse(xmlReaderChar.isAlphaChar(' '));
+		assertFalse(xmlReaderChar.isAlphaChar('1'));
+		assertFalse(xmlReaderChar.isAlphaChar('0'));
+		assertFalse(xmlReaderChar.isAlphaChar('€'));
+		assertFalse(xmlReaderChar.isAlphaChar('•'));
+		assertFalse(xmlReaderChar.isAlphaChar('$'));
+		assertFalse(xmlReaderChar.isAlphaChar('Þ'));
+	}
 
 }

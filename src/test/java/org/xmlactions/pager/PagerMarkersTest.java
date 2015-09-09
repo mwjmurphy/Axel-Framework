@@ -40,7 +40,7 @@ public class PagerMarkersTest extends TestCase
 		Action action = new Action();
 		String page = action.loadPage("src/test/resources", "/pages/echo.xhtml");
 		ActionMarkers markers = new ActionMarkers();
-		List<ReplacementMarker> list = markers.getReplacementList(page, PagerTest.NAMESPACE, execContext, null);
+		List<ReplacementMarker> list = markers.getReplacementList("/pages/echo.xhtml", page, PagerTest.NAMESPACE, execContext, null);
 		assertEquals(2, list.size());
 	}
 
@@ -52,7 +52,7 @@ public class PagerMarkersTest extends TestCase
 		Action action = new Action();
 		String page = action.loadPage("src/test/resources", "/pages/complex.xhtml");
 		ActionMarkers markers = new ActionMarkers();
-		List<ReplacementMarker> list = markers.getReplacementList(page, PagerTest.NAMESPACE, execContext, null);
+		List<ReplacementMarker> list = markers.getReplacementList("/pages/complex.xhtml", page, PagerTest.NAMESPACE, execContext, null);
 		assertEquals(3, list.size());
 		ReplacementMarker rm = list.get(0);
 		assertEquals(2, rm.getXMLObject().getChildCount());
@@ -66,7 +66,7 @@ public class PagerMarkersTest extends TestCase
 		Action action = new Action();
 		String page = action.loadPage("src/test/resources", "/pages/if.xhtml");
 		ActionMarkers markers = new ActionMarkers();
-		List<ReplacementMarker> list = markers.getReplacementList(page, PagerTest.NAMESPACE, execContext, null);
+		List<ReplacementMarker> list = markers.getReplacementList("/pages/if.xhtml", page, PagerTest.NAMESPACE, execContext, null);
 		assertEquals(8, list.size());
 		ReplacementMarker rm = list.get(0);
 		assertEquals(2, rm.getXMLObject().getChildCount());

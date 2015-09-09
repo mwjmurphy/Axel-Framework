@@ -56,12 +56,12 @@ public class ReplaceMarkerTest extends TestCase
 
 		String page = "<pager:echo>this <b>is</b> an simple echo</pager:echo>";
 		ActionMarkers actionMarkers = new ActionMarkers();
-		List<ReplacementMarker> markers = actionMarkers.getReplacementList(page, PagerTest.NAMESPACE, execContext, null);
+		List<ReplacementMarker> markers = actionMarkers.getReplacementList(null, page, PagerTest.NAMESPACE, execContext, null);
 		assertEquals(1, markers.size());
 		assertEquals("this <b>is</b> an simple echo", markers.get(0).getContent());
 
 		page = "<root><pager:echo>this is <pager:echo>an <b>simple</b></pager:echo> echo</pager:echo></root>";
-		markers = actionMarkers.getReplacementList(page, PagerTest.NAMESPACE, execContext, null);
+		markers = actionMarkers.getReplacementList(null, page, PagerTest.NAMESPACE, execContext, null);
 		assertEquals(1, markers.size());
 		assertEquals(1, markers.get(0).getNestedMarkers().size());
 		assertEquals("an <b>simple</b>", markers.get(0).getNestedMarkers().get(0).getContent());

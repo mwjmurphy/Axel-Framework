@@ -22,6 +22,7 @@ public class TestHighlighterAction extends TestCase {
 		if (execContext == null) {
 			ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(new String[] {
 					ActionConst.SPRING_STARTUP_CONFIG, "classpath*:/config/spring/test-spring-pager-web-startup.xml" });
+			execContext = (ExecContext)applicationContext.getBean(ActionConst.EXEC_CONTEXT_BEAN_REF);
 			execContext = (IExecContext) applicationContext.getBean(ActionConst.EXEC_CONTEXT_BEAN_REF);
  		}
  	}
