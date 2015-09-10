@@ -20,7 +20,7 @@ public class XMLObjectTest extends TestCase
 
 		String xml = "<rio_profile num_rows=\"0\" />";
 		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(xml);
-		log.debug("num_rows:" + xo.getAttributeValueAsString("num_rows"));
+		// log.debug("num_rows:" + xo.getAttributeValueAsString("num_rows"));
 		if (!"0".equals(xo.getAttributeValueAsString("num_rows"))) {
 			fail("getAttributeValueAsString for num_rows failed");
 		}
@@ -33,7 +33,7 @@ public class XMLObjectTest extends TestCase
 		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(xml);
 		String value = xo.getAttribute("root/row", "data");
 		assertNotNull(value);
-		log.debug("value:" + value);
+		// log.debug("value:" + value);
 		
 		String path = "root/row[@data]";
 	}
@@ -46,6 +46,7 @@ public class XMLObjectTest extends TestCase
 		String page = org.xmlactions.common.io.ResourceUtils.loadFile("/org/xmlactions/common/xml/lessthan.xml");
 		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(page);
 		String parsedPage = xo.mapXMLObject2XML(xo, true);
-		log.debug("parsedPage:" + parsedPage);
+		assertNotNull(parsedPage);
+		// log.debug("parsedPage:" + parsedPage);
 	}
 }

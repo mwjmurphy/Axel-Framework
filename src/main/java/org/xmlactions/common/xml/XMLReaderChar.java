@@ -1235,16 +1235,37 @@ public class XMLReaderChar {
 		return (null);
 	}
 
+	/**
+	 * This will get all the content contained within an element. It's not great
+	 * as it will only go as far as the start of the 1st element contained inside
+	 * the content.
+	 * i.e. <h>this is part of the content<p>this is p content</p> this part is lost</h>
+	 * Only the "this is part of the content" is retrieved.
+	 * 
+	 * @return the contained content else null if there isn't any.
+	 */
 	public char[] getContent() {
+		if (buffer[buffer.length-2] == '/') {
+			// element terminates as "/>" so has no content
+			return null;
+		}
 		// log.info("element:" + this.toString());
 		int startPos = find('>');
 		if (startPos != -1) {
 			startPos++;
-			int endPos = find('<');
-			if (endPos != -1) {
-				char[] content = new char[endPos - startPos];
-				copy(buffer, content, startPos);
-				return (content);
+			boolean contentFound = false; 
+			while(contentFound==false) {
+				int endPos = find('<');
+				if (endPos != -1) {
+					// ignore spurious < as there not end or start of elements
+					if (isAlphaChar(buffer[endPos+1]) || buffer[endPos+1] == '/') {	// <element - an element name or </
+						char[] content = new char[endPos - startPos];
+						copy(buffer, content, startPos);
+						return (content);
+					}
+				} else {
+					break;
+				}
 			}
 		}
 		return (null);

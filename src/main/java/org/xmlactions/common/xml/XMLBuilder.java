@@ -118,15 +118,24 @@ public class XMLBuilder
     */
    public void closeOpenElement()
    {
-      xml.append('>');
+	   if (xml.charAt(xml.length()-1) == ' ') {
+		   xml.setCharAt(xml.length()-1, '>');
+	   } else {
+		   xml.append('>');
+	   }
    }
    /**
     * Closes and element by appending '/&gt;'
     */
    public void closeElement()
    {
-      xml.append('/');
-      xml.append('>');
+	   if (xml.charAt(xml.length()-1) == ' ') {
+		   xml.setCharAt(xml.length()-1, '/');
+		   xml.append('>');
+	   } else {
+		   xml.append('/');
+		   xml.append('>');
+	   }
    }
    
    /**
