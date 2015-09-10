@@ -69,7 +69,7 @@ public class FileViewerAction extends CommonFormFields implements FormDrawing, I
 	private boolean escape_content = true;
 	private boolean show_header = true;
 	/** Will format xml content for presentation with line feeds and spaces */
-	private boolean format_xml_content = true;
+	private boolean format_xml_content = false;
 	
 	private IExecContext execContext;
 

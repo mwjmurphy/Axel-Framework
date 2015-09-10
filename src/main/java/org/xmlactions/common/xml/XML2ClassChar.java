@@ -51,7 +51,7 @@ public abstract class XML2ClassChar implements XML2ClassCharInterface {
 		name = parser.getNextNodeNameAsString();
 		// Log.getInstance().debug("next node name=" + name);
 		// name = parser.getNodeNameAsString();
-		while (name != null) {
+		while (name != null && name.length() > 0) {
 			element = parser.getElement(name.toCharArray());
 			// Log.getInstance().debug("node:" + name + " curPos before:" +
 			// curPos + " after:" + parser.curPos + " :" + new String(element));

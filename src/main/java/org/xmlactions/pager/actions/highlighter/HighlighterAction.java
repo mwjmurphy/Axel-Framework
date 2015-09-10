@@ -24,19 +24,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.text.StrSubstitutor;
-import org.slf4j.Logger; import org.slf4j.LoggerFactory;
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xmlactions.action.Action;
 import org.xmlactions.action.ActionConst;
 import org.xmlactions.action.config.IExecContext;
-import org.xmlactions.common.io.ResourceUtils;
 import org.xmlactions.common.theme.Theme;
 import org.xmlactions.common.xml.XMLAttribute;
 import org.xmlactions.common.xml.XMLObject;
@@ -44,12 +39,7 @@ import org.xmlactions.pager.actions.form.CommonFormFields;
 import org.xmlactions.pager.actions.form.FormDrawing;
 import org.xmlactions.pager.actions.form.IStorageFormAction;
 import org.xmlactions.pager.actions.form.ThemeConst;
-import org.xmlactions.pager.actions.form.templates.Html;
 import org.xmlactions.pager.actions.form.templates.HtmlInput;
-import org.xmlactions.pager.actions.form.templates.HtmlPre;
-import org.xmlactions.pager.actions.form.templates.HtmlTable;
-import org.xmlactions.pager.actions.form.templates.HtmlTd;
-import org.xmlactions.pager.actions.form.templates.HtmlTr;
 
 
 /**
@@ -98,6 +88,7 @@ public class HighlighterAction extends CommonFormFields implements FormDrawing, 
 	
 	/**
 	 * Build a presentation of an xml style document.
+	 * @param execContext
 	 * @param page that we want prettified
 	 * @param attribute_per_line if we want attributes on new lines
 	 * @return the prettified page.
@@ -191,7 +182,8 @@ public class HighlighterAction extends CommonFormFields implements FormDrawing, 
 	private void highlightElementNameEnd(StringBuilder sb, XMLObject xo, String indent) {
 		if (xo.getChildCount() > 0 || hasContent(xo)) {
 			if (!hasContent(xo)) {
-				sb.append(CRLN);
+				// sb.append(CRLN);
+				sb.append(LN);
 				sb.append(indent);
 			}
 			sb.append(LT);
