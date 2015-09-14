@@ -1,5 +1,6 @@
 # ignore all target folders
 **/target/
+**/temp/
 
 # ignore all log files
 **/*.log
