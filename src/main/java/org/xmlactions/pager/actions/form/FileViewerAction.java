@@ -105,6 +105,7 @@ public class FileViewerAction extends CommonFormFields implements FormDrawing, I
 		if (isEscape_content() == true) {
 			// html escape the content, so it appears as is on the browser page
 			page = StringEscapeUtils.escapeHtml(page);
+			page = page.replace("${", "&#36;{");	// replace dollar characters so we don't get the replacements
 		}
 
 		String [] rows = page.split("\n");
@@ -170,6 +171,10 @@ public class FileViewerAction extends CommonFormFields implements FormDrawing, I
 	}
 	
 	public boolean isFormat_xml_content() {
+		return format_xml_content;
+	}
+
+	public boolean getFormat_xml_content() {
 		return format_xml_content;
 	}
 

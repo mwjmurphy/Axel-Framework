@@ -50,7 +50,7 @@ public class EvalActionTest extends TestCase
 
 		Action action = new Action("", "", ActionConst.DEFAULT_PAGER_NAMESPACE);
 		String newPage = action.processPage(execContext, page);
-		log.debug("newPage:" + newPage);
+		//log.debug("newPage:" + newPage);
 		assertEquals("eval-content:101", newPage);
 	}
 
@@ -78,8 +78,8 @@ public class EvalActionTest extends TestCase
         URL url = ResourceUtils.class.getResource("/pages");
         Validate.notNull(url, "Resource [" + "/pages" + "] not found");
 
-		log.warn("url.path:" + url.getPath());
-		log.warn("url.file:" + url.getFile());
+		//log.warn("url.path:" + url.getPath());
+		//log.warn("url.file:" + url.getFile());
 		execContext.put(ActionConst.WEB_REAL_PATH_BEAN_REF, "/pages");
 		String page = "<pager:put key=\"put-content\"><pager:insert page=\"insert3.xhtml\"/></pager:put>"
 			+ "<pager:echo>put-content:${put-content}</pager:echo>";
@@ -138,7 +138,7 @@ public class EvalActionTest extends TestCase
 		execContext.put(ActionConst.WEB_REAL_PATH_BEAN_REF, "/pages");
 		Action action = new Action("/pages", "put.xhtml", "pager");
 		String page = action.processPage(execContext);
-		log.debug("page:" + page);
+		//log.debug("page:" + page);
 		assertTrue("Should have found [1st put content] on the page", page.indexOf("1st put content") > -1);
 
 	}

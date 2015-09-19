@@ -98,6 +98,7 @@ public class FileViewerActionTest extends TestCase
 			+ "        <city>baltinglass</city>"
 			+ "        <county>wicklow</county>"
 			+ "        <country>ireland</country>"
+			+ "        <postcode>${postcode}</postcode>"
 			+ "    </address>"
 			+ "</addresses>";
 
@@ -113,8 +114,9 @@ public class FileViewerActionTest extends TestCase
 		String page = fileViewer.execute(execContext);
 		// confirm that we have escaped html
 		// assertTrue(page.indexOf("<addresses>") >= 0);
+		assertTrue(page.indexOf("&#36;{postcode}") >= 0);
 		
-		log.debug("page:" + page);
+		//log.debug("page:" + page);
 	}
 
 }
