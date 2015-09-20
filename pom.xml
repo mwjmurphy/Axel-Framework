@@ -4,8 +4,30 @@
 	<groupId>org.xmlactions</groupId>
 	<artifactId>axelframework</artifactId>
 	<name>org-xmlactions-axelframework</name>
-	<version>2.2.3-SNAPSHOT</version>
+	<description>A Java Web Framework for building web sites</description>
+	<url>http://xmlactions.org</url>	
+	<version>2.2.3</version>
 	<packaging>jar</packaging>
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	 <developers>
+		<developer>
+			<name>Mike Murphy</name>
+			<email>mwjmurphy@gmail.com</email>
+			<organization>Axel Framework</organization>
+			<organizationUrl>http://axelframework.com</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+	  <connection>scm:git:git@github.com:mwjmurphy/Axel-Framework</connection>
+	  <developerConnection>scm:git:git@github.com:mwjmurphy/Axel-Framework</developerConnection>
+	  <url>git@github.com:mwjmurphy/Axel-Framework</url>
+	</scm>
+		
     <properties>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 		<buildDate>${maven.build.timestamp}</buildDate>
