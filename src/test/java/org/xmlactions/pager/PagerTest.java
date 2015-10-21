@@ -26,6 +26,7 @@ public class PagerTest extends TestCase
 	private static Logger log = LoggerFactory.getLogger(PagerTest.class);
 
 	public static char[][] NAMESPACE = {"pager".toCharArray()};
+	public static char[][] NAMESPACE_AXEL = {"axel".toCharArray()};
 
 	private static IExecContext execContext;
 

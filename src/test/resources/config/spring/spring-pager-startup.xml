@@ -33,7 +33,7 @@
 	            <ref bean="application.xml" />
             </util:list>
 		</constructor-arg>
-		<property name="defaultLocaleFileName" value="config/lang/pager.properties"/>
+		<property name="defaultLocaleFileName" value="config/lang/pager"/>
 	</bean>
 	
    <bean id="application.xml" class="org.apache.commons.configuration.XMLConfiguration">

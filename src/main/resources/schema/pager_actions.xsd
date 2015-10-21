@@ -453,7 +453,35 @@
                   The key / name for the variable to get from the execContext.
                   </p>
                   <p>
-                  Note. key may also contain prefidex map or lang reference i.e. lang:key
+                  Note. key may also contain prefixed map or lang reference i.e. lang:key
+                  </p>
+            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="lang">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Get a locale language variable from the execContext map.
+            ]]></xsd:documentation>
+         <xsd:documentation>
+            <br />
+            example:
+            <br />
+            &lt;pager:lang key="user_name"/&gt;
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <p>
+                  The key / name for the locale language variable to get from the execContext.
+                  </p>
+                  <p>
+                  Note. key may also contain substitution content such as ${repalceme}
                   </p>
             </xsd:documentation>
             </xsd:annotation>
