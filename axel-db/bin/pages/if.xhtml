@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:pager="http://www.riostl.com/schema/pager"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+
+<head>
+</head>
+<body>
+
+    <pager:if expression="1==1">
+        <pager:echo>Echo we're from inside if 1==1</pager:echo>
+        <pager:if expression="2==3">
+            <pager:echo>Echo we're from inside if 2==3</pager:echo>
+        </pager:if>
+    </pager:if>
+    
+    <pager:echo>$(request:fred}</pager:echo>
+    <pager:if expression="'${request:fred}'=='1';">
+        <pager:echo>fred = 1</pager:echo>
+    </pager:if>
+    
+    <pager:if expression="${key}==1;">
+        <pager:echo>key = 1</pager:echo>
+    </pager:if>
+	
+	<pager:echo>This is the echo content</pager:echo>
+
+    <pager:if expression="10==10">
+        <td>this is a td in if [10==10]</td>
+	<pager:elseif expression="11==11">
+        <td>this is a td in elseif 11==11]</td>
+	</pager:elseif>
+	<pager:else>
+        <td>this is a td in else ]10==10[</td>
+	</pager:else>
+    </pager:if>
+
+    <p>
+        Now we're onto the elseif clause
+    </p>
+    <pager:if expression="20==21">
+        <td>this is a td in if [20==21]
+        </td>
+    <pager:elseif expression="21==21">
+        <td>this is a td in elseif [21==21]
+        </td>
+    </pager:elseif>
+    <pager:else>
+        <td>this is a td in else
+        </td>
+    </pager:else>
+    </pager:if>
+
+    <p>
+        Now we're onto the else clause
+    </p>
+    <pager:if expression="30==31">
+        <td>this is a td in if [30==31]
+        </td>
+    <pager:elseif expression="31==32">
+        <td>this is a td in elseif [31==32]
+        </td>
+    </pager:elseif>
+    <pager:else>
+        <td>this is a td in else after ]30==31[
+        </td>
+    </pager:else>
+    </pager:if>
+
+
+</body>
+</html>

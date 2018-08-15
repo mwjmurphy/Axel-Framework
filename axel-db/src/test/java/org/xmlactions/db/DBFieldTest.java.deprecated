@@ -1,0 +1,59 @@
+package org.xmlactions.db;
+
+import junit.framework.TestCase;
+
+import com.riostl.common.xml.XMLObject;
+
+public class DBFieldTest extends TestCase {
+
+	public void testGettersAndSetters() throws Exception {
+		String fieldXML = "<field type=\"pk\" name=\"id\" presentation_name=\"ID\" editable=\"false\"/>";
+		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(fieldXML);
+		DBField dbField = new DBField(null, xo, "tb_test");
+		assertEquals("wrong table name", "tb_test.id", dbField.getDBName());
+		assertEquals("wrong field type", dbField.getFieldType(),
+				DBField.FIELD_TYPE_PK);
+		assertEquals("wrong field name", dbField.getFieldName(), "id");
+		assertEquals("wrong presentation name", dbField.getFieldDisplayName(),
+				"ID");
+		assertFalse("wrong setting for editable:" + dbField.isEditable(),
+				dbField.isEditable());
+	}
+
+	public void testNotEditable() throws Exception {
+		String fieldXML = "<field type=\"text\" name=\"id\" presentation_name=\"ID\" length=\"20\""
+				+ " presentation_width=\"20\"/>";
+		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(fieldXML);
+		DBField dbField = new DBField(null, xo, "tb_test");
+		assertFalse("wrong setting for editable:" + dbField.isEditable(),
+				dbField.isEditable());
+	}
+
+	public void testIsEditable() throws Exception {
+		String fieldXML = "<field type=\"text\" name=\"id\" presentation_name=\"ID\" length=\"20\""
+				+ " presentation_width=\"20\" editable=\"true\"/>";
+		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(fieldXML);
+		DBField dbField = new DBField(null, xo, "tb_test");
+		assertTrue("wrong setting for editable:" + dbField.isEditable(),
+				dbField.isEditable());
+	}
+
+	public void testNotSearchable() throws Exception {
+		String fieldXML = "<field type=\"text\" name=\"id\" presentation_name=\"ID\" length=\"20\""
+				+ " presentation_width=\"20\"/>";
+		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(fieldXML);
+		DBField dbField = new DBField(null, xo, "tb_test");
+		assertFalse("wrong setting for editable:" + dbField.isSearchable(),
+				dbField.isSearchable());
+	}
+
+	public void testIsSearchable() throws Exception {
+		String fieldXML = "<field type=\"text\" name=\"id\" presentation_name=\"ID\" length=\"20\""
+				+ " presentation_width=\"20\" searchable=\"true\"/>";
+		XMLObject xo = new XMLObject().mapXMLCharToXMLObject(fieldXML);
+		DBField dbField = new DBField(null, xo, "tb_test");
+		assertTrue("wrong setting for searchable:" + dbField.isSearchable(),
+				dbField.isSearchable());
+	}
+
+}

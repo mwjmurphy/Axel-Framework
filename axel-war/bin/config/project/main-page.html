@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd
+                        http://www.xmlactions.org/pager_db_actions http://www.xmlactions.org/schema/pager_db_actions.xsd">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64259937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			<li class="data">Home</li>
+		</ol>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_blue2 align_center"
+					onclick="changeContent('${breadcrumb.page.what_it_is}');"
+					title="What Is It?">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/question-mark-red.png" height="100px" /><br />
+						What is it?
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_green1 align_center"
+					onclick="changeContent('${breadcrumb.page.how_it_works}');"
+					title="How does AXEL work?">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/question-mark-red.png" height="100px" /><br />
+						How It Works
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_purple align_center"
+					onclick="changeContent('${breadcrumb.page.getting_it_to_work}');"
+					title="How to setup and configure AXEL">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/question-mark-red.png" height="100px" /><br />
+						Getting it to work
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_yellow1 align_center"
+					onclick="changeContent('${breadcrumb.page.axel_actions_preview}', '#top_of_page');"
+					title="Some of the advantages of using AXEL">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/cogs.png" height="100px" /><br />
+						<img src="images/html.png" height="48px" /> Advantages of AXEL
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_yellow1 align_center"
+					onclick="changeContent('${breadcrumb.page.axel_actions_preview}', '#top_of_page');"
+					title="Actions used for building presentations">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/cogs.png" height="100px" /><br />
+						<img src="images/html.png" height="48px" /> Page Actions
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_green2 align_center"
+					onclick="changeContent('${breadcrumb.page.axel_db_actions_preview}', '#top_of_page');"
+					title="Actions used to work with a database">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/cogs.png" height="100px" /><br />
+						<img src="images/db.png" height="48px" /> Database Actions
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_blue1 align_center"
+					onclick="changeContent('${breadcrumb.page.storage_preview}', '#top_of_page');"
+					title="Defining your database for use by Axel">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/cogs.png" height="100px" /><br />
+						<img src="images/db.png" height="48px" /> Database Configuration
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_red align_center"
+					onclick="changeContent('${breadcrumb.page.bean_to_xml_preview}', '#top_of_page');"
+					title="Mapping Java Bean and XML.">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/cogs.png" height="100px" /><br />
+						Mapping <img src="images/java.png" height="48px" /> To <img src="images/xml.png" height="48px"/> 
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_yellow1 align_center"
+					onclick="changeContent('${breadcrumb.page.xml_to_bean_preview}', '#top_of_page');"
+					title="Mapping XML to Java Bean.">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/cogs.png" height="100px" /><br />
+						Mapping <img src="images/xml.png" height="48px" /> To <img src="images/java.png" height="48px"/> 
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_purple align_center"
+					onclick="changeContent('${breadcrumb.page.customising_actions}');"
+					title="Building and Customising your own Actions">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/cogs.png" height="100px" /><br />
+						<img src="images/html.png" height="48px" /> Building Actions
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="main_page_items floating-div bg_green2 align_center"
+					onclick="changeContent('${breadcrumb.page.examples}');"
+					title="Examples">
+					<div style="padding-top: 20px;" class="h2 color_white">
+						<img src="images/teach.png" height="100px" /><br />
+						Examples
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

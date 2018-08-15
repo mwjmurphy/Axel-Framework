@@ -1,0 +1,14 @@
+<friends>
+    <friend>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+    </friend>
+    <friend>
+        <firstName>Anna</firstName>
+        <lastName>Smith</lastName>
+    </friend>
+    <friend>
+        <firstName>Peter</firstName>
+        <lastName>Jones</lastName>
+    </friend>
+</friends>

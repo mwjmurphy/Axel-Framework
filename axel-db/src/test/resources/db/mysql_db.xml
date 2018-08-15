@@ -1,0 +1,33 @@
+<database login-name="sa" 
+		  login-password="password" 
+		  database-name="test" 
+		  database-driver="com.mysql.jdbc.Driver"
+		  database-url="jdbc:mysql://localhost:3306/test"
+		  >
+
+	<commands>	
+		<sql>drop table tb_one</sql>
+		<sql>drop table tb_two</sql>
+		
+		<sql>
+			create table tb_one (
+				id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+				Name varchar(32),
+				Address varchar(32)
+			)
+		</sql>
+		<sql>
+			create table tb_two (
+				id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+				Name varchar(32),
+				Address varchar(32)
+			)
+		</sql>
+		<sql>insert into tb_one( Name) VALUES ( 'fred')</sql>
+		<sql>update tb_one set Name='fred flinstone' where id = 1</sql>
+		<sql>update tb_one set Name = 'wilma flinstone', Address= 'bedrock' where id = 1</sql>
+		<sql>select * from tb_one</sql>
+		<sql>select * from tb_two</sql>
+	</commands>
+
+</database>

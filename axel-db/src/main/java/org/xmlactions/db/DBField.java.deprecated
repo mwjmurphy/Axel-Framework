@@ -1,0 +1,624 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package org.xmlactions.db;
+
+import com.riostl.common.xml.XMLObject;
+
+/**
+ * This is a table field definition class. Describes the field including the
+ * table name for the field, the display name, the type of field such as a text
+ * field or a primary key field.
+ * 
+ * @author MichaelMurphy
+ * 
+ * @deprecated use Storage and it's associated classes instead
+ */
+public class DBField
+{
+
+	/**
+	 * This is the parent field of this field or null if field doesn't have a
+	 * parent.
+	 */
+	private DBField parent = null;
+
+	/** This is the table that the field belongs to */
+	private String tableName = null;
+
+	/**
+	 * Construct a field from the field xml definition.
+	 * 
+	 * @param parent
+	 *            is the parent field or null if this field doesn't have a
+	 *            parent.
+	 * @param field
+	 *            is a field definition xml from the table xml definition.
+	 * @param tableName
+	 *            is the table the field belongs to.
+	 * @throws Exception
+	 */
+	public DBField(DBField parent, XMLObject field, String tableName) throws Exception
+	{
+
+		this.parent = parent;
+		this.tableName = tableName;
+		this.buildField(parent, field);
+	}
+
+	/**
+	 * Include a field in the query.
+	 * 
+	 * @param sb
+	 *            is the query we are building
+	 * @param field
+	 *            is the field we want to include in the query
+	 * @throws Exception
+	 *             if something goes wrong.
+	 */
+	private void buildField(DBField parent, XMLObject field) throws Exception
+	{
+
+		this.fieldName = (String) field.getAttributeValueNoNull("name");
+		this.setToolTip((String) field.getAttributeValue("tooltip"));
+		// lets look at the attributes
+		String type = (String) field.getAttributeValueNoNull("type");
+		// the type will tell us what data to get from the field
+		if (type.equalsIgnoreCase("pk")) {
+			// process a primary key
+			this.setFieldType(FIELD_TYPE_PK);
+			this.setFieldDisplayName((String) field.getAttributeValue("presentation_name"));
+			this.setToolTip((String) field.getAttributeValue("tooltip"));
+		} else if (type.equalsIgnoreCase("fk")) {
+			// process a foreign key
+			this.setFieldType(FIELD_TYPE_FK);
+			this.setFieldDisplayName((String) field.getAttributeValue("presentation_name"));
+			this.setForeignTable((String) field.getAttributeValue("foreign_table"));
+			this.setForeignKey((String) field.getAttributeValue("foreign_key"));
+			this.setToolTip((String) field.getAttributeValue("tooltip"));
+		} else if (type.equalsIgnoreCase("text")) {
+			// process a foreign key
+			this.setFieldType(FIELD_TYPE_TEXT);
+			this.setFieldMaxLength(this.makeNumber((String) field.getAttributeValue("length"), "for length in field ["
+					+ this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldDisplayName((String) field.getAttributeValue("presentation_name"));
+			this.setFieldWidth(this.makeNumber((String) field.getAttributeValue("presentation_width"),
+					"for presentation_width in field [" + this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldHeight(this.makeNumber((String) field.getAttributeValue("presentation_height")));
+			this.setWantHtmlEdit((String) field.getAttributeValue("want_html_edit"));
+			this.setEditable((String) field.getAttributeValue("editable"));
+			this.setSearchable((String) field.getAttributeValue("searchable"));
+			this.setMandatory((String) field.getAttributeValue("mandatory"));
+			this.setUnique((String) field.getAttributeValue("unique"));
+			this.setToolTip((String) field.getAttributeValue("tooltip"));
+		} else if (type.equalsIgnoreCase("password")) {
+			// process a foreign key
+			this.setFieldType(FIELD_TYPE_PASSWORD);
+			this.setFieldMaxLength(this.makeNumber((String) field.getAttributeValue("length"), "for length in field ["
+					+ this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldDisplayName((String) field.getAttributeValue("presentation_name"));
+			this.setFieldWidth(this.makeNumber((String) field.getAttributeValue("presentation_width"),
+					"for presentation_width in field [" + this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldHeight(this.makeNumber((String) field.getAttributeValue("presentation_height")));
+			this.setEditable((String) field.getAttributeValue("editable"));
+			this.setSearchable((String) field.getAttributeValue("searchable"));
+			this.setMandatory((String) field.getAttributeValue("mandatory"));
+			this.setUnique((String) field.getAttributeValue("unique"));
+		} else if (type.equalsIgnoreCase("int")) {
+			// process a foreign key
+			this.setFieldType(FIELD_TYPE_INT);
+			this.setFieldMaxLength(this.makeNumber((String) field.getAttributeValue("length"), "for length in field ["
+					+ this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldDisplayName((String) field.getAttributeValue("presentation_name"));
+			this.setFieldWidth(this.makeNumber((String) field.getAttributeValue("presentation_width"),
+					"for presentation_width in field [" + this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setEditable((String) field.getAttributeValue("editable"));
+			this.setSearchable((String) field.getAttributeValue("searchable"));
+			this.setMandatory((String) field.getAttributeValue("mandatory"));
+			this.setUnique((String) field.getAttributeValue("unique"));
+			this.setToolTip((String) field.getAttributeValue("tooltip"));
+		} else if (type.equalsIgnoreCase("link")) {
+			// process a foreign key
+			this.setFieldType(FIELD_TYPE_LINK);
+			this.setFieldMaxLength(this.makeNumber((String) field.getAttributeValue("length"), "for length in field ["
+					+ this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldDisplayName((String) field.getAttributeValue("presentation_name"));
+			this.setFieldWidth(this.makeNumber((String) field.getAttributeValue("presentation_width"),
+					"for presentation_width in field [" + this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldHeight(this.makeNumber((String) field.getAttributeValue("presentation_height")));
+			this.setEditable((String) field.getAttributeValue("editable"));
+			this.setSearchable((String) field.getAttributeValue("searchable"));
+			this.setMandatory((String) field.getAttributeValue("mandatory"));
+			this.setUnique((String) field.getAttributeValue("unique"));
+			this.setToolTip((String) field.getAttributeValue("tooltip"));
+		} else if (type.equalsIgnoreCase("image")) {
+			// process a foreign key
+			this.setFieldType(FIELD_TYPE_IMAGE);
+			this.setFieldMaxLength(this.makeNumber((String) field.getAttributeValue("length"), "for length in field ["
+					+ this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldDisplayName((String) field.getAttributeValue("presentation_name"));
+			this.setFieldWidth(this.makeNumber((String) field.getAttributeValue("presentation_width"),
+					"for presentation_width in field [" + this.getFieldName() + "] in table [" + this.tableName + "]"));
+			this.setFieldHeight(this.makeNumber((String) field.getAttributeValue("presentation_height")));
+			this.setFieldMaxWidth(this.makeNumber((String) field.getAttributeValue("max_width")));
+			this.setFieldMaxHeight(this.makeNumber((String) field.getAttributeValue("max_height")));
+			this.setEditable((String) field.getAttributeValue("editable"));
+			this.setSearchable((String) field.getAttributeValue("searchable"));
+			this.setMandatory((String) field.getAttributeValue("mandatory"));
+			this.setUnique((String) field.getAttributeValue("unique"));
+			this.setToolTip((String) field.getAttributeValue("tooltip"));
+		} else {
+			throw new Exception("Field type [" + type + "] from Table [" + this.tableName + "] not-processing.");
+		}
+
+		this.foreignFields = new DBField[field.getChildCount("field")];
+		int count = 0;
+		for (int childFieldLoop = 0; childFieldLoop < field.getChildCount(); childFieldLoop++) {
+			XMLObject xo = field.getChild(childFieldLoop);
+			if (xo.getElementName().equalsIgnoreCase("field")) {
+				DBField childField = new DBField(this, xo, this.getForeignTable());
+				this.foreignFields[count++] = childField;
+			}
+		}
+	}
+
+	/**
+	 * Converts a number to a string and throws an error containing your message
+	 * if its not a valid number.
+	 * 
+	 * @param n
+	 * @param msg
+	 * @return
+	 * @throws java.lang.Exception
+	 */
+	private int makeNumber(String n, String msg) throws Exception
+	{
+
+		try {
+			return (Integer.parseInt(n));
+		} catch (Exception ex) {
+			throw new Exception("Invalid number [" + n + "] " + msg);
+		}
+	}
+
+	/**
+	 * Converts a number to a string. ignores any errors, returns -1 if not set.
+	 * 
+	 * @param n
+	 * @param msg
+	 * @return
+	 * @throws java.lang.Exception
+	 */
+	private int makeNumber(String n)
+	{
+
+		try {
+			return (Integer.parseInt(n));
+		} catch (Exception ex) {
+			return (-1);
+		}
+	}
+
+	public String toString(int offset)
+	{
+
+		String os = "";
+		for (int i = 0; i <= offset; i++) {
+			os += " ";
+		}
+		StringBuffer sb = new StringBuffer();
+		sb.append(os + "field type:" + this.fieldType);
+		sb.append(" field name:" + this.fieldName);
+		sb.append(" field display name:" + this.fieldDisplayName);
+		sb.append(" db name:" + this.getDBName());
+		sb.append(" parent db name:" + this.getParentDBName());
+		sb.append("\n");
+		for (int iLoop = 0; iLoop < this.foreignFields.length; iLoop++) {
+			// sb.append(os + "  foreign fields: table:" + this.foreignTable +
+			// this.foreignFields[iLoop].toString());
+			sb.append(this.foreignFields[iLoop].toString(offset + 2));
+		}
+		return (sb.toString());
+	}
+
+	/** These fields are used to tell the field type */
+	public static final int FIELD_TYPE_NULL = 0, FIELD_TYPE_PK = 1, // primary
+			// key
+			FIELD_TYPE_FK = 2, // foreign key
+			FIELD_TYPE_TEXT = 3, // text (can also be textarea if
+			// presentation_length is set.
+			FIELD_TYPE_INT = 4, // integer
+			FIELD_TYPE_DATE = 5, // date and time
+			FIELD_TYPE_LINK = 6, // text representing a link to an image or doc
+			// etc.
+			FIELD_TYPE_IMAGE = 7, // text representing a link to an image,
+			// provides additional restrictions like max
+			// width and max height.
+			FIELD_TYPE_PASSWORD = 8; // a password field
+
+	/** The type of field, such as PK, FK, TEXT, INT, DATE. */
+	private int fieldType = FIELD_TYPE_NULL;
+
+	/** The field name as it is in the table */
+	private String fieldName = null;
+
+	/** The display name to use for the field */
+	private String fieldDisplayName = null;
+
+	/** The width of the field. Used for display purposes. */
+	private int fieldWidth = -1;
+
+	/** The height of the field. Used for display purposes for a text area. */
+	private int fieldHeight = -1;
+
+	/** The max width of the field. Used for image restriction purposes. */
+	private int fieldMaxWidth = -1;
+
+	/** The max height of the field. Used for image restriction purposes. */
+	private int fieldMaxHeight = -1;
+
+	/** This informs the editor to use the wisiwig html edit or not */
+	private boolean wantHtmlEdit = false;
+
+	/** The ax length of the field. matches the length in the table. */
+	private int fieldMaxLength = -1;
+
+	/** This is the name of a foreign table if this field type is fk. */
+	private String foreignTable = null;
+
+	/**
+	 * This is the name of the pk field in a a foreign table if this field type
+	 * is fk.
+	 */
+	private String foreignKey = null;
+
+	/** If the field is editable this is set true */
+	private boolean editable = false;
+
+	/** If the field is searchable this is set true */
+	private boolean searchable = false;
+
+	/**
+	 * If the field is mandatory when performing an insert this is set true, by
+	 * default is set false
+	 */
+	private boolean mandatory = false;
+
+	/**
+	 * If the field is unique in the table when performing an insert this is set
+	 * true, by default is set false
+	 */
+	private boolean unique = false;
+
+	private String toolTip = null;
+
+	/**
+	 * If this is a foreign key field than the list of fields that we want to
+	 * retrieve from the foreign table are listed here.
+	 */
+	private DBField[] foreignFields = null;
+
+	public DBField[] getForeignFields()
+	{
+
+		return foreignFields;
+	}
+
+	/** The display name to use for the field */
+	public String getFieldDisplayName()
+	{
+
+		return fieldDisplayName;
+	}
+
+	/** The display name to use for the field */
+	public void setFieldDisplayName(String fieldDisplayName)
+	{
+
+		this.fieldDisplayName = fieldDisplayName;
+	}
+
+	/** The width of the field. Used for display purposes. */
+	public int getFieldWidth()
+	{
+
+		return fieldWidth;
+	}
+
+	/** The width of the field. Used for display purposes. */
+	public void setFieldWidth(int fieldWidth)
+	{
+
+		this.fieldWidth = fieldWidth;
+	}
+
+	/** The height of the field. Used for display purposes. */
+	public int getFieldHeight()
+	{
+
+		return fieldHeight;
+	}
+
+	/** The height of the field. Used for display purposes. */
+	public void setFieldHeight(int fieldHeight)
+	{
+
+		this.fieldHeight = fieldHeight;
+	}
+
+	/** The max width of the field. Used for image restriction purposes. */
+	public int getFieldMaxWidth()
+	{
+
+		return fieldMaxWidth;
+	}
+
+	/** The max width of the field. Used for image restriction purposes. */
+	public void setFieldMaxWidth(int fieldMaxWidth)
+	{
+
+		this.fieldMaxWidth = fieldMaxWidth;
+	}
+
+	/** The max height of the field. Used for image restriction purposes. */
+	public int getFieldMaxHeight()
+	{
+
+		return fieldMaxHeight;
+	}
+
+	/** The max height of the field. Used for image restriction purposes. */
+	public void setFieldMaxHeight(int fieldMaxHeight)
+	{
+
+		this.fieldMaxHeight = fieldMaxHeight;
+	}
+
+	/**
+	 * This informs the editor to use the wisiwig html edit or not
+	 * 
+	 * @return true = use wisiwig editor, false juse a plain old text area
+	 */
+	public boolean getWantHtmlEdit()
+	{
+
+		return this.wantHtmlEdit;
+	}
+
+	/**
+	 * This informs the editor to use the wisiwig html edit or not
+	 * 
+	 * @param true = use wisiwig editor, false juse a plain old text area
+	 */
+	public void setWantHtmlEdit(boolean wantHtmlEdit)
+	{
+
+		this.wantHtmlEdit = wantHtmlEdit;
+	}
+
+	/**
+	 * This informs the editor to use the wisiwig html edit or not
+	 * 
+	 * @param "true" | "1" = use wisiwig editor, false juse a plain old text
+	 *        area
+	 */
+	public void setWantHtmlEdit(String wantHtmlEdit)
+	{
+
+		if ("true".equalsIgnoreCase(wantHtmlEdit) || !"0".equalsIgnoreCase(wantHtmlEdit)) {
+			setWantHtmlEdit(true);
+		} else {
+			setWantHtmlEdit(false);
+		}
+	}
+
+	/** The field name as it is in the table */
+	public String getFieldName()
+	{
+
+		return fieldName;
+	}
+
+	/** The field name as it is in the table */
+	public void setFieldName(String fieldName)
+	{
+
+		this.fieldName = fieldName;
+	}
+
+	/** The type of field, such as PK, FK, TEXT, INT, DATE. */
+	public int getFieldType()
+	{
+
+		return fieldType;
+	}
+
+	/** The type of field, such as PK, FK, TEXT, INT, DATE. */
+	public void setFieldType(int fieldType)
+	{
+
+		this.fieldType = fieldType;
+	}
+
+	/** The max length of the field. matches the length in the table. */
+	public int getFieldMaxLength()
+	{
+
+		return fieldMaxLength;
+	}
+
+	/** The max length of the field. matches the length in the table. */
+	public void setFieldMaxLength(int fieldMaxLength)
+	{
+
+		this.fieldMaxLength = fieldMaxLength;
+	}
+
+	/**
+	 * This is the name of the pk field in a a foreign table if this field type
+	 * is fk.
+	 */
+	public String getForeignKey()
+	{
+
+		return foreignKey;
+	}
+
+	/**
+	 * This is the name of the pk field in a a foreign table if this field type
+	 * is fk.
+	 */
+	public void setForeignKey(String foreignKey)
+	{
+
+		this.foreignKey = foreignKey;
+	}
+
+	/** This is the name of a foreign table if this field type is fk. */
+	public String getForeignTable()
+	{
+
+		return foreignTable;
+	}
+
+	/** This is the name of a foreign table if this field type is fk. */
+	public void setForeignTable(String foreignTable)
+	{
+
+		this.foreignTable = foreignTable;
+	}
+
+	/** This is the table that the field belongs to */
+	public String getTableName()
+	{
+
+		return tableName;
+	}
+
+	/** If the field is not editable this is set false */
+	public boolean isEditable()
+	{
+
+		return editable;
+	}
+
+	/** If the field is not editable this is set false */
+	public void setEditable(String editable)
+	{
+
+		if ("true".equalsIgnoreCase(editable)) {
+			this.editable = true;
+		} else {
+			this.editable = false;
+		}
+	}
+
+	/**
+	 * Is the field searchable
+	 * 
+	 * @return true if this field is searchable else false if not searchable
+	 */
+	public boolean isSearchable()
+	{
+
+		return searchable;
+	}
+
+	/**
+	 * set the field searchable flag
+	 * 
+	 * @param value
+	 *            the value, true for is searchable else flase for not
+	 *            searchable
+	 */
+	public void setSearchable(String value)
+	{
+
+		if ("true".equalsIgnoreCase(value)) {
+			this.searchable = true;
+		} else {
+			this.searchable = false;
+		}
+	}
+
+	/** If the field is mandatory for an insert this is set true */
+	public boolean isMandatory()
+	{
+
+		return mandatory;
+	}
+
+	/** If the field is not mandatory this is set false */
+	public void setMandatory(String mandatory)
+	{
+
+		if ("true".equalsIgnoreCase(mandatory)) {
+			this.mandatory = true;
+		} else {
+			this.mandatory = false;
+		}
+	}
+
+	/** If the field is unique in the table for an insert this is set true */
+	public boolean isUnique()
+	{
+
+		return unique;
+	}
+
+	/**
+	 * If the field is unique in the table for an insert this is set true,
+	 * default is false
+	 */
+	public void setUnique(String unique)
+	{
+
+		if ("true".equalsIgnoreCase(unique)) {
+			this.unique = true;
+		} else {
+			this.unique = false;
+		}
+	}
+
+	/** Get the full name for this field i.e. table_name.field_name */
+	public String getDBName()
+	{
+
+		return (this.getTableName() + "." + this.getFieldName());
+	}
+
+	public String getParentDBName()
+	{
+
+		if (this.parent != null) {
+			return (this.parent.getDBName());
+		} else {
+			return (null);
+		}
+	}
+
+	/**
+	 * Set the toolTip for display on the browser. NOT MANDATORY
+	 * 
+	 * @param toolTip
+	 */
+	public void setToolTip(String toolTip)
+	{
+
+		this.toolTip = toolTip;
+	}
+
+	/**
+	 * Set the toolTip for display on the browser.
+	 * 
+	 * @return the toolTip or null if not set.
+	 */
+	public String getToolTip()
+	{
+
+		return toolTip;
+	}
+
+}

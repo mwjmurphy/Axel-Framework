@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    id="AXEL_SERVLET"
+    version="2.4"
+    xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>AXEL Sample Web Project</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- Use a filter if we want to chain page servicing -->
+    <!--
+    <filter>
+        <filter-name>PagerFilter</filter-name>
+        <filter-class>org.xmlactions.web.PagerFilter</filter-class>
+        <init-param>
+            <param-name>pager.realPath</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>pager.namespace</param-name>
+            <param-value>pager</param-value>
+        </init-param>
+        <init-param>
+            <param-name>pager.wrapperPage</param-name>
+            <param-value>wrapper.uhtml</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>PagerFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    -->
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+     <!--  use this when we want scope="session" for execContext -->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+      
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <!-- The main spring configuration -->
+        <param-value>classpath:/config/spring/spring-pager-web-startup.xml</param-value>
+    </context-param>
+
+
+    <servlet>
+        <description>AXEL Servlet</description>
+        <servlet-name>pager</servlet-name>
+        <servlet-class>org.xmlactions.web.PagerServlet</servlet-class>
+        <!-- The default axel namespace -->
+        <init-param>
+            <param-name>pager.namespace</param-name>
+            <param-value>axel</param-value>
+        </init-param>
+        <!-- may want to use a default wrapper page that is applied to all pages. -->
+        <!-- 
+        <init-param>
+            <param-name>pager.wrapperPage</param-name>
+            <param-value>wrapper.axel</param-value>
+        </init-param>
+        -->
+        <!-- May want to have a pre page processer -->
+        <!-- 
+        <init-param>
+            <param-name>pager.pre.page</param-name>
+            <param-value>pre.page.axel</param-value>
+        </init-param>
+        -->
+        <!-- May want to have a post page processor -->
+        <!-- 
+        <init-param>
+            <param-name>pager.post.page</param-name>
+            <param-value>post.page.axel</param-value>
+        </init-param>
+        -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pager</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <!-- May want to use a specific page type for AXEL services pages
+    <servlet-mapping>
+        <servlet-name>pager</servlet-name>
+        <url-pattern>*.axel</url-pattern>
+    </servlet-mapping>
+    -->
+    <servlet-mapping>
+        <servlet-name>pager</servlet-name>
+        <url-pattern>*.ajax</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pager</servlet-name>
+        <url-pattern>*.bin</url-pattern>
+    </servlet-mapping>
+
+</web-app>

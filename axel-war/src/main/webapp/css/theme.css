@@ -1,0 +1,144 @@
+/* Nice site - http://www.farrelldoc.com/examples/websites/standard-website-examples/ */
+.color_brown { color: #B45F04;}
+.color_blue { color: #58ACFA;}
+.color_purple { color: #8A0886;}
+.color_green { color: #088A08;}
+.color_dark_brown { color: #B43104;}
+.color_light_brown { color: #DBA901;}
+.color_gray_blue { color: #086A87;}
+.color_red { color: #B40404;}
+.color_light_green { color: #088A85;}
+.color_purple_2 { color: #6A0888;}
+.color_white { color: white;}
+
+.bg_win_0 { background: #B45F04;}
+.bg_win_1 { background: #58ACFA;}
+.bg_win_2 { background: #8A0886;}
+.bg_win_3 { background: #088A08;}
+.bg_win_4 { background: #B43104;}
+.bg_win_5 { background: #DBA901;}
+.bg_win_6 { background: #086A87;}
+.bg_win_7 { background: #B40404;}
+.bg_win_8 { background: #088A85;}
+.bg_win_9 { background: #6A0888;}
+
+.bg_win_10, .bg_green1 {
+    background: -webkit-linear-gradient(left, #18888e, #1aa7a6); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #18888e, #1aa7a6); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #18888e, #1aa7a6); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #18888e, #1aa7a6); /* Standard syntax (must be last) */
+}
+.bg_win_11, .bg_green2{
+    background: -webkit-linear-gradient(left, #2b7635, #1ab513); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #2b7635, #1ab513); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #2b7635, #1ab513); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #2b7635, #1ab513); /* Standard syntax (must be last) */
+}
+.bg_win_12, .bg_blue1{
+    background: -webkit-linear-gradient(left, #2a4d9e, #375aaa); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #2a4d9e, #375aaa); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #2a4d9e, #375aaa); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #2a4d9e, #375aaa); /* Standard syntax (must be last) */
+}
+.bg_win_13, .bg_yellow1 {
+    background: -webkit-linear-gradient(left, #c09530, #c0a127); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #c09530, #c0a127); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #c09530, #c0a127); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #c09530, #c0a127); /* Standard syntax (must be last) */
+}
+.bg_win_14, .bg_blue2 {
+    background: -webkit-linear-gradient(left, #4f3090, #673baf); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #4f3090, #673baf); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #4f3090, #673baf); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #4f3090, #673baf); /* Standard syntax (must be last) */
+}
+.bg_win_15, .bg_red {
+    background: -webkit-linear-gradient(left, #ab2540, #9c315e); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #ab2540, #9c315e); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #ab2540, #9c315e); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #ab2540, #9c315e); /* Standard syntax (must be last) */
+}
+.bg_win_16, .bg_purple {
+    background: -webkit-linear-gradient(left, #86007e, #601781); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #86007e, #601781); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #86007e, #601781); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #86007e, #601781); /* Standard syntax (must be last) */
+}
+
+.align_center {
+	text-align:center;	
+}
+.align_left {
+	text-align:left;	
+}
+.align_right {
+	text-align:right;	
+}
+
+.valign_top {
+	vertical-align: text-top;	
+}
+.valign_center {
+	vertical-align: middle;	
+}
+.valign_bottom {
+	vertical-align: text-bottom;	
+}
+
+body,.body {
+	background-color: white;
+	color: #636531;
+	margin: 0;
+}
+h1,.h1 {
+	font-family: "Trebuchet MS", Tahoma, "Lucida Sans", Verdana, sans-serif;
+	margin: 0;
+	font-size: 2.5em;
+	font-weight: normal;
+}
+h2,.h2 {
+	font-family: "Trebuchet MS", Tahoma, "Lucida Sans", Verdana, sans-serif;
+	margin: 0;
+	font-size: 2.0em;
+	font-weight: normal;
+}
+h3,.h3 {
+	font-family: "Trebuchet MS", Tahoma, "Lucida Sans", Verdana, sans-serif;
+	margin: 0;
+	font-size: 1.8em;
+	font-weight: normal;
+}
+
+.h1_shadow {
+	text-shadow: 3px 3px 9px #959292;
+}
+.h2_shadow {
+	text-shadow: 3px 3px 9px #959292;
+}
+.h3_shadow {
+	text-shadow: 2px 2px 6px #959292;
+}
+
+.floating-div {
+	float:left;
+	margin:2px;
+}
+
+.main_page_items {
+	margin-bottom: 30px;
+	width: 100%;
+	height: 200px;
+	cursor: pointer"
+}
+
+.example_page_items {
+	margin-bottom: 30px;
+	width: 100%;
+/* 	height: 100px; */
+	cursor: pointer"
+}
+
+#slide_content {
+	position:relative;
+	sleft:0px;
+}

@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+
+	<head>
+	</head>
+	<body>
+		<pager:edit_page id="edit_page" page_name="/pages/a_web_page.html" visible="true"
+				width="1036" height="600" cols="200" rows="50" theme_name="riostl" display_as="link">
+			<pager:link name="cancel" uri=":actions.xml" display_as="link"/>
+			<pager:link name="submit" uri="javascript:doSavePage('edit_page');alert('saved');"
+				submit="true" display_as="link"/>
+		</pager:edit_page>
+	</body>
+</html>

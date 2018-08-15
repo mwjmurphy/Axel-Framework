@@ -1,0 +1,2 @@
+<echo att0="0" att1="1" att2="2">This is the echo</echo><echo>this is even more echo</echo>
+<echo>more <echo>and more</echo> echo</echo>

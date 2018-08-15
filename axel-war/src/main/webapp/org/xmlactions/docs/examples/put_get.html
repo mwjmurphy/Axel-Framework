@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			${breadcrumb.onclick.home}
+			${breadcrumb.onclick.examples}
+		  	<li class="data">Put and Get</li>
+		</ol>	
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h3>Getter and Setter Actions</h3><br/>
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h5>Examples showing <b>axel:put</b> &amp; <b>axel:get</b> &amp; <b>axel:eval</b> in use</h5>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:put</b> example<br/>
+						<axel:put key="key_put">this is the value for key_put</axel:put>
+						<pre>&lt;axel:put key="key_put"&gt;this is the value for key_put&lt;/axel:put&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output using <b>&lt;axel:get key="key_put"/&gt;</b><br/>
+						<pre><axel:get key="key_put"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:get</b> example<br/>
+						<axel:put key="key_get">This is the value for key_get</axel:put>
+						<pre>&lt;axel:get key="key_get"/&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output using <b>&lt;axel:get key="key_get"/&gt;</b><br/>
+						<pre><axel:get key="key_get"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:eval</b> example<br/>
+						<axel:eval key="key_eval" expression="1 * 100 + 3"/>
+						<pre>&lt;axel:eval key="key_eval" expression="1 * 100 + 3"/&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output using <b>&lt;axel:get key="key_eval"/&gt;</b><br/>
+						<pre><axel:get key="key_eval"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						Additional <b>axel:eval</b> example<br/>
+						<axel:eval key="key_eval" expression="${key_eval} * 2.5"/>
+						<pre>&lt;axel:eval key="key_eval" expression="${key_eval} * 2.5"/&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output using <b>&lt;axel:get key="key_eval"/&gt;</b><br/>
+						<pre><axel:get key="key_eval"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

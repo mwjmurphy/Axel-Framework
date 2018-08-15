@@ -1,0 +1,8 @@
+<root>
+    <application>
+        <name>Pager</name>
+        <version>1.2.0</version>
+        <date>1st Jan 2009</date>
+        <title>${application.name} - ${application.version}</title>
+    </application>
+</root>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			${breadcrumb.onclick.home}
+			${breadcrumb.onclick.examples}
+		  	<li class="data">If and Else</li>
+		</ol>	
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h3>Conditional Statement Actions</h3><br/> 				
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h5>Examples showing <b>axel:if</b> &amp; <b>axel:elseif</b> &amp; <b>axel:else</b> in use</h5>
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<p>
+  					The if, elseif and else statements are used to make decisions on the page as it is being constructed.
+  				</p>
+  				<p>
+  					The order for building the conditional statements is
+  					<ul>
+  						<li>if - required and can be only one</li>
+  						<li>elseif - optional and there can be many</li>
+  						<li>else - optional and can be only one</li>
+  					</ul> 
+  				</p>
+				<p class="bs-callout bs-callout-info">
+					<b>INFO:</b> The nesting syntax of the <i>actions</i> is that the <i>axel:if</i> is always the parent and the <i>axel:elseif</i> and
+					<i>axel:else</i> are always it's children.  But for viewing the <i>conditional statement actions</i> it's easier to place them all on
+					the same indent as is shown in the examples below.
+				</p>
+  			</div>
+		</div>
+		<div class="row">
+			<axel:put key="if_action">&lt;axel:if expression="1 == 1"&gt;
+    <b>1 is the same as 1</b>
+&lt;/axel:if&gt;</axel:put>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:if</b> example<br/>
+						<pre>${if_action}</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output is<br/>
+						<pre><axel:if expression="1 == 1">
+    <b>1 is the same as 1</b>
+</axel:if></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<axel:put key="if_else_action">&lt;axel:if expression="1 == 2"&gt;
+   <b>1 is the same as 1</b>
+&lt;axel:else&gt;
+   <b>1 is not the same as 2</b>
+&lt;/axel:else&gt;
+&lt;/axel:if&gt;</axel:put>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:if</b> &amp; <b>axel:else</b> example<br/>
+						<pre>${if_else_action}</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output is<br/>
+						<pre><axel:if expression="1 == 2">
+   <b>1 is the same as 1</b>
+<axel:else>
+   <b>1 is not the same as 2</b>
+</axel:else>
+</axel:if></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<axel:put key="if_else_elseif_action">&lt;axel:if expression="1 == 2"&gt;
+   <b>1 is the same as 2</b>
+&lt;axel:elseif expression="2 == 2"&gt;
+   <b>2 is the same as 2</b>
+&lt;/axel:elseif&gt;
+&lt;axel:else&gt;
+   <b>Not if or elseif</b>
+&lt;/axel:else&gt;
+&lt;/axel:if&gt;</axel:put>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:if</b> &amp; <b>axel:elseif</b> &amp; <b>axel:else</b> example<br/>
+						<pre>${if_else_elseif_action}</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output is<br/>
+						<pre><axel:if expression="1 == 2">
+   <b>1 is the same as 2</b>
+<axel:elseif expression="2 == 2">
+   <b>2 is the same as 2</b>
+</axel:elseif>
+<axel:else>
+   <b>Not if or elseif</b>
+</axel:else>
+</axel:if></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<axel:put key="if_else_elseif_action2">&lt;axel:if expression="1 == 2"&gt;
+   <b>1 is the same as 2</b>
+&lt;axel:elseif expression="2 == 1"&gt;
+   <b>2 is the same as 1</b>
+&lt;/axel:elseif&gt;
+&lt;axel:elseif expression="2 != 2"&gt;
+   <b>2 is not the same as 2</b>
+&lt;/axel:elseif&gt;
+&lt;axel:else&gt;
+   <b>Not if or elseif</b>
+&lt;/axel:else&gt;
+&lt;/axel:if&gt;</axel:put>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:if</b> &amp; <b>axel:elseif</b> &amp; <b>axel:else</b> example<br/>
+						<pre>${if_else_elseif_action2}</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output is<br/>
+						<pre><axel:if expression="1 == 2">
+   <b>1 is the same as 2</b>
+<axel:elseif expression="2 == 1">
+   <b>2 is the same as 1</b>
+</axel:elseif>
+<axel:elseif expression="2 != 2">
+   <b>2 is the same as 2</b>
+</axel:elseif>
+<axel:else>
+   <b>Not if or elseif</b>
+</axel:else>
+</axel:if></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

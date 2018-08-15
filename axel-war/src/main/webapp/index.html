@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd
+                        http://www.xmlactions.org/pager_db_actions http://www.xmlactions.org/schema/pager_db_actions.xsd">
+<head>
+<axel:insert page="${deployment.folder}/org/xmlactions/common/head.html" />
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron" onclick="changeContent('main-page.html')">
+			<table>
+				<tr>
+					<td><img src="images/blocks.png" height="200px" /></td>
+					<td width="100%">
+						<h1>AXEL Framework</h1>
+						<br />
+						<h2 class="color_red h2_shadow">Seriously good at building web sites</h2>
+					</td>
+					<td width="100%" align="right">
+						<img src="images/back_arrow.png" height="40px" /> Back
+						<br/>
+						<!-- Place this tag where you want the widget to render. -->
+						<div class="g-page" data-width="180" data-href="//plus.google.com/u/0/109415438738189235346" data-rel="publisher"></div>
+						<br/>
+						Get the code from <a href="https://sourceforge.net/projects/axelframework" target="_sourceforge">sourceforge</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="slide_content">
+			<axel:insert page="${deployment.folder}/main-page.html"/>
+		</div>
+	</div>
+
+<!-- 	<div style="padding-left: 20px;"> -->
+
+<!-- 	<br /> -->
+
+<!-- 	<br /> -->
+<!-- 	<a -->
+<!-- 		href="${web.context.root}/org/xmlactions/schema/preview/axel_actions_preview.html">axel -->
+<!-- 		actions schema converter preview</a> -->
+<!-- 	<br /> -->
+<!-- 	<a -->
+<!-- 		href="${web.context.root}/org/xmlactions/schema/preview/axel_db_actions_preview.html">axel -->
+<!-- 		db actions schema converter preview</a> -->
+<!-- 	<br /> -->
+<!-- 	<a href="${web.context.root}/org/xmlactions/db/test/mysql/index.html">axel -->
+<!-- 		database actions</a> -->
+
+<!-- 	</div> -->
+</body>
+</html>

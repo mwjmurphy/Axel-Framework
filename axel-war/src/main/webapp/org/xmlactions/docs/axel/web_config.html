@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+
+<a id="top_of_page"/>
+<br/>
+<p>
+	The AXEL Framework is designed to run in a Java Web Server such as Tomcat or Application Server such as WebLogic.
+	When it has been installed and configured it will service selective file types that are requested from a browser.
+</p>
+<p>
+	These are the file types that are usually serviced by AXEL
+	<ul>
+		<li><b><i>*.html</i></b> - your html files</li>
+		<li><b><i>*.ajax</i></b> - your ajax calls</li>
+		<li><b><i>*.bin</i></b> - your binary files such as pdf, images etc</li>
+	</ul>
+</p>
+<p>
+	The installation also includes the spring framework which is used to construct an Execution Context, property
+	settings, language settings, theme settings and any other configuration items you need for your application.
+</p>
+
+<h4>Index</h4>
+<p>
+	<ul>
+		<li><a href="#setup_web_xml">Setting up the web server web.xml</a></li>
+		<li><a href="#pre_processor_page">How to implement a Pre Processor Page</a></li>
+		<li><a href="#spring_config">Spring Configuration</a></li>
+	</ul>
+</p>
+<br/>
+
+<div class="axel_schema">
+	<a id="setup_web_xml"/>
+	<h3>Setting up the web server web.xml</h3>
+	<br/>
+	<p>
+   	<p>The following is an example <i>web.xml</i> configuration for the AXEL Servlet and used by this application.</p>
+	<axel:file_viewer file_name="WEB-INF/web.xml" show_line_nos="false" show_header="true"/>
+	
+</div>
+<small><a href="#top_of_page">Top Of Page</a></small><br/>
+
+<br/>
+<div class="axel_schema">
+	<a id="pre_processor_page"/>
+	<h3>How to implement a Pre Processor Page</h3>
+	<br/>
+	<p>
+	
+		A pre processor page can be used to setup configuration items, validate users and other such functions required before
+		any page processing begins.
+		
+		The pre processor page will be applied to all page types that have been defined in the servlet-mapping configurations.
+		 
+		Define the name of the pre processing page by setting the file page name in the Pager Servlet configuration as shown
+		below.
+		<pre>
+    &lt;init-param&gt;
+        &lt;param-name&gt;pager.pre.page&lt;/param-name&gt;
+        &lt;param-value&gt;pre.page.html&lt;/param-value&gt;
+    &lt;/init-param&gt;
+		</pre>
+		In the above example definition the <b>pre.page.html</b> is the file name of the pre processor page.
+		<br/>
+		If during the page pre-processing you decide not to process any further you can stop the process by<br/>
+		<ol>
+		<li>Set a property "pre.page.stop" to "stop" using <b>&lt;axel:put key="pre.page.stop"&gt;stop&lt;/axel:put&gt;</b></li>
+		<li>The content of the page will be displayed as the response.</li>
+		<li>No other pages will be processed.</li>
+		</ol>
+	</p>
+</div>
+<small><a href="#top_of_page">Top Of Page</a></small><br/>
+
+<div class="axel_schema">
+	<a id="spring_config"/>
+	<h3>Spring Configuration Settings</h3>
+	<br/>
+	<p>
+	The spring configuration is setup in the <i>web.xml</i> from the file <i>classpath:/config/spring/spring-pager-web-startup.xml</i>.
+	This is used to setup the Application Execution Context commonly known as <i>execContext</i>.  All beans
+	stored here are available to the <i>AXEL Actions</i>.
+	</p>
+
+	<axel:file_viewer file_name="config/spring/spring-pager-web-startup.xml" show_line_nos="false" show_header="true"/>
+
+</div>
+<small><a href="#top_of_page">Top Of Page</a></small><br/>
+
+</html>

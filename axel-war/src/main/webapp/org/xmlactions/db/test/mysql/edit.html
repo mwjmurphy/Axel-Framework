@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://www.xmlactions.org/schema/pager_db_actions.xsd">
+<head>
+	<meta charset="ISO-8859-1"></meta>
+	<title>Schema Converter Presentation Preview - pager_actions.xsd</title>
+
+	<!-- jquery -->
+	<script type="text/javascript" src="${web.context.root}/public/jquery/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="${web.context.root}/public/jquery-ui-1.11.1/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${web.context.root}//public/jquery-ui-1.11.1/jquery-ui.min.css"/> 
+
+	<script type="text/javascript" src="${web.context.root}/org/xmlactions/schema/preview/js/schema.js"></script>
+	<link rel="stylesheet" type="text/css" href="${web.context.root}/org/xmlactions/schema/preview/css/schema.css"/> 
+
+	<script type="text/javascript" src="${web.context.root}/themes/js/axeljs.js"></script>
+	<link rel="stylesheet" type="text/css" href="${web.context.root}/themes/ice/css/theme.css"/> 
+
+</head>
+<body>
+	<db:edit id="edit_person" table_name="tb_person" storage_config_ref="storageConfig" pk_value="${request:tb_person.id}" >
+		<db:field_list>
+			<db:field name="tb_person.firstname"/>
+			<db:field name="tb_person.lastname"/>
+			<db:field name="tb_person.dob" pre_format="yyyy-MM-dd , dd-MMM-yyyy" post_format="dd-MMM-yyyy,yyyy-MM-dd"><db:attributes placeholder="dd-MMM-yyyy"/></db:field>
+			<db:field name="tb_address.street"/>
+			<db:field name="tb_address.city"/>
+		</db:field_list>
+		
+		<axel:link name="submit" href="index.html" submit="true" display_as="link" />     
+		<axel:link name="cancel" href="index.html" submit="false" display_as="link" />     
+			
+	</db:edit>
+</body>
+</html>

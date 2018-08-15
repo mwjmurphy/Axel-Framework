@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>axel-mapping</artifactId>
+  <name>org-xmlactions-axel-mapping</name>
+  <description>Mapping xml to beans and vice versa</description>
+  <build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/java</directory>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>${basedir}/src/test/java</directory>
+			</testResource>
+			<testResource>
+				<directory>${basedir}/src/test/resources</directory>
+			</testResource>
+		</testResources>
+  </build>
+  <dependencies>
+     <dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20140107</version>
+     </dependency>
+     <dependency>
+     	<groupId>org.xmlactions</groupId>
+     	<artifactId>axel-action</artifactId>
+     	<version>1.0.5</version>
+     </dependency>
+  </dependencies>
+  <parent>
+     <groupId>org.xmlactions</groupId>
+     <artifactId>axel-components</artifactId>
+     <version>1.0.5</version>
+     <relativePath>../axel-components</relativePath>
+  </parent>
+</project>

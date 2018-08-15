@@ -1,0 +1,14 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+	<pager:if expression="1==2">
+		<pager:insert path="/pages" page="page1.xml"/>
+		<pager:elseif expression="1==1">
+			[<pager:insert path="/pages" page="page2.xml"/>]
+		</pager:elseif>
+		<pager:else>
+			<pager:insert path="/pages" page="pageelse.xml"/>
+		</pager:else>
+	</pager:if>
+</xml>

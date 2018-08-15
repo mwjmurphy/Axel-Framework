@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addresses>
+    <address>
+         <street>high street</street>
+        <city>baltinglass</city>
+        <county>wicklow</county>
+        <country>ireland</country>
+    </address>
+</addresses>

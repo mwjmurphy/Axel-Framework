@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<storage 
+	xmlns="http://www.xmlactions.org/storage"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd"
+	name="Sample Test Storage" >
+	<database name="test" datetime_format="dd-MMM-yyyy HH:mm:ss" date_format="dd-MMM-yyyy" time_format="HH:mm:ss">
+		<db_specific name="mysql">
+			
+		</db_specific>
+		<table name="tb_person">
+			<pk  name="id" presentation_name="id" />
+			<fk name="addressid" foreign_table="tb_address" foreign_key="id" presentation_name="addressid" />
+			<text name="firstname" length="20" presentation_name="firstname" presentation_width="20"/>
+			<text name="lastname" length="20" presentation_name="lastname" presentation_width="20"/>
+			<date name="dob" presentation_name="age" presentation_width="12" tooltip="Date of Birth" placeholder="yyyy-MM-dd"  date_format="dd-MMM-yyyy"/>
+		</table>
+		<table name="tb_address">
+			<pk name="id" presentation_name="id" />
+			<text name="street" length="20" presentation_name="street" presentation_width="20"/>
+			<text name="city" length="20" presentation_name="city" presentation_width="20"/>
+		</table>
+	</database>
+	
+</storage>

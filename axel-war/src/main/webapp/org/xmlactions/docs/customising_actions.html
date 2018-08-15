@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+		  ${breadcrumb.onclick.home}
+		  <li class="data">Building Actions</li>
+		</ol>	
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h1>How to build your own XML Actions</h1>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<p>
+  					To create an XML Action you write the java code that will provide the functionality and then inform the
+  					framework of the unique identifier for the action.  When the unique identifier for your action is found
+  					on the page the framework calls the java code to execute the functionality. 
+  				</p>
+  				<p>
+  					To standardize how the functionality is executed all Actions must extend a BaseAction class. The BaseAction
+  					class abstracts an execute method.  The method takes one parameter the IExecContext. The IExecContext provides
+  					access to all the configured objects plus HttpServlet request and response and any objects that your application
+  					may have added.
+  				</p>
+  				<p>
+  					When your code is ready you inform the framework about the action.  The action must have a unique name that will
+  					be identified on the page.  When the action is written into the page it will also need the axel namespace prepended
+  					to the action and will look something like <code>&lt;axel:your_unique_action_name ...</code> followed by any attributes
+  					that your action may require.  
+  				</p>
+  				<p>
+  					A property is used to identify the action to the framework.  The property is a simple key = value combination and needs
+  					to get set in the configuration at startup.  The following is the <i>sample_actions.properties</i> we used for this tutorial.
+  					<axel:file_viewer file_name="config/pager/sample_actions.properties" show_line_nos="false" show_header="false"/>
+  					
+  					To inform the framework of the action you need to edit the spring configuration file that sets up the <i>pager.execContext</i>
+  					and add a new property file to the actionMaps.  The following example shows how to add the property file named <i>sample_actions.properties</i>
+  					
+	  				<axel:put key="sample_action_config_key"><constructor-arg>
+    <!-- "actionMaps" -->
+    <list>
+        <util:properties location="classpath:config/pager/actions.properties" />
+        <util:properties location="classpath:config/pager/sample_actions.properties" />
+    </list>
+</constructor-arg></axel:put>
+  					<axel:file_viewer ref="sample_action_config_key" show_line_nos="false" show_header="false"/>
+  				</p>
+  			</div>
+		</div>
+		<br>
+		<div class="row">
+  			<div class="col-sm-6">
+  				<p>
+  					An example of using the customised action sample_action
+	  				<code><pre>&lt;axel:sample_action name="fred flinstone"/&gt;</pre></code>
+  				</p>
+  			</div>
+  			<div class="col-sm-6">
+  				<p>
+  					The output of the sample_action is
+	  				<code><pre><axel:sample_action name="fred flinstone"/></pre></code>
+  				</p>
+  			</div>
+  		</div>
+	</div>
+</html>

@@ -1,0 +1,5 @@
+<html>
+Write stuff here
+We are going to insert <pager:insert_into page="insert_into_wrapper.axel" key="insert_here" remove_html="true"/>the content of this page into a wrapper page
+and write stuff here
+</html>

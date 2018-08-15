@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<storage xmlns="http://www.xmlactions.org/storage"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd"
+   name="Sample Test Storage"
+>
+
+   <database name="h2_test">
+      <db_specific name="h2">
+         <sql name="h2_sql" sql="None" />
+      </db_specific>
+
+      <table name="tb_one" alias="tb_1">
+         <pk name="id" presentation_name="ID" />
+         <text name="name" presentation_name="Name" length="32" presentation_width="32"/>
+         <text name="address" presentation_name="Address" length="32" presentation_width="32"/>
+      </table>
+
+      <table name="tb_two" alias="tb_2">
+         <pk name="id" presentation_name="ID" />
+         <fk name="tb_one_id" presentation_name="tb_one_id" foreign_key="id" foreign_table="tb_1"/>
+         <text name="name" presentation_name="Name" length="32" presentation_width="32"/>
+         <text name="address" presentation_name="Address" length="32" presentation_width="32"/>
+      </table>
+
+   </database>
+
+
+</storage>

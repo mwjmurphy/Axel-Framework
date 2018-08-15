@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query xmlns="http://www.xmlactions.org/query"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/query http://www.xmlactions.org/schema/query.xsd"
+	table_name="address">
+	<requires value="1" expression="1 != 2"/>
+    <sql>select stuff</sql>
+    <!-- 
+    <field_list>
+        <field name="address.id"/>
+        <field name="address.street1"/>
+        <field name="address.street1"/>
+        <field name="address.city"/>
+        <where clause="address.id = '${request:address.id}'"/>
+    </field_list>
+     -->
+    <query table_name="tb_name">
+        <field_list limit_from="1" limit_to="10">
+            <field name="tb_name.id"/>
+            <field name="tb_name.name"/>
+            <order by="tripactivity.da, tripactivity.ti"/>
+        </field_list>
+    </query>
+</query>

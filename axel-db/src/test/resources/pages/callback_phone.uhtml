@@ -1,0 +1,10 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:pager="http://www.xmlactions.org/pager_actions"
+   xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd">
+	
+   <pager:callback_phone id="callback_1" email_config_ref="emailConfigRef" title="Want a phone callback?">
+      <pager:link name="send" uri="xxx" display_as="button" submit="true"/>
+   </pager:callback_phone>
+	
+</html>

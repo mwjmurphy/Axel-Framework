@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml_to_bean xmlns="http://www.xmlactions.org/xml_to_bean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.xmlactions.org/xml_to_bean
+                        http://www.xmlactions.org/schema/xml_to_bean.xsd"
+>
+
+   <populator id="PopulatorArrayList" clas="org.xmlactions.mapping.xml_to_bean.PopulatorArrayList" />
+
+   <bean element="menubar" clas="org.xmlactions.pager.actions.menu.MenuBar">
+      <property name="menus" populator_ref="PopulatorArrayList">
+         <alias name="menu" />
+      </property>
+   </bean>
+   <bean element="menu" clas="org.xmlactions.pager.actions.menu.Menu">
+      <property name="subMenu">
+         <alias name="sub_menu" />
+      </property>
+      <property name="menuImage">
+         <alias name="image" />
+      </property>
+   </bean>
+   <bean element="sub_menu" clas="org.xmlactions.pager.actions.menu.SubMenu">
+      <property name="subMenuItems" populator_ref="PopulatorArrayList">
+         <alias name="sub_menu_item" />
+      </property>
+   </bean>
+   <bean element="sub_menu_item" clas="org.xmlactions.pager.actions.menu.SubMenuItem">
+      <property name="menuImage">
+         <alias name="image" />
+      </property>
+      <property name="subMenu">
+         <alias name="sub_menu" />
+      </property>
+   </bean>
+   <bean element="image" clas="org.xmlactions.pager.actions.menu.MenuImage">
+   </bean>
+
+</xml_to_bean>

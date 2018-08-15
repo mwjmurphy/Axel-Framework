@@ -1,0 +1,27 @@
+pluginManagement {
+	repositories {
+		maven {
+			credentials {
+				username nexusUser
+				password nexusPassword
+			}
+			url 'http://nexus.fleetway.com/repository/ts-public/'
+		}
+	}
+}
+
+include 'axel-common',
+		'axel-action',
+		'axel-email',
+		'axel-mapping',
+		'axel-web',
+		'axel-ee',
+		'axel-db',
+		'axel-web-db',
+		'axel-shared-schema',
+		'axel-test',
+		'axel-war',
+		'axel-jar'
+
+rootProject.name = 'axelframework'
+

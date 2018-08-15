@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean_to_xml
+	xmlns="http://www.xmlactions.org/bean_to_xml" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/bean_to_xml http://www.xmlactions.org/schema/bean_to_xml.xsd">
+	
+    <populator id="PopulatorFromList" clas="org.xmlactions.mapping.bean_to_xml.PopulatorFromList"/>
+    
+	<bean id="person" name="person" clas="org.xmlactions.mapping.testclasses.Person" >
+		<element name="mobile" property="mobiles" bean_ref="mobile"/>
+		<element name="address" property="address" bean_ref="address"/>
+        <attribute property="age"/>
+        <attribute property="name"/>
+	</bean>
+
+	<bean id="address" name="address" clas="org.xmlactions.mapping.testclasses.Address">
+        <attribute property="street"/>
+        <attribute property="city"/>
+        <attribute property="state"/>
+        <attribute property="country"/>
+	</bean>
+
+    <bean id="mobile" name="mobile" clas="java.lang.String"/>
+    
+</bean_to_xml>

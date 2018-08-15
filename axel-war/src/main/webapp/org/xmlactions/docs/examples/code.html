@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			${breadcrumb.onclick.home}
+			${breadcrumb.onclick.examples}
+		  	<li class="data">Calling Code</li>
+		</ol>	
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<h3>Calling Java Code from a Web Page</h3><br/>
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h5>Examples showing <b>axel:code</b> in use</h5>
+  				<p>
+  					The code action will invoke Java code from a web page  					
+  				<p>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:code</b> example<br/>
+						<pre>&lt;axel:code call="org.xmlactions.common.system.JS.getMaxMemory"/&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output<br/>
+						<pre><axel:code call="org.xmlactions.common.system.JS.getMaxMemory"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:code</b> example with parameters<br/>
+						<pre>&lt;axel:code call="org.xmlactions.common.system.JS.getEnv"&gt;
+    &lt;axel:param value="java.vendor"/&gt;
+&lt;/axel:code&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output<br/>
+						<pre><axel:code call="org.xmlactions.common.system.JS.getProperty">
+    <axel:param value="java.vendor"/>
+</axel:code></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

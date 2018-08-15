@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			${breadcrumb.onclick.home}
+			${breadcrumb.onclick.examples}
+		  	<li class="data">Calling Services</li>
+		</ol>	
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<h3>Calling a page as a service</h3><br/>
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h5>Examples outputting JSON Content</h5>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<h3>XML to JSON</h3>
+  				<p>
+  					The actions on this page will load an XML file, convert it to JSON
+  					and return the data to the browser client as content type = json.					
+  				</p>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The XML looks like
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:file_viewer file_name="${deployment.folder}/org/xmlactions/docs/examples/data/friends.xml" show_line_nos="false"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The html page that loads the xml, converts
+						it to JSON and returns it to the browser as JSON
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:file_viewer file_name="${deployment.folder}/org/xmlactions/docs/examples/friends_list_from_xml.html" show_line_nos="false"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output of the page looks like
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/friends_list_from_xml.html"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<h3>JSON</h3>
+  				<p>
+  					The actions on this page will load an JSON file and return
+  					the data to the browser client as content type = json.					
+  				</p>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The JSON looks like
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:file_viewer file_name="${deployment.folder}/org/xmlactions/docs/examples/data/friends.json" show_line_nos="false"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The html page that loads the xml, converts
+						it to JSON and returns it to the browser as JSON
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:file_viewer file_name="${deployment.folder}/org/xmlactions/docs/examples/friends_list_from_json.html" show_line_nos="false"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output of the page looks like
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/friends_list_from_json.html"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						url:${page.url}<br/>
+						uri:${page.uri}<br/>
+						server:${page.server.name}<br/>
+						app:${page.app.name}<br/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

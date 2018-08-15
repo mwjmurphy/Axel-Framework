@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org/schema/pager_db_actions.xsd">
+<script>
+/** This script is used to make the code_get_items_list ajax call and show the response in an alert box. */
+function codeGetItemsList() {
+	var ao = new AjaxObject("code_get_items_list.ajax");
+	ao.makePostAjaxASyncCall(
+		function callback (response) {
+			alert(response);
+		}
+	);
+}
+</script>
+
+<a id="top_of_page"/>
+<h1>How AXEL Works</h1>
+<br/>
+<p>
+	AXEL uses <i>XML Actions</i> to call server side functionality.  The <i>Actions</i> are written in an HTML
+	page by the page designer.  When the page is requested by the browser each <i>Action</i> is called with the
+	result of the call replacing the <i>Action</i> on the page.
+</p>
+<p>
+	An example <i>XML Action</i> looks like <code>&lt;axel:get key="project.name"/&gt;</code>. This <i>Action</i> will retrieve the value
+	for "project.name" from the server configuration settings (i.e. a property file) and replace the action with the retrieved value. So
+	<code>&lt;axel:get key="project.name"/&gt;</code> becomes <code><axel:get key="project.name"/></code> which is the value set for "project.name"
+</p>
+<h4>Index</h4>
+<p>
+	<ul>
+		<li><a href="#adding_actions" title="How to add an XML Action to a Web Page">Adding XML Actions to a Web Page</a></li>
+		<li><a href="#replacement_marker" title="What replacement markers are and how to use them">Replacement Markers</a></li>
+		<li><a href="#language" title="Using different languages on the page">Language Locale</a></li>
+		<li><a href="#direct_ajax_code_calls" title="Simple mechanism for making java code calls from your browser">Direct Ajax Code Calls</a></li>
+		<li><a href="#binary_data" title="Hot to load binary data from a database">Binary Data</a></li>
+		<li><a href="javascript:changeContent('org/xmlactions/schema/preview/axel_actions_preview.html', '#index');" title="See all the presentation actions that are supported by AXEL">Links to Presentation Actions</a></li>
+		<li><a href="javascript:changeContent('org/xmlactions/schema/preview/axel_db_actions_preview.html', '#index');" title="See all the database actions that are supported by AXEL">Links to Database Actions</a></li>
+	</ul>
+</p>
+<br/>
+<div class="axel_schema">
+	<!-- section -->
+	<a id="adding_actions"/>
+	<h3>Adding AXEL Actions to a Web Page</h3>
+	<p>
+		When designing a web page that will use AXEL Actions you should declare the AXEL namespace in the html definition element.  The advantage of
+		doing this will allow tools such as eclipse to provide context sensitive help as you enter the actions.
+	</p>
+	<p>
+		The following code shown <span style="color:#c84b91">like this</span> is how you add the AXEL namespace.
+		<pre>
+	&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    <span style="color:#c84b91">xmlns:axel="http://www.xmlactions.org/pager_actions"</span>
+	    <span style="color:#c84b91">xmlns:db="http://www.xmlactions.org/pager_db_actions"</span>
+	    <span style="color:#c84b91">xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd</span>
+	                        <span style="color:#c84b91">http://www.xmlactions.org/pager_db_actions http://xmlactions.org/schema/pager_db_actions.xsd"</span>&gt;
+	
+		</pre>
+		When you have defined the AXEL namespace as shown above you can use the <i style="color:#c84b91">axel</i> prefix to define your presentation actions
+		and the <i style="color:#c84b91">db</i> prefix to define your database actions. 
+	</p>
+	<p>
+		<i>AXEL Actions</i> can be placed anywhere on the page.  The process for calling the actions uses a parser to identifying each actions start
+		and end position.  When the action is called the response from the action is placed between the start and end position, replacing the action
+		on the page.
+	</p>
+	<p class="bs-callout bs-callout-info">
+		<b>INFO:</b> The response from an <i>action</i> may be null or void.  In which case the action is removed from the page without any replacement.
+	</p>
+	<p class="bs-callout bs-callout-warning">
+		<b>WARN:</b> The parser for the <i>actions</i> is built for performance and will fail if the XML syntax used for defining <i>actions</i> on a
+		page is not correct.  Unlike HTML, XML is strict and elements must be closed, attributes must have values, required attributes must be set.
+		Using an IDE such as eclipse it is possible to validate a page before testing it through a browser. 
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4 class="panel-title">An example of an action entered in an html page</h4>
+			</div>
+			<div class="panel-body">
+				&lt;p&gt;
+					The name of this project is <code>&lt;axel:get key="project.name"/&gt;</code>
+				&lt;/p&gt;
+			</div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4 class="panel-title">When the page is processed it looks like</h4>
+			</div>
+			<div class="panel-body">
+				<p>
+					The name of this project is <code><axel:get key="project.name"/></code>
+				</p>
+			</div>
+		</div>
+		A full list of presentation actions are here <a onclick="changeContent('org/xmlactions/schema/preview/axel_actions_preview.html', '#index');">presentation actions</a><br/> 
+		A full list of database actions are here <a onclick="changeContent('org/xmlactions/schema/preview/axel_db_actions_preview.html', '#index');">database actions</a><br/> 
+	</p>
+</div>
+<small><a href="#top_of_page">Top Of Page</a></small><br/>
+
+<div class="axel_schema">
+	<!-- section -->
+	<a id="replacement_marker"/>
+	<h3>Replacement Markers</h3>
+	<p>
+		<i>Replacement Markers</i> are used to replace server side content on the web page.  The syntax for a <i>replacement marker</i> is <code>${<i>key</i>}</code>, where
+		<i>key</i> is the key reference to the value on the server.  So if we use <code>&#36;{project.name}</code> it will be replaced with <code>${project.name}</code>
+	</p>
+	<div class="bs-callout bs-callout-warning">
+		<p>
+		<b>WARN:</b> a <i>Replacement Marker</i> is replaced after all the <i>Actions</i> have been executed on the page.  This would mean that if the value for the
+		key changes while the page is being constructed the last value that was set will be shown on the page.
+		</p>
+		<p>
+		To overcome this the <i>axel:get action</i> can be used instead of the <i>Replacement Marker</i>. The <i>axel:get action</i> occurs in real time and the replacement
+		happens when the <i>axel:get action</i> is executed.  
+		</p>
+	</div>
+</div>
+
+<small><a href="#top_of_page">Top Of Page</a></small><br/>
+
+<div class="axel_schema">
+	<!-- section -->
+	<a id="language"/>
+	<h3>Language</h3>
+	<p>
+		Working with locales in java is quite easy and property files with key=value pairs are used to store your language settings.  We've setup an example
+		for this project using a language file named <i>${default_locale_file}.properties</i>.  This has a key <i>hello_world</i> with a value of <i>${lang:hello_world::EN}</i>.
+		There is also a language file named <i>${default_locale_file}_sp.properties</i>. This file contains Spanish language settings. By default your operating system will
+		be configured for the users choice of language and you will only need to use the <i>lang</i> and <i>key</i> to select the language content. The <i>resource</i> will be
+		necessary if you have multiple language files and the <i>language</i>, <i>country</i> and <i>variant</i> will only be required if you want to override or use
+		a forced language.
+	</p>
+	<p>
+		To use a <i><big>lang</big><small>uage</small></i> setting on your web pages you can use <i>replacement markers</i> or the <i>axel:get action</i> to get locale language
+		values from the server. The pattern for retrieving a language value is <i>lang:key:resouce:language:country:variant</i> where:
+		<ul>
+			<li><i>lang <sup style="color:#c84b91">*</sup></i> - is the command to get a language value [required]</li>
+			<li><i>key <sup style="color:#c84b91">*</sup></i> - is the key value from the language locale [required]</li>
+			<li><i>resource</i> - is the name of the language resource file [optional if using the default language file]</li>
+			<li><i>language</i> - sets the locale to use [optional]</li>
+			<li><i>country</i> - sets the country to use [optional]</li>
+			<li><i>variant</i> - sets the country variant to use [optional]</li>
+		</ul>
+		<div class="bs-callout bs-callout-info">
+			<p>
+				<b>NOTE:</b> The <i>default_locale_file</i> is usually setup in the projects <i>web.propertes</i> configuration file and is the name of the default language
+				file to use for this project.  The name should include the resource location if the file is not in the root of the classpath. As a standard the name of the file
+				should include the project name.<br>
+				For this project the configuration is set to <code>default_locale_file=config/lang/lang-axel-war</code>		  
+			</p>
+		</div>
+		<div class="bs-callout bs-callout-info">
+			<p>
+				<b>NOTE:</b> The <i>resource</i> may also be a key to a configuration value, making it easier to setup for multiple language resource files.
+				This allows you to configure your language resource files using a key=value and only need to use the key when referencing the language resource.
+				<br/>As an example:<code>other_language_file=config/lang/other-language-file</code> on the page you would use <code>&#36;{lang:key:other_language_file}</code>
+				and not <code>&#36;{lang:key:config/lang/other-language-file}</code>.
+			</p>
+		</div>
+	</p>
+	<p>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4 class="panel-title">An example of using a language value in a page.</h4>
+			</div>
+			<div class="panel-body">
+				Using a <i>Replacement Marker</i> <code>&#36;{lang:hello_world::EN}</code> becomes <b>${lang:hello_world::EN}</b>
+				<br/>
+				or using the <i>axel:get action</i> <code>&lt;axel:get key="lang:hello_world::EN"/&gt;</code> becomes <b><axel:get key="lang:hello_world::EN"/></b>
+			</div>
+			<div class="panel-body">
+				Using a <i>Replacement Marker</i> <code>&#36;{lang:hello_world::SP}</code> becomes <b>${lang:hello_world::SP}</b>
+				<br/>
+				or using the <i>axel:get action</i> <code>&lt;axel:get key="lang:hello_world::SP"/&gt;</code> becomes <b><axel:get key="lang:hello_world::SP"/></b>
+			</div>
+			<div class="panel-body">
+				Using a <i>Replacement Marker</i> <code>&#36;{lang:hello_world:config/lang/lang-axel-war-other:EN}</code> becomes <b>${lang:hello_world:config/lang/lang-axel-war-other:EN}</b>
+				<br/>
+				or using the <i>axel:get action</i> <code>&lt;axel:get key="lang:hello_world:config/lang/lang-axel-war-other:EN"/&gt;</code> becomes <b><axel:get key="lang:hello_world:config/lang/lang-axel-war-other:EN"/></b>
+			</div>
+			<div class="panel-body">
+				Using a <i>Replacement Marker</i> <code>&#36;{lang:hello_world:config/lang/lang-axel-war-other:SP}</code> becomes <b>${lang:hello_world:config/lang/lang-axel-war-other:SP}</b>
+				<br/>
+				or using the <i>axel:get action</i> <code>&lt;axel:get key="lang:hello_world:config/lang/lang-axel-war-other:SP"/&gt;</code> becomes <b><axel:get key="lang:hello_world:config/lang/lang-axel-war-other:SP"/></b>
+			</div>
+			<div class="panel-body">
+				Using a <i>Replacement Marker</i> <code>&#36;{lang:hello_world:default_locale_file:SP}</code> becomes <b>${lang:hello_world:default_locale_file:SP}</b>
+			</div>
+		</div>
+	</p>
+</div>
+<small><a href="#top_of_page">Top Of Page</a></small><br/>
+
+<div class="axel_schema">
+	<!-- section -->
+	<a id="direct_ajax_code_calls"/>
+	<h3>Direct Ajax Code Calls</h3>
+	<p>
+		With AXEL you can make direct calls into your code from the browser page.  This is extremely useful
+		when making ajax calls for data.		
+	</p>
+	<p>
+		To set this up you first need to build your code (obviously). The class that will be invoked must import
+		the <code>org.xmlactions.action.actions.BaseAction</code> class and implement the <code>execute(IExecContext execContext)</code>
+		method.
+	</p>
+	<p>
+		When the code is ready you need to set an action map propery that will link the code to a key.
+		The key is used as the url request with a file extension of <code>.ajax</code>.
+	</p>
+	<p>
+		To add the code to the action map you need to add the key=value in the spring configuration.  This is documented
+		in the<span title="How to setup and configure AXEL">
+				<a href="javascript:changeContent('${breadcrumb.page.getting_it_to_work}', '#spring_config');">Getting it to work <img src="images/question-mark-red.png" height="12px"/></a> Spring Configuration
+			 </span>
+	</p>
+	<p class="bs-callout bs-callout-info">
+		<b>EXAMPLE:</b> An example of adding a new action in the spring configuration (actionMaps)
+		<code><br/>
+		&lt;util:properties&gt;<br/>
+		&#160;&#160;&#160;&#160;&lt;prop key="code_get_items_list"&gt;org.xmlactions.action.DirectAjaxCodeCallAction&lt;/prop&gt;<br/>
+		&lt;/util:properties&gt;<br/>
+		</code>
+	</p>
+	<p class="bs-callout bs-callout-info">
+		<b>EXAMPLE:</b> You might set an action map property <code><i>code_get_items_list</i>=org.xmlactions.action.DirectAjaxCodeCallAction</code>. 
+		This sets the key as <i>code_get_items_list</i> and the code as <i>org.xmlactions.action.DirectAjaxCodeCallAction</i>.  To call the code you
+		set your javascript or browser url to <code>code_get_items_list<b>.ajax</b></code>.  When the call is serviced
+		on the web server it will get the value for <i>code_get_items_list</i> from the action map and replace this with
+		the value retrieved from the map <i>org.xmlactions.action.DirectAjaxCodeCallAction</i>.  It will then invoke the execute method on the class
+		and return the result to the javascript or the browser.
+		<br/>
+		<a href="javascript:codeGetItemsList()">Try Calling code_get_items_list.ajax</a>
+	</p>
+</div>
+
+<small><a href="#top_of_page">Top Of Page</a></small><br/>
+
+<div class="axel_schema">
+	<!-- section -->
+	<a id="binary_data"/>
+	<h3>BIN<small>ary</small> Data</h3>
+	<p>
+		AXEL also supports binary date such as PDFs, images etc UPDATE DOCUMENTATION
+	</p>
+</div>
+
+<small><a href="#top_of_page">Top Of Page</a></small><br/>
+
+</html>

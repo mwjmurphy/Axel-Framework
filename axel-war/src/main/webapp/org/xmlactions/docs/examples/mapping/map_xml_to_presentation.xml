@@ -1,0 +1,6 @@
+<axel:map_xml_to_presentation xml_path="person" xml_filename="${deployment.folder}/org/xmlactions/docs/examples/mapping/xml_to_bean_data.xml">
+<axel:form>
+name:${name}
+age:${age}
+</axel:form>
+</axel:map_xml_to_presentation>

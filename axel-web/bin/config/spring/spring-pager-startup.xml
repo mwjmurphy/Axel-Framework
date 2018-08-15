@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-2.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        ">
+
+
+	<!--
+		All execution contexts are derived from this. 
+	 -->
+	<bean id="pager.execContext" class="org.xmlactions.pager.context.PersistenceExecContext" scope="singleton">
+		<constructor-arg>
+			<!-- "actionMaps" -->
+			<util:list>
+				<util:properties location="classpath:config/pager/actions.properties"/>
+			</util:list>
+		</constructor-arg>
+		<constructor-arg>
+			<!-- "localMaps" -->
+            <util:list>
+	            <ref bean="application.xml" />
+            </util:list>
+		</constructor-arg>
+		<property name="defaultLocaleFileName" value="config/lang/pager.properties"/>
+	</bean>
+	
+   <bean id="application.xml" class="org.apache.commons.configuration.XMLConfiguration">
+      <constructor-arg type="java.net.URL" value="classpath:/config/pager/application.xml" />
+   </bean>
+	
+</beans>

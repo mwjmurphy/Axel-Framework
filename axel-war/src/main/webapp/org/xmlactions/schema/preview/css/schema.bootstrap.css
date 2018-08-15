@@ -1,0 +1,73 @@
+.axel_schema {
+	padding-right: 0px;
+}
+.axel_schema h1 {
+}
+.axel_schema h2 {
+	padding-left:20px;
+}
+.axel_schema h3 {
+	border-bottom-width: 3px;
+    border-bottom-style: double;
+}
+.axel_schema .document {
+	padding-left:60px;
+	padding-right:10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.axel_schema .attribute {
+	padding-left:40px;
+}
+.axel_schema .attribute .name {
+	padding-left: 0px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+.axel_schema .attribute .detail {
+	padding-left:50px;
+	font-size : normal;
+	line-height: 26px;
+}
+.axel_schema .attribute .document{
+	padding-left:20px;
+	font-size : normal;
+	line-height: 26px;
+}
+.axel_schema .element {
+	padding-left:40px;
+}
+.axel_schema .element .name {
+	padding-left: 0px;
+}
+.axel_schema .element .detail {
+	padding-left:50px;
+}
+.axel_schema .element .document{
+	padding-left:20px;
+}
+.axel_schema .index {
+	padding-top:50px;
+}
+.axel_schema td {
+	padding-top:6px;
+}
+
+/* .axel_schema .navigator { */
+/* 	background: #58ACFA; */
+/* 	color:firebrick; */
+/* 	opacity: 1.0; */
+/* 	padding:5px; */
+/* 	position: fixed; */
+/* 	right: 220px; */
+/* 	top: 0px;	 */
+/* } */
+/* .axel_schema .navigator .index { */
+/* 	background: #58ACFA; */
+/* 	color:firebrick; */
+/* 	padding-left: 25px; */
+/* 	position: absolute;  */
+/* 	right: -220px; */
+/* 	top: 0px; */
+/* 	width: 195px; */
+/* } */

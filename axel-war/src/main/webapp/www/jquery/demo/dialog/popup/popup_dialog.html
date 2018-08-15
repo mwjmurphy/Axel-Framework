@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org/schema/pager_db_actions.xsd">
+
+<head>
+	
+	<title>XML Actions in Action</title>
+	
+	<link rel="stylesheet" href="${dojo.address}/dojox/highlight/resources/highlight.css" />
+    <link rel="stylesheet" href="${dojo.address}/dojox/highlight/resources/pygments/colorful.css" />
+    <link rel="stylesheet" href="${dojo.address}/dojo/resources/dojo.css" media="screen"/>
+    <link rel="stylesheet" href="${dojo.address}/dijit/themes/dijit.css"/>
+    <link rel="stylesheet" href="${dojo.address}/dijit/themes/${dojo.theme}/${dojo.theme}.css"/>
+
+    <script type="text/javascript" src="${axel.themes.location}/themes/js/common.js"></script>
+    <script type="text/javascript" src="${axel.themes.location}/themes/js/pager.js"></script>
+  
+	<!--  jquery -->
+	<link rel="stylesheet" href="${jquery.address}/jqueryui/1.10.2/themes/${jquery.theme}/jquery-ui.css" />
+	<script src="${jquery.address}/jquery/1.9.1/jquery.min.js"></script>
+	<script src="${jquery.address}/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+	<script src="${dojo.address}/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+		
+</head>	
+<body>
+	<div class="ui-dialog">
+		<div class="ui-dialog-titlebar">...</div>
+		<div class="ui-dialog-content ui-dialog-{normal|maximized|minimized|collapsed}">...</div>
+	</div>
+	<db:list presentation_form="" >
+		<db:field_list>
+			<db:field name="tb.name"></db:field>
+		</db:field_list>
+		<axel:presentation_form>
+			<div name="fred">
+				<label for="tb.name"><input type="text" value="${row:tb.name}" placeholder="Enter name here"/></label>
+			</div>
+		</axel:presentation_form>
+	</db:list>
+</body>
+	
+</html>

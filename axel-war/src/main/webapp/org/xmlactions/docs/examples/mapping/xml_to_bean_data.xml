@@ -1,0 +1,5 @@
+<person age="10" name="Mr. Fred Flinstone">
+    <mobile>123456</mobile>
+    <mobile>654321</mobile>
+    <address street="5 main street" city="bedrock" state="big place" country="biggest place"/>
+</person>

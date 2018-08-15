@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root rows="2">
+	<row index="1" name="row1"/>
+	<row index="2" name="row2"/>
+</root>

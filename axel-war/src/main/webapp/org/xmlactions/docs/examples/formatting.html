@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org/schema/pager_db_actions.xsd">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			${breadcrumb.onclick.home}
+			${breadcrumb.onclick.examples}
+		  	<li class="data">Formatting Data</li>
+		</ol>	
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<h3>Formatting Dates</h3><br/>
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h5>Examples showing <b>axel:date_formatter</b> in use</h5>
+  				<p>
+  					The date_formatter is used to map the date format to a different date format.  					
+  				<p>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:date_formatter</b> example<br/>
+						<pre>&lt;axel:date_formatter
+    date_value="1995-01-25"
+    origin_format="yyyy/MM/dd"
+    destination_format="dd/MM/yyyy" /&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output<br/>
+						<pre><axel:date_formatter date_value="1995-01-25" origin_format="yyyy-MM-dd" destination_format="dd-MM-yyyy"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<h3>Escaping Data</h3><br/>
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h5>Examples showing <b>axel:escape</b> in use</h5>
+  				<p>
+  					The escape is used to escape data to a number of different formats.  See "apache commons escape" for 
+  					an explanation on how this works.
+  				<p>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:escape</b> example<br/>
+						<pre>&lt;axel:escape
+    ref_key="escape_this_data"
+    format="html"/&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:put key="escape_this_data"><div>This is a "div" with an ampersand &
+ and another ampersand &amp;</div></axel:put>
+						The input<br/>
+						<axel:file_viewer ref="escape_this_data" show_line_nos="false" show_header="false"/>
+						<br/>
+						<axel:escape ref_key="escape_this_data" format="html" key="escape_this_data_key"/>
+						The output<br/>
+						<axel:file_viewer ref="escape_this_data_key" show_line_nos="false" show_header="false"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<h3>Unescaping Data</h3><br/>
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h5>Examples showing <b>axel:unescape</b> in use</h5>
+  				<p>
+  					The unescape is used to unescape data from a number of different formats.  See "apache commons unescape" for 
+  					an explanation on how this works.
+  				<p>
+  			</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:unescape</b> example<br/>
+						<pre>&lt;axel:unescape
+    ref_key="unescape_this_data"
+    format="html"/&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:put key="unescape_this_data"><div>This is a "div" with an ampersand &
+ and another ampersand &amp;</div></axel:put>
+						<axel:unescape ref_key="unescape_this_data" format="html" key="unescape_this_data_key"/>
+						The input<br/>
+						<axel:file_viewer ref="escape_this_data_key" show_line_nos="false" show_header="false"/>
+						The output<br/>
+						<axel:file_viewer ref="unescape_this_data_key" show_line_nos="false" show_header="false"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

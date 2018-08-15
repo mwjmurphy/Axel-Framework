@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:pager="http://www.riostl.com/schema/pager"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+
+<head>
+</head>
+<body>
+<table>
+	<tr>
+		<pager:add data_source="target/test" table_name="tb_project">
+			<pager:field name="id" />
+			<pager:field name="description" />
+			<pager:field name="projectid" />
+		</pager:add>
+	</tr>
+</table>
+</body>
+</html>

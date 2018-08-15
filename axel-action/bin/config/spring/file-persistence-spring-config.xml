@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-2.0.xsd
+        ">
+
+	<!-- 
+		This is a test spring configuration and is only used when running the unit tests.
+	 -->
+	<description>
+		This is a test config that gets loaded with the
+		src/main/resource/config/spring/pager-startup.xml
+    </description>
+
+	<bean id="pager.execContext" class="org.xmlactions.action.config.FileExecContext">
+		<constructor-arg>
+			<list>
+				<ref bean="actions"/>
+				<ref bean="actionsx"/>
+				<ref bean="db_actions"/>
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="actions"/>
+			</list>
+		</constructor-arg>
+		<constructor-arg value="build/persistent_sl.properties"/>
+		<property name="defaultLocaleFileName" value="config/lang/test.properties"/>
+	</bean>
+
+	<util:properties id="actions" location="classpath:config/pager/actions.properties"/>
+	
+	<util:map id="actionsx" map-class="java.util.HashMap">
+		<entry key="k1" value="the value of k1"/>
+		<entry key="k2" value="the value of k2"/>
+	</util:map>	
+	<util:map id="db_actions" map-class="java.util.HashMap">
+		<entry key="k3" value="the value of k3"/>
+		<entry key="k4" value="the value of k4"/>
+	</util:map>	
+
+
+</beans>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			${breadcrumb.onclick.home}
+			${breadcrumb.onclick.examples}
+		  	<li class="data">Mapping Data from one Format to Another</li>
+		</ol>
+		<a id="index"/>
+		<div style="margin-left:10px">
+			<table class="axel_schema"><tbody>
+				<tr><td><a href="#map_xml_to_bean">Mapping XML to Java Beans</a></td><td style="text-indent:10px;">example mapping an XML file to java beans</td></tr>
+				<tr><td><a href="#map_bean_to_xml">Mapping Java Beans to XML</a></td><td style="text-indent:10px;">example mapping java beans to XML</td></tr>
+				<tr><td><a href="#map_xml_to_json">Mapping XML to JSON</a></td><td style="text-indent:10px;">example mapping XML to JSON</td></tr>
+				<tr><td><a href="#map_xml_to_presentation">Mapping XML to Presentation</a></td><td style="text-indent:10px;">example mapping XML to a Presentation Form</td></tr>
+				<tr><td><a href="#map_json_to_presentation">Mapping JSON to Presentation</a></td><td style="text-indent:10px;">example mapping JSON to a Presentation Form</td></tr>
+			</tbody></table>
+		</div>
+		<br/>
+		
+		<!--
+		
+			Mapping XML to Beans
+			 
+		 -->
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<a id="map_xml_to_bean"/>
+  				<h3>Mapping XML to Beans</h3><br/>
+  				<p>
+  					To map an XML file to java beans you need to create a definition file that provides the
+  					instructions for mapping the XML to java. Documentation on mapping XML to Beans can
+  					be seen on the main page <a onclick="changeContent('${breadcrumb.page.xml_to_bean_preview}', '#top_of_page');">Mapping xml to java</a>
+  				</p>
+  				<p>
+  					
+  				</p>
+  				<h5>Example showing <b>axel:map_xml_to_bean</b></h5>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:map_xml_to_bean</b> example<br/>
+						- Maps XML data to Java Beans.
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_xml_to_bean.xml" attribute_per_line="true" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<b>file:xml_to_bean_data.xml</b><br/>
+						The XML data to map to Java Beans 
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/xml_to_bean_data.xml" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<b>file:xml_to_bean.xml</b><br/>
+						The mapping definition file
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/xml_to_bean.xml" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<b>Person.java</b><br/>
+						This is the java bean that we map the person into.
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:file_viewer file_name="${deployment.folder}/org/xmlactions/mapping/testclasses/Person.java" show_line_nos="false"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<b>Address.java</b><br/>
+						This is the java bean that we map the address into.
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:file_viewer file_name="${deployment.folder}/org/xmlactions/mapping/testclasses/Address.java" show_line_nos="false"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output from the toString() method called on the Person bean.
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_xml_to_bean.xml"/>
+						<pre>${mapped_bean}</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#index">index</a>
+		<br/>
+		
+		<!--
+		
+			Mapping Beans to XML
+			 
+		 -->
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<a id="map_bean_to_xml"/>
+  				<h3>Mapping Beans to XML</h3><br/>
+  				<p>
+  					To map Java Beans to XML you need to create a definition file that provides the	instructions for mapping 
+  					the Java Beans to XML. Documentation on mapping Beans to XML can be seen on the main page
+  					<a onclick="changeContent('${breadcrumb.page.bean_to_xml_preview}', '#top_of_page');">Mapping beans to java</a>
+  				</p>
+  				<h5>Example showing <b>axel:map_bean_to_xml</b></h5>
+  				<p>
+  					This example takes the beans that were created from the previous <a href="#map_xml_to_bean">Map XML To Bean</a> example
+  					and maps them back to XML.
+  				</p>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:map_bean_to_xml</b> example<br/>
+						- Maps Java Beans to XML.
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_bean_to_xml.xml" attribute_per_line="true" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output from a toString() called on the Person bean. We are going to map this Bean to XML
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_xml_to_bean.xml"/>
+						<pre>${mapped_bean}</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<b>file:bean_to_xml.xml</b><br/>
+						The mapping definition file
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/bean_to_xml.xml" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output XML created from the Java Beans.
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_bean_to_xml.xml"/>
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/bean_to_xml.xml" ref="mapped_xml"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#index">index</a>
+		<br/>
+		<!--
+		
+			Mapping XML to JSON
+			 
+		 -->
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<a id="map_xml_to_json"/>
+  				<h3>Mapping XML to JSON</h3><br/>
+  				<p>
+  					This example shows how to map XML formatted data to JSON formatted data. It uses the XML that was created from the
+  					previous <a href="#map_bean_to_xml">Map Bean To XML</a> example and maps the XML to JSON.
+  				</p>
+  				<h5>Example showing <b>axel:map_xml_to_json</b></h5>
+  			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:map_xml_to_json</b> example<br/>
+						- Maps XML to JSON
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_xml_to_json.xml" attribute_per_line="true" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<b>file:xml_to_bean_data.xml</b><br/>
+						The XML data to map to JSON 
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/xml_to_bean_data.xml" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						Result of <b>axel:map_xml_to_json</b>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_xml_to_json.xml"/>
+						<pre>${mapped_json}</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#index">index</a>
+		<br/>
+		<!--
+		
+			Mapping XML to Presentation
+			 
+		 -->
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<a id="map_xml_to_presentation"/>
+  				<h3>Mapping XML to Presentation</h3><br/>
+  				<p>
+  					This example shows how to map XML formatted data to presentation data. It uses the same XML that was used in the
+  					<a href="#map_xml_to_bean">Map XML To bean</a> example.
+  				</p>
+  				<p>
+  					To get data from multiple xml_paths you need to create an <b>axel:map_xml_to_presentation</b> to handle each
+  					xml_path. 
+  				</p>
+  				<h5>Example showing <b>axel:map_xml_to_presentation</b></h5>
+  			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:map_xml_to_presentation</b> example<br/>
+						- Maps XML to Presentation
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_xml_to_presentation.xml" attribute_per_line="true" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<b>file:xml_to_bean_data.xml</b><br/>
+						The XML data to map to JSON 
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/xml_to_bean_data.xml" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						Result of <b>axel:map_xml_to_presentation</b>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_xml_to_presentation.xml"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#index">index</a>
+		<br/>
+		
+		<!--
+		
+			Mapping JSON to Presentation
+			 
+		 -->
+		<div class="row">
+  			<div class="col-sm-12 axel_schema">
+  				<a id="map_json_to_presentation"/>
+  				<h3>Mapping JSON to Presentation</h3><br/>
+  				<p>
+  					This example shows how to map JSON formatted data to presentation data. It uses the same JSON that was created in the
+  					<a href="#map_xml_to_json">Map XML To JSON</a> example.
+  				</p>
+  				<h5>Example showing <b>axel:map_json_to_presentation</b></h5>
+  			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:map_json_to_presentation</b> example<br/>
+						- Maps JSON to Presentation
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:highlight file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_json_to_presentation.xml" attribute_per_line="true" /></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<b>data:mapped_json</b><br/>
+						The JSON data created by the <a href="#map_xml_to_json">Map XML To JSON</a> example
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre>${mapped_json}</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						Result of <b>axel:map_json_to_presentation</b>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						<pre><axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/mapping/map_json_to_presentation.xml"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#index">index</a>
+		<br/>
+	</div>
+</html>

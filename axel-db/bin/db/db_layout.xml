@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema>
+   <database database_name="db_test">
+      <table table_name="tb_tracker">
+         <field type="pk" name="id" presentation_name="ID" editable="false"/>
+         <field type="text" name="name" length="32" presentation_name="Name" presentation_width="32" editable="true"/>
+         <field type="text" name="description" length="100" presentation_name="Description" presentation_width="50" editable="true"/>
+         <field type="fk" name="projectid" presentation_name="Project ID" foreign_table="tb_project" foreign_key="id">
+            <field type="text" name="description" length="50" presentation_name="Project" presentation_width="50" editable="true"/>
+         </field>
+      </table>
+      <table table_name="tb_project">
+         <field type="pk" name="id" presentation_name="ID"/>
+         <field type="text" name="name" length="32" presentation_name="Name" presentation_width="32" editable="true"/>
+         <field type="text" name="description" length="45" presentation_name="Description" presentation_width="45" editable="true"/>
+         <field type="pk" name="id" presentation_name="ID"/>
+      </table>
+   </database>
+</schema>

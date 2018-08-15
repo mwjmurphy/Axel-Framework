@@ -1,0 +1,26 @@
+ .ele_name {
+ 	swidth:120px;
+ 	padding-left:20px;
+ }
+ .ele_required {
+ 	swidth:120px;
+ 	padding-left:10px;
+ 	border-left:1px solid #a4bcea;
+ }
+ .ele_desc {
+ 	padding-left:10px;
+ 	border-left:1px solid #a4bcea;
+ }
+ .att_name {
+ 	swidth:120px;
+ 	padding-left:40px;
+ }
+ .att_type {
+ 	swidth:120px;
+ 	padding-left:10px;
+ 	border-left:1px solid #a4bcea;
+ }
+ .att_desc {
+ 	padding-left:10px;
+ 	border-left:1px solid #a4bcea;
+ }

@@ -1,0 +1,8 @@
+<axel:map_json_to_presentation json_path="person" json_data ="${mapped_json}">
+<axel:form>
+name:${name}
+age:${age}
+mobile:${mobile}
+address:${address}
+</axel:form>
+</axel:map_json_to_presentation>

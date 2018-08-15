@@ -1,0 +1,97 @@
+{
+	"root_att": "The Root Attribute",
+    "vessel_gear_types_category": [
+        {
+            "image_url": "images/gears/surrounding_nets.png",
+            "title_text": "Surrounding ",
+            "gear_name": "Surrounding ",
+            "tooltipid": "surrounding_nets_tooltip",
+            "data_filter": ".surrounding_nets"
+        },
+        {
+            "image_url": "images/gears/seine_nets.jpg",
+            "title_text": "Seine",
+            "gear_name": "Seine",
+            "tooltipid": "seine_nets_tooltip",
+            "data_filter": ".seine_nets"
+        },
+        {
+            "image_url": "images/gears/trawl_nets.jpg",
+            "title_text": "Bottom Trawls",
+            "gear_name": "Bottom Trawls",
+            "tooltipid": "trawl_nets_tooltip",
+            "data_filter": ".bottom_trawls"
+
+        },
+        {
+            "image_url": "images/gears/trawl_nets.jpg",
+            "title_text": "Midwater Trawls",
+            "gear_name": "Midwater Trawls",
+            "tooltipid": "trawl_nets_tooltip",
+            "data_filter": ".midwater_trawls"
+        },
+        {
+            "image_url": "images/gears/lift_nets.png",
+            "title_text": "Lift",
+            "gear_name": "Lift",
+            "tooltipid": "lift_nets_tooltip",
+            "data_filter": ".lift_nets"
+        },
+        {
+            "image_url": "images/gears/falling_gear.png",
+            "title_text": "Falling",
+            "gear_name": "Falling",
+            "tooltipid": "falling_gear_tooltip",
+            "data_filter": ".falling_gear"
+        },
+        {
+            "image_url": "images/gears/dredge_nets.jpg",
+            "title_text": "Dredges",
+            "gear_name": "Dredges",
+            "tooltipid": "falling_gear_tooltip",
+            "data_filter": ".dredges"
+        },
+        {
+            "image_url": "images/gears/gill_nets.jpg",
+            "title_text": "Gill/Entangling",
+            "gear_name": "Gill/Entangling",
+            "tooltipid": "falling_gear_tooltip",
+            "data_filter": ".gillnets"
+        },
+       {
+            "image_url": "images/gears/traps.jpg",
+            "title_text": "Traps",
+            "gear_name": "Traps",
+            "tooltipid": "falling_gear_tooltip",
+            "data_filter": ".traps"
+        },
+        {
+            "image_url": "images/gears/hooks_lines.jpg",
+            "title_text": "Hooks/Lines",
+            "gear_name": "Hooks/Lines",
+            "tooltipid": "falling_gear_tooltip",
+            "data_filter": ".hooks_lines"
+        },
+        {
+            "image_url": "images/gears/gear_bg.jpg",
+            "title_text": "Grappling",
+            "gear_name": "Grappling",
+            "tooltipid": "falling_gear_tooltip",
+            "data_filter": ".grappling_wounding"
+        },
+        {
+            "image_url": "images/gears/harvesting_machine.jpg",
+            "title_text": "Harvesting",
+            "gear_name": "Harvesting",
+            "tooltipid": "falling_gear_tooltip",
+            "data_filter": ".harvesting_machines"
+        },
+        {
+            "image_url": "images/gears/selectivity_device_4.jpg",
+            "title_text": "Selective",
+            "gear_name": "Selective",
+            "tooltipid": "falling_gear_tooltip",
+            "data_filter": ".selectivity_device"
+        }
+    ]
+}

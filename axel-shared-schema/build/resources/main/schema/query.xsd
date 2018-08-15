@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.xmlactions.org/query" targetNamespace="http://www.xmlactions.org/query"
+   attributeFormDefault="unqualified" elementFormDefault="qualified"
+>
+
+   <xsd:element name="query">
+      <xsd:annotation>
+         <xsd:documentation>
+         	<p>
+         		The Query Action is used to retrieve information from a database.
+         	</p>
+         	<p>
+         		A query uses xml to describe the data to retrieve. The query schema 
+         		that comes with axel (see Query. XSD) details how to construct this xml.
+         		The XML is converted to SQL at run-time.
+         	</p>
+         	<p>
+				The query XML can use fields defined by the storage definition (see storage.xsd)
+				and / or hand written sql.  It requires that the storage has already been described
+				for the database.
+			</p>
+			<p>
+				Replacement markers (see replacement markers) can be used in the XML to dynamically
+				change the generated SQL at Run-time.
+			</p>
+			<p>
+				A query can have nested child queries that are executed in turn. This feature provides
+				a very powerful means for accessing the data.
+         	</p>
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="requires" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element ref="sql" minOccurs="0" maxOccurs="1">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     Optons for the query are to use either an sql statement or
+                     a field_list. 
+                  </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="field_list" minOccurs="0" maxOccurs="1" />
+            <xsd:element ref="query" minOccurs="0" maxOccurs="unbounded" />
+         </xsd:sequence>
+         <xsd:attribute name="table_name" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The table name to query.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="requires">
+      <xsd:complexType>
+         <xsd:annotation>
+            <xsd:documentation>
+               Stipulates a condition that must be met before the query can be executed. 
+		    </xsd:documentation>
+            <xsd:documentation>
+               If the condition fails then this query branch is ended. 
+		    </xsd:documentation>
+         </xsd:annotation>
+         <xsd:attribute name="value" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the condition that must be met. 
+               </xsd:documentation>
+               <xsd:documentation>
+                  As an example before this query is executed it may require that an
+                  primary key is set in the row. Test by setting the value to ${table.id}.
+                  <br />
+                  If the table.id is absent or empty then the condition fails and the query
+                  is not executed.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="field_list">
+      <xsd:annotation>
+         <xsd:documentation>
+            Element container for a list of fields
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="field" minOccurs="1" maxOccurs="unbounded" />
+            <xsd:element ref="where" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element ref="order" minOccurs="0" maxOccurs="unbounded" />
+         </xsd:sequence>
+         <xsd:attribute name="limit_from" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <p>
+                  This will return rows starting from this number.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="limit_rows" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <p>
+                  The number of rows to return. Can be used in combination
+                  with the limit_from attribute to build a between clause.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="field">
+      <xsd:complexType>
+         <xsd:annotation>
+            <xsd:documentation>
+               A field that is retrieve by the query 
+            </xsd:documentation>
+         </xsd:annotation>
+         <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The name of the field.
+                  The name may also include the table using standard table.field notation.
+                  Example tablename.fieldname
+               </xsd:documentation>
+               <xsd:documentation>
+                  Note to remember, if the table is referenced with an alias than the alias name must
+                  be used instead of the table name.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="sql">
+      <xsd:complexType mixed="true">
+         <xsd:annotation>
+            <xsd:documentation>
+               An sql containing a select statement may be used instead of a field_list.
+            </xsd:documentation>
+            <xsd:documentation>
+               The query must be set in the sql_query or the content, or from the
+               sql_ref.
+            </xsd:documentation>
+         </xsd:annotation>
+         <xsd:sequence>
+            <xsd:element ref="where" minOccurs="0" maxOccurs="unbounded" >
+            	<xsd:annotation><xsd:documentation>One or more where clauses.  Do not include the "where", "and" or "or" syntax as this is added by the framework, unless you are applying more than one clauses for a where statement. </xsd:documentation></xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="order" minOccurs="0" maxOccurs="unbounded">
+            	<xsd:annotation><xsd:documentation>One or more "order by" clauses.  Do not include the "order by" syntax as this is added by the framework</xsd:documentation></xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="group" minOccurs="0" maxOccurs="unbounded">
+            	<xsd:annotation><xsd:documentation>One or more "group by" clauses.  Do not include the "group by" syntax as this is added by the framework</xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="sql_query" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                     Write the sql query here or in the text/content between the sql elements.
+                     i.e. %lt;sql&gt;select * from table&lt;/sql&gt;
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="sql_ref" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                     Get the sql from the storage definition.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+
+   <xsd:element name="where">
+      <xsd:complexType>
+         <xsd:annotation>
+            <xsd:documentation>
+               A where clause, used to select the rows based on the previous query
+               or on a value set in the execContext before calling. 
+		    </xsd:documentation>
+         </xsd:annotation>
+         <xsd:attribute name="clause" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The content for the where clause
+               </xsd:documentation>
+               <xsd:documentation>
+                  Example:row:address.id = customer.addressid
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="order">
+      <xsd:complexType>
+         <xsd:annotation>
+            <xsd:documentation>
+               An order by clause, used to order rows returned from the query.
+            </xsd:documentation>
+         </xsd:annotation>
+         <xsd:attribute name="by" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The order field sequence.
+               </xsd:documentation>
+               <xsd:documentation>
+                  Example:table.name, table.address
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="group">
+      <xsd:complexType>
+         <xsd:annotation>
+            <xsd:documentation>
+               A group by clause, used to group rows returned from the query.
+            </xsd:documentation>
+         </xsd:annotation>
+         <xsd:attribute name="by" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The group field sequence.
+               </xsd:documentation>
+               <xsd:documentation>
+                  Example:table.name, table.address
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+</xsd:schema>
+

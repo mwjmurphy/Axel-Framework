@@ -1,0 +1,6 @@
+test can pager replace markers
+ === ${session:marker} ===
+ === ${a} ===
+ === ${a} ===
+ === ${a} ===
+ well did it work

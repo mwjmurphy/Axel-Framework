@@ -1,0 +1,83 @@
+
+package org.xmlactions.db.mysql;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.riostl.action.Action;
+import com.riostl.action.NestedActionException;
+import com.riostl.action.actions.BaseAction;
+import com.riostl.action.config.IExecContext;
+import com.riostl.common.xml.BadXMLException;
+import org.xmlactions.db.actions.Database;
+import org.xmlactions.db.actions.Storage;
+import org.xmlactions.db.template.ICreateStorage;
+
+public class CreateStorage implements ICreateStorage
+{
+
+	/**
+	 * creates all databases contained within storage.
+	 * 
+	 * @throws IOException
+	 * @throws BadXMLException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 * @throws ClassNotFoundException
+	 * @throws NestedActionException
+	 * @throws SQLException
+	 */
+	public Storage createStorage(String storageFile, Connection connection, IExecContext execContext)
+			throws IOException, NestedActionException, ClassNotFoundException, InstantiationException,
+			IllegalAccessException, InvocationTargetException, NoSuchMethodException, BadXMLException, SQLException
+	{
+
+		Action action = new Action();
+		String page = action.loadPage("src/main/resource", storageFile);
+		BaseAction[] actions = action.processXML(execContext, page);
+		Storage storage = (Storage) actions[0];
+
+		CreateDatabase createDatabase = new CreateDatabase();
+		for (Database database : storage.getDatabases()) {
+			createDatabase.createDatabase(connection, database);
+		}
+		return storage;
+
+	}
+
+	/**
+	 * creates all databases contained within storage.
+	 * 
+	 * @throws IOException
+	 * @throws BadXMLException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 * @throws ClassNotFoundException
+	 * @throws NestedActionException
+	 * @throws SQLException
+	 */
+	public Storage dropStorage(String storageFile, Connection connection, IExecContext execContext)
+			throws IOException, NestedActionException, ClassNotFoundException, InstantiationException,
+			IllegalAccessException, InvocationTargetException, NoSuchMethodException, BadXMLException, SQLException
+	{
+
+		Action action = new Action();
+		String page = action.loadPage("src/test/resources", storageFile);
+		BaseAction[] actions = action.processXML(execContext, page);
+		Storage storage = (Storage) actions[0];
+
+		CreateDatabase createDatabase = new CreateDatabase();
+		for (Database database : storage.getDatabases()) {
+			createDatabase.dropDatabase(connection, database.getName());
+		}
+		return storage;
+
+	}
+
+}

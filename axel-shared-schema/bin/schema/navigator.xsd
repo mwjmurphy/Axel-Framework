@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.xmlactions.org/navigator"
+    targetNamespace="http://www.xmlactions.org/navigator"
+    attributeFormDefault="unqualified" elementFormDefault="qualified"
+>
+
+   <xsd:element name="navbar">
+      <xsd:annotation>
+         <xsd:documentation>
+            Build a site navigator presentation 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="image" minOccurs="0" maxOccurs="1" />
+            <xsd:element ref="child" minOccurs="1" maxOccurs="unbounded" />
+         </xsd:sequence>
+         <xsd:attribute name="id" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  A unique identifier for this navigator
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="title" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  navigator title
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  navigator width
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="height" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  navbar height
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="zindex" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Set the navigator z-index 
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="tooltip" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Tooltip presented on hover
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="child">
+      <xsd:annotation>
+         <xsd:documentation>
+            child is a child of nav.  May have it's own link and title and also contain subchildren. 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="image" minOccurs="0" maxOccurs="1" />
+            <xsd:element ref="options" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="subchild" minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation><xsd:documentation>
+                  This sub_menu is placed below the menu. It may contain one or more sub_menu_items.
+               </xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="id" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  A unique identifier for this child
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="title" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  child title
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="href" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  href link called when the mouse is pressed. This will be ignored
+                  if the onclick attribute is used.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onclick" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  Instead of using the href you can call a javascript to
+                  provide the action when this is clicked. 
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="x" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  x-offset from parent navbar
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  child width
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="height" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  child height
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="display"  type="display_options" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Show or hide the child element
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="tooltip" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Tooltip presented on hover
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="is_allowed" type="xsd:boolean" use="optional" default="true">
+            <xsd:annotation>
+               <xsd:documentation>
+                  if set true then this subchild is drawn.  Used by authorisation restrictions.
+                  <p>
+                  	if this is not set true then by default it will be drawn.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="options">
+      <xsd:annotation>
+         <xsd:documentation>
+            options are displayed as a menu on the child 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="option" minOccurs="1" maxOccurs="unbounded">
+               <xsd:annotation><xsd:documentation>
+                  A list of the menu options / menu items
+               </xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="title" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  navigator title
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  navigator width
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="option">
+      <xsd:annotation>
+         <xsd:documentation>
+            option is displayed as a menu item 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="label" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  option label
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="tooltip" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Tooltip presented on hover
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="uri" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  href link called when the mouse is pressed.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="align" type="align" use="optional" default="left">
+            <xsd:annotation>
+               <xsd:documentation>
+                  content alignment options
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+
+
+   <xsd:element name="subchild">
+      <xsd:annotation>
+         <xsd:documentation>
+            May have it's own link and title. 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="content" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  subchild title
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="tooltip" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Tooltip presented on hover
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="href" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  href link called when the mouse is pressed. This will be ignored
+                  if the onclick attribute is used.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onclick" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  Instead of using the href you can call a javascript to
+                  provide the action when this is clicked. 
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="x" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  x-offset from parent
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  subchild width
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="height" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  subchild height
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="align" type="align" use="optional" default="center">
+            <xsd:annotation>
+               <xsd:documentation>
+                  content alignment options
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="is_allowed" type="xsd:boolean" use="optional" default="true">
+            <xsd:annotation>
+               <xsd:documentation>
+                  if set true then this subchild is drawn.  Used by authorisation restrictions.
+                  <p>
+                  	if this is not set true then by default it will be drawn.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:simpleType name="display_options">
+
+      <xsd:restriction base="xsd:string">
+
+         <xsd:enumeration value="none">
+            <xsd:annotation>
+               <xsd:documentation>
+                  html content for this element will not be displayed
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+
+         <xsd:enumeration value="block">
+            <xsd:annotation>
+               <xsd:documentation>
+                  html content for this element will be displayed
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+      
+      </xsd:restriction>
+
+   </xsd:simpleType>
+
+   <xsd:simpleType name="align">
+
+      <xsd:restriction base="xsd:string">
+
+         <xsd:enumeration value="left">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Align the html content to the left side
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+
+         <xsd:enumeration value="right">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Align the html content to the right side
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+      
+         <xsd:enumeration value="center">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Align the html content in the center
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+      
+      </xsd:restriction>
+
+   </xsd:simpleType>
+
+   <xsd:element name="image">
+      <xsd:annotation>
+         <xsd:documentation>
+            menu is used to build an individual menu on the menu bar. 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="src" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The image name and location.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The presentation width of the image
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="height" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The presentation height of the image
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="border" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Apply border to image. Will default to border=0
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+</xsd:schema>
+

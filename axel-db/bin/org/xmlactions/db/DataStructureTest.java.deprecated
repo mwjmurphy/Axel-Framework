@@ -1,0 +1,106 @@
+
+package org.xmlactions.db;
+
+import junit.framework.TestCase;
+
+import org.apache.commons.lang.Validate;
+import org.slf4j.Logger; import org.slf4j.LoggerFactory;
+
+import com.riostl.common.xml.XMLObject;
+
+public class DataStructureTest extends TestCase
+{
+
+	private final static Logger log = LoggerFactory.getLogger(DataStructureTest.class);
+
+	private final static String DB_LAYOUT = "/db/db_layout.xml";
+
+	private DataStructure getDatabase()
+	{
+
+		DataStructure db = null;
+		try {
+			db = new DataStructure(DB_LAYOUT);
+		} catch (Exception ex) {
+			Validate.isTrue(false, ex.getMessage());
+		}
+		return db;
+	}
+
+	public void testDatabase()
+	{
+
+		DataStructure db = getDatabase();
+		assertNotNull("unable to get Database", db);
+	}
+
+	public void testBuildQuery() throws DBConfigException
+	{
+
+		DataStructure db = getDatabase();
+		String[] fields = new String[] { "name", "email" };
+		String whereClause = "where name='fred'";
+		String orderBy = "order by name,email";
+		String query = db.buildQuery("tb_user", fields, whereClause, orderBy, 20, 100);
+
+		log.debug("query:" + query);
+		assertEquals(
+				" select name as \"name\",email as \"email\" from ( select tb_user.id as \"tb_user_id\",tb_user.name as \"tb_user_name\",tb_user.firstname as \"tb_user_firstname\",tb_user.lastname as \"tb_user_lastname\",tb_user.email as \"tb_user_email\",tb_user.home_phone as \"tb_user_home_phone\",tb_user.cell_phone as \"tb_user_cell_phone\",tb_user.business_phone as \"tb_user_business_phone\",tb_user.password as \"tb_user_password\" from tb_user  where name='fred'  order by name,email ) tb ",
+				query);
+	}
+
+	public void testGetTable() throws DBConfigException
+	{
+
+		DataStructure db = getDatabase();
+		DBTable table = db.getTable("tb_user");
+		assertEquals("tb_user", table.getTableName());
+		assertEquals("number of fields in tb_user has changed to " + table.getFields().length, 9,
+				table.getFields().length);
+	}
+
+	public void testGetTablePKField() throws DBConfigException
+	{
+
+		DataStructure db = getDatabase();
+		String field = db.getTablePKField("tb_user");
+		assertEquals("tb_user.id", field);
+
+	}
+
+	public void testGetTableField() throws DBConfigException
+	{
+
+		DataStructure db = getDatabase();
+		DBField field = db.getTableField("tb_user", "id");
+		assertEquals("tb_user.id", field.getDBName());
+		assertEquals("id", field.getFieldName());
+	}
+
+	public void testFindTable() throws Exception
+	{
+
+		DataStructure db = getDatabase();
+		XMLObject xo = db.findTable("tb_user");
+		log.debug("xo:" + xo.mapXMLObject2XML(xo));
+		assertEquals(1, xo.getAttributeCount());
+		assertEquals("tb_user", xo.getAttributeValue("table_name"));
+	}
+
+	public void testGetFieldFromTableAndFieldName() throws DBConfigException
+	{
+
+		DataStructure db = getDatabase();
+		DBField field = db.getFieldFromTableAndFieldName("tb_user.id");
+		assertEquals("tb_user.id", field.getDBName());
+		assertEquals("id", field.getFieldName());
+	}
+
+	public void testToString()
+	{
+
+		DataStructure db = getDatabase();
+		log.debug(db.toString());
+	}
+
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml_to_bean
+    xmlns="http://www.org.xmlactions/xml_to_bean" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.org.xmlactions/xml_to_bean
+                        http://www.org.xmlactions/schema/xml_to_bean.xsd"
+    >
+    
+    <populator id="PopulatorArrayList" clas="org.xmlactions.mapping.xml_to_bean.PopulatorArrayList"/>
+
+    <populator id="PopulatorTimestamp" clas="org.xmlactions.mapping.xml_to_bean.PopulatorTimestamp">
+        <keyvalue key="time_format" value="yyyy-MM-dd HH:mm"/>
+    </populator>
+        
+    <populator id="PopulatorDate" clas="org.xmlactions.mapping.xml_to_bean.PopulatorDate">
+        <keyvalue key="time_format" value="yyyy-MM-dd HH:mm"/>
+    </populator>
+        
+    <populator id="PopulatorSqlDate" clas="org.xmlactions.mapping.xml_to_bean.PopulatorSqlDate">
+        <keyvalue key="time_format" value="yyyy-MM-dd HH:mm"/>
+    </populator>
+    
+	<bean element="navbar" clas="org.xmlactions.pager.actions.navigator.NavBar">
+		<property name="children" populator_ref="PopulatorArrayList">
+			<alias name="child"/>
+      </property>
+		<property name="menuImage">
+         <alias name="image" />
+      </property>
+	</bean>
+
+	<bean element="child" clas="org.xmlactions.pager.actions.navigator.Child">
+   	<property name="subchildren" populator_ref="PopulatorArrayList">
+      	<alias name="subchild"/>
+		</property>
+		<property name="menuImage">
+			<alias name="image" />
+		</property>
+	</bean>
+
+    <bean element="subchild" clas="org.xmlactions.pager.actions.navigator.SubChild">
+    </bean>
+    
+    <bean element="options" clas="org.xmlactions.pager.actions.navigator.Options">
+        <property name="options" populator_ref="PopulatorArrayList">
+            <alias name="option"/>
+        </property>
+    </bean>
+
+	<bean element="option" clas="org.xmlactions.pager.actions.navigator.Option">
+    </bean>
+
+   <bean element="image" clas="org.xmlactions.pager.actions.menu.MenuImage">
+   </bean>
+
+</xml_to_bean>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			${breadcrumb.onclick.home}
+		  	<li class="data">XML to Bean Mapping</li>
+		</ol>	
+		<div class="row">
+	  		<div class="col-sm-12">
+				<axel:insert page="${deployment.folder}/org/xmlactions/schema/preview/xml_to_bean_doc.html"/>
+			</div>
+  			<div class="col-sm-12">
+  				<a name="index"/>
+  				<h4>AXEL XML to Bean Mapping Index</h4>
+  				<div style="margin-left:10px">
+				<axel:insert page="${deployment.folder}/org/xmlactions/schema/preview/xml_to_bean_index.html"/>
+				</div>
+				<hr/>
+			</div>
+	  		<div class="col-sm-12">
+				<axel:insert page="${deployment.folder}/org/xmlactions/schema/preview/xml_to_bean.html"/>
+			</div>
+		</div>
+	</div>
+</html>

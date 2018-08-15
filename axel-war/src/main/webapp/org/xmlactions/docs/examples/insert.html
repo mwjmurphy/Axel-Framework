@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:axel="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://xmlactions.org/schema/pager_actions.xsd
+						http://www.xmlactions.org/pager_db_actions http://xmlactions.org">
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			${breadcrumb.onclick.home}
+			${breadcrumb.onclick.examples}
+		  	<li class="data">Insert and Insert Into</li>
+		</ol>	
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h3>Insert and Insert Into Actions</h3><br/>
+  			</div>
+		</div>
+		<div class="row">
+  			<div class="col-sm-12">
+  				<h5>Examples showing <b>axel:insert</b> &amp; <b>axel:insert_into</b> in use</h5>
+  			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:insert</b> example<br/>
+						- Insert files into a page.
+						<axel:put key="key_put">this is the value for key_put</axel:put>
+						<pre>&lt;axel:insert
+      page="org/xmlactions/docs/examples/insert_file.html"/&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output that was included from the inserted file is<br/>
+						<pre><axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/insert_file.html"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						An <b>axel:insert_into</b> example<br/>
+						- Insert the current processing page into another page.
+						<axel:put key="key_put">this is the value for key_put</axel:put>
+						<pre>&lt;axel:insert_into
+      page="org/xmlactions/docs/examples/wrapper_insert_file.html"
+      key="insert_data_here"/&gt;</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="examples_page_items floating-div align_left">
+					<div style="padding-top: 20px;">
+						The output that was included from the wrapper insert file is<br/>
+						<pre><axel:insert page="${deployment.folder}/org/xmlactions/docs/examples/wrapper_insert_file.html"/></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

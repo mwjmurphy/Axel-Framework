@@ -1,0 +1,316 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package org.xmlactions.db;
+
+import java.util.Vector;
+
+import com.riostl.common.xml.XMLObject;
+
+/**
+ * This is a table definition class. Describes the table and its fields.
+ * 
+ * @author MichaelMurphy
+ * 
+ * @deprecated use Storage and it's associated classes instead
+ * 
+ */
+public class DBTable
+{
+
+	private String tableName = null;
+
+	private DBField[] dbFields = null;
+
+	public DBTable(XMLObject table) throws Exception
+	{
+
+		this.buildTable(table);
+	}
+
+	/**
+	 * Get the name for this table.
+	 * 
+	 * @return the table name.
+	 */
+	public String getTableName()
+	{
+
+		return tableName;
+	}
+
+	/**
+	 * Get the list of fields associated with this db table
+	 */
+	public DBField[] getFields()
+	{
+
+		return (this.dbFields);
+	}
+
+	/**
+	 * Get a field that matches the field name.
+	 * 
+	 * @param fieldName
+	 *            is the field we want to find
+	 * @return the found field or null
+	 */
+	public DBField getField(String fieldName) throws DBConfigException
+	{
+
+		for (int iLoop = 0; iLoop < this.dbFields.length; iLoop++) {
+			// String name = dbFields[iLoop].getFieldName(); // remove this line
+			if (dbFields[iLoop].getFieldName().equalsIgnoreCase(fieldName)) {
+				return (dbFields[iLoop]);
+			}
+		}
+		throw new DBConfigException("DBField [" + fieldName + "] not found in DBTable [" + tableName + "]");
+	}
+
+	/**
+	 * Get a field that matches the table name and field name.
+	 * 
+	 * @param tableAndFieldName
+	 *            is the field we want to find which will have the table name at
+	 *            the beginning. i.e. tb_tablename.fieldname
+	 */
+	public DBField getFieldFromTableAndFieldName(String tableAndFieldName) throws DBConfigException
+	{
+
+		String fieldName = getFieldName(tableAndFieldName);
+		DBField dbField = getField(fieldName);
+		return (dbField);
+	}
+
+	/**
+	 * This will get the field name from a table and field name string. i.e.
+	 * 'tb_table.field' will return 'field'
+	 * 
+	 * @param tableAndFieldName
+	 * @return the field name or null if none found
+	 */
+	public static String getFieldName(String tableAndFieldName)
+	{
+
+		if (tableAndFieldName != null) {
+			int index = tableAndFieldName.indexOf('.');
+			if (index >= 0 && index < tableAndFieldName.length() - 1) {
+				return (tableAndFieldName.substring(index + 1));
+			}
+		}
+		return (null);
+	}
+
+	/**
+	 * This will get the table name from a table and field name string. i.e.
+	 * 'tb_table.field' will return 'tb_table'
+	 * 
+	 * @param tableAndFieldName
+	 * @return the table name or null if none found
+	 */
+	public static String getTableName(String tableAndFieldName)
+	{
+
+		if (tableAndFieldName != null) {
+			int index = tableAndFieldName.indexOf('.');
+			if (index >= 0 && index < tableAndFieldName.length() - 1) {
+				return (tableAndFieldName.substring(0, index));
+			}
+		}
+		return (null);
+	}
+
+	/**
+	 * Builds a table and field name by combining the tableName.fieldName
+	 * 
+	 * @param tableName
+	 * @param fieldName
+	 * @return tableName.fieldName
+	 */
+	public static String buildTableAndFieldName(String tableName, String fieldName)
+	{
+
+		return tableName + "." + fieldName;
+	}
+
+	/**
+	 * Build a query to return all rows for this table including any foreign
+	 * tables
+	 * 
+	 */
+	public String buildQuery(char tableFieldSeparator, String whereClause, String orderBy)
+	{
+
+		StringBuffer sb = new StringBuffer();
+
+		sb.append("select ");
+
+		String s = addFields(this.dbFields, tableFieldSeparator);
+		// Log.getInstance().debug("s:" + s);
+
+		sb.append(s);
+
+		// Log.getInstance().debug("sb:" + sb.toString());
+
+		sb.append(" from ");
+
+		Vector tables = new Vector();
+		addTables(tables, this.dbFields);
+		String[] tableNames = removeDuplicateTables(tables);
+		for (int i = 0; i < tableNames.length; i++) {
+			if (i > 0) {
+				sb.append(',');
+			}
+			sb.append(tableNames[i]);
+		}
+		sb.append(' ');
+
+		if (whereClause != null) {
+			sb.append(" " + whereClause + " ");
+		} else {
+			sb.append(" where 1 = 1 ");
+		}
+		sb.append(addWhereClause(this.dbFields));
+
+		if (orderBy != null) {
+			sb.append(" " + orderBy);
+		}
+
+		// Log.getInstance().debug("inner.sb:" + sb.toString());
+		return (sb.toString());
+
+	}
+
+	private String[] removeDuplicateTables(Vector tables)
+	{
+
+		for (int i = 0; i < tables.size(); i++) {
+			removeDuplicateTable(tables, i + 1, (String) tables.get(i));
+		}
+		return ((String[]) tables.toArray(new String[0]));
+	}
+
+	private void removeDuplicateTable(Vector tables, int from, String name)
+	{
+
+		for (int i = tables.size() - 1; i >= from; i--) {
+			if (name.equalsIgnoreCase((String) tables.get(i))) {
+				tables.remove(i);
+			}
+		}
+	}
+
+	private void addTables(Vector tables, DBField[] dbFields)
+	{
+
+		for (int fieldLoop = 0; fieldLoop < dbFields.length; fieldLoop++) {
+			DBField dbField = dbFields[fieldLoop];
+			tables.add(dbField.getTableName());
+			if (dbField.getForeignFields() != null) {
+				addTables(tables, dbField.getForeignFields());
+			}
+		}
+	}
+
+	private String addFields(DBField[] dbFields, char tableFieldSeparator)
+	{
+
+		StringBuffer sb = new StringBuffer();
+
+		for (int fieldLoop = 0; fieldLoop < dbFields.length; fieldLoop++) {
+			if (fieldLoop > 0) {
+				sb.append(',');
+			}
+			DBField dbField = dbFields[fieldLoop];
+			sb.append(this.addField(dbField, tableFieldSeparator));
+			if (dbField.getFieldType() == DBField.FIELD_TYPE_FK && dbField.getForeignFields() != null
+					&& dbField.getForeignFields().length > 0) {
+				sb.append(',');
+				sb.append(addFields(dbField.getForeignFields(), tableFieldSeparator));
+			}
+		}
+		// Log.getInstance().debug("sb:" + sb.toString());
+		return (sb.toString());
+	}
+
+	private String addField(DBField dbField, char tableFieldSeparator)
+	{
+
+		return (dbField.getTableName() + '.' + dbField.getFieldName() + " as \"" + dbField.getTableName()
+				+ tableFieldSeparator + dbField.getFieldName() + "\"");
+	}
+
+	private String addWhereClause(DBField[] dbFields)
+	{
+
+		StringBuffer sb = new StringBuffer();
+
+		for (int fieldLoop = 0; fieldLoop < dbFields.length; fieldLoop++) {
+			DBField dbField = dbFields[fieldLoop];
+			if (dbField.getFieldType() == DBField.FIELD_TYPE_FK && dbField.getForeignFields() != null
+					&& dbField.getForeignFields().length > 0) {
+
+				// get the parent table name and the referencing key
+				// =
+				// the foreign table name and the foreign table key
+				sb.append(" and " + this.getTableName() + "." + dbField.getFieldName() + " = "
+						+ dbField.getForeignTable() + "." + dbField.getForeignKey());
+
+				sb.append(addWhereClause(dbField.getForeignFields()));
+			}
+		}
+		return (sb.toString());
+	}
+
+	/**
+	 * Build a db table from the table XMLObject. This will (re)create a DBTable
+	 * from the table XMLObject.
+	 * 
+	 * @param table
+	 *            is the table definition as an XMLObject
+	 * @returns the query string
+	 * @throws Exception
+	 *             if something goes wrong
+	 */
+	public void buildTable(XMLObject table) throws Exception
+	{
+
+		int childCount = table.getChildCount("field");
+		if (childCount == 0) {
+			throw new Exception("Table [" + table.getElementName() + "] has no fields");
+		}
+
+		this.dbFields = new DBField[childCount];
+
+		this.tableName = (String) table.getAttributeValue("table_name");
+		if (this.tableName == null) {
+			throw new Exception("Missing table_name field in database description file.");
+		}
+
+		int count = 0;
+		for (int fieldLoop = 0; fieldLoop < table.getChildCount("field"); fieldLoop++) {
+			XMLObject field = table.getChild(fieldLoop);
+			if (field.getElementName().equalsIgnoreCase("field")) {
+				DBField dbField = new DBField(null, field, this.tableName);
+				this.dbFields[count++] = dbField;
+			}
+		}
+
+	}
+
+	public String toString(int offset)
+	{
+
+		StringBuffer sb = new StringBuffer();
+		sb.append("table name:" + this.tableName + "\n");
+		for (int iLoop = 0; iLoop < this.dbFields.length; iLoop++) {
+			for (int i = 0; i < offset; i++) {
+				sb.append(' ');
+			}
+			sb.append(this.dbFields[iLoop].toString(offset + 2));
+		}
+		return (sb.toString());
+	}
+}

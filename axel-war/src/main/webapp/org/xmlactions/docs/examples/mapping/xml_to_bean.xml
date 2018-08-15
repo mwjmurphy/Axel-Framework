@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml_to_bean
+	xmlns="http://www.xmlactions.org/xml_to_bean" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd">
+	
+	<populator id="PopulatorArrayList" clas="org.xmlactions.mapping.xml_to_bean.PopulatorArrayList"/>
+	
+	<bean element="person" clas="org.xmlactions.mapping.testclasses.Person">
+    </bean>
+
+    <bean element="address" clas="org.xmlactions.mapping.testclasses.Address">
+    </bean>
+    
+    <bean element="mobile" clas="java.lang.String"/>
+
+</xml_to_bean>

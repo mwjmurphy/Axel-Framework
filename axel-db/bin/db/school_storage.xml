@@ -1,0 +1,223 @@
+<storage xmlns="http://www.xmlactions.org/storage" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	name="the first storage"
+	xsi:schemaLocation="http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd"
+	>
+
+   <database name="school">
+
+      <db_specific name="mysql">
+         <sql name="xxx lookup_list_key1 xxx" sql="select distinct description from tb_hobby"/>
+         <sql name="xxx lookup_car_types xxx" sql="select keyid, value, description from tb_lookups where category='car_types' order by value"/>
+         <sql name="lookup_states" sql="select name from tb_states where country='IRL' order by name"/>
+         <sql name="lookup_countries" sql="select code_3, name, code_2 from tb_country order by name"/>
+         <sql name="login" sql="select person_id from tb_login where email='%s' and password='%s'"/>
+         <function name="date_format" sql="DATE_FORMAT(${p1},'%Y-%m-%d')" />
+         <function name="time_format" sql="TIME_FORMAT(${p1},'%H:%i')" />
+         <sql name="student_details">
+            select
+               tb_person_school_link.id as "tb_person_school_link.id",
+               tb_person.id as "tb_person.id",
+               tb_person.lastname as "tb_person.lastname",
+               tb_person.firstname as "tb_person.firstname",
+               DATE_FORMAT(tb_person.dob,'%Y-%m-%d') as "tb_person.dob",
+               tb_person.id_no as "tb_person.id_no",
+               tb_person.nationality as "tb_person.nationality",
+               tb_person.person_type as "tb_person.person_type",
+               tb_school_class.name as "tb_school_class.name",
+               tb_sen.dis_code as "tb_sen.dis_code",
+               tb_sen.irish_ex as "tb_sen.irish_ex",
+               tb_sen.subjects_dropped as "tb_sen.subjects_dropped",
+               tb_sen.ics_or_w as "tb_sen.ics_or_w",
+               tb_sen.time_alloc_hrs as "tb_sen.time_alloc_hrs",
+               tb_sen.alloc_in_min as "tb_sen.alloc_in_min",
+               tb_sen.no_of_classes_from_alloc as "tb_sen.no_of_classes_from_alloc",
+               tb_sen.no_of_classes_tted as "tb_sen.no_of_classes_tted",
+               tb_sen.ind_min_used as "tb_sen.ind_min_used",
+               tb_sen.ind_min_left as "tb_sen.ind_min_left",
+               tb_sen.individual_or_group_name as "tb_sen.individual_or_group_name",
+               tb_sen.time_saving_from_grouping as "tb_sen.time_saving_from_grouping",
+               tb_sen.note as "tb_sen.note"
+               
+            from tb_person 
+               left join (tb_person_school_link tb_person_school_link)
+                  on tb_person_school_link.person_id = tb_person.id
+               left join (tb_class_student tb_class_student)
+                  on tb_class_student.person_id = tb_person.id
+               left join (tb_school_class tb_school_class)
+                  on tb_class_student.class_id= tb_school_class.id
+               left join (tb_sen tb_sen)
+                  on tb_person.id= tb_sen.person_id
+         </sql>
+      </db_specific>
+      
+      <table name="view_person">
+      </table>
+
+      <table name="tb_address">
+         <pk name="id" presentation_name="ID"/>
+         <text name="street" presentation_name="Street" presentation_width="30" length="45" tooltip="Number and Street Name"/>
+         <text name="street2" presentation_name="Street 2" presentation_width="30" length="45" tooltip="Additional Street Information"/>
+         <text name="city" presentation_name="${lang:city}" presentation_width="30" length="45" tooltip="Town or City Name"/>
+         <text name="state" presentation_name="${lang:state}" presentation_width="30" length="45" tooltip="County or State Name"/>
+         <text name="country" presentation_name="${lang:country}" presentation_width="30" length="45" tooltip="Country Name"/>
+         <text name="zipcode" presentation_name="${lang:zipcode}" presentation_width="30" length="45" tooltip="Zip Code"/>
+      </table>
+
+
+      <table name="tb_class_subject">
+         <table_path table_b="tb_school_class" table_a="tb_school_subject"/>
+         <pk name="id" presentation_name="ID"/>
+         <fk name="class_id" presentation_name="Class" foreign_table="tb_school_class" foreign_key="id" mandatory="true"/>
+         <fk name="subject_id" presentation_name="Subject" foreign_table="tb_school_subject" foreign_key="id" mandatory="true"/>
+      </table>
+      
+      <table name="tb_class_student">
+         <table_path table_b="tb_school_class" table_a="tb_person"/>
+         <pk name="id" presentation_name="ID"/>
+         <fk name="class_id" presentation_name="Class" foreign_table="tb_school_class" foreign_key="id" mandatory="true"/>
+         <date name="start_date" presentation_name="Start Date" presentation_width="12"  mandatory="false" function_ref="date_format" tooltip="The date the teacher started teaching this class. May leave blank if this is the same start date as the class."/> 
+         <date name="end_date" presentation_name="End Date" presentation_width="12"  mandatory="false" function_ref="date_format" tooltip="The date the teacher stopped teaching this class. May leave blank if this is the same end date as the class."/> 
+         <fk name="person_id" presentation_name="${lang:student_title}" foreign_table="tb_person" foreign_key="id" mandatory="true"/>
+      </table>
+      
+      <table name="tb_class_teacher">
+         <pk name="id" presentation_name="ID"/>
+         <fk name="class_id" presentation_name="Class" foreign_table="tb_school_class" foreign_key="id" mandatory="true"/>
+         <date name="start_date" presentation_name="Start Date" presentation_width="12"  mandatory="false" function_ref="date_format" tooltip="The date the teacher started teaching this class. May leave blank if this is the same start date as the class."/> 
+         <date name="end_date" presentation_name="End Date" presentation_width="12"  mandatory="false" function_ref="date_format" tooltip="The date the teacher stopped teaching this class. May leave blank if this is the same end date as the class."/> 
+         <fk name="person_id" presentation_name="Teacher" foreign_table="tb_person" foreign_key="id" mandatory="true"/>
+      </table>
+      
+      <table name="tb_country">
+         <pk name="id" presentation_name="ID"/>
+         <text name="code_2" presentation_name="Code 2" presentation_width="2" length="2" tooltip="Two Character Country Code"/>
+         <text name="code_3" presentation_name="Code 3" presentation_width="3" length="3" tooltip="Three Character Country Code"/>
+         <text name="name" presentation_name="Country" presentation_width="45" length="45" tooltip="Country Name"/>
+      </table>
+
+      <table name="tb_doc_images">
+         <pk name="id" presentation_name="ID"/>
+         <fk name="doc_id" presentation_name="Document Id" foreign_table="tb_document" foreign_key="id"/>
+         <int name="index" presentation_name="Index" presentation_width="3" tooltip="The images order"/>
+         <textarea name="data" presentation_name="Data" presentation_height="10"  presentation_width="10" length="10000000" tooltip="Image content is stored here"/>
+         <text name="data_source_name" presentation_name="Name" presentation_width="50" length="256" tooltip="The Uploaded File Name"/>
+      </table>
+      
+      <table name="tb_doc_type">
+         <pk name="id" presentation_name="ID"/>
+         <text name="doc_type" presentation_name="Type" presentation_width="10" length="10" mandatory="true" editable="false"/>
+         <text name="description" presentation_name="Description" presentation_width="50" length="100" mandatory="true"/>
+      </table> 
+
+      <table name="tb_document">
+         <pk name="id" presentation_name="ID"/>
+         <fk name="person_id" presentation_name="Person" foreign_table="tb_person" foreign_key="id" mandatory="true" />
+         <text name="title" presentation_name="Title" presentation_width="50" length="256" mandatory="true"/>
+         <text name="subtitle" presentation_name="Subtitle" presentation_width="50" length="256"/>
+         <fk name="doc_type" presentation_name="Type" foreign_table="tb_doc_type" foreign_key="doc_type" mandatory="true" />
+         <textarea name="data" presentation_name="Data" presentation_height="10"  presentation_width="10" length="10000000" tooltip="Document stored here"/>
+         <text name="data_source_name" presentation_name="Name" presentation_width="50" length="256" tooltip="The Uploaded File Name"/>
+      </table>
+   
+      <table name="tb_login">
+         <pk name="id" presentation_name="ID"/>
+         <text name="email" presentation_name="E-Mail" presentation_width="30" length="100" mandatory="true"/>
+         <password name="password" presentation_name="Password" presentation_width="30" length="45" mandatory="true"/>
+         <fk name="person_id" presentation_name="Person" foreign_table="tb_person" foreign_key="id" mandatory="true" />
+         <timestamp name="Created Date" presentation_width="12" presentation_name="created_date" editable="false" mandatory="true"/>
+         <timestamp name="Last Changed" presentation_width="12" presentation_name="lastchanged_date" editable="false" mandatory="true"/>
+      </table>
+
+      <table name="tb_person">
+         <pk name="id" presentation_name="ID"/>
+         <text name="firstname" presentation_name="First Name" presentation_width="30" length="45" mandatory="true"/>
+         <text name="lastname" presentation_name="Last Name" presentation_width="30" length="45" mandatory="true"/>
+         <text name="id_no" presentation_name="${lang:person_id_number}" presentation_width="30" length="45" mandatory="true"/>
+         <date name="dob" presentation_name="Date Of Birth" presentation_width="20" mandatory="true" function_ref="date_format"/>
+         <fk name="nationality" presentation_name="Nationality" foreign_table="tb_country" foreign_key="code_3"  mandatory="false"/>
+         <fk name="person_type" presentation_name="Type" foreign_table="tb_person_type" foreign_key="code"  mandatory="false"/>
+         <timestamp name="Created Date" presentation_width="12" presentation_name="created_date" editable="false" mandatory="true"/>
+         <timestamp name="Last Changed" presentation_width="12" presentation_name="lastchanged_date" editable="false" mandatory="true"/>
+      </table>
+      
+      <table name="tb_person_address_link">
+         <table_path table_b="tb_person" table_a="tb_address"/>
+         <pk name="id" presentation_name="ID"/>
+         <fk name="person_id" presentation_name="Person" foreign_table="tb_person" foreign_key="id" />
+         <fk name="address_id" presentation_name="Address" foreign_table="tb_address" foreign_key="id" />         
+      </table>
+      
+      <table name="tb_person_school_link">
+         <table_path table_b="tb_person" table_a="tb_school"/>
+         <pk name="id" presentation_name="ID"/>
+         <fk name="person_id" presentation_name="Person" foreign_table="tb_person" foreign_key="id" />
+         <fk name="school_id" presentation_name="School" foreign_table="tb_school" foreign_key="id" />         
+      </table>
+      
+      <table name="tb_person_type">
+         <pk name="id" presentation_name="ID"/>
+         <text name="description" presentation_name="Description" presentation_width="30" length="100" mandatory="true"/>
+         <text name="code" presentation_name="Code" presentation_width="3" length="3" mandatory="true"/>
+      </table>
+
+      <table name="tb_school">
+         <pk name="id" presentation_name="ID"/>
+         <text name="name" presentation_name="Name" presentation_width="50" length="100" mandatory="true"/>
+         <fk name="address_id" presentation_name="Address" foreign_table="tb_address" foreign_key="id" />         
+      </table>
+
+      <table name="tb_school_class">
+         <pk name="id" presentation_name="ID"/>
+         <fk name="school_year_id" presentation_name="School Year" foreign_table="tb_school_year" foreign_key="id" mandatory="true"/>
+         <text name="name" presentation_name="Class" presentation_width="45" length="45" mandatory="true" tooltip="The class name"/>
+      </table>
+
+      <table name="tb_school_subject">
+         <pk name="id" presentation_name="ID"/>
+         <fk name="school_id" presentation_name="School Id" foreign_table="tb_school" foreign_key="id" editable="false" mandatory="true" />         
+         <text name="subject" presentation_name="Subject" presentation_width="45" length="45" mandatory="true" tooltip="The subject name"/>
+      </table>
+      
+      <table name="tb_school_year">
+         <pk name="id" presentation_name="ID"/>
+         <fk name="school_id" presentation_name="School Id" foreign_table="tb_school" foreign_key="id" editable="false" mandatory="true" />         
+         <text name="name" presentation_name="Year Name" presentation_width="50" length="100" mandatory="true" tooltip="The name for this school year, such as '2012-2013'"/>
+         <date name="start_date" presentation_name="Start Date" presentation_width="12"  mandatory="true" function_ref="date_format" tooltip="The start date for this school year"/> 
+         <date name="end_date" presentation_name="End Date" presentation_width="12"  mandatory="true" function_ref="date_format" tooltip="The end date for this school year"/> 
+      </table>
+      
+      <table name="tb_sen">
+         <pk name="id" presentation_name="ID"/>
+         <fk name="person_id" presentation_name="Person" foreign_table="tb_person" foreign_key="id" mandatory="true" />
+         <text name="dis_code" presentation_name="Dis. Code" presentation_width="30" length="45" mandatory="true" tooltip="Disability Code"/>
+         <text name="irish_ex" presentation_name="Irish Ex." presentation_width="30" length="45" tooltip="Irish Excluded"/>
+         <text name="subjects_dropped" presentation_name="Subjects Dropped" presentation_width="30" length="45" tooltip="Subjects Dropped"/>
+         <text name="ics_or_w" presentation_name="ICS, or W" presentation_width="30" length="45" tooltip="ICS, or W"/>
+         <text name="time_alloc_hrs" presentation_name="Time Alloc. (Hrs)" presentation_width="30" length="45" tooltip="Time allocated in hours"/>
+         <text name="alloc_in_min" presentation_name="Alloc. in Min." presentation_width="30" length="45" tooltip="Allocated in minutes"/>
+         <text name="no_of_classes_from_alloc" presentation_name="No. of Classes from Alloc." presentation_width="30" length="45" tooltip="No. of classes from allocation"/>
+         <text name="no_of_classes_tted" presentation_name="No. of Classes T.T'ed" presentation_width="30" length="45" tooltip="No. of Classes T.T'ed"/>
+         <text name="ind_min_used" presentation_name="Ind. Min. Used" presentation_width="30" length="45" tooltip="Individual Minutes Used"/>
+         <text name="ind_min_left" presentation_name="Ind. Min. Left" presentation_width="30" length="45" tooltip="Individual Minutes Left"/>
+         <text name="individual_or_group_name" presentation_name="Individual or Group Name" presentation_width="30" length="45" tooltip="Individual or Group Name"/>
+         <text name="time_saving_from_grouping" presentation_name="Time Saving from Grouping" presentation_width="30" length="45" tooltip="Time Saving from Grouping"/>
+         <textarea name="note" presentation_name="Note" presentation_width="50" presentation_height="3" length="64000" tooltip="Note"/>
+      </table>
+      
+      <table name="tb_states">
+         <pk name="id" presentation_name="ID"/>
+         <text name="name" presentation_name="${lang:state}" presentation_width="30" length="45" mandatory="true"/>
+         <fk name="country" presentation_name="Country" foreign_table="tb_country" foreign_key="code_3"  mandatory="false"/>
+      </table>
+      
+      <table name="tb_student_parent_link">
+         <table_path table_b="tb_person" table_a="tb_person"/>
+         <pk name="id" presentation_name="ID"/>
+         <fk name="student_id" presentation_name="Student" foreign_table="tb_person" foreign_key="id" />
+         <fk name="parent_id" presentation_name="Parent" foreign_table="tb_person" foreign_key="id" />
+      </table>
+
+   </database>
+
+</storage>

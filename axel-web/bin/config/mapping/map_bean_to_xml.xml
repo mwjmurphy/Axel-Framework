@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean_to_xml 
+	xmlns="http://www.xmlactions.org/bean_to_xml" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/bean_to_xml http://www.xmlactions.org/schema/bean_to_xml.xsd"
+	>
+
+   <bean id="mb" name="mb" clas="org.xmlactions.pager.actions.mapping.MapBean" >
+      <attribute property="name"/>
+      <attribute property="number"/>
+   </bean>
+
+</bean_to_xml>

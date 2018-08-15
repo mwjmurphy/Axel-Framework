@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml_to_bean
+	xmlns="http://www.xmlactions.org/xml_to_bean" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd">
+	
+	<populator id="PopulatorArrayList" clas="org.xmlactions.mapping.xml_to_bean.PopulatorArrayList"/>
+    <populator id="PopulatorContent" clas="org.xmlactions.mapping.xml_to_bean.PopulatorContent"/>
+
+    <populator id="PopulatorTimestamp" clas="org.xmlactions.mapping.xml_to_bean.PopulatorTimestamp">
+        <keyvalue key="time_format" value="yyyy-MM-dd HH:mm"/>
+    </populator>
+		
+    <populator id="PopulatorDate" clas="org.xmlactions.mapping.xml_to_bean.PopulatorDate">
+        <keyvalue key="time_format" value="yyyy-MM-dd HH:mm"/>
+    </populator>
+		
+    <populator id="PopulatorSqlDate" clas="org.xmlactions.mapping.xml_to_bean.PopulatorSqlDate">
+        <keyvalue key="time_format" value="yyyy-MM-dd HH:mm"/>
+    </populator>
+	
+	<bean element="A1" clas="org.xmlactions.mapping.testclasses.A1">
+		<creator element="a1"/>
+		<creator element="listOfA1s"/>
+		<creator element="ListOfA1s"/>
+		<property name="aString">
+			<alias name="bString"/>
+			<alias name="xString"/>
+		</property>
+		<property name="a2">
+			<alias name="A2"/>
+		</property>
+		<property name="listOfA1s">
+			<alias name="ListOfA1s"/>
+		</property>
+		<property name="listOfA2s" populator="org.xmlactions.mapping.xml_to_bean.PopulatorArrayList">
+			<alias name="ListOfA2s"/>
+		</property>
+        <property name="timestamp" populator_ref="PopulatorTimestamp"/>
+        <property name="date" populator_ref="PopulatorDate"/>
+        <property name="sqldate" populator_ref="PopulatorSqlDate"/>
+        <text name="content"/>
+	</bean>
+	
+	<bean element="A2" clas="org.xmlactions.mapping.testclasses.A2">
+		<creator element="a2"/>
+		<creator element="listOfA2s"/>
+		<creator element="ListOfA2s"/>
+	</bean>
+
+</xml_to_bean>

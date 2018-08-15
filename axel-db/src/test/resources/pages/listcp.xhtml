@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+
+	<head>
+	</head>
+	<body>
+	
+		<table>
+			<tr>
+				<th>field 1</th><th>field 2</th>
+			</tr>
+			<p>
+			<pager:listcp id="l1" uri="listcp.xhtml" storage_config_ref="storageConfig" theme_name="riostl"
+				control_panel_position="bottom" slider_size="300">
+				<pager:list theme_name="riostl" table_name="tb_hobby">
+					<pager:field_list>
+						<pager:field name="id" />
+						<pager:field name="description" />
+					</pager:field_list>
+				</pager:list>
+			</pager:listcp>
+			</p>
+		</table>
+		<pager:echo>testing List from list.xhtml</pager:echo>
+	</body>
+</html>

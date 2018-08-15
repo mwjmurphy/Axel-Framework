@@ -1,0 +1,4 @@
+<axel:map_bean_to_xml
+    key="mapped_xml"
+    map_file_name="${deployment.folder}/org/xmlactions/docs/examples/mapping/bean_to_xml.xml"
+    bean_key="mapped_bean"/>

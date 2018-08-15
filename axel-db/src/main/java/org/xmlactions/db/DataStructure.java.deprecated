@@ -1,0 +1,278 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package org.xmlactions.db;
+
+import org.slf4j.Logger; import org.slf4j.LoggerFactory;
+
+import com.riostl.common.io.ResourceUtils;
+import com.riostl.common.xml.XMLObject;
+
+/**
+ * Class used to build a structural image of the database to work with. From
+ * this structure we can build queries to retrieve the data including foreign
+ * key tables.
+ * 
+ * @author MichaelMurphy
+ * @deprecated use Storage and StorageContainer instead
+ */
+public class DataStructure
+{
+
+	private final static Logger log = LoggerFactory.getLogger(DataStructure.class);
+
+	/** All tables are stored here */
+	DBTable[] dbTables = null;
+
+	/** This is the xml object of the loaded xml description file. */
+	XMLObject dbXO = null;
+
+	public DataStructure(String structureFileName) throws Exception
+	{
+
+		this.dbXO = this.loadStructure(structureFileName);
+		buildDatabase(this.dbXO);
+	}
+
+	private void buildDatabase(XMLObject root) throws Exception
+	{
+
+		XMLObject db = this.dbXO.findNode(this.dbXO, "database");
+
+		int tableCount = db.getChildCount("table");
+		this.dbTables = new DBTable[tableCount];
+
+		int count = 0;
+		for (int tableLoop = 0; tableLoop < db.getChildCount(); tableLoop++) {
+			XMLObject table = db.getChild(tableLoop);
+			if (table.getElementName().equalsIgnoreCase("table")) {
+				DBTable dbTable = new DBTable(table);
+				this.dbTables[count++] = dbTable;
+			}
+		}
+	}
+
+	/**
+	 * Build an sql query
+	 * 
+	 * @param tableName
+	 * @param fields
+	 *            we want to include in the query or null if we want them all
+	 * @param whereClause
+	 *            is the where clause if not null.
+	 * @param orderBy
+	 *            the sort order or null if no sort required
+	 * @param rowcount
+	 *            the number of rows we want returned, -1 for all rows
+	 * @param offset
+	 *            the starting row, -1 to ignore
+	 * @return the SQL Query
+	 */
+	public String buildQuery(String tableName, String[] fields, String whereClause, String orderBy, int rowCount,
+			int offset) throws DBConfigException
+	{
+
+		StringBuffer query = new StringBuffer();
+		String innerQuery = null;
+		// ===
+		// build the limit part of the query
+		// F.IXME this is failing in tests, does limit work with derby? derby
+		// doesn't support limit
+		// ===
+		String limit = "";
+		if (rowCount > -1) {
+			limit = " limit " + rowCount;
+			if (offset > -1) {
+				limit += " offset " + offset;
+			}
+		}
+
+		// ===
+		// find the table in the database and build the query
+		// ===
+		int i;
+		for (i = 0; i < this.dbTables.length; i++) {
+			if (this.dbTables[i].getTableName().equalsIgnoreCase(tableName)) {
+				// found the table.
+				// if we have a list of fields that we want returned we replace
+				// the . field separator with a '_'
+				innerQuery = this.dbTables[i].buildQuery(fields != null && fields.length > 0 ? '_' : '.', whereClause,
+						orderBy);
+				break;
+			}
+		}
+		if (i == this.dbTables.length) {
+			throw new DBConfigException("Invalid Table Name [" + tableName + "]");
+		}
+
+		// ===
+		// build the outer query part
+		// ===
+		if (fields != null && fields.length > 0) {
+			query.append(" select ");
+			for (int iLoop = 0; iLoop < fields.length; iLoop++) {
+				if (iLoop > 0) {
+					query.append(',');
+				}
+				String f = fields[iLoop];
+				query.append(f.replace('.', '_'));
+				query.append(" as \"");
+				query.append(fields[iLoop]);
+				query.append("\"");
+			}
+			query.append(" from ( ");
+			query.append(innerQuery);
+			query.append(" ) tb ");
+		} else {
+			query.append(innerQuery);
+		}
+
+		// Log.getInstance().debug("innerQuery:" + innerQuery);
+		log.debug("query:" + query.toString());
+		return (query.toString());
+	}
+
+	/**
+	 * get a table in the database.
+	 * 
+	 * @param tableName
+	 *            name of table we want to find
+	 * @return a DBTable if found
+	 * @throws DBConfigException
+	 *             if something goes wrong
+	 */
+	public DBTable getTable(String tableName) throws DBConfigException
+	{
+
+		for (int i = 0; i < this.dbTables.length; i++) {
+			if (this.dbTables[i].getTableName().equalsIgnoreCase(tableName)) {
+				return (this.dbTables[i]);
+			}
+		}
+		throw new DBConfigException("Table [" + tableName + "] not found");
+	}
+
+	/**
+	 * Get the table PK. The return format is tableName.pkFieldName
+	 * 
+	 * @param tableName
+	 * @return tableName.pkFieldName
+	 * @throws com.riostl.sdk.utils.db.DBConfigException
+	 */
+	public String getTablePKField(String tableName) throws DBConfigException
+	{
+
+		DBTable table = getTable(tableName);
+		for (DBField field : table.getFields()) {
+			if (field.getFieldType() == DBField.FIELD_TYPE_PK) {
+				return (tableName + "." + field.getFieldName());
+			}
+		}
+		throw new DBConfigException("Unable to find Primary Key in table [" + tableName + "]");
+	}
+
+	/**
+	 * get a field from a table in the database.
+	 * 
+	 * @param tableName
+	 *            - name of table we want to find
+	 * @param field
+	 *            - name of the field we want to find in the table.
+	 * @return a DBField if found
+	 * @throws DBConfigException
+	 *             if something goes wrong
+	 */
+	public DBField getTableField(String tableName, String fieldName) throws DBConfigException
+	{
+
+		DBTable dbTable = getTable(tableName);
+		return dbTable.getField(fieldName);
+	}
+
+	/**
+	 * Find a table in the db xml structure.
+	 * 
+	 * @param tableName
+	 *            name of table we want to find
+	 * @return an XMLObect of the table if found or null if not found
+	 * @throws Exception
+	 *             if something goes wrong
+	 */
+	public XMLObject findTable(String tableName) throws Exception
+	{
+
+		XMLObject db = this.dbXO.findNode(this.dbXO, "database");
+		if (db == null) {
+			return (null);
+		}
+		for (int tableLoop = 0; tableLoop < db.getChildCount(); tableLoop++) {
+			XMLObject table = db.getChild(tableLoop);
+			if (table.getElementName().equalsIgnoreCase("table")) {
+				if (((String) table.getAttributeValueNoNull("table_name")).equalsIgnoreCase(tableName)) {
+					return (table);
+				}
+			}
+		}
+		return (null);
+	}
+
+	/**
+	 * Get a field that matches the table name and field name.
+	 * 
+	 * @param tableAndFieldName
+	 *            is the field we want to find which will have the table name at
+	 *            the beginning. i.e. tb_tablename.fieldname
+	 */
+	public DBField getFieldFromTableAndFieldName(String tableAndFieldName) throws DBConfigException
+	{
+
+		String tableName = DBTable.getTableName(tableAndFieldName);
+		String fieldName = DBTable.getFieldName(tableAndFieldName);
+		DBTable dbTable = this.getTable(tableName);
+		DBField dbField = dbTable.getField(fieldName);
+		return (dbField);
+	}
+
+	@Override
+	public String toString()
+	{
+
+		StringBuffer sb = new StringBuffer();
+		sb.append("database tables:");
+		for (int iLoop = 0; iLoop < this.dbTables.length; iLoop++) {
+			sb.append(this.dbTables[iLoop].toString(1));
+		}
+		return (sb.toString());
+	}
+
+	/**
+	 * @author MichaelMurphy
+	 *         <p>
+	 *         This loads the Database Structure from an xml description file
+	 *         which can be stored on the hard disk or as part of a resource.
+	 *         </p>
+	 * @param stuctureFileName
+	 *            is the file name of the xml description file
+	 * @return the XML object mapped from the xml description file
+	 * @throws Exception
+	 * @throws java.lang.Exception
+	 *             if there is something wrong with the file or xml format.
+	 * @since 27 Feb 2008
+	 */
+	private XMLObject loadStructure(String stuctureFileName) throws Exception
+	{
+
+		String data = new ResourceUtils().loadFile(stuctureFileName);
+		return (new XMLObject().mapXMLCharToXMLObject(data));
+	}
+
+	public static void main(String[] args) throws Exception
+	{
+
+		String dbConfigFileName = "db_layout.xml";
+		DataStructure db = new DataStructure(dbConfigFileName);
+		System.out.println(db.toString());
+	}
+}

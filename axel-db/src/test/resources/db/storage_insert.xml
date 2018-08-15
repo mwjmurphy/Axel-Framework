@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<storage xmlns="http://www.xmlactions.org/storage"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd"
+   name="Sample Test Storage"
+>
+
+   <database name="tracker">
+      <db_specific name="oracle">
+         <sql name="oracle_sql" sql="None" />
+      </db_specific>
+      <sql name="test_it_got_stored" sql="None" />
+      <table name="tb_severity">
+         <pk name="id" presentation_name="ID" />
+         <text name="description" length="10" presentation_name="Description" presentation_width="10" />
+      </table>
+      <table name="tb_project">
+         <pk name="id" presentation_name="ID" />
+         <text name="description" length="45" presentation_name="Description" presentation_width="45" />
+      </table>
+   </database>
+
+   <database name="jobber">
+   	  <insert database="tracker"/>
+   	  <insert database="test" file="/db/storage.xml"/>
+      <table name="tb_job">
+         <pk name="id" presentation_name="ID" />
+         <text name="timestamp" length="30" presentation_name="Timestamp" presentation_width="30" editable="false" />
+         <text name="brief_description" length="500" presentation_name="Brief Description" presentation_width="50" />
+         <textarea name="full_description" length="1000" presentation_name="Full Description"
+            presentation_width="50" want_html_edit="true" presentation_height="5" />
+         <timestamp name="create_date" presentation_width="30" presentation_name="Create Date" />
+         <!-- 
+         <fk name="id_location" presentation_name="Location ID" foreign_table="tb_locations" foreign_key="id" />
+         <fk name="id_attachments" presentation_name="Attachment ID" foreign_table="tb_attachments" foreign_key="id" />
+          -->
+      </table>
+
+      <table name="tb_job_links">
+         <table_path table_a="tb_job" table_b="tb_job_category" />
+         <pk name="id" presentation_name="Job Link ID" />
+         <fk name="id_job" foreign_table="tb_job" foreign_key="id" presentation_name="Job ID" mandatory="true" />
+         <fk name="id_job_category" foreign_table="tb_job_category" foreign_key="id" presentation_name="Job Category ID"
+            mandatory="true" />
+      </table>
+
+      <table name="tb_job_group">
+         <pk name="id" presentation_name="Job Group ID" />
+         <text name="description" presentation_width="45" presentation_name="Description" length="45" />
+         <textarea name="full_description" presentation_name="Full Description" length="256"
+            presentation_height="5" presentation_width="50" />
+      </table>
+
+      <table name="tb_job_category">
+         <pk name="id" presentation_name="Job Category ID" />
+         <fk name="id_group" foreign_table="tb_job_group" foreign_key="id" presentation_name="Job Group ID" />
+         <text name="description" presentation_width="45" presentation_name="Description" length="45" />
+         <textarea name="full_description" presentation_name="Full Description" length="256"
+            presentation_height="5" presentation_width="50" />
+      </table>
+
+   </database>
+
+
+
+   <xml name="xml_sample" resource="/db/storage_sample.xml">
+   </xml>
+
+</storage>

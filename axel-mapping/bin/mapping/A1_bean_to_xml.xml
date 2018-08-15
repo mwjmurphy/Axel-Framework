@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean_to_xml 
+	xmlns="http://www.xmlactions.org/bean_to_xml" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/bean_to_xml http://www.xmlactions.org/schema/bean_to_xml.xsd">
+	
+	<namespace prefix="rio" uri="rio_uri"/>
+    
+    <populator id="PopulatorFromList" clas="org.xmlactions.mapping.bean_to_xml.PopulatorFromList"/>
+    
+    <populator id="LongTime" clas="org.xmlactions.mapping.bean_to_xml.PopulatorFromTimestamp">
+        <keyvalue key="time_format" value="yyyy-MM-dd HH:mm"/>
+    </populator>
+
+	<bean prefix="rio" id="a1" name="a1" clas="org.xmlactions.mapping.testclasses.A1" >
+		<element name="aListOfA1s" property="listOfA1s" bean_ref="a1" populator_ref="PopulatorFromList"/>
+		<attribute name="anInt" property="anInt"/>
+		<attribute property="timestamp"/>
+        <attribute name="timestamp2" property="timestamp" populator_ref="LongTime"/>
+		<element name="A2" property="a2" bean_ref="a2"/>
+        <element name="User" property="users"/>
+        <element name="ers" property="ersList" bean_ref="a2" populator_ref="PopulatorFromList"/>
+	</bean>
+
+	<bean prefix="rio" id="a2" name="a2" clas="org.xmlactions.mapping.testclasses.A2">
+		<attribute property="name"/>
+		<attribute property="anInt"/>
+		<attribute property="aString"/>
+	</bean>
+	
+</bean_to_xml>
+
