@@ -1,6 +1,8 @@
 # ignore all target folders
 **/target/
 **/temp/
+**/build/
+**/bin/
 
 # ignore all log files
 **/*.log
@@ -13,3 +15,6 @@
 /axel-commons.log.1
 /axel-commons.log.2
 /axel-commons.log.3
+
+# ignore all gradle config files
+**/.gradle/
