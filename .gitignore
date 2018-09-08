@@ -1,20 +1,29 @@
-# ignore all target folders
-**/target/
+# IDEA FILES
+*.iml
+*.idea
+
+# ECLIPSE FILES
+*.project
+*.prefs
+*.classpath
+
+# GRADLE FILES
+.gradle
+
+# BUILD FILES
+out/
+target/
+build/
+/.project
+/.classpath
+bin/
+
+*/.settings/
+*.info
+.DS_Store
+
 **/temp/
-**/build/
-**/bin/
 
 # ignore all log files
 **/*.log
 **/*.log?
-
-# ignore all eclipse config files
-**/.settings/
-**/.classpath
-**/.project
-/axel-commons.log.1
-/axel-commons.log.2
-/axel-commons.log.3
-
-# ignore all gradle config files
-**/.gradle/
