@@ -22,6 +22,7 @@ bin/
 *.info
 .DS_Store
 
+// test files
 **/temp/
 
 # ignore all log files
