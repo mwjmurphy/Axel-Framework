@@ -40,6 +40,23 @@ public class TestCodeParser {
 
 	}
 	
+	@Test
+	public void testCodeCodeWithReplace() throws Exception {
+	
+		IExecContext execContext = (IExecContext)applicationContext.getBean(ActionConst.EXEC_CONTEXT_BEAN_REF);
+		
+		String value = execContext.getString("actionsx:k1");
+		value = execContext.getString("actionsx.k1");
+		value = execContext.getString("k1");
+
+		CodeParser codeParser = new CodeParser();
+		
+		String name = (String) codeParser.parseCode(execContext, "org.xmlactions.action.config.TestCodeParser.buildName('fred',k1, 40)");
+		assertTrue(name.startsWith("'Integer':"));
+		LOGGER.debug("name:{}", name);
+
+	}
+	
 	public String buildName(String first, String second) {
 		
 		return first + " . " + second;

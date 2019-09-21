@@ -98,17 +98,23 @@ public class Param extends BaseAction
 
 	public static Param buildParam(IExecContext execContext, String value) {
 		Param param = new Param();
+		boolean isString = false;
 		if (value.startsWith("'") || value.startsWith("\"")) {
 			value = value.substring(1);
+			isString = true;
 		}
 		if (value.endsWith("'") || value.endsWith("\"")) {
 			value = value.substring(0, value.length()-1);
+			isString = true;
 		}
 		value = value.trim();
-        Object obj = execContext.get(value);
-        if (obj == null) {
-            obj = StrSubstitutor.replace(value, execContext);
-        }
+		Object obj = null;
+		if (isString == false) {
+	        obj = execContext.get(value);
+	        if (obj == null) {
+	            obj = StrSubstitutor.replace(value, execContext);
+	        }
+		}
 		if (obj == null) {
 			obj = value;
 		}
