@@ -60,6 +60,9 @@ public interface IExecContext extends Map<String, Object> {
 	/** use this to check if a Replacement string starts with "spring_ac:" */
 	public final static String APPLICATIONCONTEXT_REF = "spring_ac";
 
+	/** use this to execute a code call "code:" */
+	public final static String CODE_REF = "code";
+
 	/** use this to get an java environment variable */
 	public final static String ENV_REF = "env";
 

@@ -10,12 +10,17 @@ public class CodeParser {
 	 * @param code
 	 * @throws Exception 
 	 */
-	public Object parseCode(IExecContext execContext, String code) throws Exception {
+	public Object parseCode(IExecContext execContext, String code) {
 		CodeAction codeAction = new CodeAction();
 		codeAction.setCall(getCodePart(code));
 		List<Param> params = getParams(execContext, code);
 		codeAction.setParams(params);
-		Object result = codeAction.execute(execContext);
+		Object result;
+		try {
+			result = codeAction.execute(execContext);
+		} catch (Exception ex) {
+			throw new IllegalArgumentException("Unable to parse code:[" + code + "]",ex);
+		}
 		return result;
 	}
 	

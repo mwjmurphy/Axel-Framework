@@ -45,15 +45,23 @@ public class TestCodeParser {
 	
 		IExecContext execContext = (IExecContext)applicationContext.getBean(ActionConst.EXEC_CONTEXT_BEAN_REF);
 		
-		String value = execContext.getString("actionsx:k1");
-		value = execContext.getString("actionsx.k1");
-		value = execContext.getString("k1");
-
 		CodeParser codeParser = new CodeParser();
 		
 		String name = (String) codeParser.parseCode(execContext, "org.xmlactions.action.config.TestCodeParser.buildName('fred',k1, 40)");
 		assertTrue(name.startsWith("'Integer':"));
 		LOGGER.debug("name:{}", name);
+
+	}
+	
+	@Test
+	public void testCodeReplaceFromExecContext() throws Exception {
+	
+		IExecContext execContext = (IExecContext)applicationContext.getBean(ActionConst.EXEC_CONTEXT_BEAN_REF);
+		
+		String name = "" + execContext.get("code:org.xmlactions.action.config.TestCodeParser.buildName('fred',k1, 40)");
+		
+		LOGGER.debug("name:{}", name);
+		assertTrue(name.contains("value of k1"));
 
 	}
 	

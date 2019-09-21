@@ -259,6 +259,9 @@ public abstract class ExecContext implements IExecContext, Serializable {
 				return getThemeValueQuietly(k.substring(index + 1));
 			} else if (index == APPLICATIONCONTEXT_REF.length() && k.startsWith(APPLICATIONCONTEXT_REF)) {
 				return getApplicationContext().getBean(k.substring(index + 1));
+			} else if (index == CODE_REF.length() && k.startsWith(CODE_REF)) {
+				CodeParser codeParser = new CodeParser();
+				return codeParser.parseCode(this, k.substring(index + 1));
 			} else {
 				Map<String, Object> map = getMap(k.substring(0, index));
 				if (map != null) {
