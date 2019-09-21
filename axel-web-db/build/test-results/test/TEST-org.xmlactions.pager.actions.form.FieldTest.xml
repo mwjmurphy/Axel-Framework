@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.pager.actions.form.FieldTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:43" hostname="7SV0SQ2-NB" time="0.148">
+  <properties/>
+  <testcase name="testField" classname="org.xmlactions.pager.actions.form.FieldTest" time="0.117"/>
+  <testcase name="testParse" classname="org.xmlactions.pager.actions.form.FieldTest" time="0.018"/>
+  <testcase name="testDraw" classname="org.xmlactions.pager.actions.form.FieldTest" time="0.013"/>
+  <system-out><![CDATA[Jan:10:14:07:43,320:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@490661e9: display name [org.springframework.context.support.ClassPathXmlApplicationContext@490661e9]; startup date [Thu Jan 10 14:07:43 GMT 2019]; root of context hierarchy
+Jan:10:14:07:43,321:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:43,331:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@490661e9]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6fa53cb2
+Jan:10:14:07:43,332:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6fa53cb2: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:43,333:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:43,349:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:43,349:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:43,355:[Test worker]:(BSFManager.getClassPath:556):DEBUG:BSFManager:BSFManager:getClassPath
+Jan:10:14:07:43,355:[Test worker]:(BSFManager.getClassLoader:548):DEBUG:BSFManager:BSFManager:getClassLoader
+Jan:10:14:07:43,433:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:43,433:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:43,434:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:43,435:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:43,436:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:43,436:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:43,437:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5e1e4ac3: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5e1e4ac3]; startup date [Thu Jan 10 14:07:43 GMT 2019]; root of context hierarchy
+Jan:10:14:07:43,437:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:43,450:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5e1e4ac3]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7a0a1c4e
+Jan:10:14:07:43,451:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7a0a1c4e: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:43,451:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:43,454:[Test worker]:(FieldTest.testParse:71):DEBUG:FieldTest:newPage:<body>
+  
+</body>
+Jan:10:14:07:43,455:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1ca747e0: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1ca747e0]; startup date [Thu Jan 10 14:07:43 GMT 2019]; root of context hierarchy
+Jan:10:14:07:43,455:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:43,464:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1ca747e0]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6d747af6
+Jan:10:14:07:43,465:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6d747af6: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:43,465:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:43,468:[Test worker]:(FieldTest.testDraw:86):DEBUG:FieldTest:newPage:<body>
+  
+</body>
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

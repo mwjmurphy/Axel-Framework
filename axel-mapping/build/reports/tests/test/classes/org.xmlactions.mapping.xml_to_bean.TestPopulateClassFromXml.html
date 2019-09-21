@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.xmlactions.mapping.xml_to_bean.html">org.xmlactions.mapping.xml_to_bean</a> &gt; TestPopulateClassFromXml</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">9</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.121s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testMapping</td>
+<td class="success">0.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMappingContent</td>
+<td class="success">0.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMappingCreateA1</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMappingEmptyBigInt</td>
+<td class="success">0.012s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMappingMultipleLists</td>
+<td class="success">0.016s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMappingPopulateInt</td>
+<td class="success">0.009s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMappingPopulateNested</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMappingRenameElements</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testReflection</td>
+<td class="success">0.028s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>[Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] c.getMethods - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:166)
+ [Test worker] [] public java.lang.String org.xmlactions.mapping.testclasses.A1.toString(java.lang.String) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setTimestamp(java.sql.Timestamp) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.util.Date org.xmlactions.mapping.testclasses.A1.getDate() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.sql.Timestamp org.xmlactions.mapping.testclasses.A1.getTimestamp() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public int org.xmlactions.mapping.testclasses.A1.getAnInt() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public double org.xmlactions.mapping.testclasses.A1.getaDouble() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.getA2() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA2s() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setListOfA2s(java.util.List) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setDate(java.util.Date) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.sql.Date org.xmlactions.mapping.testclasses.A1.getSqldate() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.getBigInt() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public int org.xmlactions.mapping.testclasses.A1._getaLong() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1._setaLong(int) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setBigInt(java.math.BigInteger) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setUsers(java.lang.String[]) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setA2(org.xmlactions.mapping.testclasses.A2) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.util.List org.xmlactions.mapping.testclasses.A1.getErsList() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setSqldate(java.sql.Date) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setErs(java.util.List) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.util.List org.xmlactions.mapping.testclasses.A1.getErs() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.lang.String[] org.xmlactions.mapping.testclasses.A1.getUsers() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public int org.xmlactions.mapping.testclasses.A1a.getAnA1aInt() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1a.setAnA1aInt(int) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public final void java.lang.Object.wait() throws java.lang.InterruptedException - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public boolean java.lang.Object.equals(java.lang.Object) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public java.lang.String java.lang.Object.toString() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public native int java.lang.Object.hashCode() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public final native java.lang.Class java.lang.Object.getClass() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public final native void java.lang.Object.notify() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] public final native void java.lang.Object.notifyAll() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:168)
+ [Test worker] [] c.getDeclaredMethods - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:171)
+ [Test worker] [] public java.lang.String org.xmlactions.mapping.testclasses.A1.toString(java.lang.String) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setTimestamp(java.sql.Timestamp) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.util.Date org.xmlactions.mapping.testclasses.A1.getDate() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.sql.Timestamp org.xmlactions.mapping.testclasses.A1.getTimestamp() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public int org.xmlactions.mapping.testclasses.A1.getAnInt() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public double org.xmlactions.mapping.testclasses.A1.getaDouble() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.getA2() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA2s() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setListOfA2s(java.util.List) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setDate(java.util.Date) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.sql.Date org.xmlactions.mapping.testclasses.A1.getSqldate() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.getBigInt() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public int org.xmlactions.mapping.testclasses.A1._getaLong() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1._setaLong(int) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setBigInt(java.math.BigInteger) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setUsers(java.lang.String[]) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setA2(org.xmlactions.mapping.testclasses.A2) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.util.List org.xmlactions.mapping.testclasses.A1.getErsList() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setSqldate(java.sql.Date) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setErs(java.util.List) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.util.List org.xmlactions.mapping.testclasses.A1.getErs() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] public java.lang.String[] org.xmlactions.mapping.testclasses.A1.getUsers() - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:173)
+ [Test worker] [] c.getFields - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:176)
+ [Test worker] [] public int org.xmlactions.mapping.testclasses.A1.aLong - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:178)
+ [Test worker] [] public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.bigInt - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:178)
+ [Test worker] [] public int org.xmlactions.mapping.testclasses.A1a.a1aint - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:178)
+ [Test worker] [] c.getDeclaredFields - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:182)
+ [Test worker] [] private int org.xmlactions.mapping.testclasses.A1.anInt - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] public int org.xmlactions.mapping.testclasses.A1.aLong - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private double org.xmlactions.mapping.testclasses.A1.aDouble - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.lang.String org.xmlactions.mapping.testclasses.A1.aString - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.bigInt - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.sql.Timestamp org.xmlactions.mapping.testclasses.A1.timestamp - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.util.Date org.xmlactions.mapping.testclasses.A1.date - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.sql.Date org.xmlactions.mapping.testclasses.A1.sqldate - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.lang.String[] org.xmlactions.mapping.testclasses.A1.users - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.util.List org.xmlactions.mapping.testclasses.A1.listOfA1s - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.a2 - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.util.List org.xmlactions.mapping.testclasses.A1.listOfA2s - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.util.List org.xmlactions.mapping.testclasses.A1.ers - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] private java.lang.String org.xmlactions.mapping.testclasses.A1.content - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:184)
+ [Test worker] [] c.getInterfaces - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:187)
+ [Test worker] [] interface org.xmlactions.mapping.testclasses.A1interface - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:189)
+ [Test worker] [] c.getClasses - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:192)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] xml:&lt;A1 anInt = &quot;1&quot; aDouble=&quot;1.01&quot; aString=&quot;This is a String&quot;&gt; &lt;listOfA1s aString=&quot;ListOfA1s&quot;/&gt;  &lt;listOfA2s anInt=&quot;222&quot; aString=&quot;last nested a2&quot;/&gt; &lt;/A1&gt; - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:111)
+ [Test worker] [] xo.getContent():  - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:81)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aDouble] -  Name:aDouble DisplayName:aDouble ShortDescription:aDouble PropertyType:double ReadMethod:public double org.xmlactions.mapping.testclasses.A1.getaDouble() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@4f6fa82flistOfA1s - org.xmlactions.mapping.testclasses.A1@12223a4f - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@4f6fa82flistOfA2s - null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA2s] -  Name:listOfA2s DisplayName:listOfA2s ShortDescription:listOfA2s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA2s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA2s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A2.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A2.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A2.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A2.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] clas:org.xmlactions.mapping.testclasses.A1@4f6fa82f a1.anInt:1 - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:117)
+ [Test worker] [] anInt:1
+aLong:0
+aDouble:1.01
+aString:This is a String
+bigInt:null
+timestamp:null
+date:null
+sqldate:null
+content: 
+ listOfA1s: anInt:0
+ aLong:0
+ aDouble:0.0
+ aString:ListOfA1s
+ bigInt:null
+ timestamp:null
+ date:null
+ sqldate:null
+ content:null
+ listOfA2s: anInt:222
+ aString:last nested a2
+ content:null - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:119)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] xml:&lt;A1 anInt = &quot;1&quot; aDouble=&quot;1.01&quot; bString=&quot;This is a bString&quot;&gt;  &lt;listOfA1s bigInt=&quot;6&quot;/&gt;   &lt;listOfA1s bigInt=&quot;&quot;/&gt;   &lt;listOfA2s bigInt=&quot;6&quot;/&gt;  &lt;a2 name=&quot;a2&quot;/&gt;&lt;/A1&gt; - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:150)
+ [Test worker] [] xo.getContent():   - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:81)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aDouble] -  Name:aDouble DisplayName:aDouble ShortDescription:aDouble PropertyType:double ReadMethod:public double org.xmlactions.mapping.testclasses.A1.getaDouble() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@7851a1e9listOfA1s - org.xmlactions.mapping.testclasses.A1@57abd048 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [bigInt] -  Name:bigInt DisplayName:bigInt ShortDescription:bigInt PropertyType:class java.math.BigInteger ReadMethod:public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.getBigInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setBigInt(java.math.BigInteger) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@7851a1e9listOfA1s - org.xmlactions.mapping.testclasses.A1@43bb4bad - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [bigInt] -  Name:bigInt DisplayName:bigInt ShortDescription:bigInt PropertyType:class java.math.BigInteger ReadMethod:public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.getBigInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setBigInt(java.math.BigInteger) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@7851a1e9listOfA2s - null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA2s] -  Name:listOfA2s DisplayName:listOfA2s ShortDescription:listOfA2s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA2s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA2s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [a2] -  Name:a2 DisplayName:a2 ShortDescription:a2 PropertyType:class org.xmlactions.mapping.testclasses.A2 ReadMethod:public org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.getA2() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setA2(org.xmlactions.mapping.testclasses.A2) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [name] -  Name:name DisplayName:name ShortDescription:name PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A2.getName() WriteMethod:public void org.xmlactions.mapping.testclasses.A2.setName(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] clas:org.xmlactions.mapping.testclasses.A1@7851a1e9 a1.anInt:1 - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:154)
+ [Test worker] [] anInt:1
+aLong:0
+aDouble:1.01
+aString:This is a bString
+bigInt:null
+timestamp:null
+date:null
+sqldate:null
+content:  
+ listOfA1s: anInt:0
+ aLong:0
+ aDouble:0.0
+ aString:null
+ bigInt:6
+ timestamp:null
+ date:null
+ sqldate:null
+ content:null
+ listOfA1s: anInt:0
+ aLong:0
+ aDouble:0.0
+ aString:null
+ bigInt:null
+ timestamp:null
+ date:null
+ sqldate:null
+ content:null
+ a2:a2
+ listOfA2s: anInt:0
+ aString:null
+ content:null - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:156)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] xo.getContent(): - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:81)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aDouble] -  Name:aDouble DisplayName:aDouble ShortDescription:aDouble PropertyType:double ReadMethod:public double org.xmlactions.mapping.testclasses.A1.getaDouble() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [bigInt] -  Name:bigInt DisplayName:bigInt ShortDescription:bigInt PropertyType:class java.math.BigInteger ReadMethod:public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.getBigInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setBigInt(java.math.BigInteger) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorTimestamp - org.xmlactions.mapping.testclasses.A1@2bb8cea0timestamp - 2011-08-15 01:22 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorDate - org.xmlactions.mapping.testclasses.A1@2bb8cea0date - 2011-08-16 01:22 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorSqlDate - org.xmlactions.mapping.testclasses.A1@2bb8cea0sqldate - 2011-08-17 02:33 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [a2] -  Name:a2 DisplayName:a2 ShortDescription:a2 PropertyType:class org.xmlactions.mapping.testclasses.A2 ReadMethod:public org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.getA2() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setA2(org.xmlactions.mapping.testclasses.A2) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] 
+anInt:1
+aLong:1002
+aDouble:1.01
+aString:This is a String
+bigInt:999999999
+timestamp:2011-08-15 01:22:00.0
+date:Tue Aug 16 01:22:00 BST 2011
+sqldate:2011-08-17
+content:
+ a2:null - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:69)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] xml:&lt;a1 anInt = &quot;1&quot; aDouble=&quot;1.01&quot; aString=&quot;This is a String&quot; bigInt=&quot;999999999999&quot;&gt;&lt;listOfA1s anInt=&quot;11&quot;/&gt;&lt;listOfA1s anInt=&quot;12&quot;/&gt;&lt;listOfA1s anInt=&quot;13&quot; bigInt=&quot;999&quot;/&gt;&lt;a2&gt;content of a2&lt;/a2&gt;&lt;/a1&gt; - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:78)
+ [Test worker] [] xo.getContent(): - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:81)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aDouble] -  Name:aDouble DisplayName:aDouble ShortDescription:aDouble PropertyType:double ReadMethod:public double org.xmlactions.mapping.testclasses.A1.getaDouble() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [bigInt] -  Name:bigInt DisplayName:bigInt ShortDescription:bigInt PropertyType:class java.math.BigInteger ReadMethod:public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.getBigInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setBigInt(java.math.BigInteger) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@203b6ebblistOfA1s - org.xmlactions.mapping.testclasses.A1@7bb892f4 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@203b6ebblistOfA1s - org.xmlactions.mapping.testclasses.A1@5efc2961 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@203b6ebblistOfA1s - org.xmlactions.mapping.testclasses.A1@ccb89d5 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [bigInt] -  Name:bigInt DisplayName:bigInt ShortDescription:bigInt PropertyType:class java.math.BigInteger ReadMethod:public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.getBigInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setBigInt(java.math.BigInteger) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [a2] -  Name:a2 DisplayName:a2 ShortDescription:a2 PropertyType:class org.xmlactions.mapping.testclasses.A2 ReadMethod:public org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.getA2() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setA2(org.xmlactions.mapping.testclasses.A2) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] clas:org.xmlactions.mapping.testclasses.A1@203b6ebb a1.anInt:1 - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:82)
+ [Test worker] [] anInt:1
+aLong:0
+aDouble:1.01
+aString:This is a String
+bigInt:999999999999
+timestamp:null
+date:null
+sqldate:null
+content:
+ listOfA1s: anInt:11
+ aLong:0
+ aDouble:0.0
+ aString:null
+ bigInt:null
+ timestamp:null
+ date:null
+ sqldate:null
+ content:null
+ listOfA1s: anInt:12
+ aLong:0
+ aDouble:0.0
+ aString:null
+ bigInt:null
+ timestamp:null
+ date:null
+ sqldate:null
+ content:null
+ listOfA1s: anInt:13
+ aLong:0
+ aDouble:0.0
+ aString:null
+ bigInt:999
+ timestamp:null
+ date:null
+ sqldate:null
+ content:null
+ a2:null - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:84)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] xml:&lt;A1 anInt = &quot;1&quot; aDouble=&quot;1.01&quot; bString=&quot;This is a bString&quot;&gt; &lt;ListOfA1s anInt=&quot;11&quot;&gt;  &lt;listOfA1s anInt=&quot;111&quot; aString=&quot;last nested a1&quot;/&gt;  &lt;/ListOfA1s&gt; &lt;ListOfA1s aString=&quot;ListOfA1s&quot;/&gt;  &lt;ListOfA2s anInt=&quot;222&quot; aString=&quot;last nested a2&quot;/&gt;  &lt;a2 name=&quot;a2&quot;/&gt;&lt;/A1&gt; - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:131)
+ [Test worker] [] xo.getContent():  - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:81)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aDouble] -  Name:aDouble DisplayName:aDouble ShortDescription:aDouble PropertyType:double ReadMethod:public double org.xmlactions.mapping.testclasses.A1.getaDouble() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@7c97ceelistOfA1s - org.xmlactions.mapping.testclasses.A1@1663bac7 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@1663bac7listOfA1s - org.xmlactions.mapping.testclasses.A1@1df7d337 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@7c97ceelistOfA1s - org.xmlactions.mapping.testclasses.A1@606e2d7e - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@7c97ceelistOfA2s - null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA2s] -  Name:listOfA2s DisplayName:listOfA2s ShortDescription:listOfA2s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA2s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA2s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A2.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A2.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A2.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A2.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [a2] -  Name:a2 DisplayName:a2 ShortDescription:a2 PropertyType:class org.xmlactions.mapping.testclasses.A2 ReadMethod:public org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.getA2() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setA2(org.xmlactions.mapping.testclasses.A2) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [name] -  Name:name DisplayName:name ShortDescription:name PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A2.getName() WriteMethod:public void org.xmlactions.mapping.testclasses.A2.setName(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] clas:org.xmlactions.mapping.testclasses.A1@7c97cee a1.anInt:1 - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:135)
+ [Test worker] [] anInt:1
+aLong:0
+aDouble:1.01
+aString:This is a bString
+bigInt:null
+timestamp:null
+date:null
+sqldate:null
+content: 
+ listOfA1s: anInt:11
+ aLong:0
+ aDouble:0.0
+ aString:null
+ bigInt:null
+ timestamp:null
+ date:null
+ sqldate:null
+ content:  
+  listOfA1s:  anInt:111
+  aLong:0
+  aDouble:0.0
+  aString:last nested a1
+  bigInt:null
+  timestamp:null
+  date:null
+  sqldate:null
+  content:null
+ listOfA1s: anInt:0
+ aLong:0
+ aDouble:0.0
+ aString:ListOfA1s
+ bigInt:null
+ timestamp:null
+ date:null
+ sqldate:null
+ content:null
+ a2:a2
+ listOfA2s: anInt:222
+ aString:last nested a2
+ content:null - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:137)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] xo.getContent():Content of A1 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:81)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [a2] -  Name:a2 DisplayName:a2 ShortDescription:a2 PropertyType:class org.xmlactions.mapping.testclasses.A2 ReadMethod:public org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.getA2() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setA2(org.xmlactions.mapping.testclasses.A2) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] 
+anInt:0
+aLong:0
+aDouble:0.0
+aString:null
+bigInt:null
+timestamp:null
+date:null
+sqldate:null
+content:Content of A1
+ a2:null - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:51)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] xo.getContent():Content of A1 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:81)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aDouble] -  Name:aDouble DisplayName:aDouble ShortDescription:aDouble PropertyType:double ReadMethod:public double org.xmlactions.mapping.testclasses.A1.getaDouble() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [bigInt] -  Name:bigInt DisplayName:bigInt ShortDescription:bigInt PropertyType:class java.math.BigInteger ReadMethod:public java.math.BigInteger org.xmlactions.mapping.testclasses.A1.getBigInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setBigInt(java.math.BigInteger) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorTimestamp - org.xmlactions.mapping.testclasses.A1@1c043f45timestamp - 2011-08-15 01:22 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorDate - org.xmlactions.mapping.testclasses.A1@1c043f45date - 2011-08-16 01:22 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorSqlDate - org.xmlactions.mapping.testclasses.A1@1c043f45sqldate - 2011-08-17 02:33 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [a2] -  Name:a2 DisplayName:a2 ShortDescription:a2 PropertyType:class org.xmlactions.mapping.testclasses.A2 ReadMethod:public org.xmlactions.mapping.testclasses.A2 org.xmlactions.mapping.testclasses.A1.getA2() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setA2(org.xmlactions.mapping.testclasses.A2) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] 
+anInt:1
+aLong:1002
+aDouble:1.01
+aString:This is a String
+bigInt:999999999
+timestamp:2011-08-15 01:22:00.0
+date:Tue Aug 16 01:22:00 BST 2011
+sqldate:2011-08-17
+content:Content of A1
+ a2:null - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:43)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.xml_to_bean.XmlToBean] with value of [http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.xml_to_bean.XmlToBean' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] xml:&lt;a1 anInt = &quot;1&quot; aDouble=&quot;1.01&quot; aString=&quot;This is a String&quot;&gt;&lt;listOfA1s anInt=&quot;11&quot;&gt; &lt;listOfA1s anInt=&quot;111&quot; aString=&quot;last nested a1&quot;/&gt; &lt;/listOfA1s&gt;&lt;/a1&gt; - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:97)
+ [Test worker] [] xo.getContent(): - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:81)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aDouble] -  Name:aDouble DisplayName:aDouble ShortDescription:aDouble PropertyType:double ReadMethod:public double org.xmlactions.mapping.testclasses.A1.getaDouble() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaDouble(double) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@1a8e4db0listOfA1s - org.xmlactions.mapping.testclasses.A1@6eb45019 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] obj:interface java.util.List - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:191)
+ [Test worker] [] org.xmlactions.mapping.xml_to_bean.PopulatorArrayList - org.xmlactions.mapping.testclasses.A1@6eb45019listOfA1s - org.xmlactions.mapping.testclasses.A1@44a607f0 - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:235)
+ [Test worker] [] PropertyDescriptor [listOfA1s] -  Name:listOfA1s DisplayName:listOfA1s ShortDescription:listOfA1s PropertyType:interface java.util.List ReadMethod:public java.util.List org.xmlactions.mapping.testclasses.A1.getListOfA1s() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setListOfA1s(java.util.List) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [content] -  Name:content DisplayName:content ShortDescription:content PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getContent() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setContent(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [anInt] -  Name:anInt DisplayName:anInt ShortDescription:anInt PropertyType:int ReadMethod:public int org.xmlactions.mapping.testclasses.A1.getAnInt() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setAnInt(int) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] PropertyDescriptor [aString] -  Name:aString DisplayName:aString ShortDescription:aString PropertyType:class java.lang.String ReadMethod:public java.lang.String org.xmlactions.mapping.testclasses.A1.getaString() WriteMethod:public void org.xmlactions.mapping.testclasses.A1.setaString(java.lang.String) Value:null - (org.xmlactions.mapping.xml_to_bean.PopulateClassFromXml:219)
+ [Test worker] [] clas:org.xmlactions.mapping.testclasses.A1@1a8e4db0 a1.anInt:1 - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:101)
+ [Test worker] [] anInt:1
+aLong:0
+aDouble:1.01
+aString:This is a String
+bigInt:null
+timestamp:null
+date:null
+sqldate:null
+content:
+ listOfA1s: anInt:11
+ aLong:0
+ aDouble:0.0
+ aString:null
+ bigInt:null
+ timestamp:null
+ date:null
+ sqldate:null
+ content: 
+  listOfA1s:  anInt:111
+  aLong:0
+  aDouble:0.0
+  aString:last nested a1
+  bigInt:null
+  timestamp:null
+  date:null
+  sqldate:null
+  content:null - (org.xmlactions.mapping.xml_to_bean.TestPopulateClassFromXml:103)
+ </pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at 10-Jan-2019 14:07:24</p>
+</div>
+</div>
+</body>
+</html>

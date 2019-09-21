@@ -1,0 +1,31 @@
+<database login-name="sa" 
+		  login-password="password" 
+		  database-name="master" 
+		  database-protocol="jdbc:sqlserver://localhost:1433;"
+		  database-driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		  database-url="jdbc:sqlserver://localhost:1433;database=master"
+		  >
+
+	<commands>
+		<sql>use [master]</sql>
+		<sql>drop database [test]</sql>
+		<sql>drop table tb_one</sql>
+		<sql>
+			CREATE DATABASE [test] ON  PRIMARY 
+			( NAME = N'test', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\test.mdf' , SIZE = 2240KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+			 LOG ON 
+			( NAME = N'test_log', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\test_log.LDF' , SIZE = 560KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+		</sql>
+		 <sql>use [test]</sql>
+		<sql>create table tb_one (id int IDENTITY(1,1) NOT NULL, Name varchar(32), Address varchar(32))</sql>
+		<sql>insert into tb_one( Name) VALUES ( 'fred')</sql>
+		<sql>update tb_one set Name='fred flinstone' where id = 1</sql>
+		<sql>update tb_one set Name = 'wilma flinstone', Address= 'bedrock' where id = 1</sql>
+
+		<sql>select * from tb_one</sql>
+	</commands>
+
+</database>
+
+
+

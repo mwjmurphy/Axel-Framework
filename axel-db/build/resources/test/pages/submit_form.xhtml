@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:pager="http://www.xmlactions.org/pager_actions"
+   xsi:schemaLocation="
+      http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd">
+
+   <pager:submit_form call="ers.login.Login.doLogin" page="www/dcd/login/loggedin.uhtml"> 
+      <p>
+         <select name="login_user">
+            <option id="none" label="none" title="Inspector 1"></option>
+            <option id="ins1" label="Ins1" title="Inspector 1">INS 1</option>
+            <option id="ins2" label="Ins2" title="Inspector 2">INS 2</option>
+         </select>
+         <br/>
+         <input type="submit" value="submit"/>
+      </p>
+   </pager:submit_form>
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:pager="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="
+		http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd
+		http://www.xmlactions.org/pager_db_actions http://www.xmlactions.org/schema/pager_db_actions.xsd
+		">
+<head>
+</head>
+<body>
+<table>
+	<tr>
+		<pager:edit id="edit_id" storage_config_ref ="storageConfig" table_name="tb_address" pk_value="1" theme_name="riostl"
+			presentation_form="pages\edit_form.uhtml"
+		>
+			<pager:field_list>
+				<pager:field name="id" />
+				<pager:field name="street1" />
+				<pager:field name="city" />
+			</pager:field_list>
+			<pager:post_processes>
+			<pager:code call="net.uhtml.Code.call">
+				<pager:param value="xxx"/>
+			</pager:code>
+			<pager:code call="net.uhtml.Code.call">
+				<pager:param value="yyy"/>
+				<pager:param value="zzz"/>
+			</pager:code>
+			</pager:post_processes>
+			<pager:link name="ddd" uri="xxx" submit="true"/>
+		</pager:edit>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<storage xmlns="http://www.xmlactions.org/storage"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.xmlactions/storage http://www.xmlactions.net/schema/storage.xsd"
+   name="Sample Test Storage"
+>
+
+   <database name="tracker">
+      <db_specific name="oracle">
+         <sql name="oracle_sql" sql="None" />
+      </db_specific>
+      <sql name="test_it_got_stored" sql="None" />
+      <table name="tb_tracker">
+         <pk name="id" presentation_name="ID" />
+         <text name="timestamp" length="30" presentation_name="Timestamp" presentation_width="30" editable="false"
+             function_ref="function is here" />
+         <text name="description" length="100" presentation_name="Description" presentation_width="50" />
+         <textarea name="fulldescription" length="1000" presentation_name="Full Description"
+            presentation_width="50" want_html_edit="true" presentation_height="5" />
+         <fk name="severityid" presentation_name="Severity ID" foreign_table="tb_severity" foreign_key="id">
+            <text name="description" length="10" presentation_name="Severity" presentation_width="10" />
+         </fk>
+         <fk name="statusid" presentation_name="Status ID" foreign_table="tb_status" foreign_key="id">
+            <text name="description" length="10" presentation_name="Status" presentation_width="10" />
+         </fk>
+         <fk name="projectid" presentation_name="Project ID" foreign_table="tb_project" foreign_key="id">
+            <text name="description" length="50" presentation_name="Project" presentation_width="50" />
+         </fk>
+         <fk name="userid" presentation_name="Assigned ID" foreign_table="tb_user" foreign_key="id">
+            <text name="name" length="45" presentation_name="Name" presentation_width="45" />
+         </fk>
+      </table>
+      <table name="tb_track_progress">
+         <pk name="id" presentation_name="ID" />
+         <text name="description" length="100" presentation_name="Description" presentation_width="50" />
+         <textarea name="fulldescription" length="1000" presentation_name="Full Description"
+            presentation_width="50" want_html_edit="true" presentation_height="5" />
+         <link name="attachment" length="200" presentation_name="Attachment" presentation_width="50" />
+         <fk name="trackerid" presentation_name="Tracker ID" foreign_table="tb_tracker" foreign_key="id">
+            <!-- <field type="text" name="description" length="100" presentation_name="Description" presentation_width="50"/> -->
+         </fk>
+      </table>
+      <table name="tb_severity">
+         <pk name="id" presentation_name="ID" />
+         <text name="description" length="10" presentation_name="Description" presentation_width="10" />
+      </table>
+      <table name="tb_project">
+         <pk name="id" presentation_name="ID" />
+         <text name="description" length="45" presentation_name="Description" presentation_width="45" />
+      </table>
+      <table name="tb_status">
+         <pk name="id" presentation_name="ID" />
+         <text name="description" length="10" presentation_name="Description" presentation_width="10" />
+         <text name="tooltip" length="45" presentation_name="Tooltip" presentation_width="45" />
+      </table>
+      <table name="tb_user">
+         <pk name="id" presentation_name="ID" />
+         <text name="name" length="45" presentation_name="Name" presentation_width="45" />
+         <text name="firstname" length="45" presentation_name="First" presentation_width="45" />
+         <text name="lastname" length="45" presentation_name="Surname" presentation_width="45" />
+         <text name="email" length="45" presentation_name="EMail" presentation_width="45" />
+         <text name="home_phone" length="20" presentation_name="Home Phone" presentation_width="20" />
+         <text name="cell_phone" length="20" presentation_name="Mobile" presentation_width="20" />
+         <text name="business_phone" length="20" presentation_name="Business Phone" presentation_width="20" />
+         <password name="password" length="20" presentation_name="Password" presentation_width="20" />
+      </table>
+      <table name="tb_business">
+         <pk name="id" presentation_name="ID" />
+         <!-- <field type="text" name="code" length="30" presentation_name="Code" presentation_width="10" mandatory="true" 
+            unique="true" editable="false"/> -->
+         <!-- <field type="text" name="login_name" length="30" presentation_name="Login Name" presentation_width="30" mandatory="true" 
+            unique="true"/> -->
+         <text name="business_name" length="100" presentation_name="Business Name" presentation_width="45"
+            mandatory="true" />
+         <text name="site_name" length="30" presentation_name="Site Name" presentation_width="30" mandatory="true"
+            unique="true"
+            tooltip="This is how your customers will reference your site from a link. i.e. http://e-nquire.com?your_site_name.  This is also the name you will use to login." />
+         <text name="inquiry_email_address" length="100" presentation_name="Inquiry Email Address"
+            presentation_width="45" mandatory="true" />
+         <text name="business_email_address" length="100" presentation_name="Business Email Address"
+            presentation_width="45" mandatory="true" />
+         <text name="web_address" length="100" presentation_name="Web Address" presentation_width="45" mandatory="false" />
+         <textarea name="customer_message" length="100" presentation_name="Customer Message"
+            presentation_width="80" presentation_height="8" want_html_edit="true" mandatory="false" />
+         <password name="password" length="20" presentation_name="Password" presentation_width="20" mandatory="true" />
+         <text name="vat_number" length="20" presentation_name="Vat Number" presentation_width="20" mandatory="false" />
+         <text name="reg_number" length="20" presentation_name="Registration Number" presentation_width="20"
+            mandatory="false" />
+         <text name="contact_name" length="45" presentation_name="Contact Name" presentation_width="45" mandatory="true" />
+         <text name="address1" length="45" presentation_name="Address" presentation_width="45" mandatory="false" />
+         <text name="address2" length="45" presentation_name="Town" presentation_width="45" mandatory="false" />
+         <text name="address3" length="45" presentation_name="County" presentation_width="45" mandatory="false" />
+         <text name="address4" length="45" presentation_name="Country" presentation_width="45" mandatory="false" />
+         <text name="phone_no" length="20" presentation_name="Phone" presentation_width="20" mandatory="false" />
+         <!-- <field type="link" name="image" length="200" presentation_name="Image" presentation_width="50" mandatory="false"/> -->
+         <image name="image" length="200" presentation_name="Logo" presentation_width="50" mandatory="false"
+            max_width="1000" max_height="400"
+            tooltip="Image types are bmp, jpg, jpeg, wbmp, gif, and png. The Logo must fit to a max width of 1000 and a max height of 400. If these limits are exceeded we will automatically resize the image when stored." />
+         <timestamp name="timestamp" presentation_name="Time Stamp" presentation_width="10" editable="false"
+            mandatory="true" />
+         <text name="active" length="1" presentation_name="Active" presentation_width="1" editable="false"
+            mandatory="false" />
+         <date name="activation_date" presentation_name="Activation Date" presentation_width="10" editable="false"
+            mandatory="false" />
+         <datetime name="activation_datetime" presentation_name="Activation DateTime" presentation_width="16"
+            editable="false" mandatory="false" />
+      </table>
+      <table name="tb_inquiry_category">
+         <pk name="id" presentation_name="ID" />
+         <fk name="businessid" presentation_name="Business ID" foreign_table="tb_business" foreign_key="id" />
+         <text name="description" length="40" presentation_name="Description" presentation_width="40" />
+      </table>
+      <table name="tb_products">
+         <pk name="id" presentation_name="ID" />
+         <text name="name" length="64" presentation_name="Product Name" presentation_width="64" />
+         <text name="code" length="40" presentation_name="Product Code" presentation_width="40" />
+         <text name="base_price" length="12" presentation_name="Base Price" presentation_width="12" />
+         <text name="price" length="12" presentation_name="Price" presentation_width="12" />
+         <text name="vat" length="12" presentation_name="VAT" presentation_width="12" />
+         <text name="currency" length="3" presentation_name="Currency" presentation_width="3" />
+         <text name="limit" length="45" presentation_name="Limit" presentation_width="45" />
+         <text name="return_paid_page" length="256" presentation_name="Return Pay Page" presentation_width="30" />
+         <text name="return_cancel_page" length="256" presentation_name="Return Cancelled Page" presentation_width="30" />
+      </table>
+      <table name="tb_payment_site">
+         <pk name="id" presentation_name="ID" />
+         <text name="url" length="256" presentation_name="URL" presentation_width="64" />
+         <text name="account" length="256" presentation_name="Account" presentation_width="64" />
+         <text name="pay_site_value" length="45" presentation_name="Pay Site Value" presentation_width="45" />
+      </table>
+      <table name="tb_properties">
+         <pk name="id" presentation_name="ID" />
+         <text name="the_key" length="45" presentation_name="The Key" presentation_width="45" />
+         <text name="the_value" length="256" presentation_name="The Value" presentation_width="65" />
+      </table>
+   </database>
+
+
+   <database name="test">
+      
+      <db_specific name="mysql">
+	      <pk_create name="pk.create" sql="CREATE PK" />
+      </db_specific>
+
+      <table name="tb_two" alias="two">
+      </table>
+      
+      <table name="tb_address" alias="address">
+         <pk name="id" presentation_name="ID" />
+         <text name="street1" length="32" presentation_name="Street1" presentation_width="32" />
+         <text name="street2" length="32" presentation_name="Street2" presentation_width="32" />
+         <text name="city" length="32" presentation_name="City" presentation_width="32" />
+         <text name="state" length="32" presentation_name="State" presentation_width="32" />
+         <text name="postcode" length="20" presentation_name="Postcode" presentation_width="20" />
+         <text name="country" length="32" presentation_name="Country" presentation_width="32" />
+      </table>
+
+      <table name="tb_all_types" alias="all_types">
+         <pk name="id" presentation_name="ID" />
+         <text name="text" presentation_name="Text"
+            presentation_width="10" length="45" mandatory="true" />
+         <textarea name="textarea" presentation_name="TextArea"
+            presentation_width="50" presentation_height="2" length="256"
+            mandatory="true" />
+         <int name="int" presentation_name="Int" presentation_width="6" />
+         <int name="decimal" presentation_name="Decimal"
+            presentation_width="12" />
+         <date name="date" presentation_name="Date"
+            presentation_width="14" function_ref="date_format" />
+         <timeofday name="time" presentation_name="Time"
+            presentation_width="9" />
+         <date name="datetime" presentation_name="Date Time"
+            presentation_width="14" function_ref="date_format" />
+         <timestamp name="timestamp" presentation_name="Timestamp"
+            presentation_width="16" />
+         <textarea name="blob" presentation_name="Blob"
+            presentation_width="50" presentation_height="2" length="10000" mandatory="true" />
+         <select name="typeid" presentation_name="Type" select="single" mandatory="true" />
+         <binary name="check" presentation_name="Check" mandatory="true" />
+      </table>
+      
+      
+      
+
+      <table name="tb_single_select">
+         <pk name="id" presentation_name="ID" />
+         <select name="typeid" presentation_name="Type" select="single" mandatory="true"/>
+         <textarea name="comment" presentation_name="Comment" presentation_width="50" presentation_height="2" length="256"/>
+         <int name="refid" presentation_name="Ref" presentation_width="8" mandatory="true"/>
+      </table>
+   
+      <table name="tb_multi_select">
+         <pk name="id" presentation_name="ID" />
+         <select name="typeid" presentation_name="Type" select="multiple" mandatory="true"/>
+         <textarea name="comment" presentation_name="Comment" presentation_width="50" presentation_height="2" length="256"/>
+         <int name="refid" presentation_name="Ref" presentation_width="8" mandatory="true"/>
+      </table>
+      
+
+
+      <table name="tb_name">
+         <pk name="id" presentation_name="ID" />
+         <text name="name" length="32" presentation_name="Name" presentation_width="32" />
+      </table>
+
+      <table name="tb_name_list">
+         <pk name="id" presentation_name="ID" />
+         <text name="name" length="32" presentation_name="Name" presentation_width="32" />
+         <fk name="address_id" foreign_table="tb_address" foreign_key="id" presentation_name="address_id" mandatory="true"
+            editable="false"
+         >
+         </fk>
+      </table>
+
+      <table name="tb_hobby">
+         <pk name="id" presentation_name="ID" pk_ref="pk.create" />
+         <text name="description" length="45" presentation_name="Description" presentation_width="45" />
+      </table>
+
+      <table name="tb_address_category">
+         <pk name="id" presentation_name="ID" />
+         <text name="description" length="45" presentation_name="Description" presentation_width="45" />
+      </table>
+
+
+      <table name="tb_name_address">
+         <table_path table_b="tb_name" table_a="tb_address" />
+         <pk name="id" presentation_name="ID" />
+         <fk name="name_id" foreign_table="tb_name" foreign_key="id" presentation_name="name_id" mandatory="true"
+            editable="false"
+         >
+         </fk>
+         <fk name="address_id" foreign_table="tb_address" foreign_key="id" presentation_name="address_id" mandatory="true"
+            editable="false"
+         >
+         </fk>
+      </table>
+
+      <table name="tb_name_hobby">
+         <pk name="id" presentation_name="ID" />
+         <fk name="name_id" foreign_table="tb_name" foreign_key="id" presentation_name="name_id" mandatory="false"
+            editable="false"
+         >
+         </fk>
+         <fk name="hobby_id" foreign_table="tb_hobby" foreign_key="id" presentation_name="hobby_id" mandatory="false"
+            editable="false"
+         >
+         </fk>
+      </table>
+
+      <table name="tb_address_address_category">
+         <pk name="id" presentation_name="ID" />
+         <fk name="address_id" foreign_table="tb_address" foreign_key="id" presentation_name="address_id" mandatory="true"
+            editable="false"
+         >
+         </fk>
+         <fk name="address_category_id" foreign_table="tb_address_category" foreign_key="id" presentation_name="address_category_id"
+            mandatory="false" editable="false"
+         >
+         </fk>
+      </table>
+
+      <table name="tb_lookups" alias="lookups">
+         <pk name="id" presentation_name="ID" />
+         <text name="value" length="45" presentation_name="value" presentation_width="45" />
+         <int name="fk_id_1" presentation_name="fk_id_1" presentation_width="10" />
+         <int name="fk_id_2" presentation_name="fk_id_2" presentation_width="10" />
+      </table>
+      <table name="tb_associate" alias="associate">
+         <pk name="id" presentation_name="ID" />
+         <int presentation_width="10" name="associateid" presentation_name="associateid" />
+         <text name="name" length="30" presentation_name="Name" presentation_width="30" />
+         <fk name="associateid" foreign_table="tb_lookups" foreign_table_alias="id1" foreign_key="fk_id_1"
+            presentation_name="fk id 1" where="id1.fk_id_2=1" />
+         <fk name="associateid" foreign_table="tb_lookups" foreign_table_alias="id2" foreign_key="fk_id_1"
+            presentation_name="fk id 2" where="id2.fk_id_2=2" />
+         <fk name="associateid" foreign_table="tb_lookups" foreign_table_alias="id3" foreign_key="fk_id_1"
+            presentation_name="fk id 3" where="id3.fk_id_2=3" />
+      </table>
+
+   </database>
+
+   <database name="jobber">
+
+      <table name="tb_job">
+         <pk name="id" presentation_name="ID" />
+         <text name="timestamp" length="30" presentation_name="Timestamp" presentation_width="30" editable="false" />
+         <text name="brief_description" length="500" presentation_name="Brief Description" presentation_width="50" />
+         <textarea name="full_description" length="1000" presentation_name="Full Description"
+            presentation_width="50" want_html_edit="true" presentation_height="5" />
+         <timestamp name="create_date" presentation_width="30" presentation_name="Create Date" />
+         <!-- 
+         <fk name="id_location" presentation_name="Location ID" foreign_table="tb_locations" foreign_key="id" />
+         <fk name="id_attachments" presentation_name="Attachment ID" foreign_table="tb_attachments" foreign_key="id" />
+          -->
+      </table>
+
+      <table name="tb_job_links">
+         <table_path table_a="tb_job" table_b="tb_job_category" />
+         <pk name="id" presentation_name="Job Link ID" />
+         <fk name="id_job" foreign_table="tb_job" foreign_key="id" presentation_name="Job ID" mandatory="true" />
+         <fk name="id_job_category" foreign_table="tb_job_category" foreign_key="id" presentation_name="Job Category ID"
+            mandatory="true" />
+      </table>
+
+      <table name="tb_job_group">
+         <pk name="id" presentation_name="Job Group ID" />
+         <text name="description" presentation_width="45" presentation_name="Description" length="45" />
+         <textarea name="full_description" presentation_name="Full Description" length="256"
+            presentation_height="5" presentation_width="50" />
+      </table>
+
+      <table name="tb_job_category">
+         <pk name="id" presentation_name="Job Category ID" />
+         <fk name="id_group" foreign_table="tb_job_group" foreign_key="id" presentation_name="Job Group ID" />
+         <text name="description" presentation_width="45" presentation_name="Description" length="45" />
+         <textarea name="full_description" presentation_name="Full Description" length="256"
+            presentation_height="5" presentation_width="50" />
+      </table>
+
+   </database>
+
+
+
+   <xml name="xml_sample" resource="/db/storage_sample.xml">
+   </xml>
+
+</storage>

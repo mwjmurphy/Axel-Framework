@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.test.xmlobject.XMLObjectTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:38" hostname="7SV0SQ2-NB" time="0.0">
+  <properties/>
+  <testcase name="testCreate" classname="org.xmlactions.test.xmlobject.XMLObjectTest" time="0.0"/>
+  <system-out><![CDATA[Jan:10:14:07:38,828:[Test worker]:(XMLObjectTest.testCreate:16):DEBUG:XMLObjectTest:xo<root ><pager:node >this is the node<pager:node >a node inside pager:node</pager:node><pager:node >another node inside pager:node</pager:node></pager:node></root>
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

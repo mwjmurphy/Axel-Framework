@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.db.actions.XmlTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:06" hostname="7SV0SQ2-NB" time="0.095">
+  <properties/>
+  <testcase name="testGetStorageField" classname="org.xmlactions.db.actions.XmlTest" time="0.035"/>
+  <testcase name="testBuildQuery" classname="org.xmlactions.db.actions.XmlTest" time="0.032"/>
+  <testcase name="testLoadDatabase" classname="org.xmlactions.db.actions.XmlTest" time="0.028"/>
+  <system-out><![CDATA[[Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [single] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [single] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [multiple] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [single] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [single] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [multiple] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] query:select tb_user_rights_id as "tb_user_rights.id",tb_user_name as "tb_user.name",tb_projects_name as "tb_projects.name",tb_rights_permission as "tb_rights.permission" from ( select tb_user_rights.id as "tb_user_rights_id",tb_user_rights.userid as "tb_user_rights_userid",tb_user.id as "tb_user_id",tb_user.created_date as "tb_user_created_date",tb_user.firstname as "tb_user_firstname",tb_user.lastname as "tb_user_lastname",tb_user.name as "tb_user_name",tb_user.email as "tb_user_email",tb_user.home_phone as "tb_user_home_phone",tb_user.cell_phone as "tb_user_cell_phone",tb_user.business_phone as "tb_user_business_phone",tb_user.password as "tb_user_password",tb_user_rights.rightsid as "tb_user_rights_rightsid",tb_rights.id as "tb_rights_id",tb_rights.projectid as "tb_rights_projectid",tb_projects.id as "tb_projects_id",tb_projects.name as "tb_projects_name",tb_rights.permission as "tb_rights_permission"
+ from 
+ oneloginforall.tb_user_rights tb_user_rights,
+ oneloginforall.tb_user tb_user,
+ oneloginforall.tb_rights tb_rights,
+ oneloginforall.tb_projects tb_projects
+ where 1 = 1 
+ and tb_user_rights.userid = tb_user.id
+ and tb_user_rights.rightsid = tb_rights.id
+ and tb_rights.projectid = tb_projects.id ) tb - (org.xmlactions.db.actions.Database:600)
+ [Test worker] [] query[0]:select count(*) from (select tb_user_rights.id as "tb_user_rights_id",tb_user_rights.userid as "tb_user_rights_userid",tb_user.id as "tb_user_id",tb_user.created_date as "tb_user_created_date",tb_user.firstname as "tb_user_firstname",tb_user.lastname as "tb_user_lastname",tb_user.name as "tb_user_name",tb_user.email as "tb_user_email",tb_user.home_phone as "tb_user_home_phone",tb_user.cell_phone as "tb_user_cell_phone",tb_user.business_phone as "tb_user_business_phone",tb_user.password as "tb_user_password",tb_user_rights.rightsid as "tb_user_rights_rightsid",tb_rights.id as "tb_rights_id",tb_rights.projectid as "tb_rights_projectid",tb_projects.id as "tb_projects_id",tb_projects.name as "tb_projects_name",tb_rights.permission as "tb_rights_permission"
+ from 
+ oneloginforall.tb_user_rights tb_user_rights,
+ oneloginforall.tb_user tb_user,
+ oneloginforall.tb_rights tb_rights,
+ oneloginforall.tb_projects tb_projects
+ where 1 = 1 
+ and tb_user_rights.userid = tb_user.id
+ and tb_user_rights.rightsid = tb_rights.id
+ and tb_rights.projectid = tb_projects.id) tb - (org.xmlactions.db.actions.XmlTest:88)
+ [Test worker] [] query[1]:select tb_user_rights_id as "tb_user_rights.id",tb_user_name as "tb_user.name",tb_projects_name as "tb_projects.name",tb_rights_permission as "tb_rights.permission" from ( select tb_user_rights.id as "tb_user_rights_id",tb_user_rights.userid as "tb_user_rights_userid",tb_user.id as "tb_user_id",tb_user.created_date as "tb_user_created_date",tb_user.firstname as "tb_user_firstname",tb_user.lastname as "tb_user_lastname",tb_user.name as "tb_user_name",tb_user.email as "tb_user_email",tb_user.home_phone as "tb_user_home_phone",tb_user.cell_phone as "tb_user_cell_phone",tb_user.business_phone as "tb_user_business_phone",tb_user.password as "tb_user_password",tb_user_rights.rightsid as "tb_user_rights_rightsid",tb_rights.id as "tb_rights_id",tb_rights.projectid as "tb_rights_projectid",tb_projects.id as "tb_projects_id",tb_projects.name as "tb_projects_name",tb_rights.permission as "tb_rights_permission"
+ from 
+ oneloginforall.tb_user_rights tb_user_rights,
+ oneloginforall.tb_user tb_user,
+ oneloginforall.tb_rights tb_rights,
+ oneloginforall.tb_projects tb_projects
+ where 1 = 1 
+ and tb_user_rights.userid = tb_user.id
+ and tb_user_rights.rightsid = tb_rights.id
+ and tb_rights.projectid = tb_projects.id ) tb - (org.xmlactions.db.actions.XmlTest:89)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [single] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [single] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [select] on bean [org.xmlactions.db.actions.Select] with value of [multiple] error:Unknown property 'select' on class 'class org.xmlactions.db.actions.Select' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

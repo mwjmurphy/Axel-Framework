@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.pager.actions.form.EditPageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:37" hostname="7SV0SQ2-NB" time="0.04">
+  <properties/>
+  <testcase name="testLoadPage" classname="org.xmlactions.pager.actions.form.EditPageTest" time="0.04"/>
+  <system-out><![CDATA[Jan:10:14:07:37,510:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7f119b8e: display name [org.springframework.context.support.ClassPathXmlApplicationContext@7f119b8e]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,510:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,521:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]
+Jan:10:14:07:37,528:[Test worker]:(DefaultListableBeanFactory.registerBeanDefinition:467):INFO :DefaultListableBeanFactory:Overriding bean definition for bean 'pager.execContext': replacing [Generic bean: class [org.xmlactions.pager.context.PersistenceExecContext]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/spring/spring-pager-startup.xml]] with [Generic bean: class [org.xmlactions.pager.context.PersistenceExecContext]; scope=prototype; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]]
+Jan:10:14:07:37,529:[Test worker]:(DefaultListableBeanFactory.registerBeanDefinition:467):INFO :DefaultListableBeanFactory:Overriding bean definition for bean 'application.xml': replacing [Generic bean: class [org.apache.commons.configuration.XMLConfiguration]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/spring/spring-pager-startup.xml]] with [Generic bean: class [org.apache.commons.configuration.XMLConfiguration]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]]
+Jan:10:14:07:37,530:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@7f119b8e]: org.springframework.beans.factory.support.DefaultListableBeanFactory@51ed11d5
+Jan:10:14:07:37,531:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@51ed11d5: defining beans [pager.execContext,application.xml,riostlTheme,blackTheme,blueTheme,iceTheme,grayTheme,email_client_config]; root of factory hierarchy
+Jan:10:14:07:37,532:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/riostl.properties]
+Jan:10:14:07:37,534:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/black.properties]
+Jan:10:14:07:37,535:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/blue.properties]
+Jan:10:14:07:37,536:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/ice.properties]
+Jan:10:14:07:37,537:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/gray.properties]
+Jan:10:14:07:37,539:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,540:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/project/web.properties]
+Jan:10:14:07:37,540:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/snippets/html_snippets.properties]
+Jan:10:14:07:37,541:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:2
+Jan:10:14:07:37,542:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:3
+Jan:10:14:07:37,542:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:4
+Jan:10:14:07:37,542:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:5
+Jan:10:14:07:37,546:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named '' is defined
+Jan:10:14:07:37,547:[Test worker]:(EditPage.execute:72):DEBUG:EditPage:pageName:/pages/a_web_page.html
+Jan:10:14:07:37,547:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.realPath' is defined
+Jan:10:14:07:37,548:[Test worker]:(Theme.getValue:129):WARN :Theme:Missing theme value for [riostl].[empty]
+Jan:10:14:07:37,549:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,549:[Test worker]:(EditPageTest.testLoadPage:53):DEBUG:EditPageTest:page:<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+
+	<head>
+	</head>
+	<body>
+		<div id="edit_page" ><table width="1036" id="edit_page" class="table" ><input name="page.name" type="hidden" value="/pages/a_web_page.html" /><tr class="rowodd" ><th class="header" >Editing:<input readonly="true" name="page.name" value="/pages/a_web_page.html"/></th></tr><tr class="rowodd" ><td align="left" ><table ><tr class="rowodd" ><td class="cell" ><a href="javascript:do_edit_tab_select('edit_page');" title="Edit the page using a simple editor" class="none" ><span class="link_menu" >html edit</span></a></td><td class="cell" ><a href="javascript:do_rte_tab_select('edit_page');" title="Edit the page using a rich text editor." class="none" ><span class="link_menu" >rich text edit</span></a></td><td class="cell" ><a href="javascript:do_preview_tab_select('edit_page');" title="Preview the page" class="none" ><span class="link_menu" >preview</span></a></td><td class="cell" ><a href=":actions.xml" class="none" ><span class="link_menu" >cancel</span></a></td><td class="cell" ><a onclick="return(showValidationErrors(doSavePage('edit_page')));" href="javascript:doSavePage('edit_page');alert('saved');" class="none" ><span class="link_menu" >submit</span></a></td></tr></table></td></tr><tr class="rowodd" ><td class="cell" ><table class="table" ><tr class="rowodd" ><td width="1036" valign="top" class="cell" height="600" ><div style="display:block;" id="edit_page_html_div" ><textarea name="page.content" id="edit_page_html" rows="50" class="page_edit" cols="200" >This is the content of a_web_page</textarea></div><div style="display:none;" id="edit_page_preview" ></div><div style="display:none;" id="edit_page_rte_div" ><textarea name="page.content_rte" style="display:none" id="edit_page_rte" rows="50" class="page_edit ckeditor" cols="200" >paste content here</textarea></div></td></tr></table></td></tr></table></div>
+	</body>
+</html>
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

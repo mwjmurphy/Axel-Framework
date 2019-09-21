@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.action.config.FileExecContextTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:06:55" hostname="7SV0SQ2-NB" time="0.0">
+  <properties/>
+  <testcase name="testLoadSave" classname="org.xmlactions.action.config.FileExecContextTest" time="0.0"/>
+  <testcase name="testSaveLoad" classname="org.xmlactions.action.config.FileExecContextTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

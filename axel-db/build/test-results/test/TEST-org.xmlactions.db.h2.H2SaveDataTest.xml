@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.db.h2.H2SaveDataTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:07" hostname="7SV0SQ2-NB" time="0.015">
+  <properties/>
+  <testcase name="testSaveAndUpdateData" classname="org.xmlactions.db.h2.H2SaveDataTest" time="0.015"/>
+  <system-out><![CDATA[[Test worker] [] resolve:tb_one - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] ordered:tb_one - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] sort sqlTable [tb_one] - (org.xmlactions.db.sql.common.BuildSaveSql:348)
+ [Test worker] []      fieldCount [3] - (org.xmlactions.db.sql.common.BuildSaveSql:349)
+ [Test worker] [] address pk:id - (org.xmlactions.db.sql.common.BuildSaveSql:47)
+ [Test worker] [] name pk:id - (org.xmlactions.db.sql.common.BuildSaveSql:47)
+ [Test worker] [] INSERT we dont a pk value - (org.xmlactions.db.sql.common.BuildSaveSql:53)
+ [Test worker] [] setValue (tb_one.address) = [Bedrock] - (org.xmlactions.db.save.SaveToDB:155)
+ [Test worker] [] setValue (tb_one.name) = [Mrs Wilma Flinstone] - (org.xmlactions.db.save.SaveToDB:155)
+ [Test worker] [] 
+insert:insert into tb_one
+(address, name)
+ values (?, ?) - (org.xmlactions.db.save.SaveToDB:164)
+ [Test worker] [] pk:4 - (org.xmlactions.db.save.SaveToDB:179)
+ [Test worker] [] insert pk value:4 - (org.xmlactions.db.save.SaveToDB:96)
+ [Test worker] [] resolve:tb_one - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] ordered:tb_one - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] sort sqlTable [tb_one] - (org.xmlactions.db.sql.common.BuildSaveSql:348)
+ [Test worker] []      fieldCount [3] - (org.xmlactions.db.sql.common.BuildSaveSql:349)
+ [Test worker] [] address pk:id - (org.xmlactions.db.sql.common.BuildSaveSql:47)
+ [Test worker] [] UPDATE we have a pk value - (org.xmlactions.db.sql.common.BuildSaveSql:50)
+ [Test worker] [] Don't update a PK field. - (org.xmlactions.db.sql.common.BuildSaveSql:121)
+ [Test worker] [] update tb_one tb_1
+set 
+ tb_1.address=?,
+ tb_1.name=?
+ where id = 4 - (org.xmlactions.db.save.SaveToDB:209)
+ [Test worker] [] result:null - (org.xmlactions.db.h2.H2SaveDataTest:58)
+ [Test worker] [] result:
+| ID | NAME | ADDRESS 
+| 1 | wilma flinstone | bedrock 
+| 2 | fred flinstone | bedrock 
+| 3 | bambam flinstone | bedrock 
+| 4 | Mrs Wilma Flinstone The 2nd | Bedrock 
+ - (org.xmlactions.db.h2.H2SaveDataTest:62)
+ ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

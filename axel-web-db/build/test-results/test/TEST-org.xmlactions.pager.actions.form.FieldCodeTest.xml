@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.pager.actions.form.FieldCodeTest" tests="3" skipped="3" failures="0" errors="0" timestamp="2019-01-10T14:07:43" hostname="7SV0SQ2-NB" time="0.002">
+  <properties/>
+  <testcase name="testField" classname="org.xmlactions.pager.actions.form.FieldCodeTest" time="0.001">
+    <skipped/>
+  </testcase>
+  <testcase name="testParse" classname="org.xmlactions.pager.actions.form.FieldCodeTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="testDraw" classname="org.xmlactions.pager.actions.form.FieldCodeTest" time="0.001">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[Jan:10:14:07:43,317:[Test worker]:(EnvironmentAccess.runDatabaseTests:17):WARN :EnvironmentAccess:Not running database tests - because 'axel-test-db' is not set as an environmental property. To run the database tests set axel-test-db=true in the environment.
+Jan:10:14:07:43,318:[Test worker]:(EnvironmentAccess.runDatabaseTests:17):WARN :EnvironmentAccess:Not running database tests - because 'axel-test-db' is not set as an environmental property. To run the database tests set axel-test-db=true in the environment.
+Jan:10:14:07:43,318:[Test worker]:(EnvironmentAccess.runDatabaseTests:17):WARN :EnvironmentAccess:Not running database tests - because 'axel-test-db' is not set as an environmental property. To run the database tests set axel-test-db=true in the environment.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

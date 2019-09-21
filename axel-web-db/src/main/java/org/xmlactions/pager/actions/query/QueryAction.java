@@ -8,11 +8,14 @@ import org.xmlactions.common.xml.XMLObject;
 import org.xmlactions.db.config.StorageConfig;
 import org.xmlactions.db.query.Query;
 import org.xmlactions.db.query.QueryBuilder;
+import org.xmlactions.mapping.json.JSONUtils;
 import org.xmlactions.pager.actions.TransformAction;
 import org.xmlactions.pager.actions.form.CommonFormFields;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
+import org.json.JSONObject;
+import org.json.XML;
 import org.slf4j.Logger; import org.slf4j.LoggerFactory;
 
 public class QueryAction extends CommonFormFields {
@@ -25,20 +28,33 @@ public class QueryAction extends CommonFormFields {
     /** This is a reference to a query defined in the db_specific database storage schema. */
     private String sql_ref;
 
+    /** This is the query to execute if the sql_ref is not set. */
+    private String sql;
+
     /** Where we store the result of the query. */
     private String key;
+    
+    /** Set the output - default is xml, can be 'xml' or 'json'. */
+    private String output = "xml";
 
     String path;
 
 
     public String execute(IExecContext execContext) throws Exception {
 
+    	int PRETTY_PRINT_INDENT_FACTOR = 2;
         validate(execContext);
 
         XMLObject xo = processQuery(execContext);
         if (xo != null) {
             String xml = xo.mapXMLObject2XML(xo);
-            execContext.put(getKey(), xml);
+            if (! "xml".equalsIgnoreCase(output)) {
+            	JSONObject xmlJSONObj = JSONUtils.mapXmlToJson(xml, true);
+        		String jsonPrettyPrintString = xmlJSONObj.toString(PRETTY_PRINT_INDENT_FACTOR);
+            	execContext.put(getKey(), jsonPrettyPrintString);
+            } else {
+            	execContext.put(getKey(), xml);
+            }
         } else {
             execContext.put(getKey(), null);
         }
@@ -46,8 +62,8 @@ public class QueryAction extends CommonFormFields {
     }
 
     public void validate(IExecContext execContext) {
-        if (StringUtils.isEmpty(getQuery_xml_file_name()) && StringUtils.isEmpty(getSql_ref())) {
-            throw new IllegalArgumentException("The query_xml_file_name or the sql_ref attribute must be set.");
+        if (StringUtils.isEmpty(getQuery_xml_file_name()) && StringUtils.isEmpty(getSql_ref()) && StringUtils.isEmpty(getSql())) {
+            throw new IllegalArgumentException("The query_xml_file_name or the sql_ref or the sql attribute must be set.");
         }
         if (StringUtils.isEmpty(getKey())) {
             throw new IllegalArgumentException("Missing key attribute in query");
@@ -80,7 +96,12 @@ public class QueryAction extends CommonFormFields {
 	        Query query = qb.loadQuery(resourceName);
 	        xo = qb.buildQuery(execContext, storageConfig, query);
         } else {
-        	xo = qb.loadFromDB(execContext, storageConfig, getSql_ref(), false);
+        	if (StringUtils.isNotBlank(getSql_ref())) {
+        		xo = qb.loadFromDB(execContext, storageConfig, getSql_ref(), false);
+        	} else {
+        		String sql = execContext.replace(getSql());
+        		xo = qb.loadFromDBWithSql(execContext, storageConfig, sql, false);
+        	}
         }
 
         return xo;
@@ -117,4 +138,19 @@ public class QueryAction extends CommonFormFields {
 		this.sql_ref = sql_ref;
 	}
 
+	public String getSql() {
+		return this.sql;
+	}
+	
+	public void setSql(String sql) {
+		this.sql = sql;
+	}
+	
+	public String getOutput() {
+		return this.output;
+	}
+	
+	public void setOutput(String output) {
+		this.output = output;
+	}
 }

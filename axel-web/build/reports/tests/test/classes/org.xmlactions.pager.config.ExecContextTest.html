@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.xmlactions.pager.config.ExecContextTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.xmlactions.pager.config.ExecContextTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.xmlactions.pager.config.html">org.xmlactions.pager.config</a> &gt; ExecContextTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.043s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testCreate</td>
+<td class="success">0.024s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMapNameAndKey</td>
+<td class="success">0.009s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testXmlKey</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Jan:10:14:07:38,489:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@979f05f: display name [org.springframework.context.support.ClassPathXmlApplicationContext@979f05f]; startup date [Thu Jan 10 14:07:38 GMT 2019]; root of context hierarchy
+Jan:10:14:07:38,489:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:38,494:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@979f05f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6199213
+Jan:10:14:07:38,495:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6199213: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:38,495:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:38,497:[Test worker]:(ExecContextTest.testMapNameAndKey:50):DEBUG:ExecContextTest:newKey2:replace New Key Value 1
+Jan:10:14:07:38,497:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'echo' is defined
+Jan:10:14:07:38,497:[Test worker]:(ExecContextTest.testMapNameAndKey:51):DEBUG:ExecContextTest:echo:null
+Jan:10:14:07:38,498:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@79f70939: display name [org.springframework.context.support.ClassPathXmlApplicationContext@79f70939]; startup date [Thu Jan 10 14:07:38 GMT 2019]; root of context hierarchy
+Jan:10:14:07:38,498:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-config.xml]
+Jan:10:14:07:38,504:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@79f70939]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6bb1d286
+Jan:10:14:07:38,505:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6bb1d286: defining beans [pager.execContext,org.springframework.beans.factory.config.MethodInvokingFactoryBean#0,org.springframework.beans.factory.config.MethodInvokingFactoryBean#1,actions,props5,actionsx,db_actions,localMap1,localMap2,gray_theme,blue_theme,org.springframework.beans.factory.config.MethodInvokingFactoryBean#2,org.springframework.beans.factory.config.MethodInvokingFactoryBean#3]; root of factory hierarchy
+Jan:10:14:07:38,506:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:38,507:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:38,515:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/test2.properties]
+Jan:10:14:07:38,519:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/project/gray.properties]
+Jan:10:14:07:38,520:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/project/blue.properties]
+Jan:10:14:07:38,521:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:3
+Jan:10:14:07:38,521:[Test worker]:(ExecContextTest.testCreate:33):DEBUG:ExecContextTest:newKey2:replace New Key Value 1
+Jan:10:14:07:38,521:[Test worker]:(ExecContextTest.testCreate:34):DEBUG:ExecContextTest:echo:org.xmlactions.pager.actions.EchoAction
+Jan:10:14:07:38,522:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6bf26ec5: display name [org.springframework.context.support.ClassPathXmlApplicationContext@6bf26ec5]; startup date [Thu Jan 10 14:07:38 GMT 2019]; root of context hierarchy
+Jan:10:14:07:38,522:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:38,527:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@6bf26ec5]: org.springframework.beans.factory.support.DefaultListableBeanFactory@55de5496
+Jan:10:14:07:38,528:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@55de5496: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:38,528:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:38,531:[Test worker]:(ExecContextTest.testXmlKey:63):DEBUG:ExecContextTest:
+actionMaps:key[default_action_map]
+   default_action_map:key[file_viewer] value[org.xmlactions.pager.actions.form.FileViewerAction]
+   default_action_map:key[build_select] value[org.xmlactions.pager.actions.form.AjaxSelect]
+   default_action_map:key[navigator] value[org.xmlactions.pager.actions.navigator.NavigatorAction]
+   default_action_map:key[update_record_link] value[org.xmlactions.pager.actions.form.UpdateRecordLink]
+   default_action_map:key[echo] value[org.xmlactions.pager.actions.EchoAction]
+   default_action_map:key[list_populator] value[org.xmlactions.pager.actions.form.ListPopulator]
+   default_action_map:key[field_raw] value[org.xmlactions.pager.actions.form.FieldRaw]
+   default_action_map:key[put] value[org.xmlactions.pager.actions.PutAction]
+   default_action_map:key[create_pdf] value[org.xmlactions.pager.jasper.JasperReportHandler]
+   default_action_map:key[view] value[org.xmlactions.pager.actions.form.ViewForm]
+   default_action_map:key[add_record] value[org.xmlactions.pager.actions.db.AddRecordAction]
+   default_action_map:key[else] value[org.xmlactions.pager.actions.ElseAction]
+   default_action_map:key[insert_record] value[org.xmlactions.pager.actions.db.InsertRecord]
+   default_action_map:key[elseif] value[org.xmlactions.pager.actions.ElseIfAction]
+   default_action_map:key[map_xml_to_presentation] value[org.xmlactions.pager.actions.mapping.XmlToPresentationAction]
+   default_action_map:key[do_save_page] value[org.xmlactions.pager.actions.page.DoSavePage]
+   default_action_map:key[if] value[org.xmlactions.pager.actions.IfAction]
+   default_action_map:key[field_list] value[org.xmlactions.pager.actions.form.FieldList]
+   default_action_map:key[add] value[org.xmlactions.pager.actions.form.Add]
+   default_action_map:key[do_process_page_for_preview] value[org.xmlactions.pager.actions.page.DoProcessPageForPreview]
+   default_action_map:key[submit_form] value[org.xmlactions.pager.actions.submit.SubmitFormAction]
+   default_action_map:key[edit] value[org.xmlactions.pager.actions.form.Edit]
+   default_action_map:key[query] value[org.xmlactions.pager.actions.query.QueryAction]
+   default_action_map:key[map_xml_to_bean] value[org.xmlactions.pager.actions.mapping.XmlToBeanAction]
+   default_action_map:key[list] value[org.xmlactions.pager.actions.form.List]
+   default_action_map:key[delete_record] value[org.xmlactions.pager.actions.db.DeleteRecord]
+   default_action_map:key[script] value[org.xmlactions.pager.actions.script.ScriptAction]
+   default_action_map:key[code_call_handler] value[org.xmlactions.pager.actions.ajax.handler.CodeCallHandler]
+   default_action_map:key[delete_record_link] value[org.xmlactions.pager.actions.form.DeleteRecordLink]
+   default_action_map:key[nav_toggle_branch] value[org.xmlactions.pager.navigator.NavigatorToggleBranch]
+   default_action_map:key[json_get] value[org.xmlactions.pager.actions.mapping.JSONGetAction]
+   default_action_map:key[eval] value[org.xmlactions.pager.actions.EvalAction]
+   default_action_map:key[field] value[org.xmlactions.pager.actions.form.Field]
+   default_action_map:key[post_processes] value[org.xmlactions.pager.actions.form.PostProcesses]
+   default_action_map:key[reset] value[org.xmlactions.pager.actions.form.Reset]
+   default_action_map:key[field_hide] value[org.xmlactions.pager.actions.form.FieldHide]
+   default_action_map:key[frame] value[org.xmlactions.pager.actions.form.FrameAction]
+   default_action_map:key[do_reset] value[org.xmlactions.pager.actions.db.DoReset]
+   default_action_map:key[listcp] value[org.xmlactions.pager.actions.form.ListCP]
+   default_action_map:key[populator_code] value[org.xmlactions.pager.actions.form.populator.CodePopulator]
+   default_action_map:key[code] value[org.xmlactions.pager.actions.CodeAction]
+   default_action_map:key[date_formatter] value[org.xmlactions.pager.actions.dates.DateFormatterAction]
+   default_action_map:key[log] value[org.xmlactions.pager.actions.LogAction]
+   default_action_map:key[field_code] value[org.xmlactions.pager.actions.form.FieldCode]
+   default_action_map:key[link] value[org.xmlactions.pager.actions.form.Link]
+   default_action_map:key[range] value[org.xmlactions.pager.actions.RangeAction]
+   default_action_map:key[insert] value[org.xmlactions.pager.actions.InsertAction]
+   default_action_map:key[map_bean_to_xml] value[org.xmlactions.pager.actions.mapping.BeanToXmlAction]
+   default_action_map:key[file_upload] value[org.xmlactions.pager.actions.form.FileUpload]
+   default_action_map:key[button] value[org.xmlactions.pager.actions.form.Button]
+   default_action_map:key[highlight] value[org.xmlactions.pager.actions.highlighter.HighlighterAction]
+   default_action_map:key[search] value[org.xmlactions.pager.actions.form.Search]
+   default_action_map:key[transform] value[org.xmlactions.pager.actions.TransformAction]
+   default_action_map:key[content_type] value[org.xmlactions.pager.actions.http.ContentTypeAction]
+   default_action_map:key[update_record] value[org.xmlactions.pager.actions.db.UpdateRecord]
+   default_action_map:key[populator_sql] value[org.xmlactions.pager.actions.form.populator.SqlPopulator]
+   default_action_map:key[param] value[org.xmlactions.pager.actions.Param]
+   default_action_map:key[get] value[org.xmlactions.pager.actions.GetAction]
+   default_action_map:key[process_email_callback] value[org.xmlactions.pager.actions.email.ProcessCallbackPhone]
+   default_action_map:key[callback_phone] value[org.xmlactions.pager.actions.form.CallbackPhoneAction]
+   default_action_map:key[escape] value[org.xmlactions.pager.actions.escaping.EscapeAction]
+   default_action_map:key[edit_page] value[org.xmlactions.pager.actions.form.EditPage]
+   default_action_map:key[debug] value[org.xmlactions.pager.actions.DebugAction]
+   default_action_map:key[map_xml_to_json] value[org.xmlactions.pager.actions.mapping.XmlToJSONAction]
+   default_action_map:key[do_upload] value[org.xmlactions.pager.actions.db.DoUpload]
+   default_action_map:key[pre_processes] value[org.xmlactions.pager.actions.form.PreProcesses]
+   default_action_map:key[unescape] value[org.xmlactions.pager.actions.escaping.UnEscapeAction]
+   default_action_map:key[add_record_link] value[org.xmlactions.pager.actions.form.AddRecordLink]
+   default_action_map:key[menu] value[org.xmlactions.pager.actions.menu.MenuAction]
+   default_action_map:key[map_json_to_presentation] value[org.xmlactions.pager.actions.mapping.JSONToPresentationAction]
+   default_action_map:key[popup] value[org.xmlactions.pager.actions.PopupAction]
+   default_action_map:key[insert_into] value[org.xmlactions.pager.actions.InsertIntoAction]
+   default_action_map:key[form] value[org.xmlactions.pager.actions.form.PresentationFormAction]
+   default_action_map:key[attributes] value[org.xmlactions.action.actions.Attributes]
+   default_action_map:key[save_record] value[org.xmlactions.pager.actions.db.SaveRecordAction]
+namedMaps:key[persistence]
+key[application.version]
+key[default_locale_file]
+key[application.title]
+key[application.date]
+key[application.name]
+key[application.version]
+key[default_locale_file]
+key[application.title]
+key[application.date]
+key[application.name]
+
+Jan:10:14:07:38,531:[Test worker]:(ExecContextTest.testXmlKey:64):DEBUG:ExecContextTest:application.title:Pager - 1.2.0
+Jan:10:14:07:38,531:[Test worker]:(ExecContextTest.testXmlKey:65):DEBUG:ExecContextTest:application.name:Pager
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at 10-Jan-2019 14:07:38</p>
+</div>
+</div>
+</body>
+</html>

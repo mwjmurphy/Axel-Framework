@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.mapping.validation.TestCompareSnippets" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:24" hostname="7SV0SQ2-NB" time="0.038">
+  <properties/>
+  <testcase name="testCompareSnippetMissingElement" classname="org.xmlactions.mapping.validation.TestCompareSnippets" time="0.032"/>
+  <testcase name="testCompareSnippetChangedContent" classname="org.xmlactions.mapping.validation.TestCompareSnippets" time="0.003"/>
+  <testcase name="testCompareSnippetSame" classname="org.xmlactions.mapping.validation.TestCompareSnippets" time="0.003"/>
+  <system-out><![CDATA[[Test worker] [] compare:
+<ers:xml xmlns:ers="http://ec.europa.eu/fisheries/schema/ers/v1" xmlns="http://ec.europa.eu/fisheries/schema/ers/v1" at="1" ta="2">
+  <ers:xmla>
+    <ers:xmlaa>content</ers:xmlaa>
+  </ers:xmla>
+  <ers:xmla>
+    <ers:xmlaa>content</ers:xmlaa>
+    <xmlaa>content</xmlaa>
+  </ers:xmla>
+  <ers:xmlb>content of xmlb</ers:xmlb>
+</ers:xml>
+to:
+<ers:xml xmlns:ers="http://ec.europa.eu/fisheries/schema/ers/v1" xmlns="http://ec.europa.eu/fisheries/schema/ers/v1" at="1" ta="2">
+  <ers:xmla>
+    <ers:xmlab>content</ers:xmlab>
+  </ers:xmla>
+  <ers:xmla>
+    <ers:xmlaa>content</ers:xmlaa>
+    <xmlaa>content</xmlaa>
+  </ers:xmla>
+  <ers:xmlb>content of xmlb</ers:xmlb>
+</ers:xml> - (org.xmlactions.mapping.validation.TestCompareSnippets:76)
+ [Test worker] [] errors:No matching element found for [xmla]
+ - (org.xmlactions.mapping.validation.TestCompareSnippets:80)
+ [Test worker] [] compare:
+<ers:xml xmlns:ers="http://ec.europa.eu/fisheries/schema/ers/v1" xmlns="http://ec.europa.eu/fisheries/schema/ers/v1" at="1" ta="2">
+  <ers:xmla>
+    <ers:xmlaa>content</ers:xmlaa>
+  </ers:xmla>
+  <ers:xmla>
+    <ers:xmlaa>content</ers:xmlaa>
+    <xmlaa>content</xmlaa>
+  </ers:xmla>
+  <ers:xmlb>content of xmlb</ers:xmlb>
+</ers:xml>
+to:
+<ers:xml xmlns:ers="http://ec.europa.eu/fisheries/schema/ers/v1" xmlns="http://ec.europa.eu/fisheries/schema/ers/v1" at="1" ta="2">
+  <ers:xmla>
+    <ers:xmlaa>contentx</ers:xmlaa>
+  </ers:xmla>
+  <ers:xmla>
+    <ers:xmlaa>content</ers:xmlaa>
+    <xmlaa>content</xmlaa>
+  </ers:xmla>
+  <ers:xmlb>content of xmlb</ers:xmlb>
+</ers:xml> - (org.xmlactions.mapping.validation.TestCompareSnippets:88)
+ [Test worker] [] errors:[Element content [xmla/xmlaa/"content"] does not match [xmlaa/"contentx"]
+] - (org.xmlactions.mapping.validation.TestCompareSnippets:92)
+ ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

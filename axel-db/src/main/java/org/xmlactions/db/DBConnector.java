@@ -62,10 +62,6 @@ public class DBConnector {
 	{
 
 	};
-	
-	public DBConnector(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
 
 	public DBConnector(String initContextLookup, String dataSourceReferenceName)
 	{

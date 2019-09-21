@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.xmlactions.db.sql.TestBuildSelect_Schools</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.xmlactions.db.sql.TestBuildSelect_Schools</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.xmlactions.db.sql.html">org.xmlactions.db.sql</a> &gt; TestBuildSelect_Schools</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.025s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testMultipleTableBuildSelectMySql1</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMultipleTableBuildSelectMySql2</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>[Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] []    path:tb_person-tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    tp:tb_class_student - (org.xmlactions.db.sql.BuildSelect:227)
+ [Test worker] [] join not added [tb_class_student.class_id = tb_school_class.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_school_class on tb_class_student.class_id = tb_school_class.id - (org.xmlactions.db.sql.BuildSelect:239)
+ [Test worker] [] join not added [tb_class_student.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_class_student.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:235)
+ [Test worker] []    path:tb_person-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_school_class-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_school_class-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_sen-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] [] resolve:tb_person - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] resolve:tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_person_school_link.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_person_school_link.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] resolve:tb_school_class - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] resolve:tb_sen - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_sen.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_sen.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] resolve:tb_class_student - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join added [tb_class_student.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:395)
+ [Test worker] []    join:tb_person on tb_class_student.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] join added [tb_class_student.class_id = tb_school_class.id] - (org.xmlactions.db.sql.BuildSelect:395)
+ [Test worker] []    join:tb_school_class on tb_class_student.class_id = tb_school_class.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] []    sort:tb_person_school_link on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_sen on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_class_student on tb_school_class - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_class_student on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] [] ordered:tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_sen - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_class_student - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_person - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_school_class - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] 
+SWOP JOIN TABLE ORDER
+firstTableName[tb_person] firstTableAlias[tb_person] with secondTableName[tb_sen] secondTableAlias[tb_sen] - (org.xmlactions.db.sql.BuildSelect:314)
+ [Test worker] [] 
+SWOP JOIN TABLE ORDER
+firstTableName[tb_person] firstTableAlias[tb_person] with secondTableName[tb_class_student] secondTableAlias[tb_class_student] - (org.xmlactions.db.sql.BuildSelect:314)
+ [Test worker] [] 
+  select
+ tb_person_school_link.id as &quot;tb_person_school_link.id&quot;,
+ tb_sen.dis_code as &quot;tb_sen.dis_code&quot;,
+ tb_person.id as &quot;tb_person.id&quot;,
+ tb_person.lastname as &quot;tb_person.lastname&quot;,
+ tb_person.firstname as &quot;tb_person.firstname&quot;,
+ DATE_FORMAT(tb_person.dob,'%Y-%m-%d') as &quot;tb_person.dob&quot;,
+ tb_person.nationality as &quot;tb_person.nationality&quot;,
+ tb_person.person_type as &quot;tb_person.person_type&quot;,
+ tb_school_class.name as &quot;tb_school_class.name&quot;
+ from tb_person_school_link tb_person_school_link
+  left join (tb_person tb_person)
+   on tb_person_school_link.person_id = tb_person.id
+  join (tb_sen tb_sen)
+   on tb_sen.person_id = tb_person.id
+  join (tb_school_class tb_school_class)
+   on tb_class_student.class_id = tb_school_class.id
+    and tb_class_student.person_id = tb_person.id
+ where tb_person_school_link.school_id=1 and tb_person.person_type='STU'
+ order by tb_person.lastname, tb_person.firstname - (org.xmlactions.db.sql.TestBuildSelect_Schools:63)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] []    path:tb_person-tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    tp:tb_class_student - (org.xmlactions.db.sql.BuildSelect:227)
+ [Test worker] []    path:tb_person-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_class_student-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_class_student-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_school_class-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] [] resolve:tb_person - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] resolve:tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_person_school_link.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_person_school_link.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] resolve:tb_class_student - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_class_student.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_class_student.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] join not added [tb_class_student.class_id = tb_school_class.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_school_class on tb_class_student.class_id = tb_school_class.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] resolve:tb_school_class - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] resolve:tb_sen - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_sen.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_sen.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] []    sort:tb_person_school_link on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_class_student on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_class_student on tb_school_class - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_sen on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] [] ordered:tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_class_student - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_sen - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_person - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_school_class - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] 
+SWOP JOIN TABLE ORDER
+firstTableName[tb_person] firstTableAlias[tb_person] with secondTableName[tb_class_student] secondTableAlias[tb_class_student] - (org.xmlactions.db.sql.BuildSelect:314)
+ [Test worker] [] 
+SWOP JOIN TABLE ORDER
+firstTableName[tb_person] firstTableAlias[tb_person] with secondTableName[tb_sen] secondTableAlias[tb_sen] - (org.xmlactions.db.sql.BuildSelect:314)
+ [Test worker] [] 
+  select
+ tb_person_school_link.id as &quot;tb_person_school_link.id&quot;,
+ tb_class_student.id as &quot;tb_class_student.id&quot;,
+ tb_sen.dis_code as &quot;tb_sen.dis_code&quot;,
+ tb_person.id as &quot;tb_person.id&quot;,
+ tb_person.lastname as &quot;tb_person.lastname&quot;,
+ tb_person.firstname as &quot;tb_person.firstname&quot;,
+ DATE_FORMAT(tb_person.dob,'%Y-%m-%d') as &quot;tb_person.dob&quot;,
+ tb_person.nationality as &quot;tb_person.nationality&quot;,
+ tb_person.person_type as &quot;tb_person.person_type&quot;,
+ tb_school_class.name as &quot;tb_school_class.name&quot;
+ from tb_person_school_link tb_person_school_link
+  left join (tb_person tb_person)
+   on tb_person_school_link.person_id = tb_person.id
+  join (tb_class_student tb_class_student)
+   on tb_class_student.person_id = tb_person.id
+  join (tb_school_class tb_school_class)
+   on tb_class_student.class_id = tb_school_class.id
+  join (tb_sen tb_sen)
+   on tb_sen.person_id = tb_person.id
+ where tb_person_school_link.school_id=1 and tb_person.person_type='STU'
+ order by tb_person.lastname, tb_person.firstname - (org.xmlactions.db.sql.TestBuildSelect_Schools:111)
+ </pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at 10-Jan-2019 14:07:08</p>
+</div>
+</div>
+</body>
+</html>

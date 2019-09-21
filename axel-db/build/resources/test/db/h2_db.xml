@@ -1,0 +1,35 @@
+<database login-name="sa" 
+		  login-password="password" 
+		  database-name="target/test" 
+		  database-protocol="jdbc:h2:~/"
+		  database-driver="org.h2.Driver"
+		  database-url="jdbc:h2:~/target/test"
+		  >
+
+	<commands>	
+		<sql>drop table tb_one</sql>
+		<sql>drop table tb_two</sql>
+		
+		<sql>
+			create table tb_one (
+				id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), 
+				Name varchar(32),
+				Address varchar(32)
+			)
+		</sql>
+		<sql>
+			create table tb_two (
+				id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+				tb_one_id INTEGER,
+				Name varchar(32),
+				Address varchar(32)
+			)
+		</sql>
+		<sql>insert into tb_one( Name) VALUES ( 'fred')</sql>
+		<sql>update tb_one set Name='fred flinstone' where id = 1</sql>
+		<sql>update tb_one set Name = 'wilma flinstone', Address= 'bedrock' where id = 1</sql>
+		<sql>select * from tb_one</sql>
+		<sql>select * from tb_two</sql>
+	</commands>
+
+</database>

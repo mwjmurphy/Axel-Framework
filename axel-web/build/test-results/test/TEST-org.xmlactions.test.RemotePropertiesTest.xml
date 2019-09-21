@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.test.RemotePropertiesTest" tests="2" skipped="2" failures="0" errors="0" timestamp="2019-01-10T14:07:38" hostname="7SV0SQ2-NB" time="0.003">
+  <properties/>
+  <testcase name="testRemoteLoadToProperties" classname="org.xmlactions.test.RemotePropertiesTest" time="0.003">
+    <skipped/>
+  </testcase>
+  <testcase name="testRemoteLoad" classname="org.xmlactions.test.RemotePropertiesTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

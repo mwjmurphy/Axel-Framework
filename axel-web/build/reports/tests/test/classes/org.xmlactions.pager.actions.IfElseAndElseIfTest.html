@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.xmlactions.pager.actions.IfElseAndElseIfTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.xmlactions.pager.actions.IfElseAndElseIfTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.xmlactions.pager.actions.html">org.xmlactions.pager.actions</a> &gt; IfElseAndElseIfTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.042s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testPager3</td>
+<td class="success">0.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testPagerLoad</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testXMLParser</td>
+<td class="success">0.018s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Jan:10:14:07:37,938:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4d86f37b: display name [org.springframework.context.support.ClassPathXmlApplicationContext@4d86f37b]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,939:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,946:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@4d86f37b]: org.springframework.beans.factory.support.DefaultListableBeanFactory@279912c1
+Jan:10:14:07:37,946:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@279912c1: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,947:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,952:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==2 script:1==2
+Jan:10:14:07:37,952:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,952:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,953:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==1 script:1==1
+Jan:10:14:07:37,953:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,953:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,954:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==1 script:1==1
+Jan:10:14:07:37,954:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,954:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,956:[Test worker]:(IfElseAndElseIfTest.testXMLParser:68):DEBUG:IfElseAndElseIfTest:
+	
+			[
+1.page2 content
+2.page2 content
+3.page2 content
+4.page2 content
+5.page2 content
+6.page2 content
+]
+		
+
+Jan:10:14:07:37,956:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4e9bd9ff: display name [org.springframework.context.support.ClassPathXmlApplicationContext@4e9bd9ff]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,957:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,962:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@4e9bd9ff]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7133a1fc
+Jan:10:14:07:37,962:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7133a1fc: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,963:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,966:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:10==10 script:10==10
+Jan:10:14:07:37,966:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,966:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,967:[Test worker]:(IfElseAndElseIfTest.testPagerLoad:52):DEBUG:IfElseAndElseIfTest:page:&lt;body&gt;
+&lt;pager:if expression=&quot;10==10&quot;&gt;
+&lt;td&gt;this is a td in if [10==10]&lt;/td&gt;
+&lt;pager:elseif expression=&quot;11==11&quot;&gt;
+&lt;td&gt;this is a td in if [11==11]&lt;/td&gt;
+&lt;/pager:elseif&gt;.&lt;/pager:if&gt;
+&lt;/body&gt;
+Jan:10:14:07:37,968:[Test worker]:(IfElseAndElseIfTest.testPagerLoad:53):DEBUG:IfElseAndElseIfTest:newPage:&lt;body&gt;
+
+&lt;td&gt;this is a td in if [10==10]&lt;/td&gt;
+.
+&lt;/body&gt;
+Jan:10:14:07:37,968:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@86ba962: display name [org.springframework.context.support.ClassPathXmlApplicationContext@86ba962]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,968:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,974:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@86ba962]: org.springframework.beans.factory.support.DefaultListableBeanFactory@59f99da4
+Jan:10:14:07:37,975:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@59f99da4: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,975:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,979:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:'walnutdoors.ie'.toLowerCase().indexOf('walnutdoors.ie') &amp;gt;= 0 script:'walnutdoors.ie'.toLowerCase().indexOf('walnutdoors.ie') &gt;= 0
+Jan:10:14:07:37,979:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,979:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,980:[Test worker]:(IfElseAndElseIfTest.testPager3:106):DEBUG:IfElseAndElseIfTest:page:&lt;xml xmlns=&quot;http://www.w3.org/1999/xhtml&quot;
+		xmlns:pager=&quot;http://www.riostl.com/schema/pager&quot;
+		xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+		xsi:schemaLocation=&quot;http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd&quot;&gt;
+		&lt;pager:if expression=&quot;'walnutdoors.ie'.toLowerCase().indexOf('walnutdoors.ie') &amp;gt;= 0&quot;&gt;
+			expression:walnutdoors
+			&lt;pager:elseif expression=&quot;1==2&quot;&gt;
+				expression:1==2
+			&lt;/pager:elseif&gt;
+			&lt;pager:elseif expression=&quot;'oakdoors.ie'.toLowerCase().indexOf('oakdoors.ie') &amp;gt;= 0&quot;&gt;
+				expression:oakdoors
+			&lt;/pager:elseif&gt;
+			&lt;pager:else&gt;
+				default
+			&lt;/pager:else&gt;
+		&lt;/pager:if&gt;
+	&lt;/xml&gt;
+
+Jan:10:14:07:37,980:[Test worker]:(IfElseAndElseIfTest.testPager3:107):DEBUG:IfElseAndElseIfTest:newPage:&lt;xml xmlns=&quot;http://www.w3.org/1999/xhtml&quot;
+		xmlns:pager=&quot;http://www.riostl.com/schema/pager&quot;
+		xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+		xsi:schemaLocation=&quot;http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd&quot;&gt;
+		
+			expression:walnutdoors
+			
+			
+			
+		
+	&lt;/xml&gt;
+
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at 10-Jan-2019 14:07:38</p>
+</div>
+</div>
+</body>
+</html>

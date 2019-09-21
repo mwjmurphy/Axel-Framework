@@ -209,4 +209,11 @@
       </xsd:restriction>
    </xsd:simpleType>
 
+   <xsd:simpleType name="xml_json">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="xml" />
+         <xsd:enumeration value="json" />
+      </xsd:restriction>
+   </xsd:simpleType>
+
 </xsd:schema>

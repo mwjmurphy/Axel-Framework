@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.pager.actions.form.FrameActionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:37" hostname="7SV0SQ2-NB" time="0.096">
+  <properties/>
+  <testcase name="testListWithSearch" classname="org.xmlactions.pager.actions.form.FrameActionTest" time="0.038"/>
+  <testcase name="testParam" classname="org.xmlactions.pager.actions.form.FrameActionTest" time="0.031"/>
+  <testcase name="testWrapper" classname="org.xmlactions.pager.actions.form.FrameActionTest" time="0.027"/>
+  <system-out><![CDATA[Jan:10:14:07:37,673:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@36c6d24c: display name [org.springframework.context.support.ClassPathXmlApplicationContext@36c6d24c]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,673:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,681:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]
+Jan:10:14:07:37,688:[Test worker]:(DefaultListableBeanFactory.registerBeanDefinition:467):INFO :DefaultListableBeanFactory:Overriding bean definition for bean 'pager.execContext': replacing [Generic bean: class [org.xmlactions.pager.context.PersistenceExecContext]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/spring/spring-pager-startup.xml]] with [Generic bean: class [org.xmlactions.pager.context.PersistenceExecContext]; scope=prototype; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]]
+Jan:10:14:07:37,689:[Test worker]:(DefaultListableBeanFactory.registerBeanDefinition:467):INFO :DefaultListableBeanFactory:Overriding bean definition for bean 'application.xml': replacing [Generic bean: class [org.apache.commons.configuration.XMLConfiguration]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/spring/spring-pager-startup.xml]] with [Generic bean: class [org.apache.commons.configuration.XMLConfiguration]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]]
+Jan:10:14:07:37,689:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@36c6d24c]: org.springframework.beans.factory.support.DefaultListableBeanFactory@30c47975
+Jan:10:14:07:37,690:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@30c47975: defining beans [pager.execContext,application.xml,riostlTheme,blackTheme,blueTheme,iceTheme,grayTheme,email_client_config]; root of factory hierarchy
+Jan:10:14:07:37,691:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/riostl.properties]
+Jan:10:14:07:37,693:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/black.properties]
+Jan:10:14:07:37,694:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/blue.properties]
+Jan:10:14:07:37,696:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/ice.properties]
+Jan:10:14:07:37,697:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/gray.properties]
+Jan:10:14:07:37,698:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,698:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/project/web.properties]
+Jan:10:14:07:37,699:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/snippets/html_snippets.properties]
+Jan:10:14:07:37,700:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:2
+Jan:10:14:07:37,700:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:3
+Jan:10:14:07:37,700:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:4
+Jan:10:14:07:37,700:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:5
+Jan:10:14:07:37,704:[Test worker]:(SetupBeanFromXML.setProperty:67):WARN :SetupBeanFromXML:Unable to set property [position] on bean [org.xmlactions.pager.actions.form.FrameAction] with value of [absolute] error:Unknown property 'position' on class 'class org.xmlactions.pager.actions.form.FrameAction'
+Jan:10:14:07:37,705:[Test worker]:(SetupBeanFromXML.setProperty:67):WARN :SetupBeanFromXML:Unable to set property [position] on bean [org.xmlactions.pager.actions.form.FrameAction] with value of [absolute] error:Unknown property 'position' on class 'class org.xmlactions.pager.actions.form.FrameAction'
+Jan:10:14:07:37,705:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.namespace' is defined
+Jan:10:14:07:37,706:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,706:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'position' is defined
+Jan:10:14:07:37,707:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'width' is defined
+Jan:10:14:07:37,707:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'height' is defined
+Jan:10:14:07:37,707:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'x' is defined
+Jan:10:14:07:37,707:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'y' is defined
+Jan:10:14:07:37,708:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,708:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.namespace' is defined
+Jan:10:14:07:37,708:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,709:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,709:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,709:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'position' is defined
+Jan:10:14:07:37,709:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'width' is defined
+Jan:10:14:07:37,709:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'height' is defined
+Jan:10:14:07:37,710:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'x' is defined
+Jan:10:14:07:37,710:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'y' is defined
+Jan:10:14:07:37,710:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,710:[Test worker]:(FrameActionTest.testListWithSearch:76):DEBUG:FrameActionTest:page:<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+		<div style="position:${position};width:${width}px;height:${height}px;">
+	<div style="position:absolute;top:${x}px;left:${y}px">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="13"><img src="/riostl/gfx/blue_fade_top_left.png" /></td>
+				<td><img src="/riostl/gfx/blue_fade_top.png" width="100%" height="67"/></td>
+				<td width="14"><img src="/riostl/gfx/blue_fade_top_right.png"/></td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;top:10px;left:10px">
+
+		And more bla de bla bla bla bla
+		</div></div>
+</html>
+Jan:10:14:07:37,711:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@47ff1e3d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@47ff1e3d]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,711:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,718:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]
+Jan:10:14:07:37,724:[Test worker]:(DefaultListableBeanFactory.registerBeanDefinition:467):INFO :DefaultListableBeanFactory:Overriding bean definition for bean 'pager.execContext': replacing [Generic bean: class [org.xmlactions.pager.context.PersistenceExecContext]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/spring/spring-pager-startup.xml]] with [Generic bean: class [org.xmlactions.pager.context.PersistenceExecContext]; scope=prototype; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]]
+Jan:10:14:07:37,724:[Test worker]:(DefaultListableBeanFactory.registerBeanDefinition:467):INFO :DefaultListableBeanFactory:Overriding bean definition for bean 'application.xml': replacing [Generic bean: class [org.apache.commons.configuration.XMLConfiguration]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/spring/spring-pager-startup.xml]] with [Generic bean: class [org.apache.commons.configuration.XMLConfiguration]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]]
+Jan:10:14:07:37,725:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@47ff1e3d]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4145daaa
+Jan:10:14:07:37,725:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4145daaa: defining beans [pager.execContext,application.xml,riostlTheme,blackTheme,blueTheme,iceTheme,grayTheme,email_client_config]; root of factory hierarchy
+Jan:10:14:07:37,727:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/riostl.properties]
+Jan:10:14:07:37,728:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/black.properties]
+Jan:10:14:07:37,729:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/blue.properties]
+Jan:10:14:07:37,730:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/ice.properties]
+Jan:10:14:07:37,731:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/gray.properties]
+Jan:10:14:07:37,732:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,732:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/project/web.properties]
+Jan:10:14:07:37,733:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/snippets/html_snippets.properties]
+Jan:10:14:07:37,734:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:2
+Jan:10:14:07:37,734:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:3
+Jan:10:14:07:37,735:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:4
+Jan:10:14:07:37,735:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:5
+Jan:10:14:07:37,736:[Test worker]:(SetupBeanFromXML.setProperty:67):WARN :SetupBeanFromXML:Unable to set property [position] on bean [org.xmlactions.pager.actions.form.FrameAction] with value of [absolute] error:Unknown property 'position' on class 'class org.xmlactions.pager.actions.form.FrameAction'
+Jan:10:14:07:37,737:[Test worker]:(SetupBeanFromXML.setProperty:67):WARN :SetupBeanFromXML:Unable to set property [position] on bean [org.xmlactions.pager.actions.form.FrameAction] with value of [absolute] error:Unknown property 'position' on class 'class org.xmlactions.pager.actions.form.FrameAction'
+Jan:10:14:07:37,737:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.namespace' is defined
+Jan:10:14:07:37,738:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,738:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'position' is defined
+Jan:10:14:07:37,738:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'width' is defined
+Jan:10:14:07:37,738:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'height' is defined
+Jan:10:14:07:37,738:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'x' is defined
+Jan:10:14:07:37,739:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'y' is defined
+Jan:10:14:07:37,739:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,739:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.namespace' is defined
+Jan:10:14:07:37,740:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,740:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,740:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,740:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'position' is defined
+Jan:10:14:07:37,740:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'width' is defined
+Jan:10:14:07:37,740:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'height' is defined
+Jan:10:14:07:37,741:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'x' is defined
+Jan:10:14:07:37,741:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'y' is defined
+Jan:10:14:07:37,741:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,741:[Test worker]:(FrameActionTest.testParam:58):DEBUG:FrameActionTest:page:<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+		<div style="position:${position};width:${width}px;height:${height}px;">
+	<div style="position:absolute;top:${x}px;left:${y}px">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="13"><img src="/riostl/gfx/blue_fade_top_left.png" /></td>
+				<td><img src="/riostl/gfx/blue_fade_top.png" width="100%" height="67"/></td>
+				<td width="14"><img src="/riostl/gfx/blue_fade_top_right.png"/></td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;top:10px;left:10px">
+
+		And more bla de bla bla bla bla
+		</div></div>
+</html>
+Jan:10:14:07:37,742:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@40dc46d3: display name [org.springframework.context.support.ClassPathXmlApplicationContext@40dc46d3]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,742:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,748:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]
+Jan:10:14:07:37,753:[Test worker]:(DefaultListableBeanFactory.registerBeanDefinition:467):INFO :DefaultListableBeanFactory:Overriding bean definition for bean 'pager.execContext': replacing [Generic bean: class [org.xmlactions.pager.context.PersistenceExecContext]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/spring/spring-pager-startup.xml]] with [Generic bean: class [org.xmlactions.pager.context.PersistenceExecContext]; scope=prototype; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]]
+Jan:10:14:07:37,754:[Test worker]:(DefaultListableBeanFactory.registerBeanDefinition:467):INFO :DefaultListableBeanFactory:Overriding bean definition for bean 'application.xml': replacing [Generic bean: class [org.apache.commons.configuration.XMLConfiguration]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/spring/spring-pager-startup.xml]] with [Generic bean: class [org.apache.commons.configuration.XMLConfiguration]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/config/spring/test-spring-pager-web-startup.xml]]
+Jan:10:14:07:37,754:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@40dc46d3]: org.springframework.beans.factory.support.DefaultListableBeanFactory@54b95ad5
+Jan:10:14:07:37,755:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@54b95ad5: defining beans [pager.execContext,application.xml,riostlTheme,blackTheme,blueTheme,iceTheme,grayTheme,email_client_config]; root of factory hierarchy
+Jan:10:14:07:37,757:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/riostl.properties]
+Jan:10:14:07:37,757:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/black.properties]
+Jan:10:14:07:37,758:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/blue.properties]
+Jan:10:14:07:37,759:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/ice.properties]
+Jan:10:14:07:37,760:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/gray.properties]
+Jan:10:14:07:37,761:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,762:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/project/web.properties]
+Jan:10:14:07:37,763:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [themes/snippets/html_snippets.properties]
+Jan:10:14:07:37,763:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:2
+Jan:10:14:07:37,764:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:3
+Jan:10:14:07:37,764:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:4
+Jan:10:14:07:37,764:[Test worker]:(Theme.appendTheme:75):DEBUG:Theme:5
+Jan:10:14:07:37,766:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.namespace' is defined
+Jan:10:14:07:37,767:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,767:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'replaceme' is defined
+Jan:10:14:07:37,768:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,768:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,768:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,768:[Test worker]:(FrameActionTest.testWrapper:91):DEBUG:FrameActionTest:page:<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager_actions" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/schema/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd">
+   <root>
+<root2>
+
+      bla bla bla from echo[Innert Echo]
+   
+</root2>
+</root>
+</html>
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.pager.spring.XmlBeanFactoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:38" hostname="7SV0SQ2-NB" time="0.007">
+  <properties/>
+  <testcase name="testLoad1" classname="org.xmlactions.pager.spring.XmlBeanFactoryTest" time="0.007"/>
+  <system-out><![CDATA[Jan:10:14:07:38,793:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/test-spring-pager-web-startup.xml]
+Jan:10:14:07:38,798:[Test worker]:(XmlBeanFactoryTest.testLoad1:16):DEBUG:XmlBeanFactoryTest:count:8
+Jan:10:14:07:38,798:[Test worker]:(XmlBeanFactoryTest.testLoad1:18):DEBUG:XmlBeanFactoryTest:beanName:pager.execContext
+Jan:10:14:07:38,798:[Test worker]:(XmlBeanFactoryTest.testLoad1:18):DEBUG:XmlBeanFactoryTest:beanName:riostlTheme
+Jan:10:14:07:38,798:[Test worker]:(XmlBeanFactoryTest.testLoad1:18):DEBUG:XmlBeanFactoryTest:beanName:blackTheme
+Jan:10:14:07:38,798:[Test worker]:(XmlBeanFactoryTest.testLoad1:18):DEBUG:XmlBeanFactoryTest:beanName:blueTheme
+Jan:10:14:07:38,799:[Test worker]:(XmlBeanFactoryTest.testLoad1:18):DEBUG:XmlBeanFactoryTest:beanName:iceTheme
+Jan:10:14:07:38,799:[Test worker]:(XmlBeanFactoryTest.testLoad1:18):DEBUG:XmlBeanFactoryTest:beanName:grayTheme
+Jan:10:14:07:38,799:[Test worker]:(XmlBeanFactoryTest.testLoad1:18):DEBUG:XmlBeanFactoryTest:beanName:application.xml
+Jan:10:14:07:38,799:[Test worker]:(XmlBeanFactoryTest.testLoad1:18):DEBUG:XmlBeanFactoryTest:beanName:email_client_config
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

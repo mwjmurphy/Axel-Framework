@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:pager="http://www.xmlactions.org/pager_actions"
+	xmlns:db="http://www.xmlactions.org/pager_db_actions"
+	xsi:schemaLocation="
+		http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd
+		http://www.xmlactions.org/pager_db_actions http://www.xmlactions.org/schema/pager_db_actions.xsd
+		">
+<head>
+</head>
+<body>
+<table>
+	<tr>
+		<db:add id="edit_id" storage_config_ref ="storageConfig" table_name="tb_address" theme_name="riostl"
+			presentation_form="pages\add_form.uhtml"
+			pre_processor="org.xmlactions.test.CodeCall.toString"
+			post_processor="org.xmlactions.test.CodeCall.toString"
+			 >
+			<db:field_list>
+				<db:field name="id" />
+				<db:field name="street1" />
+				<db:field name="city" />
+			</db:field_list>
+			<pager:link name="ddd" uri="xxx" submit="true"/>
+		</db:add>
+	</tr>
+</table>
+</body>
+</html>

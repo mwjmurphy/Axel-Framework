@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.action.config.ExecContextTestV2" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:06:55" hostname="7SV0SQ2-NB" time="0.006">
+  <properties/>
+  <testcase name="testXmlConfig" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.001"/>
+  <testcase name="testLang" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.001"/>
+  <testcase name="testLocalization" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.001"/>
+  <testcase name="testMapNameAndKey" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.0"/>
+  <testcase name="testCreate" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.001"/>
+  <testcase name="testThemes" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.0"/>
+  <testcase name="testPersistenceMap" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.001"/>
+  <testcase name="testDuplicate" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.0"/>
+  <testcase name="testConstructor" classname="org.xmlactions.action.config.ExecContextTestV2" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

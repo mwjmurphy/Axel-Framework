@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean_to_xml
+    xmlns="http://www.xmlactions.org/bean_to_xml" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.xmlactions.org/bean_to_xml http://www.xmlactions.org/schema/bean_to_xml.xsd"
+    >
+    
+    <populator clas="org.xmlactions.mapping.bean_to_xml.PopulatorFromList" id="PopulatorFromList"/>
+    
+    <bean clas="org.xmlactions.pager.actions.navigator.NavBar" id="navbar">
+        <attribute property="id"/>
+        <attribute property="title"/>
+        <element property="children" name="child" bean_ref="child"/>
+    </bean>
+    
+    <bean clas="org.xmlactions.pager.actions.navigator.Child" id ="child">
+        <attribute property="id"/>
+        <attribute property="display"/>
+        <attribute property="title"/>
+        <attribute property="link"/>
+        <element property="subchildren" bean_ref="subchild" populator_ref="PopulatorFromList"/>
+    </bean>
+
+    <bean clas="org.xmlactions.pager.actions.navigator.SubChild" id="subchild">
+        <attribute property="id"/>
+        <attribute property="content"/>
+    </bean>
+
+</bean_to_xml>

@@ -350,10 +350,6 @@ public class QueryBuilder {
 
         try {
 
-            if (connection == null) {
-	            DBConnector dbConnector = storageConfig.getDbConnector();
-	            connection = dbConnector.getConnection(execContext);
-            }
             if (log.isDebugEnabled()) {
             	log.debug("QueryBuilder.sql:" + sqlRef);
             }
@@ -363,8 +359,31 @@ public class QueryBuilder {
     		Sql dbSql = dbSpecific.getSql(sql_ref);
     		params = dbSql.getListOfParams(execContext);
     		String rawSql = execContext.replace(dbSql.getSql());
+    		return loadFromDBWithSql(execContext, storageConfig, rawSql, removeRow);
+        } catch (Exception ex) {
+            throw new IllegalArgumentException(ex.getMessage(), ex);
+        }
+    }
 
-            String xml = new DBSQL().queryXMLShort(connection, rawSql, DBSQL.ROOT, params);
+    /**
+     * 
+     * @param execContext
+     * @param storageConfig
+     * @param sql - the query sql 
+     * @param removeRow - used to remove the row/s elements if needed.
+     * @return the resultant xml object
+     */
+    public XMLObject loadFromDBWithSql(IExecContext execContext, StorageConfig storageConfig, String sql, boolean removeRow) {
+    	List<SqlField>params = new ArrayList<SqlField>();
+
+        try {
+
+            if (connection == null) {
+	            DBConnector dbConnector = storageConfig.getDbConnector();
+	            connection = dbConnector.getConnection(execContext);
+            }
+
+            String xml = new DBSQL().queryXMLShort(connection, sql, DBSQL.ROOT, params);
         
             XMLObject xmlObject = new XMLObject().mapXMLCharToXMLObject(xml);
             List<XMLObject> xos;
@@ -398,6 +417,7 @@ public class QueryBuilder {
        		DBConnector.closeQuietly(connection);
         }
     }
+
 
     private List<XMLObject> removeRow(XMLObject xo) {
     	String elementName = xo.getElementName();

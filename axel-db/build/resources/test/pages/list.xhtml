@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+
+	<head>
+	</head>
+	<body>
+	
+		<table>
+			<tr>
+				<th>field 1</th><th>field 2</th>
+			</tr>
+			<p>
+			<pager:list id="name_all_fields" storage_config_ref="storageConfig" theme_name="riostl" table_name="tb_name">
+			</pager:list>
+			</p>
+			<p>
+			<pager:list id="name" storage_config_ref="storageConfig" theme_name="riostl" table_name="tb_name">
+				<pager:field_list>
+					<pager:field name="id" />
+					<pager:field name="name" />
+				</pager:field_list>
+			</pager:list>
+			</p>
+			<p>
+			<pager:list id="name_address" storage_config_ref="storageConfig" theme_name="riostl" table_name="tb_name">
+				<pager:field_list>
+					<pager:field name="tb_name.name" />
+					<pager:field name="tb_address.city" />
+				</pager:field_list>
+			</pager:list>
+			</p>
+			<p>
+			<pager:list id="hobby" storage_config_ref="storageConfig" theme_name="riostl" table_name="tb_hobby">
+			</pager:list>
+			<pager:list id="tb_name_hobby" storage_config_ref="storageConfig" theme_name="riostl" table_name="tb_name_hobby">
+				<pager:field_list>
+					<pager:field name="id" />
+					<pager:field name="name_id" />
+					<pager:field name="hobby_id" />
+				</pager:field_list>
+			</pager:list>
+			</p>
+			<p>
+			<pager:list id="name_hobby" storage_config_ref="storageConfig" theme_name="riostl" table_name="tb_name">
+				<pager:field_list>
+					<pager:field name="tb_name.name" />
+					<pager:field name="tb_hobby.description" />
+				</pager:field_list>
+			</pager:list>
+			</p>
+			<p>
+			<pager:list id="name_address_hobby" storage_config_ref="storageConfig" theme_name="riostl" table_name="tb_name">
+				<pager:field_list>
+					<pager:field name="tb_name.name" />
+					<pager:field name="tb_address.city" />
+					<pager:field name="tb_hobby.description" />
+				</pager:field_list>
+			</pager:list>
+			</p>
+			<p>
+			<pager:list id="name_address_hobby_category" storage_config_ref="storageConfig" theme_name="riostl" table_name="tb_name">
+				<pager:field_list>
+					<pager:field name="tb_name.name" />
+					<pager:field name="tb_address.city" />
+					<pager:field name="tb_hobby.description" />
+					<pager:field name="tb_address_category.description" />
+				</pager:field_list>
+			</pager:list>
+			</p>
+			<p>
+			<pager:list id="names" storage_config_ref="storageConfig" theme_name="riostl" sql="select tb_name.id as tb_name_id, tb_name.name as tb_name_name from tb_name">
+				<pager:field_list>
+					<pager:field name="tb_name.name" />
+				</pager:field_list>
+			</pager:list>
+			</p>
+		</table>
+		<pager:echo>testing List from list.xhtml</pager:echo>
+	</body>
+</html>

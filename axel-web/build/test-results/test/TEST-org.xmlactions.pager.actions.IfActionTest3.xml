@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.pager.actions.IfActionTest3" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:37" hostname="7SV0SQ2-NB" time="0.034">
+  <properties/>
+  <testcase name="testIf1" classname="org.xmlactions.pager.actions.IfActionTest3" time="0.01"/>
+  <testcase name="testIf2" classname="org.xmlactions.pager.actions.IfActionTest3" time="0.012"/>
+  <testcase name="testIf3" classname="org.xmlactions.pager.actions.IfActionTest3" time="0.012"/>
+  <system-out><![CDATA[Jan:10:14:07:37,904:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@78d7d4a7: display name [org.springframework.context.support.ClassPathXmlApplicationContext@78d7d4a7]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,904:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,909:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@78d7d4a7]: org.springframework.beans.factory.support.DefaultListableBeanFactory@39cebd5e
+Jan:10:14:07:37,910:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@39cebd5e: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,910:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,913:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:10==10 script:10==10
+Jan:10:14:07:37,913:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,913:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,914:[Test worker]:(IfActionTest3.testIf1:47):DEBUG:IfActionTest3:resultantPage:<body>
+ 
+  <td>this is a td in if [10==10]</td>
+ 
+</body>
+Jan:10:14:07:37,914:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2b66692b: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2b66692b]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,914:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,920:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2b66692b]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6650e704
+Jan:10:14:07:37,920:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6650e704: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,921:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,923:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:10==10 script:10==10
+Jan:10:14:07:37,924:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,924:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,924:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:10==10 script:10==10
+Jan:10:14:07:37,925:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,925:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,925:[Test worker]:(IfActionTest3.testIf2:72):DEBUG:IfActionTest3:resultantPage:<body>
+ 
+ 	
+   <td>this is a td in if [10==10]</td>
+ 	
+  <td>this is a td in if [10==10]</td>
+ 
+</body>
+Jan:10:14:07:37,926:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4d7323b5: display name [org.springframework.context.support.ClassPathXmlApplicationContext@4d7323b5]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,926:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,931:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@4d7323b5]: org.springframework.beans.factory.support.DefaultListableBeanFactory@5b694fea
+Jan:10:14:07:37,932:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5b694fea: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,932:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,935:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:10==10 script:10==10
+Jan:10:14:07:37,935:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,935:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,936:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:10==11 script:10==11
+Jan:10:14:07:37,936:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,936:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,937:[Test worker]:(IfActionTest3.testIf3:97):DEBUG:IfActionTest3:resultantPage:<body>
+ 
+ 	
+  <td>this is a td in if [10==10]</td>
+ 
+</body>
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

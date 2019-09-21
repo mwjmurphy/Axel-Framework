@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:pager="http://www.xmlactions.org/pager_actions"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmlactions.org/pager_actions http://www.xmlactions.org/schema/pager_actions.xsd"
+	>
+<head>
+</head>
+<body>
+<table>
+	<tr>
+		<pager:search data_source="target/test" table_name="tb_project">
+			<pager:field name="id" />
+			<pager:field name="description" />
+			<pager:field name="projectid" />
+		</pager:search>
+	</tr>
+</table>
+</body>
+</html>

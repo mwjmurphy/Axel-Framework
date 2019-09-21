@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.xmlactions.mapping.bean_to_xml.TestMapFromClass</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.xmlactions.mapping.bean_to_xml.TestMapFromClass</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.xmlactions.mapping.bean_to_xml.html">org.xmlactions.mapping.bean_to_xml</a> &gt; TestMapFromClass</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.126s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testA1</td>
+<td class="success">0.126s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>[Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.mapping.bean_to_xml.BeanToXml] with value of [http://www.xmlactions.org/bean_to_xml] error:Unknown property 'xmlns' on class 'class org.xmlactions.mapping.bean_to_xml.BeanToXml' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.mapping.bean_to_xml.BeanToXml] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.mapping.bean_to_xml.BeanToXml' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.mapping.bean_to_xml.BeanToXml] with value of [http://www.xmlactions.org/bean_to_xml http://www.xmlactions.org/schema/bean_to_xml.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.mapping.bean_to_xml.BeanToXml' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [name] on bean [org.xmlactions.mapping.bean_to_xml.MapperElement] with value of [aListOfA1s] error:Property 'name' has no getter method in class 'class org.xmlactions.mapping.bean_to_xml.MapperElement' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [name] on bean [org.xmlactions.mapping.bean_to_xml.MapperElement] with value of [A2] error:Property 'name' has no getter method in class 'class org.xmlactions.mapping.bean_to_xml.MapperElement' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [name] on bean [org.xmlactions.mapping.bean_to_xml.MapperElement] with value of [User] error:Property 'name' has no getter method in class 'class org.xmlactions.mapping.bean_to_xml.MapperElement' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [name] on bean [org.xmlactions.mapping.bean_to_xml.MapperElement] with value of [ers] error:Property 'name' has no getter method in class 'class org.xmlactions.mapping.bean_to_xml.MapperElement' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] found bean with class name:org.xmlactions.mapping.testclasses.A1 - (org.xmlactions.mapping.bean_to_xml.BeanToXml:56)
+ [Test worker] [] className:org.xmlactions.mapping.testclasses.A1 - (org.xmlactions.mapping.bean_to_xml.BeanToXml:33)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromTimestamp - 2019-01-10 14:07:24.168timestamp - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:123)
+ [Test worker] [] element property [listOfA1s] name [aListOfA1s] bean_ref [a1] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = java.util.ArrayList - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromList - [org.xmlactions.mapping.testclasses.A1@25909f44, org.xmlactions.mapping.testclasses.A1@119a0275, org.xmlactions.mapping.testclasses.A1@1babceda]listOfA1s - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] found bean with name:a1 - (org.xmlactions.mapping.bean_to_xml.BeanToXml:66)
+ [Test worker] [] NullPointerException:attribute name [null] property [timestamp] - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:52)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromTimestamp - nulltimestamp - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:123)
+ [Test worker] [] NullPointerException:attribute name [timestamp2] property [timestamp] - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:52)
+ [Test worker] [] element property [listOfA1s] name [aListOfA1s] bean_ref [a1] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = java.util.ArrayList - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromList - []listOfA1s - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] element property [a2] name [A2] bean_ref [a2] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] element property [users] name [User] bean_ref [null] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] element property [ersList] name [ers] bean_ref [a2] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = java.util.ArrayList - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromList - []ersList - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] found bean with name:a1 - (org.xmlactions.mapping.bean_to_xml.BeanToXml:66)
+ [Test worker] [] NullPointerException:attribute name [null] property [timestamp] - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:52)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromTimestamp - nulltimestamp - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:123)
+ [Test worker] [] NullPointerException:attribute name [timestamp2] property [timestamp] - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:52)
+ [Test worker] [] element property [listOfA1s] name [aListOfA1s] bean_ref [a1] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = java.util.ArrayList - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromList - []listOfA1s - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] element property [a2] name [A2] bean_ref [a2] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] element property [users] name [User] bean_ref [null] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] element property [ersList] name [ers] bean_ref [a2] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = java.util.ArrayList - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromList - []ersList - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] found bean with name:a1 - (org.xmlactions.mapping.bean_to_xml.BeanToXml:66)
+ [Test worker] [] NullPointerException:attribute name [null] property [timestamp] - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:52)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromTimestamp - nulltimestamp - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:123)
+ [Test worker] [] NullPointerException:attribute name [timestamp2] property [timestamp] - (org.xmlactions.mapping.bean_to_xml.MapperAttribute:52)
+ [Test worker] [] element property [listOfA1s] name [aListOfA1s] bean_ref [a1] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = java.util.ArrayList - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromList - []listOfA1s - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] element property [a2] name [A2] bean_ref [a2] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] element property [users] name [User] bean_ref [null] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] element property [ersList] name [ers] bean_ref [a2] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = java.util.ArrayList - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromList - []ersList - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] element property [a2] name [A2] bean_ref [a2] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = org.xmlactions.mapping.testclasses.A2 - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] found bean with name:a2 - (org.xmlactions.mapping.bean_to_xml.BeanToXml:66)
+ [Test worker] [] element property [users] name [User] bean_ref [null] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = [Ljava.lang.String; - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromArray - [Ljava.lang.String;@5f396d1eusers - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] element property [ersList] name [ers] bean_ref [a2] - (org.xmlactions.mapping.bean_to_xml.MapperElement:36)
+ [Test worker] [] property object = java.util.ArrayList - (org.xmlactions.mapping.bean_to_xml.MapperElement:41)
+ [Test worker] [] org.xmlactions.mapping.bean_to_xml.PopulatorFromList - []ersList - (org.xmlactions.mapping.bean_to_xml.MapperElement:156)
+ [Test worker] [] page:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rio:a1 xmlns:rio=&quot;rio_uri&quot; anInt=&quot;1&quot; timestamp=&quot;2019-01-10 14:07:24.168&quot; timestamp2=&quot;2019-01-10 14:07&quot;&gt;&lt;rio:a1 anInt=&quot;1&quot;/&gt;&lt;rio:a1 anInt=&quot;1&quot;/&gt;&lt;rio:a1 anInt=&quot;1&quot;/&gt;&lt;A2 name=&quot;name of a2&quot; anInt=&quot;1&quot; aString=&quot;This is an A2 string&quot;/&gt;&lt;User&gt;name1&lt;/User&gt;&lt;User&gt;name2&lt;/User&gt;&lt;User&gt;name3&lt;/User&gt;&lt;/rio:a1&gt;
+
+ - (org.xmlactions.mapping.bean_to_xml.TestMapFromClass:64)
+ </pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/C:/Users/mikem/.m2/repository/org/slf4j/slf4j-log4j12/1.7.7/slf4j-log4j12-1.7.7.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/Users/mikem/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/1.7.7/8095d0b9f7e0a9cd79a663c740e0f8fb31d0e2c8/slf4j-simple-1.7.7.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at 10-Jan-2019 14:07:24</p>
+</div>
+</div>
+</body>
+</html>

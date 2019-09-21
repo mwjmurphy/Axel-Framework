@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.db.h2.H2DBTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:07" hostname="7SV0SQ2-NB" time="0.162">
+  <properties/>
+  <testcase name="testQueryTbOne" classname="org.xmlactions.db.h2.H2DBTest" time="0.155"/>
+  <testcase name="testInsertTbOne" classname="org.xmlactions.db.h2.H2DBTest" time="0.007"/>
+  <system-out><![CDATA[[Test worker] [] !!! new H2TestDatabase !!! - (org.xmlactions.db.h2.H2TestDatabase:24)
+ [Test worker] [] executing [drop table tb_one] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [drop table tb_two] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [create table tb_one ( id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), Name varchar(32), Address varchar(32) )] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [create table tb_two ( id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), tb_one_id INTEGER, Name varchar(32), Address varchar(32) )] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [insert into tb_one( Name) VALUES ( 'fred')] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] productName:H2 - (org.xmlactions.db.ServerDB:178)
+ [Test worker] [] Batches key:1 - (org.xmlactions.db.ServerDB:185)
+ [Test worker] [] executing [update tb_one set Name='fred flinstone' where id = 1] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [update tb_one set Name = 'wilma flinstone', Address= 'bedrock' where id = 1] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [select * from tb_one] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] |ID:1|NAME:wilma flinstone|ADDRESS:bedrock| - (org.xmlactions.db.ServerDB:202)
+ [Test worker] [] executing [select * from tb_two] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] query:select tb_1.id as "tb_1_id",tb_1.name as "tb_1_name",tb_1.address as "tb_1_address"
+ from tb_one tb_1
+ where 1 = 1  - (org.xmlactions.db.h2.H2DBTest:42)
+ [Test worker] [] result:
+| ID | NAME | ADDRESS 
+| 1 | wilma flinstone | bedrock 
+ - (org.xmlactions.db.h2.H2DBTest:46)
+ [Test worker] [] pk:3 - (org.xmlactions.db.h2.H2DBTest:56)
+ ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

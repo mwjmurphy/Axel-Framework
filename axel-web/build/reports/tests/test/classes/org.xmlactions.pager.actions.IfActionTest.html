@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.xmlactions.pager.actions.IfActionTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.xmlactions.pager.actions.IfActionTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.xmlactions.pager.actions.html">org.xmlactions.pager.actions</a> &gt; IfActionTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">7</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.081s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testIf1</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIf2</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIf3</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIf4</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIfStrSubstutitor</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testImportFromURL</td>
+<td class="success">0.037s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testPagerLoad</td>
+<td class="success">0.025s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Jan:10:14:07:37,811:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@842128e: display name [org.springframework.context.support.ClassPathXmlApplicationContext@842128e]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,811:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,816:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@842128e]: org.springframework.beans.factory.support.DefaultListableBeanFactory@5f527597
+Jan:10:14:07:37,817:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5f527597: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,817:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,820:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==1 script:1==1
+Jan:10:14:07:37,820:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,820:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,821:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==2 script:1==2
+Jan:10:14:07:37,821:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,821:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,823:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==1 script:1==1
+Jan:10:14:07:37,823:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,824:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,824:[Test worker]:(IfActionTest.testIf3:83):DEBUG:IfActionTest:new page:
+&lt;body&gt;
+ [Echo we're from inside if 1==1]
+ &lt;/body&gt;
+Jan:10:14:07:37,826:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==1 script:1==1
+Jan:10:14:07:37,826:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,826:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,827:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:2==3 script:2==3
+Jan:10:14:07:37,827:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,827:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,828:[Test worker]:(IfActionTest.testIf4:100):DEBUG:IfActionTest:new page:
+&lt;body&gt;
+ 
+  Echo we're from inside if 1==1
+  
+ 
+&lt;/body&gt;
+Jan:10:14:07:37,828:[Test worker]:(IfActionTest.testIfStrSubstutitor:113):DEBUG:IfActionTest:named.map:true:true
+Jan:10:14:07:37,828:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:true==${named.map:true} script:true==true
+Jan:10:14:07:37,828:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,829:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,829:[Test worker]:(IfActionTest.testIfStrSubstutitor:120):DEBUG:IfActionTest:new page:
+&lt;body&gt;
+
+ We got true [${named.map:true}
+ 
+
+&lt;/body&gt;
+Jan:10:14:07:37,830:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3003b449: display name [org.springframework.context.support.ClassPathXmlApplicationContext@3003b449]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,830:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,838:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@3003b449]: org.springframework.beans.factory.support.DefaultListableBeanFactory@71f386ce
+Jan:10:14:07:37,838:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@71f386ce: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,839:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,856:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==1 script:1==1
+Jan:10:14:07:37,856:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,856:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,857:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:2==3 script:2==3
+Jan:10:14:07:37,858:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,858:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,858:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:'${request:fred}'=='1'; script:'my name is fred'=='1';
+Jan:10:14:07:37,858:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,859:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,859:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:${key}==1; script:1==1;
+Jan:10:14:07:37,860:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,860:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,860:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:10==10 script:10==10
+Jan:10:14:07:37,860:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,861:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,861:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:20==21 script:20==21
+Jan:10:14:07:37,861:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,861:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,862:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:21==21 script:21==21
+Jan:10:14:07:37,863:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,863:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,863:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:21==21 script:21==21
+Jan:10:14:07:37,863:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,864:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,864:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:30==31 script:30==31
+Jan:10:14:07:37,864:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,864:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,865:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:31==32 script:31==32
+Jan:10:14:07:37,865:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,865:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,866:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'pager.NoStrSubst' is defined
+Jan:10:14:07:37,866:[Test worker]:(ExecContext.get:308):INFO :ExecContext:No bean named 'stacked_pages' is defined
+Jan:10:14:07:37,866:[Test worker]:(IfActionTest.testImportFromURL:144):DEBUG:IfActionTest:page:
+
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    
+        Echo we're from inside if 1==1
+        
+    
+    
+    $(request:fred}
+    
+    
+    
+        key = 1
+    
+	
+	This is the echo content
+
+    
+        &lt;td&gt;this is a td in if [10==10]&lt;/td&gt;
+	
+	
+    
+
+    &lt;p&gt;
+        Now we're onto the elseif clause
+    &lt;/p&gt;
+    
+        &lt;td&gt;this is a td in elseif [21==21]
+        &lt;/td&gt;
+    
+
+    &lt;p&gt;
+        Now we're onto the else clause
+    &lt;/p&gt;
+    
+        &lt;td&gt;this is a td in else after ]30==31[
+        &lt;/td&gt;
+    
+
+
+&lt;/body&gt;
+
+Jan:10:14:07:37,867:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6c2f80d7: display name [org.springframework.context.support.ClassPathXmlApplicationContext@6c2f80d7]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,867:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,872:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@6c2f80d7]: org.springframework.beans.factory.support.DefaultListableBeanFactory@62a6a8b9
+Jan:10:14:07:37,873:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@62a6a8b9: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,873:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,879:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:1==1 script:1==1
+Jan:10:14:07:37,879:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,879:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,880:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:2==3 script:2==3
+Jan:10:14:07:37,880:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,880:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,881:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:'${request:fred}'=='1'; script:'my name is fred'=='1';
+Jan:10:14:07:37,881:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,881:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,882:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:${key}==1; script:1==1;
+Jan:10:14:07:37,882:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,882:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,883:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:10==10 script:10==10
+Jan:10:14:07:37,883:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,883:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,884:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:20==21 script:20==21
+Jan:10:14:07:37,884:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,885:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,886:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:21==21 script:21==21
+Jan:10:14:07:37,886:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,886:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,887:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:21==21 script:21==21
+Jan:10:14:07:37,887:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,887:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,888:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:30==31 script:30==31
+Jan:10:14:07:37,888:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,889:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,890:[Test worker]:(ActionUtils.evaluateExpression:45):DEBUG:ActionUtils:expression:31==32 script:31==32
+Jan:10:14:07:37,890:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,890:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,891:[Test worker]:(IfActionTest.testPagerLoad:168):DEBUG:IfActionTest:page:&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;
+	xmlns:pager=&quot;http://www.riostl.com/schema/pager&quot;
+	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd&quot;&gt;
+
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    
+        Echo we're from inside if 1==1
+        
+    
+    
+    $(request:fred}
+    
+    
+    
+        key = 1
+    
+	
+	This is the echo content
+
+    
+        &lt;td&gt;this is a td in if [10==10]&lt;/td&gt;
+	
+	
+    
+
+    &lt;p&gt;
+        Now we're onto the elseif clause
+    &lt;/p&gt;
+    
+        &lt;td&gt;this is a td in elseif [21==21]
+        &lt;/td&gt;
+    
+
+    &lt;p&gt;
+        Now we're onto the else clause
+    &lt;/p&gt;
+    
+        &lt;td&gt;this is a td in else after ]30==31[
+        &lt;/td&gt;
+    
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at 10-Jan-2019 14:07:38</p>
+</div>
+</div>
+</body>
+</html>

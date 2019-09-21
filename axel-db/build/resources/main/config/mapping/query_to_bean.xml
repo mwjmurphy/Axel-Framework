@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml_to_bean
+      xmlns="http://www.xmlactions.org/xml_to_bean" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.xmlactions.org/xml_to_bean http://www.xmlactions.org/schema/xml_to_bean.xsd">
+
+	<populator id="PopulatorArrayList" clas="org.xmlactions.mapping.xml_to_bean.PopulatorArrayList" />
+
+	<bean element="query" clas="org.xmlactions.db.query.Query">
+		<property name="fieldList">
+			<alias name="field_list" />
+		</property>
+		<property name="subQueries" populator_ref="PopulatorArrayList">
+			<alias name="query" />
+		</property>
+		<property name="requires" populator_ref="PopulatorArrayList">
+			<alias name="requires" />
+		</property>
+		<property name="sql"/>
+	</bean>
+
+	<bean element="field_list" clas="org.xmlactions.db.query.FieldList">
+		<property name="fields" populator_ref="PopulatorArrayList">
+			<alias name="field" />
+		</property>
+		<property name="whereClauses" populator_ref="PopulatorArrayList">
+			<alias name="where" />
+		</property>
+		<property name="orderBy" populator_ref="PopulatorArrayList">
+			<alias name="order" />
+		</property>
+   </bean>
+
+	<bean element="field" clas="org.xmlactions.db.query.Field" />
+
+	<bean element="where" clas="org.xmlactions.db.query.Where" />
+
+	<bean element="order" clas="org.xmlactions.db.query.Order" />
+
+	<bean element="group" clas="org.xmlactions.db.query.Group" />
+
+	<bean element="requires" clas="org.xmlactions.db.query.Requires" />
+
+	<bean element="sql" clas="org.xmlactions.db.query.SqlQuery">
+		<property name="whereClauses" populator_ref="PopulatorArrayList">
+			<alias name="where" />
+		</property>
+		<property name="orderBy" populator_ref="PopulatorArrayList">
+			<alias name="order" />
+		</property>
+		<property name="groupBy" populator_ref="PopulatorArrayList">
+			<alias name="group" />
+		</property>
+		<text name="sql_query" />  <!-- this can be in the content -->
+	</bean>
+
+</xml_to_bean>

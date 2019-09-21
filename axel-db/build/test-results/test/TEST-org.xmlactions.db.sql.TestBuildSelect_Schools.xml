@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.db.sql.TestBuildSelect_Schools" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:08" hostname="7SV0SQ2-NB" time="0.025">
+  <properties/>
+  <testcase name="testMultipleTableBuildSelectMySql1" classname="org.xmlactions.db.sql.TestBuildSelect_Schools" time="0.014"/>
+  <testcase name="testMultipleTableBuildSelectMySql2" classname="org.xmlactions.db.sql.TestBuildSelect_Schools" time="0.011"/>
+  <system-out><![CDATA[[Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] []    path:tb_person-tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    tp:tb_class_student - (org.xmlactions.db.sql.BuildSelect:227)
+ [Test worker] [] join not added [tb_class_student.class_id = tb_school_class.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_school_class on tb_class_student.class_id = tb_school_class.id - (org.xmlactions.db.sql.BuildSelect:239)
+ [Test worker] [] join not added [tb_class_student.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_class_student.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:235)
+ [Test worker] []    path:tb_person-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_school_class-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_school_class-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_sen-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] [] resolve:tb_person - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] resolve:tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_person_school_link.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_person_school_link.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] resolve:tb_school_class - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] resolve:tb_sen - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_sen.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_sen.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] resolve:tb_class_student - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join added [tb_class_student.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:395)
+ [Test worker] []    join:tb_person on tb_class_student.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] join added [tb_class_student.class_id = tb_school_class.id] - (org.xmlactions.db.sql.BuildSelect:395)
+ [Test worker] []    join:tb_school_class on tb_class_student.class_id = tb_school_class.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] []    sort:tb_person_school_link on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_sen on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_class_student on tb_school_class - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_class_student on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] [] ordered:tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_sen - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_class_student - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_person - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_school_class - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] 
+SWOP JOIN TABLE ORDER
+firstTableName[tb_person] firstTableAlias[tb_person] with secondTableName[tb_sen] secondTableAlias[tb_sen] - (org.xmlactions.db.sql.BuildSelect:314)
+ [Test worker] [] 
+SWOP JOIN TABLE ORDER
+firstTableName[tb_person] firstTableAlias[tb_person] with secondTableName[tb_class_student] secondTableAlias[tb_class_student] - (org.xmlactions.db.sql.BuildSelect:314)
+ [Test worker] [] 
+  select
+ tb_person_school_link.id as "tb_person_school_link.id",
+ tb_sen.dis_code as "tb_sen.dis_code",
+ tb_person.id as "tb_person.id",
+ tb_person.lastname as "tb_person.lastname",
+ tb_person.firstname as "tb_person.firstname",
+ DATE_FORMAT(tb_person.dob,'%Y-%m-%d') as "tb_person.dob",
+ tb_person.nationality as "tb_person.nationality",
+ tb_person.person_type as "tb_person.person_type",
+ tb_school_class.name as "tb_school_class.name"
+ from tb_person_school_link tb_person_school_link
+  left join (tb_person tb_person)
+   on tb_person_school_link.person_id = tb_person.id
+  join (tb_sen tb_sen)
+   on tb_sen.person_id = tb_person.id
+  join (tb_school_class tb_school_class)
+   on tb_class_student.class_id = tb_school_class.id
+    and tb_class_student.person_id = tb_person.id
+ where tb_person_school_link.school_id=1 and tb_person.person_type='STU'
+ order by tb_person.lastname, tb_person.firstname - (org.xmlactions.db.sql.TestBuildSelect_Schools:63)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] []    path:tb_person-tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    tp:tb_class_student - (org.xmlactions.db.sql.BuildSelect:227)
+ [Test worker] []    path:tb_person-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_class_student - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_person_school_link-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_class_student-tb_school_class - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_class_student-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] []    path:tb_school_class-tb_sen - (org.xmlactions.db.sql.BuildSelect:224)
+ [Test worker] [] resolve:tb_person - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] resolve:tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_person_school_link.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_person_school_link.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] resolve:tb_class_student - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_class_student.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_class_student.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] join not added [tb_class_student.class_id = tb_school_class.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_school_class on tb_class_student.class_id = tb_school_class.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] [] resolve:tb_school_class - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] resolve:tb_sen - (org.xmlactions.db.sql.BuildSelect:259)
+ [Test worker] [] join not added [tb_sen.person_id = tb_person.id] - (org.xmlactions.db.sql.BuildSelect:397)
+ [Test worker] []    join:tb_person on tb_sen.person_id = tb_person.id - (org.xmlactions.db.sql.BuildSelect:358)
+ [Test worker] []    sort:tb_person_school_link on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_class_student on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_class_student on tb_school_class - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] []    sort:tb_sen on tb_person - (org.xmlactions.db.sql.BuildSelect:430)
+ [Test worker] [] ordered:tb_person_school_link - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_class_student - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_sen - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_person - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] ordered:tb_school_class - (org.xmlactions.db.sql.BuildSelect:437)
+ [Test worker] [] 
+SWOP JOIN TABLE ORDER
+firstTableName[tb_person] firstTableAlias[tb_person] with secondTableName[tb_class_student] secondTableAlias[tb_class_student] - (org.xmlactions.db.sql.BuildSelect:314)
+ [Test worker] [] 
+SWOP JOIN TABLE ORDER
+firstTableName[tb_person] firstTableAlias[tb_person] with secondTableName[tb_sen] secondTableAlias[tb_sen] - (org.xmlactions.db.sql.BuildSelect:314)
+ [Test worker] [] 
+  select
+ tb_person_school_link.id as "tb_person_school_link.id",
+ tb_class_student.id as "tb_class_student.id",
+ tb_sen.dis_code as "tb_sen.dis_code",
+ tb_person.id as "tb_person.id",
+ tb_person.lastname as "tb_person.lastname",
+ tb_person.firstname as "tb_person.firstname",
+ DATE_FORMAT(tb_person.dob,'%Y-%m-%d') as "tb_person.dob",
+ tb_person.nationality as "tb_person.nationality",
+ tb_person.person_type as "tb_person.person_type",
+ tb_school_class.name as "tb_school_class.name"
+ from tb_person_school_link tb_person_school_link
+  left join (tb_person tb_person)
+   on tb_person_school_link.person_id = tb_person.id
+  join (tb_class_student tb_class_student)
+   on tb_class_student.person_id = tb_person.id
+  join (tb_school_class tb_school_class)
+   on tb_class_student.class_id = tb_school_class.id
+  join (tb_sen tb_sen)
+   on tb_sen.person_id = tb_person.id
+ where tb_person_school_link.school_id=1 and tb_person.person_type='STU'
+ order by tb_person.lastname, tb_person.firstname - (org.xmlactions.db.sql.TestBuildSelect_Schools:111)
+ ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

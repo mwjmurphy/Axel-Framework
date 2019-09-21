@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.xmlactions.db.h2.H2DBTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.xmlactions.db.h2.H2DBTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.xmlactions.db.h2.html">org.xmlactions.db.h2</a> &gt; H2DBTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.162s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testInsertTbOne</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testQueryTbOne</td>
+<td class="success">0.155s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>[Test worker] [] !!! new H2TestDatabase !!! - (org.xmlactions.db.h2.H2TestDatabase:24)
+ [Test worker] [] executing [drop table tb_one] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [drop table tb_two] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [create table tb_one ( id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), Name varchar(32), Address varchar(32) )] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [create table tb_two ( id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), tb_one_id INTEGER, Name varchar(32), Address varchar(32) )] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [insert into tb_one( Name) VALUES ( 'fred')] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] productName:H2 - (org.xmlactions.db.ServerDB:178)
+ [Test worker] [] Batches key:1 - (org.xmlactions.db.ServerDB:185)
+ [Test worker] [] executing [update tb_one set Name='fred flinstone' where id = 1] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [update tb_one set Name = 'wilma flinstone', Address= 'bedrock' where id = 1] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] executing [select * from tb_one] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] |ID:1|NAME:wilma flinstone|ADDRESS:bedrock| - (org.xmlactions.db.ServerDB:202)
+ [Test worker] [] executing [select * from tb_two] - (org.xmlactions.db.ServerDB:115)
+ [Test worker] [] Unable to set property [xmlns] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage] error:Unknown property 'xmlns' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xmlns:xsi] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.w3.org/2001/XMLSchema-instance] error:Unknown property 'xmlns:xsi' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] Unable to set property [xsi:schemaLocation] on bean [org.xmlactions.db.actions.Storage] with value of [http://www.xmlactions.org/storage http://www.xmlactions.org/schema/storage.xsd] error:Unknown property 'xsi:schemaLocation' on class 'class org.xmlactions.db.actions.Storage' - (org.xmlactions.action.actions.SetupBeanFromXML:67)
+ [Test worker] [] query:select tb_1.id as &quot;tb_1_id&quot;,tb_1.name as &quot;tb_1_name&quot;,tb_1.address as &quot;tb_1_address&quot;
+ from tb_one tb_1
+ where 1 = 1  - (org.xmlactions.db.h2.H2DBTest:42)
+ [Test worker] [] result:
+| ID | NAME | ADDRESS 
+| 1 | wilma flinstone | bedrock 
+ - (org.xmlactions.db.h2.H2DBTest:46)
+ [Test worker] [] pk:3 - (org.xmlactions.db.h2.H2DBTest:56)
+ </pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at 10-Jan-2019 14:07:08</p>
+</div>
+</div>
+</body>
+</html>

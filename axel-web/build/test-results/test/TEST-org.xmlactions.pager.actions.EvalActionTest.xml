@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.xmlactions.pager.actions.EvalActionTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:37" hostname="7SV0SQ2-NB" time="0.028">
+  <properties/>
+  <testcase name="testImportFromFile" classname="org.xmlactions.pager.actions.EvalActionTest" time="0.015"/>
+  <testcase name="testEval" classname="org.xmlactions.pager.actions.EvalActionTest" time="0.004"/>
+  <testcase name="testPut2" classname="org.xmlactions.pager.actions.EvalActionTest" time="0.001"/>
+  <testcase name="testImportFromURL" classname="org.xmlactions.pager.actions.EvalActionTest" time="0.002"/>
+  <testcase name="testPutInsert" classname="org.xmlactions.pager.actions.EvalActionTest" time="0.003"/>
+  <testcase name="testPagerLoad" classname="org.xmlactions.pager.actions.EvalActionTest" time="0.001"/>
+  <testcase name="testPutInsert2" classname="org.xmlactions.pager.actions.EvalActionTest" time="0.001"/>
+  <system-out><![CDATA[Jan:10:14:07:37,407:[Test worker]:(AbstractApplicationContext.prepareRefresh:411):INFO :ClassPathXmlApplicationContext:Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3ef3c066: display name [org.springframework.context.support.ClassPathXmlApplicationContext@3ef3c066]; startup date [Thu Jan 10 14:07:37 GMT 2019]; root of context hierarchy
+Jan:10:14:07:37,408:[Test worker]:(XmlBeanDefinitionReader.loadBeanDefinitions:323):INFO :XmlBeanDefinitionReader:Loading XML bean definitions from class path resource [config/spring/spring-pager-startup.xml]
+Jan:10:14:07:37,416:[Test worker]:(AbstractApplicationContext.obtainFreshBeanFactory:426):INFO :ClassPathXmlApplicationContext:Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@3ef3c066]: org.springframework.beans.factory.support.DefaultListableBeanFactory@3b60f707
+Jan:10:14:07:37,417:[Test worker]:(DefaultListableBeanFactory.preInstantiateSingletons:414):INFO :DefaultListableBeanFactory:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b60f707: defining beans [pager.execContext,application.xml]; root of factory hierarchy
+Jan:10:14:07:37,417:[Test worker]:(PropertiesLoaderSupport.loadProperties:178):INFO :PropertiesFactoryBean:Loading properties file from class path resource [config/pager/actions.properties]
+Jan:10:14:07:37,425:[Test worker]:(BSFManager.eval:433):DEBUG:BSFManager:BSFManager:eval
+Jan:10:14:07:37,425:[Test worker]:(BSFManager.loadScriptingEngine:674):DEBUG:BSFManager:BSFManager:loadScriptingEngine
+Jan:10:14:07:37,426:[Test worker]:(EvalAction.execute:29):DEBUG:EvalAction:key:eval-content expression:null output:101
+Jan:10:14:07:37,426:[Test worker]:(EvalActionTest.testEval:53):DEBUG:EvalActionTest:newPage:eval-content:101
+Jan:10:14:07:37,427:[Test worker]:(EvalActionTest.testPut2:69):DEBUG:EvalActionTest:newPage:from execContext:This is the 1st put content[inner echo content]
+Jan:10:14:07:37,430:[Test worker]:(EvalActionTest.testPutInsert:81):WARN :EvalActionTest:url.path:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/pages
+Jan:10:14:07:37,430:[Test worker]:(EvalActionTest.testPutInsert:82):WARN :EvalActionTest:url.file:/C:/Users/mikem/git/Axel-Framework/axel-web/build/resources/test/pages
+Jan:10:14:07:37,434:[Test worker]:(EvalActionTest.testPagerLoad:141):DEBUG:EvalActionTest:page:<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:pager="http://www.riostl.com/schema/pager" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.riostl.com/schema/pager http://www.riostl.com/schema/pager.xsd">
+
+	<head>
+	</head>
+	<body>
+		
+		put-content:This is the 1st put content
+	</body>
+</html>
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
