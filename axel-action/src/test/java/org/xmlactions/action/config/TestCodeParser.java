@@ -47,7 +47,7 @@ public class TestCodeParser {
 		
 		CodeParser codeParser = new CodeParser();
 		
-		String name = (String) codeParser.parseCode(execContext, "org.xmlactions.action.config.TestCodeParser.buildName('fred',k1, 40)");
+		String name = (String) codeParser.parseCode(execContext, "org.xmlactions.action.config.TestCodeParser.buildName('k1',k1, 40)");
 		assertTrue(name.startsWith("'Integer':"));
 		LOGGER.debug("name:{}", name);
 

@@ -83,6 +83,7 @@ public class Param extends BaseAction
     private String key;
     private String value;
     private String type = TypeOption._String.type;
+    private boolean resolved = false;
 
 
 	public String getValue()
@@ -124,14 +125,19 @@ public class Param extends BaseAction
 			Integer i = Convert.toInteger(obj);
 			if (i != null) {
 				param.setType(Param.TypeOption._int.getType());
+				param.setResolved(true);
 			} else {
 				// try double
 				Double d = Convert.toDouble(obj);
 				if (d != null) {
 					param.setType(Param.TypeOption._double.getType());
+					param.setResolved(true);
 				} else {
 					// default to String
 					param.setType(Param.TypeOption._String.getType());
+					if(isString == true) {
+						param.setResolved(true);
+					}
 				}
 			}
 		}
@@ -140,11 +146,13 @@ public class Param extends BaseAction
 	
 	public Object getResolvedValue(IExecContext execContext)
 	{
-        Object obj;
-
-        obj = execContext.get(getValue());
-        if (obj == null) {
-            obj = StrSubstitutor.replace(getValue(), execContext);
+        Object obj = null;
+        
+        if (isResolved() == false) {
+	        obj = execContext.get(getValue());
+	        if (obj == null) {
+	            obj = StrSubstitutor.replace(getValue(), execContext);
+	        }
         }
 		if (obj == null) {
 			obj = getValue();
@@ -190,6 +198,14 @@ public class Param extends BaseAction
 
 	public String getType() {
 		return type;
+	}
+
+	public boolean isResolved() {
+		return resolved;
+	}
+
+	public void setResolved(boolean resolved) {
+		this.resolved = resolved;
 	}
 
 }
