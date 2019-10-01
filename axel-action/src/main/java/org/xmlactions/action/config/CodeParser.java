@@ -61,7 +61,7 @@ public class CodeParser {
 		if (ps.length() > 0) {
 			String [] params = ps.split(",");
 			for (String param : params) {
-				Param p = Param.buildParam(execContext, param);
+				Param p = Param.buildParam(execContext, param.trim());
 				list.add(p);
 			}
 		}

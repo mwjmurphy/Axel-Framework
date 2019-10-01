@@ -34,7 +34,7 @@ public class TestCodeParser {
 		assertTrue(name.startsWith("'Integer':"));
 		LOGGER.debug("name:{}", name);
 
-		name = (String) codeParser.parseCode(execContext, "org.xmlactions.action.config.TestCodeParser.buildName('fred','Flinstone', 41.0)");
+		name = (String) codeParser.parseCode(execContext, "org.xmlactions.action.config.TestCodeParser.buildName('fred', 'Flinstone', 41.0)");
 		assertTrue(name.startsWith("'Double':"));
 		LOGGER.debug("name:{}", name);
 
