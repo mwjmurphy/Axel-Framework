@@ -71,9 +71,9 @@ public class JSONToPresentationAction extends CommonFormFields {
         if (StringUtils.isEmpty(getJson_data()) && StringUtils.isEmpty(getJson_filename())) {
             throw new IllegalArgumentException("You must set either the " + http_request_keys.json_data + " or the " + http_request_keys.json_filename + " attribute in " + actionName);
         }
-        if (StringUtils.isEmpty(getJson_path(execContext))) {
-            throw new IllegalArgumentException("Missing " + http_request_keys.json_path + " attribute in " + actionName);
-        }
+//        if (StringUtils.isEmpty(getJson_path(execContext))) {
+//            throw new IllegalArgumentException("Missing " + http_request_keys.json_path + " attribute in " + actionName);
+//        }
         if (StringUtils.isEmpty(getPresentation_form()) && getForm() == null) {
             throw new IllegalArgumentException("You must set either the attribute " + http_request_keys.presentation_form + " or the element " + http_request_keys.form + " in " + actionName);
         }
@@ -167,6 +167,9 @@ public class JSONToPresentationAction extends CommonFormFields {
 
 	public String getJson_path(IExecContext execContext) {
 		// log.info("json_path:" + execContext.replace(json_path));
+		if (json_path == null || json_path.length() == 0) {
+			return json_path;
+		}
 		return execContext.replace(json_path);
 	}
 

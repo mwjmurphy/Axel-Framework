@@ -41,7 +41,12 @@ public class JSONUtils {
 			}
 		}
 		// get the json at this path
-		Object obj = getPathObject(jsonObject, path, map);
+		Object obj;
+		if (path != null && path.length() == 0) {
+			obj = jsonObject;
+		} else {
+			obj = getPathObject(jsonObject, path, map);
+		}
 		if (obj instanceof  JSONObject) {
 			if (index > 0) {
 				map = null;	// as we got back a JSONObject and not an array we must have processed the single item.
@@ -124,6 +129,10 @@ public class JSONUtils {
 	}
 
 	public static Object get(Object jObject, String path, int index) {
+
+		if (path.length() == 0) {
+			return jObject;
+		}
 		String paths[] = path.split("/");
 		String workingPath = null;
 		try {
