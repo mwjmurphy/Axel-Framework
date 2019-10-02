@@ -7,22 +7,23 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.text.StrSubstitutor;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xmlactions.action.Action;
 import org.xmlactions.action.ActionConst;
 import org.xmlactions.action.NestedActionException;
 import org.xmlactions.action.config.IExecContext;
-import org.xmlactions.action.stackedpages.StackedPage;
 import org.xmlactions.common.io.ResourceCommon;
 import org.xmlactions.common.io.ResourceUtils;
 import org.xmlactions.common.text.Html;
 import org.xmlactions.common.text.XmlCData;
 import org.xmlactions.common.xml.BadXMLException;
-import org.xmlactions.mapping.json.JSONUtils;
+import org.xmlactions.mapping.json.GsonUtils;
 import org.xmlactions.pager.actions.form.CommonFormFields;
 import org.xmlactions.pager.actions.form.PresentationFormAction;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 public class JSONToPresentationAction extends CommonFormFields {
 
@@ -85,7 +86,8 @@ public class JSONToPresentationAction extends CommonFormFields {
 
     private String processMapping(IExecContext execContext) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, NestedActionException, BadXMLException {
 
-    	JSONObject jsonObject = null;
+    	Gson gson = new Gson();
+    	JsonElement jsonElement = null;
     	String presentationForm = null;
     	String data = null;
 
@@ -93,10 +95,10 @@ public class JSONToPresentationAction extends CommonFormFields {
 	        if (StringUtils.isNotEmpty(getJson_filename())) {
 	        	String fileName = ResourceCommon.buildFileName(path, execContext.replace(getJson_filename()));
 		        data = ResourceUtils.loadFile(fileName);
-		        jsonObject = new JSONObject(data);
+		        jsonElement = gson.fromJson(data, JsonElement.class);
 	        } else {
 	        	data = execContext.replace(getJson_data());
-		        jsonObject = new JSONObject(data);
+		        jsonElement = gson.fromJson(data, JsonElement.class);
 	        }
     	} catch (Exception ex) {
 			throw new IllegalArgumentException("Unable to get data  for " + getJson_filename() + " or " + getJson_data() + " for json[" + data + "]", ex);
@@ -117,7 +119,7 @@ public class JSONToPresentationAction extends CommonFormFields {
     	int rowCount = 0;
 		for (rowCount = 0 ; ; rowCount++) {
 			try {
-				Map<String, Object> map = JSONUtils.toMap(jsonObject, getJson_path(execContext), rowCount);
+				Map<String, Object> map = GsonUtils.toMap(jsonElement, getJson_path(execContext), rowCount);
 				if (map != null) {
 					execContext.addNamedMap(getRow_map_name(), map);
 					String form = copyForm(presentationForm);

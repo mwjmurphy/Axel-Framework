@@ -5,8 +5,12 @@ package org.xmlactions.pager.actions.mapping;
 import org.slf4j.Logger; import org.slf4j.LoggerFactory;
 import org.xmlactions.action.actions.BaseAction;
 import org.xmlactions.action.config.IExecContext;
+import org.xmlactions.mapping.json.GsonUtils;
 import org.xmlactions.mapping.json.JSONUtils;
 import org.xmlactions.web.RequestExecContext;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 public class JSONGetAction extends BaseAction
 {
@@ -22,7 +26,9 @@ public class JSONGetAction extends BaseAction
 	public String execute(IExecContext execContext) throws Exception
 	{
 		this.execContext = execContext;
-		return "" + JSONUtils.get(getJson_data(), getJson_path(), getIndex());
+		Gson gson = new Gson();
+		JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
+		return "" + GsonUtils.getPathObjectSlash(jsonElement, getJson_path(), getIndex());
 	}
 	
 	public String toString()
