@@ -124,6 +124,10 @@ public class JSONUtils {
 	}
 
 	public static Object get(Object jObject, String path, int index) {
+
+		if (path.length() == 0) {
+			return jObject;
+		}
 		String paths[] = path.split("/");
 		String workingPath = null;
 		try {
