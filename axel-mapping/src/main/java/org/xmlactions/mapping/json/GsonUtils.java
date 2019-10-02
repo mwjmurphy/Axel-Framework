@@ -85,6 +85,7 @@ public class GsonUtils {
 	public static JsonElement getPathObjectDot(JsonElement je, String path, int index) {
 		return getPathObjectDot(je, path);
 	}
+
 	public static JsonElement getPathObjectDot(JsonElement je, String path) {
 		return getPathObject(je, path, ".");
 	}
@@ -92,6 +93,7 @@ public class GsonUtils {
 	public static JsonElement getPathObjectSlash(JsonElement je, String path, int index) {
 		return getPathObjectSlash(je, path);
 	}
+	
 	public static JsonElement getPathObjectSlash(JsonElement je, String path) {
 		return getPathObject(je, path, "/");
 	}
@@ -179,7 +181,6 @@ public class GsonUtils {
 			}
 		}		
 	}
-
 	private static Object getObject(JSONObject jsonObject, String name) {
 		Object obj = jsonObject.get(name);
 		return obj;
