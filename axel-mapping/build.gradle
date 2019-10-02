@@ -40,6 +40,7 @@ dependencies {
 	compile 'bsf:bsf:2.4.0'
 	compile 'org.springframework:spring:2.5.6'
 	compile 'org.json:json:20140107'
+	compile 'com.google.code.gson:gson:2.8.5'
 
 	testCompile 'junit:junit:4.11'
 	testCompile 'mysql:mysql-connector-java:5.1.25'

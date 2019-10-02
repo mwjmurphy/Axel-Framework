@@ -4,9 +4,12 @@ package org.xmlactions.pager.actions.mapping;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import junit.framework.TestCase;
 
+import org.json.JSONObject;
 import org.slf4j.Logger; import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.xmlactions.action.Action;
@@ -17,6 +20,11 @@ import org.xmlactions.common.io.ResourceUtils;
 import org.xmlactions.common.xml.BadXMLException;
 import org.xmlactions.pager.actions.form.PresentationFormAction;
 import org.xmlactions.pager.actions.mapping.BeanToXmlAction;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 public class TestJSONToPresentationAction extends TestCase {
 
@@ -65,5 +73,33 @@ public class TestJSONToPresentationAction extends TestCase {
     	jsonToPresentationAction.setForm(form);
     	String output = jsonToPresentationAction.execute(execContext);
     	logger.debug(output);
+    }
+    public void testArray() {
+    	String json = "[{\"icon\":{\"url\":\"032da6956d5d6779d37b76b9b9e9b153.png\"},\"description\":\"Wi-Fi\",\"_id\":\"58e664a8241771003714ca71\",\"label\":\"Internet\"}]";
+    	Gson gson = new Gson();
+    	JsonElement jsonElement = gson.fromJson(json, JsonElement.class);
+    	boolean isArray = jsonElement.isJsonArray();
+    	JsonArray jsonArray = jsonElement.getAsJsonArray();
+    	for (JsonElement je : jsonArray) {
+    		if (je.isJsonArray()) {
+    			
+            	// logger.debug("je:{}",je);
+    			
+    		} else if (je.isJsonObject()) {
+    			JsonObject jo = je.getAsJsonObject();
+    			Set<Entry<String, JsonElement>> set = jo.entrySet();
+    			set.forEach(e -> logger.debug("e:{}", e));
+    			Object o = jo.get("icon");
+            	// logger.debug("o:{}",o);
+    			
+    		} else {
+    			String s = je.getAsString();
+            	// logger.debug("S:{}",s);
+    		}
+        	// logger.debug("o:{}", je);
+    	}
+    	String s = jsonElement.toString();
+    	logger.debug("s:{}", s);
+    	// JSONObject jsonObject = new JSONObject(json);
     }
 }
