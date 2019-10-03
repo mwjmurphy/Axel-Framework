@@ -29,11 +29,14 @@ public class JSONGetAction extends BaseAction
 		this.execContext = execContext;
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
-		jsonElement = GsonUtils.getPathObjectSlash(jsonElement, getJson_path(), getIndex());
-		if (jsonElement == null) {
+		Object o = GsonUtils.getPathObjectSlash(jsonElement, getJson_path(), getIndex());
+		if(o instanceof JsonElement) {
+			JsonElement je = (JsonElement)o;
+			result = jsonElement.getAsString();
+		} else if ( o == null) {
 			result = "";
 		} else {
-			result = jsonElement.getAsString();
+			result = "" + o;
 		}
 		return result;
 	}
