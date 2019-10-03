@@ -25,10 +25,17 @@ public class JSONGetAction extends BaseAction
 	
 	public String execute(IExecContext execContext) throws Exception
 	{
+		String result  = "";
 		this.execContext = execContext;
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
-		return "" + GsonUtils.getPathObjectSlash(jsonElement, getJson_path(), getIndex());
+		jsonElement = GsonUtils.getPathObjectSlash(jsonElement, getJson_path(), getIndex());
+		if (jsonElement == null) {
+			result = "";
+		} else {
+			result = jsonElement.getAsString();
+		}
+		return result;
 	}
 	
 	public String toString()

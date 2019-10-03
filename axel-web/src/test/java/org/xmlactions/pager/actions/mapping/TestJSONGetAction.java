@@ -1,5 +1,7 @@
 package org.xmlactions.pager.actions.mapping;
 
+import static org.junit.Assert.assertEquals;
+
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,14 +49,17 @@ public class TestJSONGetAction {
 		jsonGetAction.setJson_path("root_att");
 		jsonGetAction.setIndex(0);
 		String output = jsonGetAction.execute(execContext);
+		assertEquals("The Root Attribute", output);
 		logger.debug(output);
 
 		jsonGetAction.setJson_path("vessel_gear_types_category/image_url");
 		output = jsonGetAction.execute(execContext);
+		assertEquals("images/gears/surrounding_nets.png", output);
 		logger.debug(output);
 
 		jsonGetAction.setIndex(1);
 		output = jsonGetAction.execute(execContext);
+		assertEquals("images/gears/surrounding_nets.png", output);
 		logger.debug(output);
 		
 	}
