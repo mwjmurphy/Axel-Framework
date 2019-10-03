@@ -11,6 +11,7 @@ import org.xmlactions.web.RequestExecContext;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
 
 public class JSONGetAction extends BaseAction
 {
@@ -33,7 +34,8 @@ public class JSONGetAction extends BaseAction
 		if(o instanceof JsonElement) {
 			JsonElement je = (JsonElement)o;
 			if (je.isJsonPrimitive()) {
-				result = jsonElement.getAsString();
+				JsonPrimitive jp = (JsonPrimitive)je;
+				result = je.getAsString();
 			} else {
 				result = jsonElement.toString();
 			}

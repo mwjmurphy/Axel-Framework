@@ -1,0 +1,3380 @@
+{
+	"_id": "5cfe78bd8b0251001d1e921e",
+	"source": {
+		"provider": "travelsmart"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [13.894, 40.6972]
+	},
+	"rooms": [{
+			"occupancy": {
+				"adults": 2,
+				"children": 0
+			},
+			"accommodation": {
+				"minOccupancy": 1,
+				"maxOccupancy": 2,
+				"maxAdult": 2,
+				"maxChild": 0,
+				"pricedOccupancy": 2
+			},
+			"occupancyPermutations": ["1A 0C 0I", "2A 0C 0I"],
+			"externalAvailabilityProviders": [{
+					"provider": "INTUITIVE",
+					"providerId": "4520",
+					"dpRoomTypeName": [{
+							"provider": "",
+							"providerId": ""
+						}
+					]
+				}
+			],
+			"type": {
+				"label": "Standard",
+				"map": "SI",
+				"active": true
+			},
+			"grade": {
+				"label": "Room",
+				"map": "CL",
+				"active": true
+			},
+			"view": {
+				"label": "Side Sea View",
+				"map": "SI",
+				"active": true
+			},
+			"allowedOccupancy": ["1A 0C 0I", "2A 0C 0I"],
+			"name": "Standard Room, Side Sea View",
+			"description": "Spacious and modern, the Standard Side Sea View Rooms boast a balcony offering a partial view of the sparkling sea and the village. Guests can expect plenty of attention of detail as well as contemporary amenities including air conditioning, a minibar, a television, complimentary Wi-Fi and more.",
+			"facilities": {
+				"categories": [{
+						"label": "Amenities",
+						"facilities": [{
+								"_id": "58e65386d582480013ef9ddf",
+								"label": "Air conditioning",
+								"description": "Air conditioning",
+								"icon": {
+									"url": "ad231dd377e3c549a0aa1fd06b0b5043.png"
+								}
+							}, {
+								"_id": "5c2defa45c8e18001dd9e026",
+								"label": "Bathroom",
+								"description": "Bathroom"
+							}, {
+								"_id": "58e6591fd582480013ef9de6",
+								"label": "Bathroom",
+								"description": "Bath or shower"
+							}, {
+								"_id": "58e664a8241771003714ca71",
+								"label": "Internet",
+								"description": "Wi-Fi",
+								"icon": {
+									"url": "032da6956d5d6779d37b76b9b9e9b153.png"
+								}
+							}, {
+								"_id": "58e659ccd582480013ef9ded",
+								"label": "Bathroom",
+								"description": "Toiletries"
+							}, {
+								"_id": "58e658bfd582480013ef9de1",
+								"label": "Hairdryer",
+								"description": "Hairdryer"
+							}, {
+								"_id": "58e6597ed582480013ef9de8",
+								"label": "Room",
+								"description": "Telephone",
+								"icon": {
+									"url": "8b90a4ca5d1eec46793b33f7ef60174d.png"
+								}
+							}, {
+								"_id": "590c9a83b3fe05001dbe9b6f",
+								"label": "Media",
+								"fontClass": "",
+								"description": "Television"
+							}, {
+								"_id": "58e65587241771003714ca46",
+								"label": "Safe",
+								"description": "Safety deposit Box"
+							}, {
+								"_id": "58e659b3d582480013ef9deb",
+								"label": "Room",
+								"description": "Desk"
+							}
+						]
+					}
+				]
+			},
+			"dealRoom": true,
+			"images": [{
+					"cellLandscape_x3": {
+						"_id": "cf0730c6beed940e426dba896be4dfe0",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellLandscape_x3.jpg",
+						"width": 640,
+						"height": 480,
+						"pixelRatio": "3",
+						"alias": "cellLandscape"
+					},
+					"cellLandscape_x1": {
+						"_id": "f64e9f9cb06daa06fd4640c62b6de819",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellLandscape_x1.jpg",
+						"width": 320,
+						"height": 240,
+						"pixelRatio": "1",
+						"alias": "cellLandscape"
+					},
+					"cellSquare_x2": {
+						"_id": "444f2beac552941d9d1642ee55d1f338",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellSquare_x2.jpg",
+						"width": 480,
+						"height": 480,
+						"pixelRatio": "2",
+						"alias": "cellSquare"
+					},
+					"cellSquare_x1": {
+						"_id": "934737c4ae8a2c7499c7642f8e8fa895",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellSquare_x1.jpg",
+						"width": 320,
+						"height": 320,
+						"pixelRatio": "1",
+						"alias": "cellSquare"
+					},
+					"highRes_x1": {
+						"_id": "2c037086430ac2b7ed9ff08bf89fe378",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_highRes_x1.jpg",
+						"width": 640,
+						"height": 313,
+						"pixelRatio": "1",
+						"alias": "highRes"
+					},
+					"cellLandscape_x2": {
+						"_id": "0eda7eab240c1a53c28633010c14cdbb",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellLandscape_x2.jpg",
+						"width": 480,
+						"height": 360,
+						"pixelRatio": "2",
+						"alias": "cellLandscape"
+					},
+					"cellSquare_x3": {
+						"_id": "077550c9053bc289f4713079fd0cd0d7",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellSquare_x3.jpg",
+						"width": 640,
+						"height": 640,
+						"pixelRatio": "3",
+						"alias": "cellSquare"
+					},
+					"highRes_x2": {
+						"_id": "a904e2bd71ce4d8200007e0e3c6c7fec",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_highRes_x2.jpg",
+						"width": 1280,
+						"height": 629,
+						"pixelRatio": "2",
+						"alias": "highRes"
+					},
+					"thumbnails_x2": {
+						"_id": "59fe05b40072d0dc2fc61ee30392cd15",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_thumbnails_x2.jpg",
+						"width": 100,
+						"height": 100,
+						"pixelRatio": "2",
+						"alias": "thumbnails"
+					},
+					"thumbnails_x1": {
+						"_id": "53c0fd4775d6c020bbd56982e5932682",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_thumbnails_x1.jpg",
+						"width": 75,
+						"height": 75,
+						"pixelRatio": "1",
+						"alias": "thumbnails"
+					},
+					"thumbnails_x3": {
+						"_id": "f38a3c5225345e808260367cd8ee87a2",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_thumbnails_x3.jpg",
+						"width": 150,
+						"height": 150,
+						"pixelRatio": "3",
+						"alias": "thumbnails"
+					},
+					"highRes_x3": {
+						"_id": "467accd389ee2675cf60890a63f5e1c7",
+						"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+						"url": "f6cc457975f6c02a98d5153dc87ccdbd_highRes_x3.jpg",
+						"width": 1920,
+						"height": 938,
+						"pixelRatio": "3",
+						"alias": "highRes"
+					},
+					"name": "La Palma Hotel Standard Side Sea view",
+					"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+				}
+			],
+			"imageIds": ["f6cc457975f6c02a98d5153dc87ccdbd"],
+			"roomType": "2:0:0:SI:CL:SI",
+			"description1": "Spacious and modern, the Standard Side Sea View Rooms boast a balcony offering a partial view of the sparkling sea and the village. Guests can expect plenty of attention of detail ",
+			"description2": "as well as contemporary amenities including air conditioning, a minibar, a television, complimentary Wi-Fi and more.",
+			"image": "f6cc457975f6c02a98d5153dc87ccdbd_cellLandscape_x3.jpg"
+		}, {
+			"occupancy": {
+				"adults": 2,
+				"children": 0
+			},
+			"accommodation": {
+				"minOccupancy": 1,
+				"maxOccupancy": 2,
+				"maxAdult": 2,
+				"maxChild": 0,
+				"pricedOccupancy": 2
+			},
+			"occupancyPermutations": ["1A 0C 0I", "2A 0C 0I"],
+			"externalAvailabilityProviders": [{
+					"provider": "INTUITIVE",
+					"providerId": "4521",
+					"dpRoomTypeName": [{
+							"provider": "",
+							"providerId": ""
+						}
+					]
+				}
+			],
+			"type": {
+				"label": "Standard",
+				"map": "SI",
+				"active": true
+			},
+			"grade": {
+				"label": "Room",
+				"map": "CL",
+				"active": true
+			},
+			"view": {
+				"label": "Sea View",
+				"map": "SE",
+				"active": true
+			},
+			"allowedOccupancy": ["1A 0C 0I", "2A 0C 0I"],
+			"name": "Standard Room, Sea View",
+			"description": "Spacious and modern, the Standard Sea View Rooms boast a panoramic balcony overlooking the sparkling sea and the village. Guests can expect plenty of attention of detail as well as contemporary amenities including air conditioning, a minibar, a television, complimentary Wi-Fi and more.",
+			"facilities": {
+				"categories": [{
+						"label": "Amenities",
+						"facilities": [{
+								"_id": "58e65386d582480013ef9ddf",
+								"label": "Air conditioning",
+								"description": "Air conditioning",
+								"icon": {
+									"url": "ad231dd377e3c549a0aa1fd06b0b5043.png"
+								}
+							}, {
+								"_id": "5c2defa45c8e18001dd9e026",
+								"label": "Bathroom",
+								"description": "Bathroom"
+							}, {
+								"_id": "58e6591fd582480013ef9de6",
+								"label": "Bathroom",
+								"description": "Bath or shower"
+							}, {
+								"_id": "58e664a8241771003714ca71",
+								"label": "Internet",
+								"description": "Wi-Fi",
+								"icon": {
+									"url": "032da6956d5d6779d37b76b9b9e9b153.png"
+								}
+							}, {
+								"_id": "58e659ccd582480013ef9ded",
+								"label": "Bathroom",
+								"description": "Toiletries"
+							}, {
+								"_id": "58e658bfd582480013ef9de1",
+								"label": "Hairdryer",
+								"description": "Hairdryer"
+							}, {
+								"_id": "58e6597ed582480013ef9de8",
+								"label": "Room",
+								"description": "Telephone",
+								"icon": {
+									"url": "8b90a4ca5d1eec46793b33f7ef60174d.png"
+								}
+							}, {
+								"_id": "590c9a83b3fe05001dbe9b6f",
+								"label": "Media",
+								"fontClass": "",
+								"description": "Television"
+							}, {
+								"_id": "58e65587241771003714ca46",
+								"label": "Safe",
+								"description": "Safety deposit Box"
+							}, {
+								"_id": "58e659b3d582480013ef9deb",
+								"label": "Room",
+								"description": "Desk"
+							}
+						]
+					}
+				]
+			},
+			"dealRoom": false,
+			"images": [{
+					"cellLandscape_x2": {
+						"_id": "261af357ae57eea7e8081530d2bd75c5",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_cellLandscape_x2.jpg",
+						"width": 480,
+						"height": 360,
+						"pixelRatio": "2",
+						"alias": "cellLandscape"
+					},
+					"cellSquare_x2": {
+						"_id": "c788ae9ade62880448fd42ec0337b4d2",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_cellSquare_x2.jpg",
+						"width": 480,
+						"height": 480,
+						"pixelRatio": "2",
+						"alias": "cellSquare"
+					},
+					"cellLandscape_x1": {
+						"_id": "ce928f74b1a1dce8c39633506e83586a",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_cellLandscape_x1.jpg",
+						"width": 320,
+						"height": 240,
+						"pixelRatio": "1",
+						"alias": "cellLandscape"
+					},
+					"cellLandscape_x3": {
+						"_id": "bb4906c39075d9ddca3c57d4500e00b3",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_cellLandscape_x3.jpg",
+						"width": 640,
+						"height": 480,
+						"pixelRatio": "3",
+						"alias": "cellLandscape"
+					},
+					"cellSquare_x1": {
+						"_id": "bbeba61386fa0cbd5cadb8d8e433785d",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_cellSquare_x1.jpg",
+						"width": 320,
+						"height": 320,
+						"pixelRatio": "1",
+						"alias": "cellSquare"
+					},
+					"cellSquare_x3": {
+						"_id": "94333f9d722a2c3791e743b1dec48e92",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_cellSquare_x3.jpg",
+						"width": 640,
+						"height": 640,
+						"pixelRatio": "3",
+						"alias": "cellSquare"
+					},
+					"thumbnails_x1": {
+						"_id": "fc55f4d1118651a2db0017bbaae1bf54",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_thumbnails_x1.jpg",
+						"width": 75,
+						"height": 75,
+						"pixelRatio": "1",
+						"alias": "thumbnails"
+					},
+					"thumbnails_x2": {
+						"_id": "8d3fcc32ee358e88cc0b59b790d52956",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_thumbnails_x2.jpg",
+						"width": 100,
+						"height": 100,
+						"pixelRatio": "2",
+						"alias": "thumbnails"
+					},
+					"highRes_x2": {
+						"_id": "700a3754b1c0e5f18891c5001c82ef3e",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_highRes_x2.jpg",
+						"width": 1280,
+						"height": 629,
+						"pixelRatio": "2",
+						"alias": "highRes"
+					},
+					"highRes_x1": {
+						"_id": "0e43ef5da2ae7e509474f0c4d6373621",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_highRes_x1.jpg",
+						"width": 640,
+						"height": 313,
+						"pixelRatio": "1",
+						"alias": "highRes"
+					},
+					"highRes_x3": {
+						"_id": "92f807d1ea77c56b9e6b164595b225d9",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_highRes_x3.jpg",
+						"width": 1920,
+						"height": 938,
+						"pixelRatio": "3",
+						"alias": "highRes"
+					},
+					"thumbnails_x3": {
+						"_id": "55c0ebbd3eecb577c0b8cf317b42cea2",
+						"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+						"url": "fa77e3e0d81522ac4d25bf69ead75780_thumbnails_x3.jpg",
+						"width": 150,
+						"height": 150,
+						"pixelRatio": "3",
+						"alias": "thumbnails"
+					},
+					"name": "La Palma Hotel Standard Sea View",
+					"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+				}
+			],
+			"imageIds": ["fa77e3e0d81522ac4d25bf69ead75780"],
+			"roomType": "2:0:0:SI:CL:SE",
+			"description1": "Spacious and modern, the Standard Sea View Rooms boast a panoramic balcony overlooking the sparkling sea and the village. Guests can expect plenty of attention of detail as well as",
+			"description2": " contemporary amenities including air conditioning, a minibar, a television, complimentary Wi-Fi and more.",
+			"image": "fa77e3e0d81522ac4d25bf69ead75780_cellLandscape_x3.jpg"
+		}
+	],
+	"resort": {
+		"_id": "5285c2e720cd1c1b13731d4e052d8f26",
+		"source": {
+			"provider": "travelsmart"
+		},
+		"name": "Ischia",
+		"status": "ready",
+		"country": "Italy",
+		"region": "Naples Coast",
+		"multicomId": "b562625a9935425190e708e577b5789a",
+		"styles": ["Beach", "Nature", "Hiking", "Gastronomy"],
+		"likes": ["Palermo", "Taormina", "Vulcano-Island", "Rhodes", "Corfu"],
+		"qName": "ischia",
+		"qRegion": "campania region",
+		"qCountry": "italy",
+		"qStyles": ["beach", "nature", "hiking", "gastronomy"],
+		"description": "<p>The largest of the islands in the Gulf of Naples, Ischia rises out of the blue Tyrrhenian Sea like a rugged yet peaceful giant. Visitors come here looking to relax in luxurious resorts, pristine beaches, natural thermal spas and mud baths, as well as indulge in amazing Italian food. Arriving at Ischia by ferry from Naples, you’ll notice the Castle Aragonese, which towers over the cobalt blue sea and is only connected to the rest of the island by a narrow paved walkway. With over 1,500 years to its name, it has been used both as a fortification against invaders and pirates, as well as a convent, and you can easily explore these different waves of history that have swept over the island. Today, Ischia is a place that offers full relaxation with stunning beaches, clear waters for swimming and various water sports, as well as the opportunity to explore charming little villages and captivating nature further inland. The island is furthermore home to numerous thermal springs and mud spas. From the coastal town of Sant’ Angelo, you can trek up the steps of the hillside overlooking the bay, to find the ancient Roman baths of Cavascura. Hollowed out by the rock, visitors can enjoy therapeutic treatments here, as well as saunas, mud baths and showers, which are all said to have a soothing effect on various ailments.<br/></p>",
+		"airports": ["NAP"],
+		"weather": {
+			"ClimateAverages": [{
+					"month": [{
+							"index": "1",
+							"name": "January",
+							"avgMinTemp": "8.4",
+							"avgMinTemp_F": "47.1",
+							"avgMaxTemp": "13.1",
+							"avgMaxTemp_F": "55.6",
+							"absMinTemp": "6.4",
+							"absMinTemp_F": "43.5",
+							"absMaxTemp": "15.1",
+							"absMaxTemp_F": "59.2",
+							"avgTemp": "11.2",
+							"avgTemp_F": "52.2",
+							"maxWindSpeed_kmph": "20.5",
+							"maxWindSpeed_mph": "12.8",
+							"maxWindSpeed_knots": "11.0",
+							"maxWindSpeed_ms": "5.7",
+							"avgWindSpeed_kmph": "14.0",
+							"avgWindSpeed_mph": "8.7",
+							"avgWindSpeed_knots": "7.0",
+							"avgWindSpeed_ms": "3.9",
+							"avgWindGust_kmph": "21.6",
+							"avgWindGust_mph": "13.4",
+							"avgWindGust_knots": "11.0",
+							"avgWindGust_ms": "6.0",
+							"avgDailyRainfall": "4.82",
+							"avgDailyRainfall_inch": "0.19",
+							"avgMonthlyRainfall": "149.32",
+							"avgMonthlyRainfall_inch": "5.88",
+							"avgHumidity": "74.7",
+							"avgCloud": "41.7",
+							"avgVis_km": "9.3",
+							"avgVis_miles": "5.0",
+							"avgPressure_mb": "1016.0",
+							"avgPressure_inch": "30.5",
+							"avgDryDays": "11",
+							"avgRainDays": "18",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "2",
+							"avgUVIndex": "3",
+							"avgSunHour": "194.3"
+						}, {
+							"index": "2",
+							"name": "February",
+							"avgMinTemp": "8.3",
+							"avgMinTemp_F": "46.9",
+							"avgMaxTemp": "13.2",
+							"avgMaxTemp_F": "55.8",
+							"absMinTemp": "4.6",
+							"absMinTemp_F": "40.3",
+							"absMaxTemp": "16.3",
+							"absMaxTemp_F": "61.3",
+							"avgTemp": "11.3",
+							"avgTemp_F": "52.3",
+							"maxWindSpeed_kmph": "21.2",
+							"maxWindSpeed_mph": "13.2",
+							"maxWindSpeed_knots": "11.0",
+							"maxWindSpeed_ms": "5.9",
+							"avgWindSpeed_kmph": "14.4",
+							"avgWindSpeed_mph": "8.9",
+							"avgWindSpeed_knots": "7.0",
+							"avgWindSpeed_ms": "4.0",
+							"avgWindGust_kmph": "21.6",
+							"avgWindGust_mph": "13.4",
+							"avgWindGust_knots": "11.0",
+							"avgWindGust_ms": "6.0",
+							"avgDailyRainfall": "5.93",
+							"avgDailyRainfall_inch": "0.23",
+							"avgMonthlyRainfall": "166.01",
+							"avgMonthlyRainfall_inch": "6.54",
+							"avgHumidity": "73.6",
+							"avgCloud": "42",
+							"avgVis_km": "9.2",
+							"avgVis_miles": "5.0",
+							"avgPressure_mb": "1013.1",
+							"avgPressure_inch": "30.4",
+							"avgDryDays": "7",
+							"avgRainDays": "19",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "2",
+							"avgUVIndex": "3",
+							"avgSunHour": "204.1"
+						}, {
+							"index": "3",
+							"name": "March",
+							"avgMinTemp": "10.4",
+							"avgMinTemp_F": "50.7",
+							"avgMaxTemp": "15.7",
+							"avgMaxTemp_F": "60.3",
+							"absMinTemp": "8.9",
+							"absMinTemp_F": "48.0",
+							"absMaxTemp": "18.1",
+							"absMaxTemp_F": "64.6",
+							"avgTemp": "13.7",
+							"avgTemp_F": "56.7",
+							"maxWindSpeed_kmph": "20.5",
+							"maxWindSpeed_mph": "12.8",
+							"maxWindSpeed_knots": "11.0",
+							"maxWindSpeed_ms": "5.7",
+							"avgWindSpeed_kmph": "14.0",
+							"avgWindSpeed_mph": "8.7",
+							"avgWindSpeed_knots": "7.0",
+							"avgWindSpeed_ms": "3.9",
+							"avgWindGust_kmph": "20.9",
+							"avgWindGust_mph": "13.0",
+							"avgWindGust_knots": "11.0",
+							"avgWindGust_ms": "5.8",
+							"avgDailyRainfall": "4.14",
+							"avgDailyRainfall_inch": "0.16",
+							"avgMonthlyRainfall": "128.44",
+							"avgMonthlyRainfall_inch": "5.06",
+							"avgHumidity": "72.8",
+							"avgCloud": "34.7",
+							"avgVis_km": "9.4",
+							"avgVis_miles": "5.0",
+							"avgPressure_mb": "1014.3",
+							"avgPressure_inch": "30.4",
+							"avgDryDays": "13",
+							"avgRainDays": "16",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "2",
+							"avgUVIndex": "5",
+							"avgSunHour": "246.6"
+						}, {
+							"index": "4",
+							"name": "April",
+							"avgMinTemp": "14.8",
+							"avgMinTemp_F": "58.6",
+							"avgMaxTemp": "19.8",
+							"avgMaxTemp_F": "67.6",
+							"absMinTemp": "13.3",
+							"absMinTemp_F": "55.9",
+							"absMaxTemp": "22.3",
+							"absMaxTemp_F": "72.1",
+							"avgTemp": "17.9",
+							"avgTemp_F": "64.2",
+							"maxWindSpeed_kmph": "17.6",
+							"maxWindSpeed_mph": "11.0",
+							"maxWindSpeed_knots": "9.0",
+							"maxWindSpeed_ms": "4.9",
+							"avgWindSpeed_kmph": "11.5",
+							"avgWindSpeed_mph": "7.2",
+							"avgWindSpeed_knots": "6.0",
+							"avgWindSpeed_ms": "3.2",
+							"avgWindGust_kmph": "16.6",
+							"avgWindGust_mph": "10.3",
+							"avgWindGust_knots": "8.0",
+							"avgWindGust_ms": "4.6",
+							"avgDailyRainfall": "2.44",
+							"avgDailyRainfall_inch": "0.10",
+							"avgMonthlyRainfall": "73.14",
+							"avgMonthlyRainfall_inch": "2.88",
+							"avgHumidity": "70.2",
+							"avgCloud": "26.6",
+							"avgVis_km": "9.7",
+							"avgVis_miles": "6.0",
+							"avgPressure_mb": "1014.2",
+							"avgPressure_inch": "30.4",
+							"avgDryDays": "14",
+							"avgRainDays": "14",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "1",
+							"avgUVIndex": "5",
+							"avgSunHour": "263.0"
+						}, {
+							"index": "5",
+							"name": "May",
+							"avgMinTemp": "18.5",
+							"avgMinTemp_F": "65.3",
+							"avgMaxTemp": "23.1",
+							"avgMaxTemp_F": "73.6",
+							"absMinTemp": "16.4",
+							"absMinTemp_F": "61.5",
+							"absMaxTemp": "25.5",
+							"absMaxTemp_F": "77.9",
+							"avgTemp": "21.3",
+							"avgTemp_F": "70.3",
+							"maxWindSpeed_kmph": "16.6",
+							"maxWindSpeed_mph": "10.3",
+							"maxWindSpeed_knots": "8.0",
+							"maxWindSpeed_ms": "4.6",
+							"avgWindSpeed_kmph": "10.4",
+							"avgWindSpeed_mph": "6.5",
+							"avgWindSpeed_knots": "5.0",
+							"avgWindSpeed_ms": "2.9",
+							"avgWindGust_kmph": "14.8",
+							"avgWindGust_mph": "9.2",
+							"avgWindGust_knots": "7.0",
+							"avgWindGust_ms": "4.1",
+							"avgDailyRainfall": "2.10",
+							"avgDailyRainfall_inch": "0.08",
+							"avgMonthlyRainfall": "65.22",
+							"avgMonthlyRainfall_inch": "2.57",
+							"avgHumidity": "68.8",
+							"avgCloud": "22.8",
+							"avgVis_km": "9.9",
+							"avgVis_miles": "6.0",
+							"avgPressure_mb": "1014.2",
+							"avgPressure_inch": "30.4",
+							"avgDryDays": "14",
+							"avgRainDays": "14",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "2",
+							"avgUVIndex": "6",
+							"avgSunHour": "347.2"
+						}, {
+							"index": "6",
+							"name": "June",
+							"avgMinTemp": "22.8",
+							"avgMinTemp_F": "73.0",
+							"avgMaxTemp": "27.5",
+							"avgMaxTemp_F": "81.5",
+							"absMinTemp": "20.5",
+							"absMinTemp_F": "68.9",
+							"absMaxTemp": "30.1",
+							"absMaxTemp_F": "86.2",
+							"avgTemp": "25.8",
+							"avgTemp_F": "78.4",
+							"maxWindSpeed_kmph": "16.2",
+							"maxWindSpeed_mph": "10.1",
+							"maxWindSpeed_knots": "8.0",
+							"maxWindSpeed_ms": "4.5",
+							"avgWindSpeed_kmph": "9.0",
+							"avgWindSpeed_mph": "5.6",
+							"avgWindSpeed_knots": "4.0",
+							"avgWindSpeed_ms": "2.5",
+							"avgWindGust_kmph": "13.3",
+							"avgWindGust_mph": "8.3",
+							"avgWindGust_knots": "7.0",
+							"avgWindGust_ms": "3.7",
+							"avgDailyRainfall": "1.48",
+							"avgDailyRainfall_inch": "0.06",
+							"avgMonthlyRainfall": "44.31",
+							"avgMonthlyRainfall_inch": "1.74",
+							"avgHumidity": "67.4",
+							"avgCloud": "11.5",
+							"avgVis_km": "9.9",
+							"avgVis_miles": "6.0",
+							"avgPressure_mb": "1014.5",
+							"avgPressure_inch": "30.4",
+							"avgDryDays": "18",
+							"avgRainDays": "10",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "2",
+							"avgUVIndex": "7",
+							"avgSunHour": "365.6"
+						}, {
+							"index": "7",
+							"name": "July",
+							"avgMinTemp": "26.6",
+							"avgMinTemp_F": "79.9",
+							"avgMaxTemp": "31.5",
+							"avgMaxTemp_F": "88.7",
+							"absMinTemp": "24.5",
+							"absMinTemp_F": "76.1",
+							"absMaxTemp": "34.6",
+							"absMaxTemp_F": "94.3",
+							"avgTemp": "29.7",
+							"avgTemp_F": "85.5",
+							"maxWindSpeed_kmph": "17.6",
+							"maxWindSpeed_mph": "11.0",
+							"maxWindSpeed_knots": "9.0",
+							"maxWindSpeed_ms": "4.9",
+							"avgWindSpeed_kmph": "9.7",
+							"avgWindSpeed_mph": "6.0",
+							"avgWindSpeed_knots": "5.0",
+							"avgWindSpeed_ms": "2.7",
+							"avgWindGust_kmph": "13.0",
+							"avgWindGust_mph": "8.1",
+							"avgWindGust_knots": "6.0",
+							"avgWindGust_ms": "3.6",
+							"avgDailyRainfall": "0.74",
+							"avgDailyRainfall_inch": "0.03",
+							"avgMonthlyRainfall": "22.94",
+							"avgMonthlyRainfall_inch": "0.90",
+							"avgHumidity": "63.4",
+							"avgCloud": "7.8",
+							"avgVis_km": "9.9",
+							"avgVis_miles": "6.0",
+							"avgPressure_mb": "1014.4",
+							"avgPressure_inch": "30.4",
+							"avgDryDays": "21",
+							"avgRainDays": "6",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "1",
+							"avgUVIndex": "7",
+							"avgSunHour": "385.3"
+						}, {
+							"index": "8",
+							"name": "August",
+							"avgMinTemp": "26.7",
+							"avgMinTemp_F": "80.1",
+							"avgMaxTemp": "32.6",
+							"avgMaxTemp_F": "90.7",
+							"absMinTemp": "24.7",
+							"absMinTemp_F": "76.5",
+							"absMaxTemp": "35.1",
+							"absMaxTemp_F": "95.2",
+							"avgTemp": "30.5",
+							"avgTemp_F": "86.9",
+							"maxWindSpeed_kmph": "16.9",
+							"maxWindSpeed_mph": "10.5",
+							"maxWindSpeed_knots": "9.0",
+							"maxWindSpeed_ms": "4.7",
+							"avgWindSpeed_kmph": "9.0",
+							"avgWindSpeed_mph": "5.6",
+							"avgWindSpeed_knots": "4.0",
+							"avgWindSpeed_ms": "2.5",
+							"avgWindGust_kmph": "12.6",
+							"avgWindGust_mph": "7.8",
+							"avgWindGust_knots": "6.0",
+							"avgWindGust_ms": "3.5",
+							"avgDailyRainfall": "0.44",
+							"avgDailyRainfall_inch": "0.02",
+							"avgMonthlyRainfall": "13.69",
+							"avgMonthlyRainfall_inch": "0.54",
+							"avgHumidity": "61.2",
+							"avgCloud": "7.3",
+							"avgVis_km": "10.0",
+							"avgVis_miles": "6.0",
+							"avgPressure_mb": "1014.9",
+							"avgPressure_inch": "30.4",
+							"avgDryDays": "23",
+							"avgRainDays": "5",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "1",
+							"avgUVIndex": "7",
+							"avgSunHour": "311.1"
+						}, {
+							"index": "9",
+							"name": "September",
+							"avgMinTemp": "22.1",
+							"avgMinTemp_F": "71.8",
+							"avgMaxTemp": "28.1",
+							"avgMaxTemp_F": "82.6",
+							"absMinTemp": "20.2",
+							"absMinTemp_F": "68.4",
+							"absMaxTemp": "29.7",
+							"absMaxTemp_F": "85.5",
+							"avgTemp": "25.9",
+							"avgTemp_F": "78.6",
+							"maxWindSpeed_kmph": "16.6",
+							"maxWindSpeed_mph": "10.3",
+							"maxWindSpeed_knots": "8.0",
+							"maxWindSpeed_ms": "4.6",
+							"avgWindSpeed_kmph": "10.4",
+							"avgWindSpeed_mph": "6.5",
+							"avgWindSpeed_knots": "5.0",
+							"avgWindSpeed_ms": "2.9",
+							"avgWindGust_kmph": "15.1",
+							"avgWindGust_mph": "9.4",
+							"avgWindGust_knots": "8.0",
+							"avgWindGust_ms": "4.2",
+							"avgDailyRainfall": "3.63",
+							"avgDailyRainfall_inch": "0.14",
+							"avgMonthlyRainfall": "108.97",
+							"avgMonthlyRainfall_inch": "4.29",
+							"avgHumidity": "64.7",
+							"avgCloud": "17",
+							"avgVis_km": "9.7",
+							"avgVis_miles": "6.0",
+							"avgPressure_mb": "1015.2",
+							"avgPressure_inch": "30.5",
+							"avgDryDays": "14",
+							"avgRainDays": "13",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "2",
+							"avgUVIndex": "6",
+							"avgSunHour": "289.0"
+						}, {
+							"index": "10",
+							"name": "October",
+							"avgMinTemp": "17.4",
+							"avgMinTemp_F": "63.3",
+							"avgMaxTemp": "23.7",
+							"avgMaxTemp_F": "74.7",
+							"absMinTemp": "15.0",
+							"absMinTemp_F": "59.0",
+							"absMaxTemp": "26",
+							"absMaxTemp_F": "78.8",
+							"avgTemp": "21.4",
+							"avgTemp_F": "70.5",
+							"maxWindSpeed_kmph": "16.2",
+							"maxWindSpeed_mph": "10.1",
+							"maxWindSpeed_knots": "8.0",
+							"maxWindSpeed_ms": "4.5",
+							"avgWindSpeed_kmph": "10.8",
+							"avgWindSpeed_mph": "6.7",
+							"avgWindSpeed_knots": "5.0",
+							"avgWindSpeed_ms": "3.0",
+							"avgWindGust_kmph": "16.2",
+							"avgWindGust_mph": "10.1",
+							"avgWindGust_knots": "8.0",
+							"avgWindGust_ms": "4.5",
+							"avgDailyRainfall": "3.97",
+							"avgDailyRainfall_inch": "0.16",
+							"avgMonthlyRainfall": "122.92",
+							"avgMonthlyRainfall_inch": "4.84",
+							"avgHumidity": "68.9",
+							"avgCloud": "22.7",
+							"avgVis_km": "9.7",
+							"avgVis_miles": "6.0",
+							"avgPressure_mb": "1016.4",
+							"avgPressure_inch": "30.5",
+							"avgDryDays": "14",
+							"avgRainDays": "15",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "2",
+							"avgUVIndex": "5",
+							"avgSunHour": "279.7"
+						}, {
+							"index": "11",
+							"name": "November",
+							"avgMinTemp": "13.4",
+							"avgMinTemp_F": "56.1",
+							"avgMaxTemp": "19.1",
+							"avgMaxTemp_F": "66.4",
+							"absMinTemp": "12.2",
+							"absMinTemp_F": "54.0",
+							"absMaxTemp": "21.7",
+							"absMaxTemp_F": "71.1",
+							"avgTemp": "16.9",
+							"avgTemp_F": "62.4",
+							"maxWindSpeed_kmph": "18.7",
+							"maxWindSpeed_mph": "11.6",
+							"maxWindSpeed_knots": "10.0",
+							"maxWindSpeed_ms": "5.2",
+							"avgWindSpeed_kmph": "13.0",
+							"avgWindSpeed_mph": "8.1",
+							"avgWindSpeed_knots": "6.0",
+							"avgWindSpeed_ms": "3.6",
+							"avgWindGust_kmph": "20.2",
+							"avgWindGust_mph": "12.5",
+							"avgWindGust_knots": "10.0",
+							"avgWindGust_ms": "5.6",
+							"avgDailyRainfall": "5.95",
+							"avgDailyRainfall_inch": "0.23",
+							"avgMonthlyRainfall": "178.64",
+							"avgMonthlyRainfall_inch": "7.03",
+							"avgHumidity": "73.3",
+							"avgCloud": "32.1",
+							"avgVis_km": "9.4",
+							"avgVis_miles": "5.0",
+							"avgPressure_mb": "1015.4",
+							"avgPressure_inch": "30.5",
+							"avgDryDays": "12",
+							"avgRainDays": "16",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "4",
+							"avgUVIndex": "4",
+							"avgSunHour": "186.3"
+						}, {
+							"index": "12",
+							"name": "December",
+							"avgMinTemp": "9.5",
+							"avgMinTemp_F": "49.1",
+							"avgMaxTemp": "14.6",
+							"avgMaxTemp_F": "58.3",
+							"absMinTemp": "7.8",
+							"absMinTemp_F": "46.0",
+							"absMaxTemp": "17.6",
+							"absMaxTemp_F": "63.7",
+							"avgTemp": "12.6",
+							"avgTemp_F": "54.7",
+							"maxWindSpeed_kmph": "18.7",
+							"maxWindSpeed_mph": "11.6",
+							"maxWindSpeed_knots": "10.0",
+							"maxWindSpeed_ms": "5.2",
+							"avgWindSpeed_kmph": "13.0",
+							"avgWindSpeed_mph": "8.1",
+							"avgWindSpeed_knots": "6.0",
+							"avgWindSpeed_ms": "3.6",
+							"avgWindGust_kmph": "20.2",
+							"avgWindGust_mph": "12.5",
+							"avgWindGust_knots": "10.0",
+							"avgWindGust_ms": "5.6",
+							"avgDailyRainfall": "4.07",
+							"avgDailyRainfall_inch": "0.16",
+							"avgMonthlyRainfall": "126.12",
+							"avgMonthlyRainfall_inch": "4.97",
+							"avgHumidity": "72.2",
+							"avgCloud": "31.3",
+							"avgVis_km": "9.6",
+							"avgVis_miles": "5.0",
+							"avgPressure_mb": "1019.0",
+							"avgPressure_inch": "30.6",
+							"avgDryDays": "14",
+							"avgRainDays": "15",
+							"avgSnowDays": "0",
+							"avgFogDays": "0",
+							"avgThunderDays": "2",
+							"avgUVIndex": "3",
+							"avgSunHour": "190.7"
+						}
+					]
+				}
+			]
+		}
+	},
+	"brochureInfo": {
+		"brochureInfoItem": {
+			"generalDescription": {
+				"header": "About the hotel",
+				"placeholder": "General hotel description",
+				"active": true,
+				"type": "html"
+			},
+			"propertyInformation": {
+				"header": "Property information",
+				"placeholder": "General property information",
+				"active": false,
+				"type": "text"
+			},
+			"areaInformation": {
+				"header": "Key facts",
+				"placeholder": "Nearby attractions/areas, often including distances from the property.",
+				"active": true,
+				"type": "text"
+			},
+			"amenitiesDescription": {
+				"header": "Hotel facilities",
+				"placeholder": "Describes general building amenities at the property.",
+				"active": false,
+				"type": "text"
+			},
+			"businessAmenities": {
+				"header": "Business amenities",
+				"placeholder": "Describes any business-specific amenities at the property, e.g. conference rooms.",
+				"active": false,
+				"type": "text"
+			},
+			"diningDescription": {
+				"header": "Dining",
+				"placeholder": "Describes dining accommodations at the property.",
+				"active": false,
+				"type": "text"
+			},
+			"roomInformation": {
+				"header": "Room information",
+				"placeholder": "Hotel room information. Typically contains notifications and fees.",
+				"active": false,
+				"type": "text"
+			},
+			"roomDetail": {
+				"header": "Room detail",
+				"placeholder": "Describes typical room amenities.",
+				"active": false,
+				"type": "text"
+			},
+			"roomFees": {
+				"header": "Room fees description",
+				"placeholder": "Describes any fees or deposits specific to the room.",
+				"active": false,
+				"type": "text"
+			},
+			"mandatoryFees": {
+				"header": "Mandatory fees description",
+				"placeholder": "Describes resort fees and other mandatory taxes or charges. May describe which services are covered by any fees, such as fitness centers or internet access.",
+				"active": false,
+				"type": "text"
+			},
+			"locationDescription": {
+				"header": "Location description",
+				"placeholder": "Describes the property's grounds and relative location in the city.",
+				"active": false,
+				"type": "text"
+			},
+			"nativeCurrencyCode": {
+				"header": "Native currency code",
+				"placeholder": "Currency code native to the property",
+				"active": false,
+				"type": "text"
+			},
+			"checkInInstructions": {
+				"header": "CheckIn instructions",
+				"placeholder": "Contains info for extra person fees, ID requirements, and any other notices relevant to check-in.",
+				"active": false,
+				"type": "text"
+			},
+			"specialCheckInInstructions": {
+				"header": "Special checkIn instructions",
+				"placeholder": "Contains information critical for check-in, such as a requirement to notify the property of an expected arrival time.",
+				"active": false,
+				"type": "text"
+			},
+			"policyInformation": {
+				"header": "Please note",
+				"placeholder": "General hotel policy text",
+				"active": false,
+				"type": "html"
+			},
+			"knowBeforeYouGo": {
+				"header": "Before you go",
+				"placeholder": "Provides additional disclaimers deemed necessary by the property.",
+				"active": false,
+				"type": "text"
+			}
+		}
+	},
+	"keyFacts": ["The hotel is just a short walk from the seafront", "The on-site restaurant specialises in local dishes and freshly caught seafood", "The hotel is just a few steps from a thermal park where guests can enjoy massages and treatments"],
+	"gettingThere": ["The hotel is located 58 kilometres (approximately two hours and 10 minutes by car and ferry) from Naples International Airport (NAP)"],
+	"name": "La Palma Hotel",
+	"starRating": 4,
+	"address": {
+		"address1": "Ischia",
+		"address2": "Italy",
+		"address3": "80070",
+		"country": "Italy"
+	},
+	"description": "<p></p><p>Located in the historic centre of Sant’Angelo, Hotel La Palma is nothing short of an Italian dream come true on the island of Ischia. Boasting a central location that allows guests to explore the picturesque village while also just being a stone’s throw away from the seafront, the hotel offers exceptional hospitality that makes your stay one of the highest standard. </p><p><br/></p><p>Just a few steps away from the property you’ll find the Tropical Thermal Park, an oasis of wellness and relaxation that comprises 10 thermal pools of various temperatures, as well as there being a full menu of massages and treatments available at the hotel’s on-site spa. Hotel La Palma also has a restaurant, which provides extraordinary sea views and specialises in local dishes and freshly caught seafood. Complimentary Wi-Fi is available throughout for your convenience.<br/></p><p></p>",
+	"surroundings": "The largest of the islands in the Gulf of Naples, Ischia rises out of the blue Tyrrhenian Sea like a rugged yet peaceful giant. Visitors come here looking to indulge in luxurious resorts, pristine beaches, natural thermal spas and mud baths, and of course, amazing Italian food. Arriving at the island by ferry from Naples, you’ll notice Castle Aragonese, which towers over the cobalt sea and is only connected to the rest of the island by a narrow paved walkway. With over 1,500 years to its name, it has been used as both a fortification and a convent. \nToday, Ischia offers stunning beaches and clear waters for swimming and various water sports, as well as the opportunity to explore charming little villages and captivating nature further inland. The island is home to numerous thermal springs and mud spas. From the coastal town of Sant’Angelo, you can trek up the steps of the hillside overlooking the bay, to find the ancient Roman baths of Cavascura. Hollowed out by the rock, visitors can enjoy therapeutic treatments here, as well as saunas, mud baths and showers.",
+	"status": "ready",
+	"safetyIndex": 6,
+	"updateDate": "2019-06-11T09:34:47.225Z",
+	"imageIds": ["818c0c1cae8d2e9aed6e6d63268c05da", "df87a631e436bf3dd8a5f1ebc0222fdb", "f81eb09f1d8c8753f22055d673f0002f", "47f99213789785e03c8ec2a4b6d2e00c", "f6cc457975f6c02a98d5153dc87ccdbd", "fa77e3e0d81522ac4d25bf69ead75780", "d1a2872da3a3ad735f51fad3cf29129f", "fc777e6d3f896fda6507fb7228183b3d", "3c5421957ecc8e6fb17bb6029a0c358f", "d7d6932ab87987f58cc66079a21583bc", "809aa86a27f93ef121d79a9ee32e2017", "1ff62811151d1a352fcdeba768c02421", "12766e951553ebc208fe50476247edff", "4b7b8760f0e09ceecf073c90c23ea8eb", "2668e96f6ad15707575919b6d9af9938", "de1501099c1f3ddcd7bd4fbba20cf3b3", "3bd67e8c1300418b9990e8141ffddca9"],
+	"endorsed": false,
+	"supplier": "",
+	"facilities": {
+		"mostPopular": {
+			"label": "Most popular",
+			"facilities": [{
+					"_id": "58e65150d582480013ef9dd3",
+					"label": "Spa and wellness",
+					"icon": {
+						"url": "e5e741d44369e3d606ca747f325cd309.png"
+					},
+					"description": "Outdoor pool",
+					"url": "e5e741d44369e3d606ca747f325cd309.png"
+				}, {
+					"_id": "58e65346241771003714ca2d",
+					"label": "Spa & wellness",
+					"description": "Spa",
+					"icon": {
+						"url": "6754b71d2b030608f396f1e24de0e0e0.png"
+					},
+					"url": "6754b71d2b030608f396f1e24de0e0e0.png"
+				}, {
+					"_id": "58e664a8241771003714ca71",
+					"label": "Internet",
+					"description": "Wi-Fi",
+					"icon": {
+						"url": "032da6956d5d6779d37b76b9b9e9b153.png"
+					},
+					"url": "032da6956d5d6779d37b76b9b9e9b153.png"
+				}, {
+					"_id": "590b5cbb2094090037c2ab92",
+					"label": "Pool",
+					"description": "Indoor pool",
+					"icon": {
+						"url": "e5e741d44369e3d606ca747f325cd309.png"
+					},
+					"url": "e5e741d44369e3d606ca747f325cd309.png"
+				}
+			]
+		},
+		"categories": [{
+				"label": "Pool and wellness",
+				"icon": {
+					"url": "e5e741d44369e3d606ca747f325cd309.png"
+				},
+				"facilities": [{
+						"_id": "58e65150d582480013ef9dd3",
+						"label": "Spa and wellness",
+						"icon": {
+							"url": "e5e741d44369e3d606ca747f325cd309.png"
+						},
+						"description": "Outdoor pool"
+					}, {
+						"_id": "58e65346241771003714ca2d",
+						"label": "Spa & wellness",
+						"description": "Spa",
+						"icon": {
+							"url": "6754b71d2b030608f396f1e24de0e0e0.png"
+						}
+					}, {
+						"_id": "5c5191eb4f67a60023f461c9",
+						"label": "Spa & wellnes",
+						"description": "Massage (Additional charge)"
+					}, {
+						"_id": "5c780efd34a2b10013d02d0b",
+						"label": "Pool & wellness",
+						"description": "Sauna (Additional charge)"
+					}, {
+						"_id": "590b5cbb2094090037c2ab92",
+						"label": "Pool",
+						"description": "Indoor pool",
+						"icon": {
+							"url": "e5e741d44369e3d606ca747f325cd309.png"
+						}
+					}
+				]
+			}, {
+				"label": "Food and drink",
+				"icon": {
+					"url": "e46da89fc84010de72946a92b8f40f0c.png"
+				},
+				"facilities": [{
+						"_id": "58e6516fd582480013ef9dd7",
+						"label": "Food and drink",
+						"description": "Restaurant",
+						"icon": {
+							"url": "0c6f0c8f19344b97f4ec58951b3aa39e.png"
+						}
+					}, {
+						"_id": "58e65560241771003714ca44",
+						"label": "Food and drink",
+						"description": "Bar",
+						"icon": {
+							"url": "fb0d1cf9b48634d5c87fcca8fea5519d.png"
+						}
+					}
+				]
+			}, {
+				"label": "Internet",
+				"icon": {
+					"url": "6544bb6dbd4e19c86d1592bc958066e0.png"
+				},
+				"facilities": [{
+						"_id": "58e664a8241771003714ca71",
+						"label": "Internet",
+						"description": "Wi-Fi",
+						"icon": {
+							"url": "032da6956d5d6779d37b76b9b9e9b153.png"
+						}
+					}
+				]
+			}, {
+				"label": "Reception services",
+				"icon": {
+					"url": "083694d6c943f4ab4e64e2cd0563e5bc.png"
+				},
+				"facilities": [{
+						"_id": "58e654b7241771003714ca40",
+						"label": "Reception",
+						"description": "24 hour reception",
+						"icon": {
+							"url": "083694d6c943f4ab4e64e2cd0563e5bc.png"
+						}
+					}, {
+						"_id": "58e66358241771003714ca6c",
+						"label": "Reception",
+						"description": "Luggage storage"
+					}
+				]
+			}, {
+				"label": "Cleaning service",
+				"icon": {
+					"url": "f9570aa95bebbecbe605bb2d02a07d57.png"
+				},
+				"facilities": [{
+						"_id": "5c3620f9460a07002d822d7a",
+						"label": "Cleaning",
+						"description": "Laundry (Additional charge)"
+					}
+				]
+			}, {
+				"label": "General",
+				"icon": {
+					"url": "1c2be15e72ba026487c5d4228497cc95.png"
+				},
+				"facilities": [{
+						"_id": "58e65574241771003714ca45",
+						"label": "Gift shop",
+						"description": "Gift shop",
+						"icon": {
+							"url": "dbf511f185f58b1204c0ef01728f9915.png"
+						}
+					}, {
+						"_id": "59f0b6fcdb22730023c92734",
+						"label": "Shops",
+						"description": "Shops (on site)"
+					}, {
+						"_id": "58e65587241771003714ca46",
+						"label": "Safe",
+						"description": "Safety deposit Box"
+					}
+				]
+			}
+		]
+	},
+	"imageVideoData": [{
+			"type": "image",
+			"id": "818c0c1cae8d2e9aed6e6d63268c05da"
+		}, {
+			"type": "image",
+			"id": "df87a631e436bf3dd8a5f1ebc0222fdb"
+		}, {
+			"type": "image",
+			"id": "f81eb09f1d8c8753f22055d673f0002f"
+		}, {
+			"type": "image",
+			"id": "47f99213789785e03c8ec2a4b6d2e00c"
+		}, {
+			"type": "image",
+			"id": "f6cc457975f6c02a98d5153dc87ccdbd"
+		}, {
+			"type": "image",
+			"id": "fa77e3e0d81522ac4d25bf69ead75780"
+		}, {
+			"type": "image",
+			"id": "d1a2872da3a3ad735f51fad3cf29129f"
+		}, {
+			"type": "image",
+			"id": "fc777e6d3f896fda6507fb7228183b3d"
+		}, {
+			"type": "image",
+			"id": "3c5421957ecc8e6fb17bb6029a0c358f"
+		}, {
+			"type": "image",
+			"id": "d7d6932ab87987f58cc66079a21583bc"
+		}, {
+			"type": "image",
+			"id": "809aa86a27f93ef121d79a9ee32e2017"
+		}, {
+			"type": "image",
+			"id": "1ff62811151d1a352fcdeba768c02421"
+		}, {
+			"type": "image",
+			"id": "12766e951553ebc208fe50476247edff"
+		}, {
+			"type": "image",
+			"id": "4b7b8760f0e09ceecf073c90c23ea8eb"
+		}, {
+			"type": "image",
+			"id": "2668e96f6ad15707575919b6d9af9938"
+		}, {
+			"type": "image",
+			"id": "de1501099c1f3ddcd7bd4fbba20cf3b3"
+		}, {
+			"type": "image",
+			"id": "3bd67e8c1300418b9990e8141ffddca9"
+		}
+	],
+	"arrivalAirports": [{
+			"name": "Naples International Airport",
+			"iataCode": "NAP",
+			"municipality": "Nápoli"
+		}
+	],
+	"externalAvailabilityProviders": [{
+			"provider": "INTUITIVE",
+			"providerId": "16249"
+		}
+	],
+	"telephone": "0039081999215",
+	"tripAdvisorLocationId": 1013173,
+	"numberOfRooms": 38,
+	"weather": null,
+	"images": [{
+			"cellSquare_x1": {
+				"_id": "d23746d1b74a94688ffd2c9e291983ec",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x1": {
+				"_id": "03ec2281f8163c4e67e05ff599d4a906",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x2": {
+				"_id": "6899184fadf210afb111dc2e19793427",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellSquare_x2": {
+				"_id": "9d76aa6853abe75fd6a624e668ed393c",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x1": {
+				"_id": "02ea5154077d7119df59fbd19cee526c",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x3": {
+				"_id": "c55d1bdb0bdb87c0628f684eb628d4c8",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "6ecfa29623773a060d5ffb215d3c453d",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"cellLandscape_x2": {
+				"_id": "06d0a1f5ec1e2b3ec7d562d3bc85fdd0",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x3": {
+				"_id": "46fb8dd15a91822c1bcb4c9717ea6333",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x3": {
+				"_id": "815581c5388d0580b9b40453efc34705",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"highRes_x1": {
+				"_id": "1b62149b1d5923ca15684ba8bf702c4e",
+				"baseImage": "818c0c1cae8d2e9aed6e6d63268c05da",
+				"url": "818c0c1cae8d2e9aed6e6d63268c05da_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Terrace 2",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"thumbnails_x2": {
+				"_id": "03a6391e5ab0f9633d56f34e460b1c56",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellSquare_x1": {
+				"_id": "8c0338e795dbf505ba16d8b5f6893929",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x2": {
+				"_id": "e358a225892205ec8df9da462d129093",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x2": {
+				"_id": "a9823c771f2d4d9d9ed864d8efdda74b",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"highRes_x2": {
+				"_id": "c7417ef4064c2278e4ef61a81c8c1754",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"cellSquare_x3": {
+				"_id": "273631e2d1dfcd1646d0cb256858cc2e",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x1": {
+				"_id": "86ea275fbbf532bdf7e734f54003e96d",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x1": {
+				"_id": "c237cde3570ff078a09ac939a0bd69d5",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x3": {
+				"_id": "9256b82c9c9fefde34fabd7c0e7e157d",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x3": {
+				"_id": "618cd3a13d0f95d81094414ecf4d005c",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"highRes_x1": {
+				"_id": "64289c16bf3e54471315150bb7e94da3",
+				"baseImage": "df87a631e436bf3dd8a5f1ebc0222fdb",
+				"url": "df87a631e436bf3dd8a5f1ebc0222fdb_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Surroundings 3",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellLandscape_x1": {
+				"_id": "76c09f61bca59ee20eca01699b311fe1",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x2": {
+				"_id": "e9e0496455a4b0a9bfb21629432a94c1",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x1": {
+				"_id": "32b14561289386c77e313935a383e8cd",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "0db2fe594c1b591f177fffda56cfcb55",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"cellSquare_x3": {
+				"_id": "174a7a134db22decfae54df254d30ab5",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x2": {
+				"_id": "34e8c854087cc40f0c03b0ef2f65099b",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x1": {
+				"_id": "779eff655c3a070507b40361572e4448",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x2": {
+				"_id": "d531f1822138da8da5a1f8f489b2b88f",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x3": {
+				"_id": "fe051c9b9731d369f9234ef1c10a0eed",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x1": {
+				"_id": "c35be3fe860210900fc7a09772e4d38f",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"cellLandscape_x3": {
+				"_id": "4a772c001cca21095dc7ebced10814bf",
+				"baseImage": "f81eb09f1d8c8753f22055d673f0002f",
+				"url": "f81eb09f1d8c8753f22055d673f0002f_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"name": "La Palma Hotel Surroundings 2",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"thumbnails_x1": {
+				"_id": "d3aaadca7fa8d27e036c2327e9029433",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x2": {
+				"_id": "a301317b075f1d594a6a7a824099fded",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"highRes_x1": {
+				"_id": "0bb6e919fbc9b4d569b78942c4a9cff7",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"cellLandscape_x1": {
+				"_id": "60662ce47b8ab531ef544338e6b202fd",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x2": {
+				"_id": "77eb347615ad18de9a0d36d463088ebd",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x1": {
+				"_id": "ff97b50ab7871741f2673e097007bcfa",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x3": {
+				"_id": "c1cdfedcead16f77c9d2d666d2d5be66",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x3": {
+				"_id": "ac45bb22339f45e5f060fca46ff1558c",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "173cc5b2c23ce3be0d813246c0e1e985",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"thumbnails_x2": {
+				"_id": "a72a79c0e855ef5b41ccb6e563ab1284",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x3": {
+				"_id": "3570f73cfe49374ee46d2e18ba0ca6b6",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x3": {
+				"_id": "f1f30a624dce8db399345e3a244bd286",
+				"baseImage": "47f99213789785e03c8ec2a4b6d2e00c",
+				"url": "47f99213789785e03c8ec2a4b6d2e00c_highRes_x3.jpg",
+				"width": 1920,
+				"height": 938,
+				"pixelRatio": "3",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Exterior",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellLandscape_x3": {
+				"_id": "cf0730c6beed940e426dba896be4dfe0",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"cellLandscape_x1": {
+				"_id": "f64e9f9cb06daa06fd4640c62b6de819",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x2": {
+				"_id": "444f2beac552941d9d1642ee55d1f338",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x1": {
+				"_id": "934737c4ae8a2c7499c7642f8e8fa895",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"highRes_x1": {
+				"_id": "2c037086430ac2b7ed9ff08bf89fe378",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"cellLandscape_x2": {
+				"_id": "0eda7eab240c1a53c28633010c14cdbb",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x3": {
+				"_id": "077550c9053bc289f4713079fd0cd0d7",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "a904e2bd71ce4d8200007e0e3c6c7fec",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"thumbnails_x2": {
+				"_id": "59fe05b40072d0dc2fc61ee30392cd15",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x1": {
+				"_id": "53c0fd4775d6c020bbd56982e5932682",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x3": {
+				"_id": "f38a3c5225345e808260367cd8ee87a2",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x3": {
+				"_id": "467accd389ee2675cf60890a63f5e1c7",
+				"baseImage": "f6cc457975f6c02a98d5153dc87ccdbd",
+				"url": "f6cc457975f6c02a98d5153dc87ccdbd_highRes_x3.jpg",
+				"width": 1920,
+				"height": 938,
+				"pixelRatio": "3",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Standard Side Sea view",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellLandscape_x2": {
+				"_id": "261af357ae57eea7e8081530d2bd75c5",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x2": {
+				"_id": "c788ae9ade62880448fd42ec0337b4d2",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x1": {
+				"_id": "ce928f74b1a1dce8c39633506e83586a",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellLandscape_x3": {
+				"_id": "bb4906c39075d9ddca3c57d4500e00b3",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x1": {
+				"_id": "bbeba61386fa0cbd5cadb8d8e433785d",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x3": {
+				"_id": "94333f9d722a2c3791e743b1dec48e92",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x1": {
+				"_id": "fc55f4d1118651a2db0017bbaae1bf54",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x2": {
+				"_id": "8d3fcc32ee358e88cc0b59b790d52956",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"highRes_x2": {
+				"_id": "700a3754b1c0e5f18891c5001c82ef3e",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"highRes_x1": {
+				"_id": "0e43ef5da2ae7e509474f0c4d6373621",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"highRes_x3": {
+				"_id": "92f807d1ea77c56b9e6b164595b225d9",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_highRes_x3.jpg",
+				"width": 1920,
+				"height": 938,
+				"pixelRatio": "3",
+				"alias": "highRes"
+			},
+			"thumbnails_x3": {
+				"_id": "55c0ebbd3eecb577c0b8cf317b42cea2",
+				"baseImage": "fa77e3e0d81522ac4d25bf69ead75780",
+				"url": "fa77e3e0d81522ac4d25bf69ead75780_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"name": "La Palma Hotel Standard Sea View",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"thumbnails_x1": {
+				"_id": "a4483f06b975d6ef174011eea4da5a58",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x1": {
+				"_id": "d27a91845062b1bc744652a0d83ddfc0",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x2": {
+				"_id": "600f9a8f7ba81c5e6669c8ae419e969e",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x2": {
+				"_id": "3bd4b8a86cf13a5eb1e160c060463de6",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x1": {
+				"_id": "9a1803b960a19135359200d6d9dbd1cb",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x2": {
+				"_id": "6f8540ee6fab32b9664ef147774294de",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellSquare_x3": {
+				"_id": "560c529dadac7837916dc7f06650de18",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x3": {
+				"_id": "44ad4b20fa2571c61ae7fab8c671f70b",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"highRes_x2": {
+				"_id": "8faff0427f963701909d1ecc8c8d7097",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"thumbnails_x3": {
+				"_id": "67a718db664752a654735875f13997d7",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x1": {
+				"_id": "d574dae9e262a656154f73eb30724348",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"highRes_x3": {
+				"_id": "4b2132e3df0485c96d804c34669c3559",
+				"baseImage": "d1a2872da3a3ad735f51fad3cf29129f",
+				"url": "d1a2872da3a3ad735f51fad3cf29129f_highRes_x3.jpg",
+				"width": 1920,
+				"height": 938,
+				"pixelRatio": "3",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Balcony view",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellSquare_x1": {
+				"_id": "fbc3f4af084690e72f4753c6a346cb8b",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x2": {
+				"_id": "56523a0cf593a383ba8430fe521ebe4f",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x1": {
+				"_id": "1ea8e048bbdd579aa1714124d0ca50c8",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x3": {
+				"_id": "3ac63adbfb6d1edfa2d69b78b401bacf",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "6cd67958ec8047929461155cc3dc9222",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"thumbnails_x2": {
+				"_id": "fc2dabdd83dc020e50a2d367f36f26af",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x1": {
+				"_id": "2ed692b490ffc08e707b4a902702d025",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x2": {
+				"_id": "ba888c11ebd9ed204b79bfae2d5a99d0",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x3": {
+				"_id": "ddcee7d2c922c946f7ab054fbafa9d4c",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x3": {
+				"_id": "4ece40127d00cb8627b3c4eeef5c3002",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"highRes_x1": {
+				"_id": "1debf6a8e9c373faef41d9857e957ab2",
+				"baseImage": "fc777e6d3f896fda6507fb7228183b3d",
+				"url": "fc777e6d3f896fda6507fb7228183b3d_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Baclony View 1",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellSquare_x2": {
+				"_id": "29eda8f00eeec1e333ce264ffc9e1915",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x1": {
+				"_id": "f5ab7c545170297c79d0fa6f11d4d654",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x1": {
+				"_id": "4bb6fabccbc04e59776a7c8896c76532",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x1": {
+				"_id": "140190298408bca197dcccccc77aa4fb",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x3": {
+				"_id": "e2a08f821145e124ea8f434062d492a6",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x2": {
+				"_id": "35aff039ccd3d3463602fd8705da6bfc",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"highRes_x2": {
+				"_id": "35b38ab0b3bd6bb5daf66e61ef041c99",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"cellLandscape_x2": {
+				"_id": "530e492f66d63735b76d1abbe9c2830c",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"cellLandscape_x3": {
+				"_id": "600af4d73d686cda0b9d03a8eb0e1435",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x3": {
+				"_id": "e901cf8fd41de95d19085ff87e3b3f97",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x1": {
+				"_id": "12567c0787b85aa2fa7070313c0264a8",
+				"baseImage": "3c5421957ecc8e6fb17bb6029a0c358f",
+				"url": "3c5421957ecc8e6fb17bb6029a0c358f_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Restaurant",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellSquare_x1": {
+				"_id": "19dad60f3c9456b8e6807bf1d9fb5a45",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x2": {
+				"_id": "c63b12493fb6d72bf01f12730a75bc7f",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x3": {
+				"_id": "6a20ea00a3cb60f66995031717609e20",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x2": {
+				"_id": "3afa5b4c95b6222049611ad83cecd0a7",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x1": {
+				"_id": "c1b7e6749d0fa2b47b1a8a6038e300a7",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x1": {
+				"_id": "6163d1c1200057e8ac9ec67cd90a3e82",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"highRes_x2": {
+				"_id": "cab54df6bfa60056fad4a03844b71eb0",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"cellLandscape_x2": {
+				"_id": "24bfdb441ee7dc413b3494c56b4d599a",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"highRes_x1": {
+				"_id": "08e090469c7f888eaa18d0c2bd358dbb",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"thumbnails_x3": {
+				"_id": "3102a0ba69ce79414ec3bd99cc9ea431",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x3": {
+				"_id": "8ea54a5c2768abbd4335a38ad4a4ec22",
+				"baseImage": "d7d6932ab87987f58cc66079a21583bc",
+				"url": "d7d6932ab87987f58cc66079a21583bc_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"name": "La Palma Hotel Terrace",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellLandscape_x1": {
+				"_id": "6722bd0ff5d6df2272d5a8aaabb94fbd",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x1": {
+				"_id": "d03ec55bcbdb7b44766ef126d11ab355",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x2": {
+				"_id": "ca654b64c362f4c474c8218e397152ce",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x3": {
+				"_id": "0f85a703f699013aeb4d9e2e082e7d10",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "94cbc1837f252ab3fed16d4bd2679401",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"thumbnails_x2": {
+				"_id": "fa61e65d9beb4573da4c31b2908e67b1",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x2": {
+				"_id": "e9a315b551841e079c7a06bcf8b749af",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"highRes_x1": {
+				"_id": "fa058d5dd96f0596288bfb380d812153",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"thumbnails_x1": {
+				"_id": "234350ff15defceaef50d25f416cff3f",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x3": {
+				"_id": "48aaf3aca66a5f48d228657c5415270f",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x3": {
+				"_id": "7d849981fbd4c5dca58a80b49869d4f1",
+				"baseImage": "809aa86a27f93ef121d79a9ee32e2017",
+				"url": "809aa86a27f93ef121d79a9ee32e2017_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"name": "La Palma Hotel Terrace 1",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"thumbnails_x1": {
+				"_id": "7104acea532182bcd515e4fc1f31b16a",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x3": {
+				"_id": "9d349e42117d8c4685eac2004291c8aa",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"highRes_x1": {
+				"_id": "e94ccdaf96e1efe78943f7f0299d2005",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"cellSquare_x1": {
+				"_id": "ad18ca6997a6f34e30a55ec6d77d4965",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x2": {
+				"_id": "f99a213577b4b264e192e4e20b2c76db",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x2": {
+				"_id": "e2f58e6db0056505e01ce67b934e09eb",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellSquare_x3": {
+				"_id": "f608aeaefb7ec1ffd34c4eaf7227fdf4",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x1": {
+				"_id": "faa52c4d8d05522d2a071dfa5d8d5ace",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellLandscape_x2": {
+				"_id": "1d124e5c2be845511f40f8ffd3d9ae2d",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"highRes_x3": {
+				"_id": "2fd2fc0cba2436222fce2fbdda890b91",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_highRes_x3.jpg",
+				"width": 1920,
+				"height": 938,
+				"pixelRatio": "3",
+				"alias": "highRes"
+			},
+			"thumbnails_x3": {
+				"_id": "977f0e7ae895f51444d97b7f3c059802",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x2": {
+				"_id": "15d57032f8821a77a11e482313264acd",
+				"baseImage": "1ff62811151d1a352fcdeba768c02421",
+				"url": "1ff62811151d1a352fcdeba768c02421_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Bar",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellLandscape_x1": {
+				"_id": "09adf9936442ce001bae3e3ef7d80e3e",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x1": {
+				"_id": "f6b0013fb503fde581bf25727706c0e8",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x3": {
+				"_id": "56a81820cd2e737068ca738814bb904f",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x2": {
+				"_id": "95ce6df68720e660bbeb4ca7330b7869",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x1": {
+				"_id": "576989786f4e4c87273627cf2ad5285f",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"highRes_x2": {
+				"_id": "29a2c00a0d205421d1834e1cefd859a7",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"thumbnails_x2": {
+				"_id": "51f1e19b6a0e6a634b275fc449f80c96",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x2": {
+				"_id": "d984d7fc7c3c5f47ea33770405ea2483",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"cellLandscape_x3": {
+				"_id": "ad61f7f9d68a0778f21c06ca5accb2cd",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x3": {
+				"_id": "c65cb82d86e37032d6d6c2f646f0dc84",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x1": {
+				"_id": "e2b4238ab0e14e65e5bab57a03e6dc60",
+				"baseImage": "12766e951553ebc208fe50476247edff",
+				"url": "12766e951553ebc208fe50476247edff_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Restaurant 1",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellLandscape_x1": {
+				"_id": "76d71bc0e1ac818c120bcf14cf857a2d",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x2": {
+				"_id": "420dcc11c368234f77117b0391a2374d",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellSquare_x2": {
+				"_id": "750ef4a367ec1e24a1ff59c9d4ae0580",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x3": {
+				"_id": "38a9be7e4e3661d3948177be6c1619b4",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x1": {
+				"_id": "8b10c9460bd12eb866c41cfc3c8299bf",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellSquare_x1": {
+				"_id": "fecdbd217d84d47b9543f5fda66f4392",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "9358491363bd2c4f2e7da1e350af1f6d",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"cellLandscape_x2": {
+				"_id": "485ac5717034ca7f610e872474674bd5",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"highRes_x1": {
+				"_id": "b212da5f18ad738050ce24e1dfe84ee5",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"thumbnails_x3": {
+				"_id": "c8d6f70d7ce3d3fed0f6acac3afee346",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x3": {
+				"_id": "e3b89cf3a7258acebe2e3ea665329782",
+				"baseImage": "4b7b8760f0e09ceecf073c90c23ea8eb",
+				"url": "4b7b8760f0e09ceecf073c90c23ea8eb_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"name": "La Palma Hotel Interior",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellSquare_x1": {
+				"_id": "f6745fda88bffbdad5d1814c4506e218",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"highRes_x1": {
+				"_id": "9f10d9e535ebad93c15bfceda5b83277",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"cellLandscape_x2": {
+				"_id": "6d520f76da8a656fec870ed562280772",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"cellLandscape_x1": {
+				"_id": "4b90e7301bd28cf54b264d6d6f68d117",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x3": {
+				"_id": "232205a6cede4ba3156a2620d2a737bb",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"cellLandscape_x3": {
+				"_id": "702c120b77d82a3b83707193e3454eda",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x2": {
+				"_id": "7b610bebd3ec98371924396a2eccfc9b",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "9c2ac651091f035ac9bf55148434e9a7",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"thumbnails_x1": {
+				"_id": "a309b38c4cec442a813c3547e146d73a",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x2": {
+				"_id": "4c9a3f3c37773bca6d04c3116707d399",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x3": {
+				"_id": "82482499debb3b1eba52cf0f15393281",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x3": {
+				"_id": "60ae32dfe5f221bd753fb77bc7a19529",
+				"baseImage": "2668e96f6ad15707575919b6d9af9938",
+				"url": "2668e96f6ad15707575919b6d9af9938_highRes_x3.jpg",
+				"width": 1920,
+				"height": 938,
+				"pixelRatio": "3",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Exterior 1",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"cellLandscape_x1": {
+				"_id": "df3de0411faf0b2a21ac14a63bc678ad",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"cellSquare_x1": {
+				"_id": "3e38770da2ab8a444065c1830a32b9f4",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x3": {
+				"_id": "85d81926b536d635f7a8ac18f6846840",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x2": {
+				"_id": "dee8b69010e2bc003ecf240abfb4d7ce",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"highRes_x2": {
+				"_id": "d100e5bf4888b330c896aadc81b921f1",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"thumbnails_x1": {
+				"_id": "4667af0e97e22e5b91a40bbcd92c3e8b",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"thumbnails_x2": {
+				"_id": "f6fed41a66422c84aaf87c8460d733ae",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x2": {
+				"_id": "ffdb297ea8648bf823418eb8965c8acb",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"cellLandscape_x3": {
+				"_id": "16e779792ef75b96bd0b62effd44d62a",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x3": {
+				"_id": "bd7de0961dc4d083a1ab428288f51020",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"highRes_x1": {
+				"_id": "7856133fc698c14aaa2d68b9b3db013d",
+				"baseImage": "de1501099c1f3ddcd7bd4fbba20cf3b3",
+				"url": "de1501099c1f3ddcd7bd4fbba20cf3b3_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"name": "La Palma Hotel Surroundings 1",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}, {
+			"highRes_x2": {
+				"_id": "933117931794ea77e1f94d2cda3f30a4",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_highRes_x2.jpg",
+				"width": 1280,
+				"height": 629,
+				"pixelRatio": "2",
+				"alias": "highRes"
+			},
+			"cellSquare_x1": {
+				"_id": "66ae6f37d428e047dd55441702f3355b",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_cellSquare_x1.jpg",
+				"width": 320,
+				"height": 320,
+				"pixelRatio": "1",
+				"alias": "cellSquare"
+			},
+			"cellSquare_x2": {
+				"_id": "e1b46783b81c23384a596a81f954e9a4",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_cellSquare_x2.jpg",
+				"width": 480,
+				"height": 480,
+				"pixelRatio": "2",
+				"alias": "cellSquare"
+			},
+			"thumbnails_x2": {
+				"_id": "8cff1afe6a66e9d632bb2e3b02166855",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_thumbnails_x2.jpg",
+				"width": 100,
+				"height": 100,
+				"pixelRatio": "2",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x2": {
+				"_id": "262a831779263288f8cd4a3967261d7b",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_cellLandscape_x2.jpg",
+				"width": 480,
+				"height": 360,
+				"pixelRatio": "2",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x1": {
+				"_id": "36d5b586ff8bf4c8aa26a99b89936285",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_thumbnails_x1.jpg",
+				"width": 75,
+				"height": 75,
+				"pixelRatio": "1",
+				"alias": "thumbnails"
+			},
+			"cellLandscape_x1": {
+				"_id": "ea4f43749b36310c78a79a60a6f2e556",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_cellLandscape_x1.jpg",
+				"width": 320,
+				"height": 240,
+				"pixelRatio": "1",
+				"alias": "cellLandscape"
+			},
+			"thumbnails_x3": {
+				"_id": "d4e5c72df711891ae2dbc49d364c8564",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_thumbnails_x3.jpg",
+				"width": 150,
+				"height": 150,
+				"pixelRatio": "3",
+				"alias": "thumbnails"
+			},
+			"cellSquare_x3": {
+				"_id": "f17fc956557432dfe3e3c1b90ae9aa46",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_cellSquare_x3.jpg",
+				"width": 640,
+				"height": 640,
+				"pixelRatio": "3",
+				"alias": "cellSquare"
+			},
+			"highRes_x1": {
+				"_id": "b280b11fb8a5f369ed47bca46c61edc4",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_highRes_x1.jpg",
+				"width": 640,
+				"height": 313,
+				"pixelRatio": "1",
+				"alias": "highRes"
+			},
+			"cellLandscape_x3": {
+				"_id": "936e52ea3af0f3b9d835355d98bbb2c4",
+				"baseImage": "3bd67e8c1300418b9990e8141ffddca9",
+				"url": "3bd67e8c1300418b9990e8141ffddca9_cellLandscape_x3.jpg",
+				"width": 640,
+				"height": 480,
+				"pixelRatio": "3",
+				"alias": "cellLandscape"
+			},
+			"name": "La Palma Hotel Surroundings",
+			"tags": ["La-Palma-Hotel", "Italy", "Ischia"]
+		}
+	],
+	"boardBasis": [{
+			"code": "AIS",
+			"name": "All inclusive",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": true,
+				"snacks": true
+			},
+			"description": "Breakfast, lunch, dinner, drinks and snacks",
+			"visible": false,
+			"key": "0"
+		}, {
+			"code": "AIL",
+			"name": "All inclusive light",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": true,
+				"snacks": true
+			},
+			"description": "Breakfast, lunch, dinner, drinks and snacks",
+			"visible": false,
+			"key": "1"
+		}, {
+			"code": "AIP",
+			"name": "Premier all inclusive",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": true,
+				"snacks": true
+			},
+			"description": "Breakfast lunch, dinner, drinks and snacks. Other hotel services included",
+			"visible": false,
+			"key": "2"
+		}, {
+			"code": "AIU",
+			"name": "Ultra all inclusive",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": true,
+				"snacks": true
+			},
+			"description": "breakfast, lunch and dinner, (choice of restaurants) snacks throughout the day, ALL drinks included – premium branded alcoholic drinks (normally 7am – 11pm), selected watersports, spa treatments and activities",
+			"visible": true,
+			"key": "3",
+			"default": true
+		}, {
+			"code": "BBS",
+			"name": "Bed & breakfast",
+			"options": {
+				"breakfast": true,
+				"lunch": false,
+				"dinner": false,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "Bed and Breakfast",
+			"visible": true,
+			"key": "4"
+		}, {
+			"code": "HBS",
+			"name": "Half board",
+			"options": {
+				"breakfast": true,
+				"lunch": false,
+				"dinner": true,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "Breakfast and dinner.",
+			"visible": true,
+			"key": "5"
+		}, {
+			"code": "HBP",
+			"name": "Half board plus",
+			"options": {
+				"breakfast": true,
+				"lunch": false,
+				"dinner": true,
+				"drinks": true,
+				"snacks": false
+			},
+			"description": "Breakfast and dinner. Drinks included with meals.",
+			"visible": false,
+			"key": "6"
+		}, {
+			"code": "HDA",
+			"name": "Half board dine around",
+			"options": {
+				"breakfast": true,
+				"lunch": false,
+				"dinner": true,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "Breakfast and dinner.",
+			"visible": false,
+			"key": "7"
+		}, {
+			"code": "FBS",
+			"name": "Full board",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "Breakfast, lunch and dinner",
+			"visible": true,
+			"key": "8"
+		}, {
+			"code": "FBD",
+			"name": "Full board dine around",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "Breakfast, lunch and dinner",
+			"visible": false,
+			"key": "9"
+		}, {
+			"code": "PFB",
+			"name": "Full board plus",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": true,
+				"snacks": false
+			},
+			"description": "Breakfast, lunch and dinner. Drinks included with meals",
+			"visible": false,
+			"key": "10"
+		}, {
+			"code": "SC",
+			"name": "Self catering",
+			"options": {
+				"breakfast": false,
+				"lunch": false,
+				"dinner": false,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "Facilities provided to cook your own meals (kitchenette)",
+			"visible": false,
+			"key": "11"
+		}, {
+			"code": "RO",
+			"name": "Room only",
+			"options": {
+				"breakfast": false,
+				"lunch": false,
+				"dinner": false,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "",
+			"visible": false,
+			"key": "12"
+		}, {
+			"code": "GGA",
+			"name": " Coral Gold Club Plus All Inclusive ",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": true,
+				"snacks": true
+			},
+			"description": "Breakfast, lunch, dinner, drinks and snacks",
+			"visible": false,
+			"key": "13"
+		}, {
+			"code": "GGP",
+			"name": " Coral Gold Club Plus All Inclusive Plus ",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": true,
+				"snacks": true
+			},
+			"description": "Breakfast, lunch, dinner, drinks and snacks",
+			"visible": false,
+			"key": "14"
+		}, {
+			"code": "HBD",
+			"name": "Half board DELUXE",
+			"options": {
+				"breakfast": true,
+				"lunch": false,
+				"dinner": true,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "Breakfast and dinner.",
+			"visible": false,
+			"key": "15"
+		}, {
+			"code": "LAI",
+			"name": "Luxury All inclusive",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": true,
+				"drinks": true,
+				"snacks": true
+			},
+			"description": "Breakfast, lunch, dinner, drinks and snacks",
+			"visible": false,
+			"key": "16"
+		}, {
+			"code": "BRK",
+			"name": "Breakfas t+6 lunches +1 welcome dinner",
+			"options": {
+				"breakfast": true,
+				"lunch": true,
+				"dinner": false,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "Breakfast+6 lunches +1 welcome dinner",
+			"visible": true,
+			"key": "17"
+		}, {
+			"code": "HWD",
+			"name": "Half Board with drinks + 1 dinner on arrival day",
+			"options": {
+				"breakfast": true,
+				"lunch": false,
+				"dinner": true,
+				"drinks": true,
+				"snacks": false
+			},
+			"description": "Half Board with drinks + 1 dinner on arrival day",
+			"visible": true,
+			"key": "18"
+		}, {
+			"code": "ABB",
+			"name": "American Buffet Breakfast  ",
+			"options": {
+				"breakfast": true,
+				"lunch": false,
+				"dinner": false,
+				"drinks": false,
+				"snacks": false
+			},
+			"description": "American Buffet Breakfast",
+			"visible": false,
+			"key": "19"
+		}
+	]
+}

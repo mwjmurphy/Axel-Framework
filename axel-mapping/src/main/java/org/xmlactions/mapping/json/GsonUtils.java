@@ -51,8 +51,9 @@ public class GsonUtils {
 		String paths[] = path.split(seperator);
 
 		String workingPath = null;
+		String name = path;
 		for (int i = 0 ; i < paths.length; i++){
-			String name = paths[i];
+			name = paths[i];
 			if (workingPath == null) {
 				workingPath = name;
 			} else {
@@ -75,7 +76,7 @@ public class GsonUtils {
 			JsonArray jsonArray = jsonElement.getAsJsonArray();
 			if (jsonArray.size() > index) {
 				jsonElement = jsonArray.get(index);
-				toMap(jsonElement, "", "", map);
+				toMap(jsonElement, name, "", map);
 			} else {
 				return null;
 			}
@@ -157,7 +158,11 @@ public class GsonUtils {
 		} else if (jsonElement.isJsonArray()) {
 			toMap(jsonElement.getAsJsonArray(), path, seperator, map);
 		} else if (jsonElement.isJsonPrimitive()) {
-			// cant do anything with this as we've got no key/value
+			if (path == null || path.length() == 0) {
+				map.put("value", jsonElement.getAsString());
+			} else {
+				map.put(path, jsonElement.getAsString());
+			}
 		}
 	}
 	
@@ -187,7 +192,11 @@ public class GsonUtils {
 			} else if (jsonElement.isJsonArray()) {
 				toMap(jsonElement.getAsJsonArray(), path, seperator, map);
 			} else if (jsonElement.isJsonPrimitive()) {
-				// cant do anything with this as we've got no key/value
+				if (path == null || path.length() == 0) {
+					map.put("value", jsonElement.getAsString());
+				} else {
+					map.put(path, jsonElement.getAsString());
+				}
 			}
 		}		
 	}

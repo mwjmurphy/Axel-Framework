@@ -74,6 +74,19 @@ public class TestJSONToPresentationAction extends TestCase {
     	String output = jsonToPresentationAction.execute(execContext);
     	logger.debug(output);
     }
+
+    public void testFromDataFromHotelToForm() throws Exception {
+    	PresentationFormAction form = new PresentationFormAction();
+    	form.setContent("x:${row:coordinates}");
+    	JSONToPresentationAction jsonToPresentationAction = new JSONToPresentationAction();
+    	String json = ResourceUtils.loadFile("/org/xmlactions/pager/actions/mapping/hotel.json");
+    	jsonToPresentationAction.setJson_path("location/coordinates");
+    	jsonToPresentationAction.setJson_data(json);
+    	jsonToPresentationAction.setForm(form);
+    	String output = jsonToPresentationAction.execute(execContext);
+    	logger.debug(output);
+    }
+  
     public void testArray() {
     	String json = "[{\"icon\":{\"url\":\"032da6956d5d6779d37b76b9b9e9b153.png\"},\"description\":\"Wi-Fi\",\"_id\":\"58e664a8241771003714ca71\",\"label\":\"Internet\"}]";
     	Gson gson = new Gson();
