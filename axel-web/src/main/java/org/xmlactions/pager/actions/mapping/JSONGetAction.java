@@ -32,7 +32,11 @@ public class JSONGetAction extends BaseAction
 		Object o = GsonUtils.getPathObjectSlash(jsonElement, getJson_path(), getIndex());
 		if(o instanceof JsonElement) {
 			JsonElement je = (JsonElement)o;
-			result = jsonElement.getAsString();
+			if (je.isJsonPrimitive()) {
+				result = jsonElement.getAsString();
+			} else {
+				result = jsonElement.toString();
+			}
 		} else if ( o == null) {
 			result = "";
 		} else {
