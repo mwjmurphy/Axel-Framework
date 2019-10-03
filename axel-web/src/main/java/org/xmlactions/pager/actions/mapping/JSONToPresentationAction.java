@@ -31,6 +31,8 @@ public class JSONToPresentationAction extends CommonFormFields {
     
     private static final String actionName = "map_json_to_presentation";
     
+    private static final String default_json_path = "/";
+    
     private enum http_request_keys {
     	json_data,	// this is the json data or a key to get the json from the ExecContext (if used)
     	json_filename,	// this is a file name to the json data (if used)
@@ -164,13 +166,16 @@ public class JSONToPresentationAction extends CommonFormFields {
 	}
 
 	public String getJson_path() {
+		if (json_path == null || json_path.length() == 0) {
+			return default_json_path;
+		}
 		return json_path;
 	}
 
 	public String getJson_path(IExecContext execContext) {
 		// log.info("json_path:" + execContext.replace(json_path));
 		if (json_path == null || json_path.length() == 0) {
-			return json_path;
+			return default_json_path;
 		}
 		return execContext.replace(json_path);
 	}
