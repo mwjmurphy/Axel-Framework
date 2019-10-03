@@ -162,7 +162,7 @@ public class GsonUtils {
 	private static void toMap(JsonObject jsonObject, String path, String seperator, Map<String, Object> map) {
 		Set<Entry<String,JsonElement>> set = jsonObject.entrySet();
 		for (Entry<String, JsonElement> entry : set) {
-			map.put(path + seperator + entry.getKey(), entry.getValue());
+			map.put(path + seperator + entry.getKey(), entry.getValue().getAsString());
 		}
 	}
 
@@ -172,7 +172,7 @@ public class GsonUtils {
 				JsonObject jsonObject = jsonElement.getAsJsonObject();
 				Set<Entry<String,JsonElement>> set = jsonObject.entrySet();
 				for (Entry<String, JsonElement> entry : set) {
-					map.put(path + seperator + entry.getKey(), entry.getValue());
+					map.put(path + seperator + entry.getKey(), entry.getValue().getAsString());
 				}
 			} else if (jsonElement.isJsonArray()) {
 				toMap(jsonElement.getAsJsonArray(), path, seperator, map);
