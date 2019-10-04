@@ -38,6 +38,10 @@ compileJava {
     options.debug = true
 }
 
+jar {
+	from sourceSets.main.allSource
+}
+
 dependencies {
 
 	compile 'commons-lang:commons-lang:2.6'

@@ -138,4 +138,19 @@ public class TestJSONToPresentationAction extends TestCase {
     	logger.debug("s:{}", s);
     	// JSONObject jsonObject = new JSONObject(json);
     }
+    
+    public void testArrayIndex() throws Exception {
+    	String json = "{ \"hires_images\" : [{ \"url\" : \"27d1397488026ff5a35c624f14a22bd2_highRes_x1.jpg\" }, { \"url\" : \"2bcb11201d285c47e1a8a86d87c60b5d_highRes_x1.jpg\" }] }";
+    	PresentationFormAction form = new PresentationFormAction();
+    	form.setContent("img:url:${img:url}");
+    	JSONToPresentationAction jsonToPresentationAction = new JSONToPresentationAction();
+    	jsonToPresentationAction.setJson_path("hires_images");
+    	jsonToPresentationAction.setJson_data(json);
+    	jsonToPresentationAction.setRow_map_name("img");
+    	jsonToPresentationAction.setForm(form);
+    	String output = jsonToPresentationAction.execute(execContext);
+    	assertTrue(output.contains("27d1397488026ff5a35c624f14a22bd2_highRes_x1"));
+    	assertEquals("2bcb11201d285c47e1a8a86d87c60b5d_highRes_x1.jpg", execContext.getString("img:url"));
+    	
+    }
 }

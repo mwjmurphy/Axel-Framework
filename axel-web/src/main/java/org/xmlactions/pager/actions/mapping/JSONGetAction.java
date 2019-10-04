@@ -35,18 +35,27 @@ public class JSONGetAction extends BaseAction
 		String result  = "";
 		this.execContext = execContext;
 		Gson gson = new Gson();
-		JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
-		Object o = GsonUtils.toMap(jsonElement, getJson_path(), getIndex());
-		if ( o == null) {
+		try {
+			JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
 			
-		} else if ( o instanceof Map) {
-			@SuppressWarnings("unchecked")
-			Map<String, Object> map = (Map<String, Object>)o;
-			execContext.addNamedMap(getRow_map_name(), map);
-			Set<Entry<String, Object>> set = map.entrySet();
-			for (Entry<String, Object> entry : set) {
-				execContext.put(entry.getKey(), entry.getValue());
+			Object o = GsonUtils.toMap(jsonElement, getJson_path(), getIndex());
+			if ( o == null) {
+				
+			} else if ( o instanceof Map) {
+				@SuppressWarnings("unchecked")
+				Map<String, Object> map = (Map<String, Object>)o;
+				execContext.addNamedMap(getRow_map_name(), map);
+				Set<Entry<String, Object>> set = map.entrySet();
+				for (Entry<String, Object> entry : set) {
+					execContext.put(entry.getKey(), entry.getValue());
+				}
 			}
+		} catch (Exception ex) {
+			throw new IllegalArgumentException("Unable to process json_get action."
+					+ " path:" + getJson_path()
+					+ " index:" + getIndex()
+					+ " data:" + getJson_data(),
+					ex);
 		}
 		return "";
 	}

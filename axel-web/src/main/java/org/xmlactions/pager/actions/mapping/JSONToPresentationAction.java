@@ -99,7 +99,7 @@ public class JSONToPresentationAction extends CommonFormFields {
 		        data = ResourceUtils.loadFile(fileName);
 		        jsonElement = gson.fromJson(data, JsonElement.class);
 	        } else {
-	        	data = execContext.replace(getJson_data());
+	        	data = execContext.replace(getJson_data(execContext));
 		        jsonElement = gson.fromJson(data, JsonElement.class);
 	        }
     	} catch (Exception ex) {
@@ -189,6 +189,13 @@ public class JSONToPresentationAction extends CommonFormFields {
 	 */
 	public String getJson_data() {
 		return json_data;
+	}
+
+	public String getJson_data(IExecContext execContext) {
+		if (json_data == null || json_data.length() == 0) {
+			return json_data;
+		}
+		return execContext.replace(json_data);
 	}
 
 	/**

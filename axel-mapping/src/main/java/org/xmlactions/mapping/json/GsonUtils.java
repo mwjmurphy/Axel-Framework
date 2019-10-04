@@ -66,7 +66,7 @@ public class GsonUtils {
 		if (jsonElement.isJsonArray()) {
 			// loop until we reach index
 			JsonArray jsonArray = jsonElement.getAsJsonArray();
-			if (jsonArray.size() > index) {
+			if (jsonArray.size() >= index) {
 				jsonElement = jsonArray.get(index);
 				toMap(jsonElement, name, map);
 			} else {
