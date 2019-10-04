@@ -473,13 +473,18 @@
    <xsd:element name="json_get">
       <xsd:annotation>
          <xsd:documentation><![CDATA[
-            Get a variable from a json document.
+            Get an object/s from a json document.
             ]]></xsd:documentation>
          <xsd:documentation>
             <br />
-            example:
+            The objects are stored into the execContext using the row_map_name.
+            <br/>
+            The objects can be retrieved from the execContext using the ${...} notation. The names of the objects
+            will be the corresponding keys from the json document or if an array will be the last entry in the path.
+            <br/> 
+            usage example:
             <br />
-            &lt;pager:json_get json_data="${jsonData}" json_path="list" index="0"/&gt;
+            &lt;pager:json_get json_data="${jsonData}" json_path="list" index="0" row_map_name="row"/&gt;
          </xsd:documentation>
       </xsd:annotation>
       <xsd:complexType>
@@ -504,6 +509,14 @@
                    This is an index into any array that it finds in the json_path.
                </xsd:documentation>
             </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the data from a single row.
+               	  
+               	  When the "json_get" gets the data from json it stores the results into a map.  By default the map
+               	  name is "row", this can be changed by setting the map name in the "row_map_name" field.
+            ]]></xsd:documentation></xsd:annotation>
          </xsd:attribute>
       </xsd:complexType>
    </xsd:element>

@@ -84,6 +84,29 @@ public class TestJSONToPresentationAction extends TestCase {
     	jsonToPresentationAction.setJson_data(json);
     	jsonToPresentationAction.setForm(form);
     	String output = jsonToPresentationAction.execute(execContext);
+    	assertEquals("x:13.894x:40.6972", output);
+    	
+    	jsonToPresentationAction.setJson_path("facilities/mostPopular/facilities");
+    	form.setContent("icon:${icon} row:icon:${row:icon}\n");
+    	output = jsonToPresentationAction.execute(execContext);
+    	assertTrue(output.contains("e5e741d44369e3d606ca747f325cd309"));
+    	assertTrue(output.contains("032da6956d5d6779d37b76b9b9e9b153"));
+    	assertTrue(output.contains("e5e741d44369e3d606ca747f325cd309"));
+    	String icon = "" + execContext.get("row:icon");
+    	assertTrue(icon.contains("e5e741d44369e3d606ca747f325cd309"));
+    	icon = "" + execContext.get("icon");
+    	assertTrue(icon.contains("null"));
+    			
+		JSONGetAction jsonGetAction = new JSONGetAction();
+		jsonGetAction.setJson_data("{\"url\":\"e5e741d44369e3d606ca747f325cd309.png\"}");
+		jsonGetAction.setJson_path("url");
+		jsonGetAction.setIndex(0);
+		jsonGetAction.execute(execContext);
+		String url = execContext.getString("row:url");
+    	assertEquals(url, "e5e741d44369e3d606ca747f325cd309.png");
+		url = execContext.getString("url");
+    	assertEquals(url, "e5e741d44369e3d606ca747f325cd309.png");
+
     	logger.debug(output);
     }
   

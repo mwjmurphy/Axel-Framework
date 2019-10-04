@@ -48,19 +48,37 @@ public class TestJSONGetAction {
 		jsonGetAction.setJson_data(jsonString);
 		jsonGetAction.setJson_path("root_att");
 		jsonGetAction.setIndex(0);
-		String output = jsonGetAction.execute(execContext);
-		assertEquals("The Root Attribute", output);
-		logger.debug(output);
+		jsonGetAction.execute(execContext);
+		assertEquals("The Root Attribute", execContext.get("row:root_att"));
+		assertEquals("The Root Attribute", execContext.get("root_att"));
 
 		jsonGetAction.setJson_path("vessel_gear_types_category/image_url");
-		output = jsonGetAction.execute(execContext);
-		assertEquals("images/gears/surrounding_nets.png", output);
-		logger.debug(output);
+		jsonGetAction.execute(execContext);
+		assertEquals("images/gears/surrounding_nets.png", execContext.get("row:image_url"));
+		assertEquals("images/gears/surrounding_nets.png", execContext.get("image_url"));
 
 		jsonGetAction.setIndex(1);
-		output = jsonGetAction.execute(execContext);
-		assertEquals("images/gears/surrounding_nets.png", output);
-		logger.debug(output);
+		jsonGetAction.execute(execContext);
+		assertEquals("images/gears/surrounding_nets.png", execContext.get("row:image_url"));
+		assertEquals("images/gears/surrounding_nets.png", execContext.get("image_url"));
+		
+	}
+	@Test
+	public void testFromHotelFile() throws Exception {
+		String jsonString = ResourceUtils.loadFile("/org/xmlactions/pager/actions/mapping/hotel.json");
+		JSONGetAction jsonGetAction = new JSONGetAction();
+		jsonGetAction.setJson_data(jsonString);
+		jsonGetAction.setJson_path("location/coordinates");
+		jsonGetAction.setIndex(0);
+		jsonGetAction.execute(execContext);
+		assertEquals("13.894", execContext.get("coordinates"));
+		assertEquals("13.894", execContext.get("row:coordinates"));
+		
+		jsonGetAction.setIndex(1);
+		jsonGetAction.setRow_map_name("fred");
+		jsonGetAction.execute(execContext);
+		assertEquals("40.6972", execContext.get("coordinates"));
+		assertEquals("40.6972", execContext.get("fred:coordinates"));
 		
 	}
 }

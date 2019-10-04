@@ -139,6 +139,10 @@ public class TestGsonUtils {
 		assertEquals("40.6972", obj.toString());
 		obj = GsonUtils.get(jsonElement, "location/coordinates", 2);
 		assertEquals(null, obj);
+		obj = GsonUtils.get(jsonElement, "location");
+		String result = ""+obj;
+		assertTrue(result.contains("Point"));
+		assertTrue(result.contains("[13.894,40.6972]"));
 	}
 	
 	private void dumpMap(Map<String, Object> map) {

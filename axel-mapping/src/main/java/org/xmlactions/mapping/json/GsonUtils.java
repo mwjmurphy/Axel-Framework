@@ -44,28 +44,20 @@ public class GsonUtils {
 		}
 		
 		if (path == null || path.length() == 0)  {
-			toMap(jsonElement, "", "", map);
+			toMap(jsonElement, "value",  map);
 			return map;
 		}
 		
 		String paths[] = path.split(seperator);
 
-		String workingPath = null;
 		String name = path;
 		for (int i = 0 ; i < paths.length; i++){
 			name = paths[i];
-			if (workingPath == null) {
-				workingPath = name;
-			} else {
-				workingPath += seperator + name;
-			}
 
 			if (jsonElement.isJsonObject()) {
 				jsonElement = getPathObject(jsonElement.getAsJsonObject(), name);
-				// toMap(jsonElement, workingPath, "", map);
 			} else if (jsonElement.isJsonArray()) {
 				jsonElement = getPathObject(jsonElement.getAsJsonArray(), name);
-				// toMap(jsonElement, workingPath, "", map);
 			} else if (jsonElement.isJsonPrimitive()) {
 				// cant handle this no key/value.
 			}
@@ -76,10 +68,14 @@ public class GsonUtils {
 			JsonArray jsonArray = jsonElement.getAsJsonArray();
 			if (jsonArray.size() > index) {
 				jsonElement = jsonArray.get(index);
-				toMap(jsonElement, name, "", map);
+				toMap(jsonElement, name, map);
 			} else {
 				return null;
 			}
+		} else if (jsonElement.isJsonObject()) {
+			toMap(jsonElement.getAsJsonObject(), map);
+		} else if (jsonElement.isJsonPrimitive() ) {
+			map.put(name, jsonElement.getAsJsonPrimitive().getAsString());
 		}
 		
 		return map;
@@ -109,14 +105,8 @@ public class GsonUtils {
 		
 		String paths[] = path.split(seperator);
 
-		String workingPath = null;
 		for (int i = 0 ; i < paths.length; i++){
 			String name = paths[i];
-			if (workingPath == null) {
-				workingPath = name;
-			} else {
-				workingPath += seperator + name;
-			}
 
 			if (jsonElement.isJsonObject()) {
 				jsonElement = getPathObject(jsonElement.getAsJsonObject(), name);
@@ -152,80 +142,76 @@ public class GsonUtils {
 		return null;	// not found
 	}
 
-	private static void toMap(JsonElement jsonElement, String path, String seperator, Map<String, Object> map) {
+	public static void toMap(JsonElement jsonElement, String path, Map<String, Object> map) {
 		if (jsonElement.isJsonObject()) {
-			toMap(jsonElement.getAsJsonObject(), path, seperator, map);
+			toMap(jsonElement.getAsJsonObject(), map);
 		} else if (jsonElement.isJsonArray()) {
-			toMap(jsonElement.getAsJsonArray(), path, seperator, map);
+			map.put(path, jsonElement);
 		} else if (jsonElement.isJsonPrimitive()) {
-			if (path == null || path.length() == 0) {
-				map.put("value", jsonElement.getAsString());
-			} else {
-				map.put(path, jsonElement.getAsString());
-			}
+			map.put(path, jsonElement.getAsString());
 		}
 	}
 	
-	private static void toMap(JsonObject jsonObject, String path, String seperator, Map<String, Object> map) {
+	private static void toMap(JsonObject jsonObject, Map<String, Object> map) {
 		Set<Entry<String,JsonElement>> set = jsonObject.entrySet();
 		for (Entry<String, JsonElement> entry : set) {
 			if (entry.getValue().isJsonPrimitive()) {
-				map.put(path + seperator + entry.getKey(), entry.getValue().getAsString());
+				map.put(entry.getKey(), entry.getValue().getAsString());
 			} else {
-				map.put(path + seperator + entry.getKey(), entry.getValue());
+				map.put(entry.getKey(), entry.getValue());
 			}
 		}
 	}
 
-	private static void toMap(JsonArray jsonArray, String path, String seperator, Map<String, Object> map) {
-		for (JsonElement jsonElement : jsonArray) {
-			if (jsonElement.isJsonObject()) {
-				JsonObject jsonObject = jsonElement.getAsJsonObject();
-				Set<Entry<String,JsonElement>> set = jsonObject.entrySet();
-				for (Entry<String, JsonElement> entry : set) {
-					if (entry.getValue().isJsonPrimitive()) {
-						map.put(path + seperator + entry.getKey(), entry.getValue().getAsString());
-					} else {
-						map.put(path + seperator + entry.getKey(), entry.getValue());
-					}
-				}
-			} else if (jsonElement.isJsonArray()) {
-				toMap(jsonElement.getAsJsonArray(), path, seperator, map);
-			} else if (jsonElement.isJsonPrimitive()) {
-				if (path == null || path.length() == 0) {
-					map.put("value", jsonElement.getAsString());
-				} else {
-					map.put(path, jsonElement.getAsString());
-				}
-			}
-		}		
-	}
-	private static Object getObject(JsonElement je, String name) {
-		if (je.isJsonArray()) {
-			JsonArray jsonArray = je.getAsJsonArray();
-			for (JsonElement jsonElement : jsonArray) {
-				if (jsonElement.isJsonObject()) {
-					JsonObject jsonObject = jsonElement.getAsJsonObject();
-					if (jsonObject.has(name)) {
-						return jsonObject.get(name);
-					}
-				}
-			}
-		}
-		if (je.isJsonObject()) {
-			JsonObject jsonObject = je.getAsJsonObject();
-			if (jsonObject.has(name)) {
-				return jsonObject.get(name);
-			}
-		}
-		if (je.isJsonPrimitive()) {
-			return null;
-			// JsonPrimitive jsonPrimitive = je.getAsJsonPrimitive();
-			// return jsonPrimitive;
-			
-		}
-		return null;
-	}
+//	private static void toMap(JsonArray jsonArray, String path, Map<String, Object> map) {
+//		for (JsonElement jsonElement : jsonArray) {
+//			if (jsonElement.isJsonObject()) {
+//				JsonObject jsonObject = jsonElement.getAsJsonObject();
+//				Set<Entry<String,JsonElement>> set = jsonObject.entrySet();
+//				for (Entry<String, JsonElement> entry : set) {
+//					if (entry.getValue().isJsonPrimitive()) {
+//						map.put(entry.getKey(), entry.getValue().getAsString());
+//					} else {
+//						map.put(entry.getKey(), entry.getValue());
+//					}
+//				}
+//			} else if (jsonElement.isJsonArray()) {
+//				toMap(jsonElement.getAsJsonArray(), path, map);
+//			} else if (jsonElement.isJsonPrimitive()) {
+//				if (path == null || path.length() == 0) {
+//					map.put("value", jsonElement.getAsString());
+//				} else {
+//					map.put(path, jsonElement.getAsString());
+//				}
+//			}
+//		}		
+//	}
+//	private static Object getObject(JsonElement je, String name) {
+//		if (je.isJsonArray()) {
+//			JsonArray jsonArray = je.getAsJsonArray();
+//			for (JsonElement jsonElement : jsonArray) {
+//				if (jsonElement.isJsonObject()) {
+//					JsonObject jsonObject = jsonElement.getAsJsonObject();
+//					if (jsonObject.has(name)) {
+//						return jsonObject.get(name);
+//					}
+//				}
+//			}
+//		}
+//		if (je.isJsonObject()) {
+//			JsonObject jsonObject = je.getAsJsonObject();
+//			if (jsonObject.has(name)) {
+//				return jsonObject.get(name);
+//			}
+//		}
+//		if (je.isJsonPrimitive()) {
+//			return null;
+//			// JsonPrimitive jsonPrimitive = je.getAsJsonPrimitive();
+//			// return jsonPrimitive;
+//			
+//		}
+//		return null;
+//	}
 
 	public static Object get(JsonElement jsonElement, String path) {
 		return (get(jsonElement, path, 0));

@@ -2,6 +2,10 @@
 package org.xmlactions.pager.actions.mapping;
 
 
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import org.slf4j.Logger; import org.slf4j.LoggerFactory;
 import org.xmlactions.action.actions.BaseAction;
 import org.xmlactions.action.config.IExecContext;
@@ -21,6 +25,8 @@ public class JSONGetAction extends BaseAction
 	private String json_data;
 	private String json_path;
 	private int index;
+    private String row_map_name="row";
+
 	
 	private IExecContext execContext;
 	
@@ -30,23 +36,44 @@ public class JSONGetAction extends BaseAction
 		this.execContext = execContext;
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
-		Object o = GsonUtils.getPathObjectSlash(jsonElement, getJson_path(), getIndex());
-		if(o instanceof JsonElement) {
-			JsonElement je = (JsonElement)o;
-			if (je.isJsonPrimitive()) {
-				JsonPrimitive jp = (JsonPrimitive)je;
-				result = je.getAsString();
-			} else {
-				result = jsonElement.toString();
+		Object o = GsonUtils.toMap(jsonElement, getJson_path(), getIndex());
+		if ( o == null) {
+			
+		} else if ( o instanceof Map) {
+			@SuppressWarnings("unchecked")
+			Map<String, Object> map = (Map<String, Object>)o;
+			execContext.addNamedMap(getRow_map_name(), map);
+			Set<Entry<String, Object>> set = map.entrySet();
+			for (Entry<String, Object> entry : set) {
+				execContext.put(entry.getKey(), entry.getValue());
 			}
-		} else if ( o == null) {
-			result = "";
-		} else {
-			result = "" + o;
 		}
-		return result;
+		return "";
 	}
 	
+//	public String execute(IExecContext execContext) throws Exception
+//	{
+//		String result  = "";
+//		this.execContext = execContext;
+//		Gson gson = new Gson();
+//		JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
+//		Object o = GsonUtils.getPathObjectSlash(jsonElement, getJson_path(), getIndex());
+//		if(o instanceof JsonElement) {
+//			JsonElement je = (JsonElement)o;
+//			if (je.isJsonPrimitive()) {
+//				JsonPrimitive jp = (JsonPrimitive)je;
+//				result = jp.getAsString();
+//			} else {
+//				result = je.toString();
+//			}
+//		} else if ( o == null) {
+//			result = "";
+//		} else {
+//			result = "" + o;
+//		}
+//		return result;
+//	}
+//	
 	public String toString()
 	{
 
@@ -78,6 +105,14 @@ public class JSONGetAction extends BaseAction
 
 	public void setIndex(int index) {
 		this.index = index;
+	}
+
+	public String getRow_map_name() {
+		return row_map_name;
+	}
+
+	public void setRow_map_name(String row_map_name) {
+		this.row_map_name = row_map_name;
 	}
 
 
