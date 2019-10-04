@@ -1,0 +1,28 @@
+# ignore all target folders
+**/target/
+**/temp/
+**/build/
+**/bin/
+
+# ignore all log files
+**/*.log
+**/*.log?
+
+**/*.jar
+**/*.war
+
+# ignore all eclipse config files
+**/.settings/
+**/.classpath
+**/.project
+**/*.class
+/axel-commons.log.1
+/axel-commons.log.2
+/axel-commons.log.3
+
+
+**/*.bin
+**/*.lock
+**/*.tmp
+
+/.gradle/
