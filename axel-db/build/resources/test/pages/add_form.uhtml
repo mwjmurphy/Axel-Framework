@@ -1,4 +1,0 @@
-add form
-${row:tb_address.street1}
-${row:tb_address.city}
-${ddd}

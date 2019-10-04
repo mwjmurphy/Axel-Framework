@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.xmlactions.schema.docs.ToTextTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-01-10T14:07:30" hostname="7SV0SQ2-NB" time="0.02">
-  <properties/>
-  <testcase name="testLoadSchema" classname="org.xmlactions.schema.docs.ToTextTest" time="0.02"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

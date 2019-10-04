@@ -1,7 +1,0 @@
-<configuration>
-  <system/>
-
-  <properties fileName="not_actions.properties"/>
-  <xml fileName="application.xml"/>
-
-</configuration>
