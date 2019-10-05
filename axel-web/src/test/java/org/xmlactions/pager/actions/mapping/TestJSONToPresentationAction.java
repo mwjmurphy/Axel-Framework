@@ -92,11 +92,17 @@ public class TestJSONToPresentationAction extends TestCase {
     	assertTrue(output.contains("e5e741d44369e3d606ca747f325cd309"));
     	assertTrue(output.contains("032da6956d5d6779d37b76b9b9e9b153"));
     	assertTrue(output.contains("e5e741d44369e3d606ca747f325cd309"));
-    	String icon = "" + execContext.get("row");
+    	StringBuilder sb = new StringBuilder();
+    	sb.append(execContext.show());
+    	String icon = "" + execContext.get("row:icon");
     	assertTrue(icon.contains("e5e741d44369e3d606ca747f325cd309"));
-    	icon = "" + execContext.get("icon");
-    	assertTrue(icon.contains("null"));
-    			
+    	
+    	form.setContent("fred:icon:${fred:icon}\nfred:label:${fred:label}\nfred:url:${fred:url}\nfred:description:${fred:description}\n\n");
+    	jsonToPresentationAction.setRow_map_name("fred");
+    	output = jsonToPresentationAction.execute(execContext);
+    	assertTrue(output.contains("e5e741d44369e3d606ca747f325cd309"));
+    	assertTrue(output.contains("fred:label:Spa and wellness"));
+    	
 		JSONGetAction jsonGetAction = new JSONGetAction();
 		jsonGetAction.setJson_data("{\"url\":\"e5e741d44369e3d606ca747f325cd309.png\"}");
 		jsonGetAction.setJson_path("url");

@@ -83,8 +83,13 @@ public class GsonUtils {
 					jsonElement = jsonArray.get(index);
 					if (jsonElement.isJsonPrimitive()) {
 						return jsonElement.getAsString();
+					} else if (jsonElement.isJsonObject()) {
+						map = toMap(jsonElement.getAsJsonObject());
+						return map;
+					} else if (jsonElement.isJsonArray()) {
+						return jsonElement.getAsJsonArray();
 					}
-					return jsonElement.toString();
+					return jsonElement;
 				} else {
 					return null;
 				}
@@ -178,6 +183,19 @@ public class GsonUtils {
 				map.put(entry.getKey(), entry.getValue());
 			}
 		}
+	}
+
+	private static Map<String, Object> toMap(JsonObject jsonObject) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		Set<Entry<String,JsonElement>> set = jsonObject.entrySet();
+		for (Entry<String, JsonElement> entry : set) {
+			if (entry.getValue().isJsonPrimitive()) {
+				map.put(entry.getKey(), entry.getValue().getAsString());
+			} else {
+				map.put(entry.getKey(), entry.getValue());
+			}
+		}
+		return map;
 	}
 
 //	private static void toMap(JsonArray jsonArray, String path, Map<String, Object> map) {
