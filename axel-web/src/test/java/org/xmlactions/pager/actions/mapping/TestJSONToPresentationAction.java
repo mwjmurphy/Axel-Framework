@@ -77,7 +77,7 @@ public class TestJSONToPresentationAction extends TestCase {
 
     public void testFromDataFromHotelToForm() throws Exception {
     	PresentationFormAction form = new PresentationFormAction();
-    	form.setContent("x:${row:coordinates}");
+    	form.setContent("x:${row}");
     	JSONToPresentationAction jsonToPresentationAction = new JSONToPresentationAction();
     	String json = ResourceUtils.loadFile("/org/xmlactions/pager/actions/mapping/hotel.json");
     	jsonToPresentationAction.setJson_path("location/coordinates");
@@ -87,12 +87,12 @@ public class TestJSONToPresentationAction extends TestCase {
     	assertEquals("x:13.894x:40.6972", output);
     	
     	jsonToPresentationAction.setJson_path("facilities/mostPopular/facilities");
-    	form.setContent("icon:${icon} row:icon:${row:icon}\n");
+    	form.setContent("row:${row} icon:${icon} row:icon:${row:icon}\n");
     	output = jsonToPresentationAction.execute(execContext);
     	assertTrue(output.contains("e5e741d44369e3d606ca747f325cd309"));
     	assertTrue(output.contains("032da6956d5d6779d37b76b9b9e9b153"));
     	assertTrue(output.contains("e5e741d44369e3d606ca747f325cd309"));
-    	String icon = "" + execContext.get("row:icon");
+    	String icon = "" + execContext.get("row");
     	assertTrue(icon.contains("e5e741d44369e3d606ca747f325cd309"));
     	icon = "" + execContext.get("icon");
     	assertTrue(icon.contains("null"));
@@ -101,11 +101,8 @@ public class TestJSONToPresentationAction extends TestCase {
 		jsonGetAction.setJson_data("{\"url\":\"e5e741d44369e3d606ca747f325cd309.png\"}");
 		jsonGetAction.setJson_path("url");
 		jsonGetAction.setIndex(0);
-		jsonGetAction.execute(execContext);
-		String url = execContext.getString("row:url");
-    	assertEquals(url, "e5e741d44369e3d606ca747f325cd309.png");
-		url = execContext.getString("url");
-    	assertEquals(url, "e5e741d44369e3d606ca747f325cd309.png");
+		output = jsonGetAction.execute(execContext);
+    	assertEquals(output, "e5e741d44369e3d606ca747f325cd309.png");
 
     	logger.debug(output);
     }
@@ -142,15 +139,17 @@ public class TestJSONToPresentationAction extends TestCase {
     public void testArrayIndex() throws Exception {
     	String json = "{ \"hires_images\" : [{ \"url\" : \"27d1397488026ff5a35c624f14a22bd2_highRes_x1.jpg\" }, { \"url\" : \"2bcb11201d285c47e1a8a86d87c60b5d_highRes_x1.jpg\" }] }";
     	PresentationFormAction form = new PresentationFormAction();
-    	form.setContent("img:url:${img:url}");
+    	form.setContent("img:${img}\n");
     	JSONToPresentationAction jsonToPresentationAction = new JSONToPresentationAction();
-    	jsonToPresentationAction.setJson_path("hires_images");
+    	jsonToPresentationAction.setJson_path("hires_images/url");
     	jsonToPresentationAction.setJson_data(json);
     	jsonToPresentationAction.setRow_map_name("img");
     	jsonToPresentationAction.setForm(form);
     	String output = jsonToPresentationAction.execute(execContext);
+    	// assertEquals("2bcb11201d285c47e1a8a86d87c60b5d_highRes_x1.jpg", execContext.getString("img"));
     	assertTrue(output.contains("27d1397488026ff5a35c624f14a22bd2_highRes_x1"));
-    	assertEquals("2bcb11201d285c47e1a8a86d87c60b5d_highRes_x1.jpg", execContext.getString("img:url"));
+    	assertTrue(output.contains("2bcb11201d285c47e1a8a86d87c60b5d_highRes_x1"));
+    	
     	
     }
 }

@@ -52,11 +52,16 @@ public class TestGsonUtils {
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.fromJson(jsonString, JsonElement.class);
 		for (int i = 0 ; ; i++) {
-			Map<String, Object> map = GsonUtils.toMap(jsonElement, "vessel_gear_types_category", i);
-			if (map != null) {
-				logger.debug("index:" + i);
-				dumpMap(map);
-			} else {
+			Object o = GsonUtils.toMap(jsonElement, "vessel_gear_types_category", i);
+			if (o instanceof Map) {
+				Map<String, Object> map = (Map<String, Object>)o;
+				if (map != null) {
+					logger.debug("index:" + i);
+					dumpMap(map);
+				} else {
+					break;
+				}
+			} else if (o == null) {
 				break;
 			}
 		}
@@ -69,15 +74,20 @@ public class TestGsonUtils {
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.fromJson(jsonString, JsonElement.class);
 		for (int i = 0 ; ; i++) {
-			Map<String, Object> map = GsonUtils.toMap(jsonElement, "list", i);
-			if (map != null) {
-				logger.debug("index:" + i);
-				dumpMap(map);
-				logger.debug("row_index:" + map.get("row_index"));
-				logger.debug("list/PropertySearchResponse:" + map.get("list/PropertySearchResponse"));
-				logger.debug("PropertySearchResponse:" + map.get("PropertySearchResponse"));
-				
-			} else {
+			Object o = GsonUtils.toMap(jsonElement, "list", i);
+			if (o instanceof Map) {
+				Map<String, Object> map = (Map<String, Object>)o;
+				if (map != null) {
+					logger.debug("index:" + i);
+					dumpMap(map);
+					logger.debug("row_index:" + map.get("row_index"));
+					logger.debug("list/PropertySearchResponse:" + map.get("list/PropertySearchResponse"));
+					logger.debug("PropertySearchResponse:" + map.get("PropertySearchResponse"));
+					
+				} else {
+					break;
+				}
+			} else if ( o == null) {
 				break;
 			}
 		}

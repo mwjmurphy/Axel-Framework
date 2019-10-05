@@ -33,7 +33,7 @@ public class GsonUtils {
 	 * @param index - an index we want from the path.
 	 * @return a map containing the data or null if the index was out of range.
 	 */
-	public static Map<String, Object> toMap(JsonElement je, String path, int index) {
+	public static Object toMap(JsonElement je, String path, int index) {
 
 		String seperator = "/";
 		JsonElement jsonElement = je;
@@ -54,24 +54,37 @@ public class GsonUtils {
 			if (jsonElement.isJsonObject()) {
 				jsonElement = getPathObject(jsonElement.getAsJsonObject(), name);
 			} else if (jsonElement.isJsonArray()) {
-				jsonElement = getPathObject(jsonElement.getAsJsonArray(), name);
+				JsonArray jsonArray = jsonElement.getAsJsonArray();
+				if (jsonArray.size() > index) {
+					jsonElement = jsonArray.get(index);
+				} else {
+					return null;
+				}
+				if (jsonElement.isJsonArray()) {
+					jsonElement = getPathObject(jsonElement.getAsJsonArray(), name);
+				} else if (jsonElement.isJsonObject()) {
+					jsonElement = getPathObject(jsonElement.getAsJsonObject(), name);
+				} else {
+					return null;
+				}
 			} else if (jsonElement.isJsonPrimitive()) {
 				// cant handle this no key/value.
+				return null;
 			}
-		}
-		if (StringUtils.isEmpty(name)) {
-			name = "row";
 		}
 		// now should have an array that goes as far as index
 		if (jsonElement.isJsonArray()) {
 			JsonArray jsonArray = jsonElement.getAsJsonArray();
 			if (index < 0) {
-				map.put(name, jsonArray);
+				return jsonArray.toString();
 			} else {
 				// loop until we reach index
 				if (jsonArray.size() > index) {
 					jsonElement = jsonArray.get(index);
-					toMap(jsonElement, name, map);
+					if (jsonElement.isJsonPrimitive()) {
+						return jsonElement.getAsString();
+					}
+					return jsonElement.toString();
 				} else {
 					return null;
 				}
@@ -79,7 +92,7 @@ public class GsonUtils {
 		} else if (jsonElement.isJsonObject()) {
 			toMap(jsonElement.getAsJsonObject(), map);
 		} else if (jsonElement.isJsonPrimitive() ) {
-			map.put(name, jsonElement.getAsJsonPrimitive().getAsString());
+			return jsonElement.getAsJsonPrimitive().getAsString();
 		}
 		
 		return map;

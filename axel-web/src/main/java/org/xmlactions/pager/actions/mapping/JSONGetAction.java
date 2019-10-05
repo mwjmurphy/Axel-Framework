@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger; import org.slf4j.LoggerFactory;
 import org.xmlactions.action.actions.BaseAction;
 import org.xmlactions.action.config.IExecContext;
@@ -25,7 +26,7 @@ public class JSONGetAction extends BaseAction
 	private String json_data;
 	private String json_path;
 	private int index;
-    private String row_map_name="row";
+    private String row_map_name;
 
 	
 	private IExecContext execContext;
@@ -40,14 +41,26 @@ public class JSONGetAction extends BaseAction
 			
 			Object o = GsonUtils.toMap(jsonElement, getJson_path(), getIndex());
 			if ( o == null) {
-				
+			} else if ( o instanceof String) {
+				if (StringUtils.isEmpty(getRow_map_name())) {
+					return (String)o;
+				} else {
+					execContext.put(getRow_map_name(), o);
+				}
 			} else if ( o instanceof Map) {
-				@SuppressWarnings("unchecked")
 				Map<String, Object> map = (Map<String, Object>)o;
-				execContext.addNamedMap(getRow_map_name(), map);
-				Set<Entry<String, Object>> set = map.entrySet();
-				for (Entry<String, Object> entry : set) {
-					execContext.put(entry.getKey(), entry.getValue());
+				if (StringUtils.isEmpty(getRow_map_name())) {
+					if(map.containsKey("row") && map.size() == 1) {
+						result = "" + map.get("row");
+					} else {
+						result = gson.toJson(map);
+					}
+				} else {
+					execContext.addNamedMap(getRow_map_name(), map);
+//					Set<Entry<String, Object>> set = map.entrySet();
+//					for (Entry<String, Object> entry : set) {
+//						execContext.put(entry.getKey(), entry.getValue());
+//					}
 				}
 			}
 		} catch (Exception ex) {
@@ -57,7 +70,7 @@ public class JSONGetAction extends BaseAction
 					+ " data:" + getJson_data(),
 					ex);
 		}
-		return "";
+		return result;
 	}
 	
 //	public String execute(IExecContext execContext) throws Exception
