@@ -79,6 +79,12 @@ public class TestJSONGetAction {
 		jsonGetAction.execute(execContext);
 		assertEquals("40.6972", execContext.get("coordinates"));
 		assertEquals("40.6972", execContext.get("fred:coordinates"));
+
+		jsonGetAction.setIndex(-1);
+		jsonGetAction.setRow_map_name("fred");
+		jsonGetAction.execute(execContext);
+		assertEquals("[13.894,40.6972]", execContext.get("coordinates"));
+		assertEquals("[13.894,40.6972]", execContext.get("fred:coordinates"));
 		
 	}
 }

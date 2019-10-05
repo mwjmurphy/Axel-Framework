@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
@@ -38,11 +39,7 @@ public class GsonUtils {
 		JsonElement jsonElement = je;
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		if (index < 0) {
-			// bad programming if index < 0
-			return null;
-		}
-		
+
 		if (path == null || path.length() == 0)  {
 			toMap(jsonElement, "value",  map);
 			return map;
@@ -62,15 +59,22 @@ public class GsonUtils {
 				// cant handle this no key/value.
 			}
 		}
+		if (StringUtils.isEmpty(name)) {
+			name = "row";
+		}
 		// now should have an array that goes as far as index
 		if (jsonElement.isJsonArray()) {
-			// loop until we reach index
 			JsonArray jsonArray = jsonElement.getAsJsonArray();
-			if (jsonArray.size() >= index) {
-				jsonElement = jsonArray.get(index);
-				toMap(jsonElement, name, map);
+			if (index < 0) {
+				map.put(name, jsonArray);
 			} else {
-				return null;
+				// loop until we reach index
+				if (jsonArray.size() > index) {
+					jsonElement = jsonArray.get(index);
+					toMap(jsonElement, name, map);
+				} else {
+					return null;
+				}
 			}
 		} else if (jsonElement.isJsonObject()) {
 			toMap(jsonElement.getAsJsonObject(), map);

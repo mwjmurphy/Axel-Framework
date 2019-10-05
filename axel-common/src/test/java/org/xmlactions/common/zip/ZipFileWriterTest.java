@@ -14,6 +14,7 @@ import java.util.Vector;
 import java.util.zip.ZipEntry;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Test;
 import org.xmlactions.common.io.ResourceUtils;
 import org.xmlactions.common.zip.ZipFileReader;
 import org.xmlactions.common.zip.ZipFileWriter;
@@ -44,6 +45,7 @@ public class ZipFileWriterTest extends TestCase {
 	/**
 	 * Test of setComment method, of class ZipFileWriter.
 	 */
+	@Test
 	public void testSetComment() {
 		try {
 			String comment = "";
