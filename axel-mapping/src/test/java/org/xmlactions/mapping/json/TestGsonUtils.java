@@ -51,8 +51,9 @@ public class TestGsonUtils {
 		String jsonString = ResourceUtils.loadFile("/json/sample/data.json");
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.fromJson(jsonString, JsonElement.class);
+    	int newRowCount [] = {0};
 		for (int i = 0 ; ; i++) {
-			Object o = GsonUtils.toMap(jsonElement, "vessel_gear_types_category", i);
+			Object o = GsonUtils.toMap(jsonElement, "vessel_gear_types_category", i, newRowCount);
 			if (o instanceof Map) {
 				Map<String, Object> map = (Map<String, Object>)o;
 				if (map != null) {
@@ -73,8 +74,9 @@ public class TestGsonUtils {
 		String jsonString = ResourceUtils.loadFile("/json/sample/json_with_array.json");
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.fromJson(jsonString, JsonElement.class);
+    	int newRowCount [] = {0};
 		for (int i = 0 ; ; i++) {
-			Object o = GsonUtils.toMap(jsonElement, "list", i);
+			Object o = GsonUtils.toMap(jsonElement, "list", i, newRowCount);
 			if (o instanceof Map) {
 				Map<String, Object> map = (Map<String, Object>)o;
 				if (map != null) {

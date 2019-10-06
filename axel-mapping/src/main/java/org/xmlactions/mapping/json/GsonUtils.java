@@ -31,10 +31,12 @@ public class GsonUtils {
 	 * @param jsonElement - This is the JsonElement we want to map
 	 * @param path - This is the target path
 	 * @param index - an index we want from the path.
+	 * @param newRowCount - we use this to pass back the new index - check does it match the index passed in???
 	 * @return a map containing the data or null if the index was out of range.
 	 */
-	public static Object toMap(JsonElement je, String path, int index) {
+	public static Object toMap(JsonElement je, String path, int index, int [] newRowCount) {
 
+		newRowCount[0] = 0;
 		String seperator = "/";
 		JsonElement jsonElement = je;
 		
@@ -57,6 +59,7 @@ public class GsonUtils {
 				JsonArray jsonArray = jsonElement.getAsJsonArray();
 				if (jsonArray.size() > index) {
 					jsonElement = jsonArray.get(index);
+					newRowCount[0] = index;
 				} else {
 					return null;
 				}
@@ -80,6 +83,7 @@ public class GsonUtils {
 			} else {
 				// loop until we reach index
 				if (jsonArray.size() > index) {
+					newRowCount[0] = index;
 					jsonElement = jsonArray.get(index);
 					if (jsonElement.isJsonPrimitive()) {
 						return jsonElement.getAsString();

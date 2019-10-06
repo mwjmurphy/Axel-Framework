@@ -119,20 +119,24 @@ public class JSONToPresentationAction extends CommonFormFields {
     	}
     	StringBuilder sb = new StringBuilder();
     	int rowCount = 0;
+    	int newRowCount [] = {0};
 		for (rowCount = 0 ; ; rowCount++) {
 			try {
-				Object o = GsonUtils.toMap(jsonElement, getJson_path(execContext), rowCount);
-				if (o == null) {
+				Object o = GsonUtils.toMap(jsonElement, getJson_path(execContext), rowCount, newRowCount);
+				// check that we've got back a new row comparing the rowCount to newRowCount || a null response.
+				if (rowCount != newRowCount[0] || o == null) {
 					break;
 				} else {
 					if (o instanceof Map) {
 						Map<String, Object> map = (Map<String, Object>)o;
+						map.put("row_index", rowCount+1);	// humanise the index starting at 1 not 0
 						execContext.addNamedMap(getRow_map_name(), map);
 					} else {
 						execContext.put(getRow_map_name(), o);
 					}
 					String form = copyForm(presentationForm);
 					String populatedForm = "";
+					execContext.put("row_index", rowCount+1);	// humanise the index starting at 1 not 0
 					if (o instanceof Map) {
 						populatedForm = StrSubstitutor.replace(form, (Map<String, Object>)o);
 					} else {

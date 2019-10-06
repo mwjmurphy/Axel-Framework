@@ -39,8 +39,11 @@ public class JSONGetAction extends BaseAction
 		try {
 			JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
 			
-			Object o = GsonUtils.toMap(jsonElement, getJson_path(), getIndex());
-			if ( o == null) {
+			int [] newRowCount = {getIndex()};
+			Object o = GsonUtils.toMap(jsonElement, getJson_path(), getIndex(), newRowCount);
+			// check that we've got back a new row comparing the rowCount to newRowCount || a null response.
+			if (o == null || (getIndex() != newRowCount[0] && getIndex() >= 0) ) {
+				// exceeded limit or no data
 			} else if ( o instanceof String) {
 				if (StringUtils.isEmpty(getRow_map_name())) {
 					return (String)o;
