@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: axel-code
+  jmx:
+    default-domain: ${spring.application.name}
+
+server:
+  servlet:
+    context-path: /${spring.application.name}
+  context-path: /${spring.application.name}
+
+endpoints:
+  jmx:
+    unique-names: true
+    domain: ${spring.application.name}
+  health:
+    enabled: true
+
+logging:
+  level:
+    com.fleetway: INFO
+    ROOT: info
+  pattern:
+    console: "[${serverName}:${spring.application.name}] %date{HH:mm:ss} %-6level %-10([%thread]) %logger{1}.%method:%line %message%n"
+    file:    "[${serverName}:${spring.application.name}] %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M\\(%line\\) - %msg%n"
+  file: /var/log/ts/api-${spring.application.name}.log
