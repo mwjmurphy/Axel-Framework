@@ -2,14 +2,17 @@
 package org.xmlactions.pager.spring;
 
 
-import org.slf4j.Logger; import org.slf4j.LoggerFactory;
+import static org.junit.Assert.assertTrue;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit38.AbstractJUnit38SpringContextTests;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.xmlactions.action.ActionConst;
 import org.xmlactions.action.config.IExecContext;
 
 @ContextConfiguration(locations = {ActionConst.SPRING_STARTUP_CONFIG,"classpath*:config/spring/test-spring-pager-web-startup.xml"})
-public class PagerCoreSpringPropertyTest extends AbstractJUnit38SpringContextTests
+public class PagerCoreSpringPropertyTest extends AbstractJUnit4SpringContextTests
 {
 
 	private static Logger log = LoggerFactory.getLogger(PagerCoreSpringPropertyTest.class);

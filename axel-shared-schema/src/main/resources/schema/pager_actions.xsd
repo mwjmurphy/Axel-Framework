@@ -129,10 +129,60 @@
       </xsd:complexType>
    </xsd:element>
 
+	<xsd:element name="http">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			The http action will make a http rest call to the url.
+			
+			The response is expected to be in json format.
+			
+            The response may also be stored in the exceContext using the key attribute.
+      ]]></xsd:documentation></xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="param" minOccurs="0">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The param element may be used to pass one or more parameters to the code call.
+					
+		            @see <a href="#param">param</a> definiton. 
+		      	]]></xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="method" type="method_options" use="required" default="get">
+            <xsd:annotation><xsd:documentation><![CDATA[
+				The method determines the http method such as get or post
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="href" type="xsd:string" use="required">
+            <xsd:annotation><xsd:documentation><![CDATA[
+				This is the full address of the http call excluding parameters
+				
+				Example<br/>
+				<code>
+					&lt;axel:http url="https://google.com"/&gt;
+				</code>
+				
+				Example with parameters<br/>
+				<code>
+					&lt;axel:http url="https://google.com"/&gt;
+					&#160;&#160;&#160;&lt;axel:param value="q=spain"/&gt;<br/>
+					&lt;/axel:http&gt;
+				</code>
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The key / name for the variable.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
    <xsd:element name="param">
       <xsd:annotation>
          <xsd:documentation><![CDATA[
-			Provides parameters for some of the actions such as code or transform 
+			Provides parameters for some of the actions such as code, http or transform 
 			]]></xsd:documentation>
       </xsd:annotation>
       <xsd:complexType>
@@ -144,6 +194,8 @@
                      <li/> The key used to retrieve the value from the execContext
                      <li/> The value for the parameter.
                   </ul>
+                  
+                  If the value is used as part of an http call then it should should contain the key=value
 				]]></xsd:documentation>
             </xsd:annotation>
          </xsd:attribute>
