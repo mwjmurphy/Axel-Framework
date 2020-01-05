@@ -46,16 +46,24 @@ dependencies {
 	compile 'rhino:js:1.7R2'
 	compile 'dom4j:dom4j:1.6.1'
 	compile 'bsf:bsf:2.4.0'
-	compile 'org.springframework:spring:2.5.6'
+	compile (
+		// compile 'org.springframework:spring:2.5.6'
+		'org.springframework:spring-core:4.3.25.RELEASE',
+		'org.springframework:spring-context:4.3.25.RELEASE',
+		'org.springframework:spring-web:4.3.25.RELEASE',
+		'org.springframework:spring-jdbc:4.3.25.RELEASE',
+		// 'org.springframework:spring-web:4.3.25.RELEASE',
+
+	)
 	compile 'org.json:json:20140107'
 	compile 'com.google.code.gson:gson:2.8.5'
     compile 'commons-fileupload:commons-fileupload:1.3'
 	compile 'javax.mail:mail:1.4.7'	
 
 	compile 'org.apache.tomcat:servlet-api:6.0.36'
-	compile 'org.springframework:spring-test:2.5.6'
+	compile 'org.springframework:spring-test:4.3.25.RELEASE'
 
-	testCompile 'junit:junit:4.11'
+	testCompile 'junit:junit:4.12'
 	testCompile 'mysql:mysql-connector-java:5.1.25'
 	testCompile 'org.apache.derby:derby:10.10.1.1'
 	testCompile 'com.h2database:h2:1.4.183'

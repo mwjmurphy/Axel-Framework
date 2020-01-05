@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger; import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.xmlactions.action.config.IExecContext;
 
 
@@ -127,7 +127,8 @@ public class DBConnector {
 			ds = this.createFromJndi();
 		} else {
 			// try and create using the DBConnector JDBC connector fields.
-			ds = new DriverManagerDataSource(getDriver(), getUrl(), getUsername(), getPassword());
+			ds = new DriverManagerDataSource(getUrl(), getUsername(), getPassword());
+			// ds = new DriverManagerDataSource(getDriver(), getUrl(), getUsername(), getPassword());
 		}
 		return ds;
 	}
