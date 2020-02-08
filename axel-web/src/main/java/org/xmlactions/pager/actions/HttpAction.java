@@ -158,7 +158,7 @@ public class HttpAction extends BaseAction
 		
 		ResponseEntity<String> response = null;
 		if (getMethod().equalsIgnoreCase("get")) {
-			String url = getHref() + buildParamsForGet();
+			String url = getHref() + buildParamsForGet(execContext);
 			response = restTemplate.getForEntity(url, String.class);
 		} else if (getMethod().equalsIgnoreCase("post")) {
 			Map<String,String> map = buildParamsForPost();
@@ -188,14 +188,14 @@ public class HttpAction extends BaseAction
 		}
 	}
 	
-	private String buildParamsForGet() {
+	private String buildParamsForGet(IExecContext execContext) {
 		StringBuffer sb = new StringBuffer();
 		if (getParams() != null) {
 			for (Param param : getParams()) {
 				if (sb.length() == 0) {
-					sb.append("?" + param.getValue());
+					sb.append("?" + param.getResolvedValue(execContext));
 				} else {
-					sb.append("&" + param.getValue());
+					sb.append("&" + param.getResolvedValue(execContext));
 				}
 			}
 		}

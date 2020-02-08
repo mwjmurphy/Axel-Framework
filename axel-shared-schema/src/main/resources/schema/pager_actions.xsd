@@ -199,6 +199,18 @@
 				]]></xsd:documentation>
             </xsd:annotation>
          </xsd:attribute>
+         <xsd:attribute name="name" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                  The "name" may be used to provide a name for the HttpAction.<br/>
+                  <code>
+                  	&lt;axel:http .../&gt;
+						&lt;axel:param name="p1" value="value for p1"/&gt;<br/>
+                  	&lt;/axel:http&gt;<br/>
+                  </code>
+				]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
          <xsd:attribute name="type" type="param_converter_types" use="optional" default="String">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[

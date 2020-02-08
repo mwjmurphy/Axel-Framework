@@ -78,6 +78,7 @@ public class Param extends BaseAction
         }
 	}
 	
+	private String name;
     private String key;
     private String value;
     private String type = TypeOption._String.type;
@@ -146,6 +147,14 @@ public class Param extends BaseAction
 
 	public String getType() {
 		return type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
