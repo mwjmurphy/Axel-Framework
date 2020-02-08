@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import junit.framework.TestCase;
 
 import org.apache.commons.configuration.ConfigurationException;
+import org.junit.Assert;
 import org.slf4j.Logger; import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.xmlactions.action.ActionConst;
@@ -47,5 +48,18 @@ public class ParamTest extends TestCase
 
 		value = (String) param.getResolvedValue(execContext);
 		log.debug("value:" + value);
+	}
+
+	public void testParamSplit() throws InvalidObjectException, ConfigurationException, MalformedURLException
+	{
+		String value = "123=321";
+		String [] parts = value.split("=");
+		
+		assertTrue(parts.length == 2);
+
+		value = "321";
+		parts = value.split("=");
+		assertTrue(parts.length == 1);
+
 	}
 }

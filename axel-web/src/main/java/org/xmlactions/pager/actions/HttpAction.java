@@ -152,23 +152,36 @@ public class HttpAction extends BaseAction
 
 	public String execute(IExecContext execContext) throws Exception
 	{
+		String error = "";
 		validate();
 		
 		RestTemplate restTemplate = new RestTemplate();
 		
 		ResponseEntity<String> response = null;
 		if (getMethod().equalsIgnoreCase("get")) {
-			String url = execContext.getString(getHref()) + buildParamsForGet(execContext);
-			response = restTemplate.getForEntity(url, String.class);
+			String url = execContext.replace(getHref()) + buildParamsForGet(execContext);
+			try {
+				response = restTemplate.getForEntity(url, String.class);
+			} catch (Exception ex) {
+				error = buildError(ex, url);
+			}
 		} else if (getMethod().equalsIgnoreCase("post")) {
-			Map<String,String> map = buildParamsForPost(execContext);
-			HttpEntity<Map<String,String>> entity = new HttpEntity<Map<String,String>>(map);
-			response = restTemplate.postForEntity(execContext.getString(getHref()), entity, String.class);
+			String url = execContext.replace(getHref());
+			try {
+				Map<String,String> map = buildParamsForPost(execContext);
+				HttpEntity<Map<String,String>> entity = new HttpEntity<Map<String,String>>(map);
+				response = restTemplate.postForEntity(url, entity, String.class);
+			} catch (Exception ex) {
+				error = buildError(ex, url);
+			}
 		} else {
 			throw new IllegalArgumentException("Unsupported Method [" + getMethod() + "]");
 		}
 		if (response.getStatusCodeValue() != 200) {
 			throw new IllegalArgumentException("Http Request [" + getHref() + "] faied with error code [" + response.getStatusCodeValue() + ":" + response.getStatusCode());
+		}
+		if (error.length() > 0) {
+			return error;
 		}
 		if (getKey() != null) {
 			execContext.put(key, response.getBody());
@@ -176,6 +189,10 @@ public class HttpAction extends BaseAction
 		} else {
 			return response.getBody();
 		}
+	}
+	
+	private String buildError(Exception ex, String uri) {
+		return "{\"error\" : { \"message\" : \"" + ex.getMessage() + "\", \"address\" : \"" + uri + "\"}}";
 	}
 	
 	private void validate() {
@@ -190,13 +207,16 @@ public class HttpAction extends BaseAction
 	
 	private String buildParamsForGet(IExecContext execContext) {
 		StringBuffer sb = new StringBuffer();
+		String lead = "?";
 		if (getParams() != null) {
 			for (Param param : getParams()) {
-				if (sb.length() == 0) {
-					sb.append("?" + param.getResolvedValue(execContext));
+				String [] parts = execContext.replace(param.getValue()).split("=");
+				if (parts.length > 1) {
+					sb.append(lead + parts[0] + "=" + parts[1]);
 				} else {
-					sb.append("&" + param.getResolvedValue(execContext));
+					sb.append(lead + param.getName() + "=" + parts[0]);
 				}
+				lead = "&";
 			}
 		}
 		
@@ -208,11 +228,11 @@ public class HttpAction extends BaseAction
 		Map<String,String> map = new HashMap<String,String>();
 		if (getParams() != null) {
 			for (Param param : getParams()) {
-				String [] parts = param.getValue().split("=");
-				if (parts.length > 0) {
-					map.put(parts[0], "" + execContext.get(parts[1]));
+				String [] parts = execContext.replace(param.getValue()).split("=");
+				if (parts.length > 1) {
+					map.put(parts[0], "" + parts[1]);
 				} else {
-					map.put(param.getName(), "" + param.getResolvedValue(execContext));
+					map.put(param.getName(), "" + parts[0]);
 				}
 			}
 		}
