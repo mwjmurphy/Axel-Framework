@@ -158,12 +158,12 @@ public class HttpAction extends BaseAction
 		
 		ResponseEntity<String> response = null;
 		if (getMethod().equalsIgnoreCase("get")) {
-			String url = getHref() + buildParamsForGet(execContext);
+			String url = execContext.getString(getHref()) + buildParamsForGet(execContext);
 			response = restTemplate.getForEntity(url, String.class);
 		} else if (getMethod().equalsIgnoreCase("post")) {
-			Map<String,String> map = buildParamsForPost();
+			Map<String,String> map = buildParamsForPost(execContext);
 			HttpEntity<Map<String,String>> entity = new HttpEntity<Map<String,String>>(map);
-			response = restTemplate.postForEntity(getHref(), entity, String.class);
+			response = restTemplate.postForEntity(execContext.getString(getHref()), entity, String.class);
 		} else {
 			throw new IllegalArgumentException("Unsupported Method [" + getMethod() + "]");
 		}
@@ -204,15 +204,15 @@ public class HttpAction extends BaseAction
 		
 	}
 
-	private Map<String,String> buildParamsForPost() {
+	private Map<String,String> buildParamsForPost(IExecContext execContext) {
 		Map<String,String> map = new HashMap<String,String>();
 		if (getParams() != null) {
 			for (Param param : getParams()) {
 				String [] parts = param.getValue().split("=");
 				if (parts.length > 0) {
-					map.put(parts[0], parts[1]);
+					map.put(parts[0], "" + execContext.get(parts[1]));
 				} else {
-					map.put(param.getValue(),null);
+					map.put(param.getName(), "" + param.getResolvedValue(execContext));
 				}
 			}
 		}
