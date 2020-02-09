@@ -85,6 +85,13 @@ public class XmlToPresentationAction extends CommonFormFields {
 
     	String presentationForm = null;
     	String xml = null;
+    	
+		// remove any existing map from a previous call
+		if (StringUtils.isNotEmpty(getRow_map_name())) {
+			execContext.remove(getRow_map_name());
+		}
+
+
     	try {
 	        if (StringUtils.isNotEmpty(getXml_filename())) {
 	        	String fileName = ResourceCommon.buildFileName(path, execContext.replace(getXml_filename()));

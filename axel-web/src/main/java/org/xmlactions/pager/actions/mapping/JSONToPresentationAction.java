@@ -92,6 +92,12 @@ public class JSONToPresentationAction extends CommonFormFields {
     	JsonElement jsonElement = null;
     	String presentationForm = null;
     	String data = null;
+    	
+		// remove any existing map from a previous call
+		if (StringUtils.isNotEmpty(getRow_map_name())) {
+			execContext.getNamedMaps().remove(getRow_map_name());
+		}
+
 
     	try {
 	        if (StringUtils.isNotEmpty(getJson_filename())) {

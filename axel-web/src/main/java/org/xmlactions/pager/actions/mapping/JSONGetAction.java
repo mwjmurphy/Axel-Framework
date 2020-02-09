@@ -37,7 +37,19 @@ public class JSONGetAction extends BaseAction
 		this.execContext = execContext;
 		Gson gson = new Gson();
 		try {
-			JsonElement jsonElement = gson.fromJson(getJson_data(), JsonElement.class);
+			// remove any existing map from a previous call
+			if (StringUtils.isNotEmpty(getRow_map_name())) {
+				execContext.getNamedMaps().remove(getRow_map_name());
+			}
+			JsonElement jsonElement = null;
+			String data = getJson_data();
+			try {
+				jsonElement = gson.fromJson(data, JsonElement.class);
+			} catch (Exception ex) {
+				log.error("Unable to process Gson:[" + data + "]:" + ex.getMessage());
+				//throw new IllegalArgumentException("Unable to process Gson:[" + data + "]", ex);
+				return "";
+			}
 			
 			int [] newRowCount = {getIndex()};
 			Object o = GsonUtils.toMap(jsonElement, getJson_path(), getIndex(), newRowCount);

@@ -506,6 +506,29 @@
       </xsd:complexType>
    </xsd:element>
 
+   <xsd:element name="remove">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Remove a variable from the execContext
+            ]]></xsd:documentation>
+         <xsd:documentation>
+            <br />
+            example:
+            <br />
+            &lt;pager:remove key="age"/&gt;
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The key / name for the variable to remove.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
    <xsd:element name="get">
       <xsd:annotation>
          <xsd:documentation><![CDATA[

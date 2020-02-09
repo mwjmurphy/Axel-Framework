@@ -349,6 +349,12 @@ public abstract class ExecContext implements IExecContext, Serializable {
 		if (map == null && namedMaps.containsKey(key)) {
 			map = namedMaps.get(key);
 		}
+		if (map == null && this.containsKey(key)) {
+			Object obj = this.get(key);
+			if (obj instanceof Map) {
+				map = (Map)obj;
+			}
+		}
 		return map;
 	}
 
@@ -408,11 +414,19 @@ public abstract class ExecContext implements IExecContext, Serializable {
 
 
 	public Map<String, Object> getNamedMap(String mapName) {
-		return namedMaps.get(mapName);
+		Map<String, Object> map = namedMaps.get(mapName);
+		if (map == null) {
+			Object obj = this.get(mapName);
+			if (obj instanceof Map) {
+				map = (Map)obj;
+			}
+		}
+		return map;
 	}
 	
 	public void addNamedMap(String mapName, Map<String,Object>map) {
 		namedMaps.put(mapName, map);
+		this.put(mapName, map);
 	}
 	
 	
@@ -557,7 +571,19 @@ public abstract class ExecContext implements IExecContext, Serializable {
 	}
 
 	public Object remove(Object key) {
-		return rootMap.remove(key);
+		Object obj = null;
+		if (rootMap.containsKey(key)) {
+			obj = rootMap.remove(key);
+		}
+		
+		if (this.namedMaps.containsKey(key)) {
+			obj = this.namedMaps.remove(key);
+		}
+		
+		if (this.containsKey(key)) {
+			obj = this.remove(key);
+		}
+		return obj;
 	}
 
 	public int size() {
