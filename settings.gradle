@@ -9,7 +9,8 @@ include 'axel-common',
 		'axel-shared-schema',
 		'axel-test',
 		'axel-war',
-		'axel-jar'
+		'axel-jar',
+		'axel-run'
 
 rootProject.name = 'axelframework'
 
