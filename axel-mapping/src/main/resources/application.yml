@@ -1,0 +1,96 @@
+spring:
+  application:
+    name: axel
+  profiles:
+    active: ${serverName:default}
+  jmx:
+    default-domain: ${spring.application.name}
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database: MYSQL
+    show-sql: false
+logging:
+  pattern:
+    console: "[${serverName}:${spring.application.name}] %date{HH:mm:ss} %-6level %-10([%thread]) %logger{1}.%method:%line %message%n"
+    file:    "[${serverName}:${spring.application.name}] %date{HH:mm:ss} %-6level %-10([%thread]) %logger{1}.%method:%line %message%n"
+  file: /var/log/ts/api-${spring.application.name}.log
+  level:
+    org.apache: debug
+    org.springframework: debug
+    org.hibernate: debug
+server:
+  port: 80
+  servlet:
+    context-path: /${spring.application.name}
+  context-path: /${spring.application.name}
+
+endpoints:
+  jmx:
+    unique-names: true
+    domain: ${spring.application.name}
+
+email:
+  fromAddress: tsworkbench@travelsmart.co.uk
+  toAddress: emileb@fleetway.com
+  subject: Travelsmart Deal Departure Airport Status
+  host: mail.fleetwaytravel.com
+  port: 25
+
+---
+spring:
+  profiles: uat
+
+logging:
+  level:
+    ROOT: warn
+    com.fleetway: info
+    uk.co.travelsmart: debug
+    org.xmlactions: info
+    com.baeldung.logback: info
+    com.baeldung.logback.tests: warn
+    org.springframework: warn
+    org.springframework.beans: warn
+    org.springframework.jdbc: warn
+    org.apache.commons: info
+    org.apache.commons.beanutils: info
+    org.apache.commons.beanutils.converters: info
+    org.apache: info
+    org.apache.http.wire: info
+    org.apache.http.headers: info
+    org.xmlactions.db: info
+    org.xmlactions.action.config: warn
+    org.xmlactions.action.actions: info
+    org.xmlactions.action.actions.SetupBeanFromXML: error
+    org.xmlactions.web: warn
+    org.apache.bsf: info
+    org.xmlactions.pager.context: warn
+    com.gargoylesoftware.htmlunit: error
+    org.mongodb.driver: info
+    uk.co.travelsmart.infinity: warn
+
+---
+spring:
+  profiles: prod
+  boot:
+    admin:
+      client:
+        url: http://localhost:80/spring-admin
+        instance:
+          service-base-url: http://localhost:80/spring-admin
+          management-base-url: http://localhost:80/ts-tools
+          health-url: http://localhost:80/ts-tools/actuator/health
+
+logging:
+  level:
+    uk.co.travelsmart: warn
+    uk.co.travelsmart.tools: warn
+    org.xmlactions.pager: warn
+    org.xmlactions.web: warn
+    org.xmlactions.action.actions.SetupBeanFromXML: error
+    org.springframework: warn
+    ROOT: warn
+
+email:
+  toAddress: deal-departures@travelsmart.co.uk

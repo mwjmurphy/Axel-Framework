@@ -1,15 +1,3 @@
-pluginManagement {
-	repositories {
-		maven {
-			credentials {
-				username nexusUser
-				password nexusPassword
-			}
-			url 'http://nexus.fleetway.com/repository/ts-public/'
-		}
-	}
-}
-
 include 'axel-common',
 		'axel-action',
 		'axel-email',

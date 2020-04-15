@@ -1,4 +1,4 @@
-
+rootProject.name = 'axel-jar'
 include ':axel-common',
 		':axel-action',
 		':axel-email',

@@ -44,6 +44,15 @@ public class PagerServlet extends HttpServlet
     }
 
     /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public PagerServlet(HttpPager httpPager) {
+
+        super();
+        this.httpPager = httpPager;
+    }
+
+    /**
      * @deprecated Use RequestExecContext.get();
      */
     public static ApplicationContext getApplicationContext() {

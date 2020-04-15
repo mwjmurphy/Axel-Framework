@@ -314,9 +314,20 @@ public class HttpPager {
 
 				String pageName = httpServletRequest.getServletPath();
 				
+				if (log.isDebugEnabled()) {
+					log.debug("contextPath:" + httpServletRequest.getContextPath());
+					log.debug("URI:" + httpServletRequest.getRequestURI());
+					log.debug("root:" + realPath + " page:" + pageName + " wrapperPage:" + wrapperPage);
+					log.debug(HttpSessionInfo.sysInfo(httpServletRequest));
+				}
+				
 				if (pageName.indexOf("axelconfig") > 0) {
 					PrintWriter out = response.getWriter();
 					out.print(buildInfo(httpServletRequest, httpServletResponse));
+					if (log.isDebugEnabled()) {
+						log.debug("pageName:{}",pageName);
+						log.debug(buildInfo(httpServletRequest, httpServletResponse));
+					}
 					out.close();
 					return;
 				}
@@ -334,11 +345,6 @@ public class HttpPager {
 					}
 				}
 
-				log.debug("contextPath:" + httpServletRequest.getContextPath());
-				log.debug("URI:" + httpServletRequest.getRequestURI());
-				log.debug("root:" + realPath + " page:" + pageName
-						+ " wrapperPage:" + wrapperPage);
-				log.debug(HttpSessionInfo.sysInfo(httpServletRequest));
 				Action action;
 				if (pageName.endsWith(".ajax")) {
 					page = processAjaxCall(
@@ -625,6 +631,10 @@ public class HttpPager {
 
 		page.append("</html>");
 		return page.toString();
+	}
+	
+	public void setNamespace(String namespace) {
+		this.nameSpace = namespace;
 	}
 
 }
