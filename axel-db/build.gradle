@@ -9,34 +9,17 @@ repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-			srcDir project(':axel-common').file('src/main/java')           
-			srcDir project(':axel-action').file('src/main/java')           
-			srcDir project(':axel-mapping').file('src/main/java')           
-        }
-        resources {
-            srcDir 'src/main/resources'
-			srcDir project(':axel-common').file('src/main/resources')           
-			srcDir project(':axel-action').file('src/main/resources')           
-			srcDir project(':axel-mapping').file('src/main/resources')           
-		}
-    }
-}
-
 
 dependencies {
-
+	compile(project(':axel-common'))           
+	compile(project(':axel-action'))           
+	compile(project(':axel-mapping'))           
+	
 	compile 'commons-lang:commons-lang:2.6'
 	compile 'commons-beanutils:commons-beanutils:1.8.3'
 	compile 'commons-configuration:commons-configuration:1.9'
 	compile 'commons-io:commons-io:1.4'
-	compile 'org.slf4j:slf4j-api:1.7.5'
-	compile 'org.slf4j:slf4j-log4j12:1.7.7'
-	compile 'org.slf4j:slf4j-simple:1.7.7'
-	compile 'log4j:log4j:1.2.17'
+	compile 'org.slf4j:slf4j-log4j12:1.7.30'
 	compile 'rhino:js:1.7R2'
 	compile 'dom4j:dom4j:1.6.1'
 	compile 'bsf:bsf:2.4.0'
