@@ -27,7 +27,7 @@ public class TransformTest extends TestCase {
         InputStream xsltInputStream = ResourceUtils.getInputStream(xsltFileName);
 
         String output = Transform.transform(xsltInputStream, xmlInputStream);
-        // logger.debug(output);
+        // logger.warn("output:" + output);
     }
 
     public void testTramsformReader() throws TransformerException, IOException {

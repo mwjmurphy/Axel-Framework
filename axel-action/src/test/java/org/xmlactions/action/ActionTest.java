@@ -56,6 +56,7 @@ public class ActionTest extends TestCase
 		Action action = new Action();
 		String page = action.loadPage("src/test/resources", "pages/echo.xhtml");
 		assertTrue("Missing html element", page.indexOf("<html") >= 0);
+		log.warn("logger is still working");
 	}
 
 	public void testProcessEcho()
