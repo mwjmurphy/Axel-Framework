@@ -126,6 +126,10 @@ public class HttpPager {
 		if (StringUtils.isNotEmpty(value)) {
 			realPath = value;
 		}
+		value = config.getInitParameter("pager.realPath");
+		if (StringUtils.isNotEmpty(value)) {
+			realPath = value;
+		}
 
 		value = config.getInitParameter("pager.namespace");
 		if (StringUtils.isNotEmpty(value)) {
@@ -157,12 +161,14 @@ public class HttpPager {
 	public void init(FilterConfig filterConfig) {
 
 		String value;
-		value = filterConfig.getInitParameter("pager.realPath");
-		if (StringUtils.isEmpty(value)) {
-			value = filterConfig.getServletContext().getRealPath("");
-		}
-		if (StringUtils.isNotEmpty(value)) {
-			realPath = value;
+		if (realPath == null) {
+			value = filterConfig.getInitParameter("pager.realPath");
+			if (StringUtils.isEmpty(value)) {
+				value = filterConfig.getServletContext().getRealPath("");
+			}
+			if (StringUtils.isNotEmpty(value)) {
+				realPath = value;
+			}
 		}
 
 		value = filterConfig.getInitParameter("pager.namespace");
@@ -633,8 +639,11 @@ public class HttpPager {
 		return page.toString();
 	}
 	
-	public void setNamespace(String namespace) {
-		this.nameSpace = namespace;
+	public static void setNamespace(String namespace) {
+		nameSpace = namespace;
+	}
+	public static void setRealPath(String _realPath) {
+		realPath = _realPath;
 	}
 
 }

@@ -46,10 +46,10 @@ public class PagerServlet extends HttpServlet
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PagerServlet(HttpPager httpPager) {
+    public PagerServlet(HttpPager _httpPager) {
 
         super();
-        this.httpPager = httpPager;
+        httpPager = _httpPager;
     }
 
     /**

@@ -61,13 +61,13 @@ public class AxelController implements ServletContextAware, ServletConfigAware {
 //		return "Greetings from Axel and Spring Boot! location [" + location + "]\n" + sb.toString();
 //	}
 	
-	@Bean
-	public ServletRegistrationBean axel() {
-		HttpPager pager = new HttpPager();
-		pager.setNamespace("axel");
-		PagerServlet pagerServlet = new PagerServlet(pager);
-	    return new ServletRegistrationBean(pagerServlet, "/axel/*");
-	}
+//	@Bean
+//	public ServletRegistrationBean axel() {
+//		HttpPager pager = new HttpPager();
+//		pager.setNamespace("axel");
+//		PagerServlet pagerServlet = new PagerServlet(pager);
+//	    return new ServletRegistrationBean(pagerServlet, "/axel/**");
+//	}
 
 	private void test() {
 		GsonUtils gu;
