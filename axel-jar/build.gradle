@@ -9,40 +9,32 @@ repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-			srcDir project(':axel-common').file('src/main/java')           
-			srcDir project(':axel-action').file('src/main/java')           
-			srcDir project(':axel-email').file('src/main/java')           
-			srcDir project(':axel-mapping').file('src/main/java')           
-			srcDir project(':axel-web').file('src/main/java')           
-			srcDir project(':axel-db').file('src/main/java')           
-			srcDir project(':axel-web-db').file('src/main/java')           
-        }
-        resources {
-            srcDir 'src/main/resources'
-			srcDir project(':axel-common').file('src/main/resources')           
-			srcDir project(':axel-action').file('src/main/resources')           
-			srcDir project(':axel-email').file('src/main/resources')           
-			srcDir project(':axel-mapping').file('src/main/resources')           
-			srcDir project(':axel-web').file('src/main/resources')           
-			srcDir project(':axel-db').file('src/main/resources')           
-			srcDir project(':axel-web-db').file('src/main/resources')           
-		}
-    }
-}
-
 compileJava {
     options.debug = true
 }
 
+//jar {
+//	from sourceSets.main.allSource
+//}
+
 jar {
-	from sourceSets.main.allSource
+	// from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+	from { fileTree(dir: "bin/main") exclude "application.yml" }
+
+	manifest {
+		// attributes("Main-Class": "mymainclass")
+	}
 }
 
 dependencies {
+
+	compile(project(':axel-common'))           
+	compile(project(':axel-action'))           
+	compile(project(':axel-email'))           
+	compile(project(':axel-mapping'))           
+	compile(project(':axel-web'))           
+	compile(project(':axel-db'))           
+	compile(project(':axel-web-db'))           
 
 	compile 'commons-lang:commons-lang:2.6'
 	compile 'commons-beanutils:commons-beanutils:1.8.3'
