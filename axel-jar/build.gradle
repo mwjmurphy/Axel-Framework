@@ -13,28 +13,26 @@ compileJava {
     options.debug = true
 }
 
-//jar {
-//	from sourceSets.main.allSource
-//}
-
 jar {
-	// from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 	from { fileTree(dir: "bin/main") exclude "application.yml" }
 
 	manifest {
-		// attributes("Main-Class": "mymainclass")
+		attributes("product": "axelframework")
+		attributes("description": "axelframework distribution jar file")
 	}
 }
 
 dependencies {
 
-	compile(project(':axel-common'))           
-	compile(project(':axel-action'))           
-	compile(project(':axel-email'))           
-	compile(project(':axel-mapping'))           
-	compile(project(':axel-web'))           
-	compile(project(':axel-db'))           
-	compile(project(':axel-web-db'))           
+	compile(
+		project(':axel-common'),
+		project(':axel-action'),
+		project(':axel-email'),
+		project(':axel-mapping'),
+		project(':axel-web'),
+		project(':axel-db'),
+		project(':axel-web-db'),
+	)
 
 	compile 'commons-lang:commons-lang:2.6'
 	compile 'commons-beanutils:commons-beanutils:1.8.3'
@@ -45,13 +43,8 @@ dependencies {
 	compile 'dom4j:dom4j:1.6.1'
 	compile 'bsf:bsf:2.4.0'
 	compile (
-		// compile 'org.springframework:spring:2.5.6'
 		'org.springframework:spring-web:4.3.25.RELEASE',
-		// 'org.springframework:spring-core:4.3.25.RELEASE',
-		// 'org.springframework:spring-context:4.3.25.RELEASE',
 		'org.springframework:spring-jdbc:4.3.25.RELEASE',
-		'org.springframework:spring-web:4.3.25.RELEASE',
-
 	)
 
 	compile 'org.json:json:20140107'

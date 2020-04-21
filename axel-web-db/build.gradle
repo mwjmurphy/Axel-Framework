@@ -11,12 +11,14 @@ repositories {
 
 dependencies {
 
-	compile(project(':axel-common'))
-	compile(project(':axel-action'))
-	compile(project(':axel-email'))
-	compile(project(':axel-mapping'))
-	compile(project(':axel-web'))
-	compile(project(':axel-db'))
+	compile(
+		project(':axel-common'),
+		project(':axel-action'),
+		project(':axel-email'),
+		project(':axel-mapping'),
+		project(':axel-web'),
+		project(':axel-db'),
+	)
 
 	compile 'commons-lang:commons-lang:2.6'
 	compile 'commons-beanutils:commons-beanutils:1.8.3'

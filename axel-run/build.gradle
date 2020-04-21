@@ -46,7 +46,7 @@ task customFatJar(type: Jar) {
     manifest {
         attributes 'Main-Class': 'axel.Application'
     }
-    baseName = 'all-in-one-jar'
+    baseName = 'axel-run'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
@@ -57,7 +57,17 @@ configurations.all {
 }
 
 dependencies {
-
+	
+	compile(
+		project(':axel-common'),
+		project(':axel-action'),
+		project(':axel-email'),
+		project(':axel-mapping'),
+		project(':axel-web'),
+		//project(':axel-db'),
+		//project(':axel-web-db'),
+	)
+	
 	compile (
 		'com.google.code.gson:gson:2.8.6',
 		'org.json:json:20140107',
@@ -65,15 +75,6 @@ dependencies {
 
 	compile 'org.slf4j:slf4j-log4j12:1.7.30'
 	
-	compile(project(':axel-jar'))
-	// compile(project(':axel-common'))           
-	// compile(project(':axel-action'))           
-	// compile(project(':axel-email'))           
-	// compile(project(':axel-mapping'))           
-	// compile(project(':axel-web'))           
-	// compile(project(':axel-db'))           
-	// compile(project(':axel-web-db'))           
-	           
 
 	compile 'commons-lang:commons-lang:2.6'
 	compile 'commons-beanutils:commons-beanutils:1.8.3'
@@ -82,12 +83,6 @@ dependencies {
 	compile 'rhino:js:1.7R2'
 	compile 'dom4j:dom4j:1.6.1'
 	compile 'bsf:bsf:2.4.0'
-
-	//compile('org.springframework.boot:spring-boot-starter') {
-    //	exclude group: 'org.springframework.boot', module:'spring-boot-starter-logging' 
-	//}
-	// def withoutX = { exclude group: 'org.springframework.boot:spring-boot-starter', module: 'spring-boot-starter-logging' }
-	//compile 'org.springframework.boot:spring-boot-starter', withoutX
 
 	compile (
 		'org.springframework.boot:spring-boot-starter',
@@ -103,30 +98,13 @@ dependencies {
 		'org.springframework:spring-jdbc',
 		'org.springframework:spring-orm',
 		'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final',
-		// 'org.springframework.boot:spring-boot-starter-tomcat',
-		// 'org.springframework.boot:spring-boot-starter-log4j2',
 		'de.codecentric:spring-boot-admin-starter-client:2.0.4'
 	)
-
-	/*
-	compile (
-    	'org.springframework.boot:spring-boot-starter',
-    	'org.springframework.boot:spring-boot-starter-web',
-		'org.springframework.boot:spring-boot-starter-actuator',
-    	'org.springframework.boot:spring-boot-starter-thymeleaf',
-		'org.springframework.boot:spring-boot-starter-tomcat',
-		'de.codecentric:spring-boot-admin-starter-client:2.0.4',
-		'org.springframework:spring-web:4.3.25.RELEASE',
-		'org.springframework:spring-jdbc:4.3.25.RELEASE',
-		'org.springframework:spring-web:4.3.25.RELEASE',
-	)*/
 
     compile 'commons-fileupload:commons-fileupload:1.3'
 	compile 'commons-digester:commons-digester:2.1'
 	compile 'javax.mail:mail:1.4.7'	
 	compile 'jasperreports:jasperreports:3.5.3'
-
-	// compile 'org.apache.tomcat:servlet-api:6.0.36'
 
 	testCompile 'junit:junit:4.12'
 	testCompile 'mysql:mysql-connector-java:5.1.25'
@@ -135,65 +113,3 @@ dependencies {
 	compile 'org.springframework:spring-test:4.3.25.RELEASE'
 
 }
-
-/*
-dependencies {
-	
-	compile 'org.json:json:20140107'
-	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
-
-	compile (	// logging
-		'org.slf4j:slf4j-api:1.7.5',
-		'org.slf4j:slf4j-log4j12:1.7.7',
-		'org.slf4j:slf4j-simple:1.7.7',
-		'log4j:log4j:1.2.17',
-	)
-	
-	// implementation 'org.springframework.boot:spring-boot-starter-web'
-		// SpringFrameWork
-    compile (
-    	'org.springframework.boot:spring-boot-starter',
-    	'org.springframework.boot:spring-boot-starter-web',
-		'org.springframework.boot:spring-boot-starter-actuator',
-    	'org.springframework.boot:spring-boot-starter-thymeleaf',
-	    'org.springframework.data:spring-data-rest-core',
-	    'org.springframework:spring-context',
-		'org.springframework:spring-context-support',
-	    'org.springframework:spring-core',
-		'org.springframework:spring-web',
-		'org.springframework:spring-webmvc',
-		'org.springframework:spring-jdbc',
-		'org.springframework:spring-orm',
-		'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final',
-		// 'org.springframework.data:spring-data-mongodb',
-		'org.springframework.boot:spring-boot-starter-tomcat',
-		'de.codecentric:spring-boot-admin-starter-client:2.0.4'
-	)
-	
-	compile 'commons-lang:commons-lang:2.6'
-	compile 'commons-beanutils:commons-beanutils:1.8.3'
-	compile 'commons-configuration:commons-configuration:1.9'
-	compile 'commons-io:commons-io:1.4'
-	compile 'rhino:js:1.7R2'
-	compile 'dom4j:dom4j:1.6.1'
-	compile 'bsf:bsf:2.4.0'
-
-	
-    compile 'commons-fileupload:commons-fileupload:1.3'
-	compile 'commons-digester:commons-digester:2.1'
-	compile 'javax.mail:mail:1.4.7'	
-	compile 'jasperreports:jasperreports:3.5.3'
-
-  	compile "javax.servlet:javax.servlet-api:$servletApiVersion"
-	compile "org.apache.tomcat:servlet-api:$tomcatServletApiVersion"
-	
-	compile(project(':axel-jar'))
-
-	testCompile 'junit:junit:4.12'
-	testCompile 'mysql:mysql-connector-java:5.1.25'
-	testCompile 'org.apache.derby:derby:10.10.1.1'
-	testCompile 'com.h2database:h2:1.4.183'
-	compile 'org.springframework:spring-test:4.3.25.RELEASE'
-
-}
-*/

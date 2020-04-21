@@ -130,6 +130,7 @@ public class HttpPager {
 		if (StringUtils.isNotEmpty(value)) {
 			realPath = value;
 		}
+		log.debug("realPath:[{}] getRealPath:[{}] pager.realPath:[{}]", realPath, config.getServletContext().getRealPath(""), config.getInitParameter("pager.realPath"));
 
 		value = config.getInitParameter("pager.namespace");
 		if (StringUtils.isNotEmpty(value)) {
