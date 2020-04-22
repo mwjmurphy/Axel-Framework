@@ -9,10 +9,10 @@ spring:
     caffeine:
       spec: expireAfterWrite=15m
 server:
-  port: 8080
+  port: 80
   servlet:
-    context-path: /${spring.application.name}
-  contextPath: /${spring.application.name}
+    context-path: /
+  contextPath: /
 logging:
   pattern:
     console: "[${serverName}:${spring.application.name}] %date{HH:mm:ss} %-6level %-10([%thread]) %logger{1}.%method:%line %message%n"

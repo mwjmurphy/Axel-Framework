@@ -1,4 +1,26 @@
+plugins {
+    id("maven-publish")
+}
 apply plugin: 'java'
+apply plugin: 'maven'
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/mwjmurphy/Axel-Framework")
+            credentials {
+                username = System.getenv("github_user")
+                password = System.getenv("github_token")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -12,6 +34,10 @@ repositories {
 compileJava {
     options.debug = true
 }
+
+archivesBaseName = 'axel-jar'
+version = "$axelVersion"
+group = 'axelframework'
 
 jar {
 	from { fileTree(dir: "bin/main") exclude "application.yml" }
