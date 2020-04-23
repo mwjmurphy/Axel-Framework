@@ -23,7 +23,7 @@ public class AxelConfig {
 		HttpPager httpPager = new HttpPager();
 		servRegBean.setServlet(new PagerServlet(httpPager));
 		servRegBean.addInitParameter("pager.namespace", "axel");
-		servRegBean.addUrlMappings("*.html","*.json", "*.csv");
+		servRegBean.addUrlMappings("*.html","*.json", "*.csv", "*.js"); //  "*.png", "*.jpg");
 		servRegBean.setLoadOnStartup(1);
 		return servRegBean;
    }

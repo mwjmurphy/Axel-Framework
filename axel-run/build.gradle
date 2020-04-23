@@ -54,7 +54,7 @@ mainClassName = 'axel.AxelApplication'
 
 archivesBaseName = 'axel-run'
 version = "$axelVersion"
-group = 'axelframework'
+group = 'org.xmlactions'
 
 compileJava {
     options.debug = true
@@ -140,7 +140,7 @@ dependencies {
 }
 
 
-//task CopyWarToJar(type: Copy) {
-//    from file("$buildDir/build/libs/axel-run.2.0.1.war")
-//    into file("$buildDir/build/libs/axel-run.2.0.1.jar")
-//}
+task CopyWarToJar(type: Copy) {
+    from file("$buildDir/build/libs/axel-run.2.0.2.war")
+    into file("$buildDir/build/libs/axel-run.2.0.2.jar")
+}

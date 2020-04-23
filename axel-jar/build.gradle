@@ -35,9 +35,9 @@ compileJava {
     options.debug = true
 }
 
-archivesBaseName = 'axel-jar'
+archivesBaseName = 'axelframework'
 version = "$axelVersion"
-group = 'axelframework'
+group = 'org.xmlactions'
 
 jar {
 	from { fileTree(dir: "bin/main") exclude "application.yml" }
