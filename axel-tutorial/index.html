@@ -19,20 +19,7 @@
         height: 100%;
         }
         
-        /* Set black background color, white text and some padding */
-        header {
-        background-color: #fff;
-        color: rgb(80, 67, 67);
-        padding: 15px;
-        }
-        
-        /* Set black background color, white text and some padding */
-        footer {
-        background-color: #555;
-        color: white;
-        padding: 15px;
-        }
-        
+      
         /* On small screens, set height to 'auto' for sidenav and grid */
         @media screen and (max-width: 767px) {
         .sidenav {
@@ -49,28 +36,11 @@
     </style>
 </head>
 <body>
-    <header class="container-fluid text-center">
-        <h1><img height="40px" src="img/axel.png"/> Axel Framework - Tutorial <img height="40px" src="/img/axel.png"/></h1>
-    </header>
+    <axel:insert page="header.html"/>
     <div class="container-fluid text-center">    
         <div class="row content">
-            <div class="col-sm-2 sidenav">
-                <p><a href="#">Link</a></p>
-                <p><a href="#">Link</a></p>
-                <p><a href="#">Link</a></p>
-            </div>
-            <div class="col-sm-8 text-left"> 
-                <h1>Axel</h1>
-                <p>The AXEL Framework builds web pages using instructions, commonly known as <i>actions</i>, placed inside each page.</p>
-                <p>Details of using each action are shown in these tutorials.  You can also download a standalone application to try out each of the actions.
-                    <i class="fab fa-github"></i> <a href="https://github.com/mwjmurphy/Axel-Framework/packages/195358">Axel Framework GitHub</a></p>
-                    <p>
-                        <a xmlns="http://www.w3.org/2000/svg" target="_blank" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/MaxCDN/bootstrapcdn"><rect id="llink" stroke="#d5d5d5" fill="url(#a)" x=".5" y=".5" width="56" height="19" rx="2"/></a>
-                    </p>
-                <hr>
-                <h3>Test</h3>
-                <p>Lorem ipsum...</p>
-            </div>
+            <axel:insert page="left_navs.html"/>
+            <axel:insert page="tutorial.html"/>
             <div class="col-sm-2 sidenav">
                 <div class="well">
                 <p>ADS</p>
@@ -80,9 +50,6 @@
             </div>
         </div>
     </div>
-    <footer class="container-fluid text-center">
-        <p>Footer Text</p>
-        <h1><img height="40px" src="liam.png"/> Axel Framework - Tutorial <img height="40px" src="/liam.png"/></h1>
-    </footer>
+    <axel:insert page="footer.html"/>
 </body>
 </html>

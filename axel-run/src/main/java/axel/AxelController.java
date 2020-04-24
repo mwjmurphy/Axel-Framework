@@ -2,6 +2,7 @@ package axel;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -58,8 +59,40 @@ public class AxelController implements ServletContextAware, ServletConfigAware {
 	/** Handle all files from one folder */
 	@RequestMapping(value = "/{folder}/{filename}", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public void getFile2AsByteArray(@PathVariable("folder") String folder, @PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
-		String fn = folder + "/" + filename;
-		InputStream in = new FileInputStream(fn);
+		String fn = String.format("%s/%s", folder, filename);
+		processFile(fn, response);
+	}
+	/** Handle all files from two folders */
+	@RequestMapping(value = "/{folder1}/{folder2}/{filename}", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public void getFile2AsByteArray(@PathVariable("folder1") String folder1,
+									@PathVariable("folder2") String folder2,
+									@PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
+		String fn = String.format("%s/%s/%s", folder1, folder2, filename);
+		processFile(fn, response);
+	}
+	/** Handle all files from three folders */
+	@RequestMapping(value = "/{folder1}/{folder2}/{folder3}/{filename}", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public void getFile3AsByteArray(@PathVariable("folder1") String folder1,
+									@PathVariable("folder2") String folder2,
+									@PathVariable("folder3") String folder3,
+									@PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
+		String fn = String.format("%s/%s/%s/%s", folder1, folder2, folder3, filename);
+		processFile(fn, response);
+	}
+	
+	/** Handle all files from four folders */
+	@RequestMapping(value = "/{folder1}/{folder2}/{folder3}/{filename}", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public void getFile3AsByteArray(@PathVariable("folder1") String folder1,
+									@PathVariable("folder2") String folder2,
+									@PathVariable("folder3") String folder3,
+									@PathVariable("folder3") String folder4,
+									@PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
+		String fn = String.format("%s/%s/%s/%s/%s", folder1, folder2, folder3, folder4, filename);
+		processFile(fn, response);
+	}
+	
+	private void processFile(String filename, HttpServletResponse response) throws IOException {
+		InputStream in = new FileInputStream(filename);
 	    IOUtils.copy(in, response.getOutputStream());
 	}
 }
