@@ -40,12 +40,35 @@ version = "$axelVersion"
 group = 'org.xmlactions'
 
 jar {
-	from { fileTree(dir: "bin/main") exclude "application.yml" }
+	from sourceSets.main.allJava
 
 	manifest {
 		attributes("product": "axelframework")
 		attributes("description": "axelframework distribution jar file")
 	}
+}
+
+sourceSets {
+    main {
+        java {
+			srcDir project(':axel-common').file('src/main/java')
+			srcDir project(':axel-action').file('src/main/java')
+			srcDir project(':axel-email').file('src/main/java')
+			srcDir project(':axel-mapping').file('src/main/java')
+			srcDir project(':axel-web').file('src/main/java')
+			srcDir project(':axel-db').file('src/main/java')
+			srcDir project(':axel-web-db').file('src/main/java')
+        }
+        resources {
+			srcDir project(':axel-common').file('src/main/resources')
+			srcDir project(':axel-action').file('src/main/resources')
+			srcDir project(':axel-email').file('src/main/resources')
+			srcDir project(':axel-mapping').file('src/main/resources')
+			srcDir project(':axel-web').file('src/main/resources')
+			srcDir project(':axel-db').file('src/main/resources')
+			srcDir project(':axel-web-db').file('src/main/resources')
+        }
+    }
 }
 
 dependencies {
