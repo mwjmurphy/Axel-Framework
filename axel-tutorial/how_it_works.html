@@ -1,0 +1,26 @@
+<div id="how_it_works" class="text-left axel"> 
+    <h3>How It Works</h3>
+    <p class="text-justify">
+        Axel works by calling actions it finds on a web page.  These actions are added to the web page by the web site developer.
+        When the action is called it replaces the action content on the web page with the result of the action.
+    </p>
+    <p class="text-justify">
+        An action looks like
+        <code>
+            <pre>
+                &lt;axel:insert page="title.html"/>
+            </pre>
+        </code>
+    </p>
+    <p class="text-justify">
+        The result of this action will replace the action content with the content of the page named <i>title.html</i>.
+    </p>
+    <p class="text-justify">
+        Now we have html components - on any page where you want to show the title you simply add this action.  The inserted page
+        may also have axel actions which will be processed before the page is inserted.
+    </p>
+    <p class="test-justify">
+        There are many actions that perform different tasks, the insert action is a simple instruction yet introduces the powerfull
+        concept of html components in their native form.  The examples on this page show how to use the other actions and their benifits.
+    </p>
+</div>

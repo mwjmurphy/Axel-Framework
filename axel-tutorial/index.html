@@ -1,55 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <axel:insert page="core/includes.html"/>
-    <style>
-        /* Remove the navbar's default margin-bottom and rounded borders */ 
-        .navbar {
-        margin-bottom: 0;
-        border-radius: 0;
-        }
-        
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {height: 450px}
-        
-        /* Set gray background color and 100% height */
-        .sidenav {
-        padding-top: 20px;
-        background-color: #f1f1f1;
-        height: 100%;
-        }
-        
-      
-        /* On small screens, set height to 'auto' for sidenav and grid */
-        @media screen and (max-width: 767px) {
-        .sidenav {
-            height: auto;
-            padding: 15px;
-        }
-        .row.content {height:auto;} 
-        }
+    <!--
+    cerulean
+    journal
+    lumen
+    spacelab
+    superhero
+    minty
+    united
+-->
 
-        body {
-            font-family: verdana, calibri, Helvetica, sans-serif;
-        }
 
-    </style>
+
+
+
+   
+<title>Axel Framework Tutorial</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/bootstrap/united//bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/2ff5ff2a49.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/axel.css">
+
+    
 </head>
 <body>
-    <axel:insert page="header.html"/>
+    <header class="container-fluid text-center axel">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-center">
+        <h3>axel framework - tutorial</h3>
+    </nav>
+</header>
     <div class="container-fluid text-center">    
+        <div id="title" class="jumbotron axel">
+    <div class="row content">
+        <div class="col-sm-3 sidenav">
+            <img src="img/languages.png" width="250">
+        </div>
+        <div class="col-sm-6 sidenav">
+            <h1 class="display-3">axel framework</h1>
+            <p class="lead">The framework builds web pages using instructions, commonly known as actions, placed inside each page.</p>
+            <hr class="my-4">
+            <p>
+                Details on how to use each action are shown in the tutorials. You'll also learn how to build and deploy web applications.
+                How to connect to backend and external resources such as databases and json feeds.  
+            </p>
+            <p>
+                To get started you need some knowledge on command line such as windows cmd, using a browser and a basic understanding of html.
+            </p>
+        </div>
+        <div class="col-sm-3 sidenav">
+            <img src="img/servers.png" width="250">
+        </div>
+    </div>
+</div>
+
         <div class="row content">
-            <axel:insert page="left_navs.html"/>
-            <axel:insert page="tutorial.html"/>
-            <div class="col-sm-2 sidenav">
-                <div class="well">
-                <p>ADS</p>
+            <div class="col-sm-3 sidenav">
+                <div class="sidenav text-left axel">
+    <h4>Navigation</h4>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" href="#introduction">Introduction</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#how_it_works">How It Works</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#hello_world">Hello World!!!</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#insert_component_page">Insert Component Page</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#capture_browser_parameters">Capture Browser Parameters</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#http_call" title="How to load data from an external site">Http Call</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#json_presentation" title="Presentation of the loaded data">Json Presentation</a>
+        </li>
+
+        
+        
+    </ul>
+</div>
             </div>
-            <div class="well">
-                <p>ADS</p>
+            <div class="col-sm-6">
+                <div id="introduction" class="text-left axel"> 
+    <h3>Introduction</h3>
+    <p class="text-justify">
+        The framework is designed to build web pages for presentation on the web browser.
+    </p>
+    <p class="text-justify">
+        Under the hood it has java, spring framework, tools for building presentations layers from xml and json and services that
+        can reach out to other resources.
+    </p>
+    <p class="text-justify">
+        On top of this, larger teams can add java and javascript developers to build more complex backend and frontend systems.
+    </p>
+    <p class="text-justify">
+        The framework encourages component page development, making it easier to build and manage large projects.  It also fits in
+        with other front end frameworks such as Angular, React and NodeJs - building json feeds from the server and standardising
+        and normalising the data content from the backend.
+    </p>
+
+</div>
+
+                <div id="how_it_works" class="text-left axel"> 
+    <h3>How It Works</h3>
+    <p class="text-justify">
+        Axel works by calling actions it finds on a web page.  These actions are added to the web page by the web site developer.
+        When the action is called it replaces the action content on the web page with the result of the action.
+    </p>
+    <p class="text-justify">
+        An action looks like
+        <code>
+            <pre>
+                &lt;axel:insert page="title.html"/>
+            </pre>
+        </code>
+    </p>
+    <p class="text-justify">
+        The result of this action will replace the action content with the content of the page named <i>title.html</i>.
+    </p>
+    <p class="text-justify">
+        Now we have html components - on any page where you want to show the title you simply add this action.  The inserted page
+        may also have axel actions which will be processed before the page is inserted.
+    </p>
+    <p class="test-justify">
+        There are many actions that perform different tasks, the insert action is a simple instruction yet introduces the powerfull
+        concept of html components in their native form.  The examples on this page show how to use the other actions and their benifits.
+    </p>
+</div>
+
+                <div class="tutorial text-left axel">
+        <h3>Tutorials</h3>
+        <p>
+            To help with building the examples in this tutorial we use an application that runs on your workstation to replicate a
+            web server.  The instructions for downloading and running this application are shown in the first example
+            <a href="#hello_world">Hello World!!!</a>
+        </p>
+        <hr>
+        <h4 id="hello_world"><span class="badge badge-info">1</span> example - hello world!!!</h4>
+<div class="alert alert-light rounded">
+    Show <strong>Hello World!!! time</strong> in your browser.
+</div>
+<ol>
+    <li>
+        <p>
+            Download the latest version of axel-run jar file from this link <a href="versions/axel-run-2.3.3.jar">axel-run-2.3.3.jar</a>
+        </p>
+    </li>    
+    <li>
+        <p>
+            From the command line type <b><i>java -jar axel-run-2.3.3.jar</i></b>
+        </p>
+    </li>    
+    <li>
+        <p>
+            When the application has started open your web browser and enter <b>localhost</b> - you'll see an error <b>"Whitelabel Error Page"</b>
+        </p>
+    </li>    
+    <li>
+        <p>
+            In the same location, create a new file called <i>index.html</i> and edit the file adding
+            <pre>
+Hello World!!!  &dollar;{current.time}
+            </pre>
+        </p>
+    </li>    
+    <li>
+        <p>
+            In your web browser now type <b>localhost/index.html</b> and you'll see
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    Hello World!!! 17:52
+</div>
+
+
+        <hr>
+        <h4 id="insert_componen_page"><span class="badge badge-info">2</span> example - insert component page</h4>
+<div class="alert alert-light rounded">
+    <p>
+        Inserting a <b>component page</b> into the index.html
+    </p>
+</div>
+<ol>
+    <li>
+        <p>
+            Create a new file called <i>header.html</i> and add the following content
+            <pre>
+&lt;h5>This is an Axel Framework Header Component Page&lt;/h5>
+            </pre>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <pre>
+&lt;axel:insert page="header.html"/>
+            </pre>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    Hello World!!! 17:52<br/>
+    This is an Axel Framework Header Component Page
+</div>
+
+
+        <hr>
+        <h4 id="capture_browser_parameters"><span class="badge badge-info">3</span> example - capture browser parameters</h4>
+<div class="alert alert-light rounded">
+    How to access the parameters from the browser
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following content
+            <pre>&lt;h5>Hello ${request:title} ${request:surname}&lt;/h5></pre>
+        </p>
+    </li>    
+    <li>
+        <p>
+            In your browser type <b>localhost/index.html?title=Mr&surname=Flinstone</b>b
+        </p>
+    </li>    
+    <li>
+        <p>
+            Now you see this in your browser
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    Hello World!!! 17:52
+    This is an Axel Framework Header Component Page
+    Hello Mr Flinstone
+</div>
+
+
+        <hr>
+        <h4 id="http_call"><span class="badge badge-info">4</span> example - http call</h4>
+<p style="padding-left:20px">
+    <small>
+        The http action will make a http call and return the result.  The response may also be stored in the
+        exceContext using the key attribute which can then be retrieved for use by a presentation action.
+    </small>
+</p>
+    <div class="alert alert-light rounded">
+    How to get data from an external site.
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>&lt;axel:http href="http://axelframework.org/data/people.json" method="get"/&gt;</pre></code>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the http response.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    <pre>[
+    {
+        "name": "Fred Flinstone",
+        "age": 40,
+        "phone": "555-5555",
+        "address": "1 Main Street",
+        "city": "York",
+        "state": "Yorkshire",
+        "country": "UK"
+    },
+    {
+        "name": "Wilma Flinstone",
+        "age": 39,
+        "phone": "555-5555",
+        "address": "1 Main Street",
+        "city": "York",
+        "state": "Yorkshire",
+        "country": "UK"
+    },
+    {
+        "name": "Barney Rubble",
+        "age": 38,
+        "phone": "555-5555",
+        "address": "2 Main Street",
+        "city": "York",
+        "state": "Yorkshire",
+        "country": "UK"
+    },
+    {
+        "name": "Betty Rubble",
+        "age": 37,
+        "phone": "555-5555",
+        "address": "2 Main Street",
+        "city": "York",
+        "state": "Yorkshire",
+        "country": "UK"
+    }
+]</pre>
+</div>
+
+
+        <hr>
+        <h4 id="json_presentation"><span class="badge badge-info">5</span> example - json presentation</h4>
+<p style="padding-left:20px">
+    <small>
+        The json presentation action will map selected content of a JSON feed to a presentation form.
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Present the json data from an external site.
+</div>
+<ol>
+    <li>
+        <p>
+            Now add the following content to the <i>index.html</i> page.
+            <code>
+                <pre>
+&lt;axel:http href="http://axelframework.org/data/people.json" method="get" key="people_json"/>
+&lt;axel:map_json_to_presentation json_data="&dollar;{people_json}" json_path="/">
+    &lt;axel:form>
+        &lt;div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+            &lt;div class="card-header">&dollar;{row:name} age:&dollar;{row:age}&lt;/div>
+            &lt;div class="card-body">
+                &lt;h4 class="card-title">Address&lt;/h4>
+                &lt;p class="card-text">
+                &dollar;{row:address}&lt;br/>
+                &dollar;{row:city}&lt;br/>
+                &dollar;{row:state}&lt;br/>
+                &dollar;{row:country}&lt;br/>
+                &dollar;{row:phone}
+            &lt;/p>
+            &lt;/div>
+            &lt;/div>
+    &lt;/axel:form>
+&lt;/axel:map_json_to_presentation>
+                </pre>
+            </code>
+        </p>
+    </li>
+    <li>
+        Refresh the browser and now you see the new content from the http response.
+    </li>    
+</ol>
+<div class="alert aert-dark rounded">
+    
+    
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Fred Flinstone age:40</div>
+                <div class="card-body">
+                  <h4 class="card-title">Address</h4>
+                  <p class="card-text">
+                    1 Main Street<br/>
+                    York<br/>
+                    Yorkshire<br/>
+                    UK<br/>
+                    555-5555
+                </p>
+                </div>
+              </div>
+        
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Wilma Flinstone age:39</div>
+                <div class="card-body">
+                  <h4 class="card-title">Address</h4>
+                  <p class="card-text">
+                    1 Main Street<br/>
+                    York<br/>
+                    Yorkshire<br/>
+                    UK<br/>
+                    555-5555
+                </p>
+                </div>
+              </div>
+        
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Barney Rubble age:38</div>
+                <div class="card-body">
+                  <h4 class="card-title">Address</h4>
+                  <p class="card-text">
+                    2 Main Street<br/>
+                    York<br/>
+                    Yorkshire<br/>
+                    UK<br/>
+                    555-5555
+                </p>
+                </div>
+              </div>
+        
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Betty Rubble age:37</div>
+                <div class="card-body">
+                  <h4 class="card-title">Address</h4>
+                  <p class="card-text">
+                    2 Main Street<br/>
+                    York<br/>
+                    Yorkshire<br/>
+                    UK<br/>
+                    555-5555
+                </p>
+                </div>
+              </div>
+        
+</div>
+
+
+</div>
+
+            </div>
+            <div class="col-sm-3 sidenav">
+                <div class="sidenav text-left axel terminology">
+    <h4>Terminology</h4>
+    <label>action</label><br/>
+    <div class="ml-2">
+        <small>An axel action that returns a results shown on the html page</small>
+    </div>
+    <br/>
+    <label>execContext</label><br/>
+    <div class="ml-2">
+        <small>
+            The execution context is a container for storing data content and values.  These can then be retrieved on the
+            pages using the &dollar;{...} notation.  As an example <b>&dollar;{current.time}</b> will retrieve the current time.
+        </small>
+    </div>
+    <br/>
+</div>
             </div>
         </div>
     </div>
-    <axel:insert page="footer.html"/>
+    <footer class="container-fluid text-center axel">
+    <h3> axel framework - tutorial 
+        <a href="https://github.com/mwjmurphy/Axel-Framework" title="join our team on github" target="_blank"><i class="fab fa-github-square fa-1x"></i></a>
+        <a href="https://www.facebook.com/AxelFramework/" title="read about axel on facebook" target="_blank"><i class="fab fa-facebook-square fa-1x"></i></a>
+</h3>
+</footer>
 </body>
 </html>

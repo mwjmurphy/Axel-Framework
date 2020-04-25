@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Fred Flinstone",
+        "age": 40,
+        "phone": "555-5551",
+        "address": "1 Main Street",
+        "city": "York",
+        "state": "Yorkshire",
+        "country": "UK"
+    },
+    {
+        "name": "Wilma Flinstone",
+        "age": 39,
+        "phone": "555-5552",
+        "address": "1 Main Street",
+        "city": "York",
+        "state": "Yorkshire",
+        "country": "UK"
+    },
+    {
+        "name": "Barney Rubble",
+        "age": 38,
+        "phone": "555-5553",
+        "address": "2 Main Street",
+        "city": "York",
+        "state": "Yorkshire",
+        "country": "UK"
+    },
+    {
+        "name": "Betty Rubble",
+        "age": 37,
+        "phone": "555-5554",
+        "address": "2 Main Street",
+        "city": "York",
+        "state": "Yorkshire",
+        "country": "UK"
+    }
+]

@@ -1,0 +1,34 @@
+<h4 id="insert_componen_page"><span class="badge badge-info">2</span> example - insert component page</h4>
+<div class="alert alert-light rounded">
+    <p>
+        Inserting a <b>component page</b> into the index.html
+    </p>
+</div>
+<ol>
+    <li>
+        <p>
+            Create a new file called <i>header.html</i> and add the following content
+            <pre>
+&lt;h5>This is an Axel Framework Header Component Page&lt;/h5>
+            </pre>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <pre>
+&lt;axel:insert page="header.html"/>
+            </pre>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    Hello World!!! ${current.time}<br/>
+    This is an Axel Framework Header Component Page
+</div>
+

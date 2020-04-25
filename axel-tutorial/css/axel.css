@@ -1,0 +1,28 @@
+axel {
+    font-family: "Roboto Slab Bold",serif,Arial, Helvetica, sans-serif;
+}
+.axel h3 {
+    font-weight: 700;
+    font-size: 22px;
+}
+.axel h4 {
+    font-weight: 600;
+    font-size: 18px;
+}
+.axel p {
+    font-size: 14px;
+}
+.axel a {
+    font-size: 14px;
+}
+
+.terminology label {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1px;
+}
+.terminology small {
+    font-weight: 300;
+    font-size: 14px;
+}
+ 

@@ -1,0 +1,28 @@
+<h4 id="capture_browser_parameters"><span class="badge badge-info">3</span> example - capture browser parameters</h4>
+<div class="alert alert-light rounded">
+    How to access the parameters from the browser
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following content
+            <pre>&lt;h5>Hello ${request:title} ${request:surname}&lt;/h5></pre>
+        </p>
+    </li>    
+    <li>
+        <p>
+            In your browser type <b>localhost/index.html?title=Mr&surname=Flinstone</b>b
+        </p>
+    </li>    
+    <li>
+        <p>
+            Now you see this in your browser
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    Hello World!!! ${current.time}
+    This is an Axel Framework Header Component Page
+    Hello Mr Flinstone
+</div>
+

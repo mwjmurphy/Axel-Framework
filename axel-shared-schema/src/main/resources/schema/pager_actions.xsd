@@ -158,7 +158,7 @@
 				
 				Example<br/>
 				<code>
-					&lt;axel:http url="https://google.com"/&gt;
+					&lt;axel:http href="https://google.com"/&gt;
 				</code>
 				
 				Example with parameters<br/>

@@ -58,7 +58,7 @@ public class AxelController implements ServletContextAware, ServletConfigAware {
 
 	/** Handle all files from one folder */
 	@RequestMapping(value = "/{folder}/{filename}", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	public void getFile2AsByteArray(@PathVariable("folder") String folder, @PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
+	public void getFile1AsByteArray(@PathVariable("folder") String folder, @PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
 		String fn = String.format("%s/%s", folder, filename);
 		processFile(fn, response);
 	}
@@ -81,11 +81,11 @@ public class AxelController implements ServletContextAware, ServletConfigAware {
 	}
 	
 	/** Handle all files from four folders */
-	@RequestMapping(value = "/{folder1}/{folder2}/{folder3}/{filename}", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	public void getFile3AsByteArray(@PathVariable("folder1") String folder1,
+	@RequestMapping(value = "/{folder1}/{folder2}/{folder3}/{folder4}/{filename}", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public void getFile4AsByteArray(@PathVariable("folder1") String folder1,
 									@PathVariable("folder2") String folder2,
 									@PathVariable("folder3") String folder3,
-									@PathVariable("folder3") String folder4,
+									@PathVariable("folder4") String folder4,
 									@PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
 		String fn = String.format("%s/%s/%s/%s/%s", folder1, folder2, folder3, folder4, filename);
 		processFile(fn, response);
