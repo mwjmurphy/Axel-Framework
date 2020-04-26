@@ -37,6 +37,15 @@ public class TestXmlToPresentationAction extends TestCase {
     	logger.debug(output);
     }
 
+    public void testXmlFilePerson() throws Exception {
+    	XmlToPresentationAction xmlToPresentationAction = new XmlToPresentationAction();
+    	xmlToPresentationAction.setXml_path("root/element");
+    	xmlToPresentationAction.setXml_filename("/org/xmlactions/pager/actions/mapping/person.xml");
+    	xmlToPresentationAction.setPresentation_form("/org/xmlactions/pager/actions/mapping/xml_presentation.html");
+    	String output = xmlToPresentationAction.execute(execContext);
+    	logger.debug(output);
+    }
+
     public void testXmlData() throws Exception {
     	XmlToPresentationAction xmlToPresentationAction = new XmlToPresentationAction();
     	xmlToPresentationAction.setXml_path("vessel_gear_types_category");

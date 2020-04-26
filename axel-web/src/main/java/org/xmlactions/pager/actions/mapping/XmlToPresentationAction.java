@@ -23,6 +23,8 @@ import org.xmlactions.common.xml.XMLObject;
 import org.xmlactions.pager.actions.form.CommonFormFields;
 import org.xmlactions.pager.actions.form.PresentationFormAction;
 
+import com.google.gson.GsonBuilder;
+
 public class XmlToPresentationAction extends CommonFormFields {
 
     private static Logger log = LoggerFactory.getLogger(XmlToPresentationAction.class);
@@ -152,7 +154,11 @@ public class XmlToPresentationAction extends CommonFormFields {
 		for (XMLAttribute att : child.getAttributes()) {
 			map.put(att.getKey(), att.getValue());
 		}
+		for (XMLObject ic : child.getChildren()) {
+			map.put(ic.getElementName(), ic.getContent());
+		}
 		execContext.addNamedMap(getRow_map_name(), map);
+		
 		String form = copyForm(presentationForm);
         form = StrSubstitutor.replace(form, map);
 		String populatedForm = new Action().processPage(execContext, form);

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <element>
+      <address>1 Lower Street</address>
+      <age>40</age>
+      <city>York</city>
+      <country>UK</country>
+      <name>Fred Flinstone</name>
+      <phone>555-5551</phone>
+      <state>Yorkshire</state>
+   </element>
+   <element>
+      <address>1 Lower Street</address>
+      <age>39</age>
+      <city>York</city>
+      <country>UK</country>
+      <name>Wilma Flinstone</name>
+      <phone>555-5552</phone>
+      <state>Yorkshire</state>
+   </element>
+   <element>
+      <address>2 Lower Street</address>
+      <age>38</age>
+      <city>York</city>
+      <country>UK</country>
+      <name>Barney Rubble</name>
+      <phone>555-5553</phone>
+      <state>Yorkshire</state>
+   </element>
+   <element>
+      <address>2 Lower Street</address>
+      <age>37</age>
+      <city>York</city>
+      <country>UK</country>
+      <name>Betty Rubble</name>
+      <phone>555-5554</phone>
+      <state>Yorkshire</state>
+   </element>
+</root>

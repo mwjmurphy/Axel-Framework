@@ -16,6 +16,8 @@ import org.xmlactions.action.config.IExecContext;
 import org.xmlactions.common.theme.Theme;
 import org.xmlactions.web.HttpParam;
 
+import com.google.gson.GsonBuilder;
+
 public class LogAction extends BaseAction
 {
 
@@ -42,22 +44,25 @@ public class LogAction extends BaseAction
 
 	private String dump(IExecContext execContext, String key) {
 		Object obj = execContext.get(key);
-		if (obj == null) {
-			obj = execContext.getNamedMap(key);
-		}
-		if (obj != null) {
-			if (obj instanceof Map) {
-				Map<String, Object> map = (Map<String, Object>) obj;
-				return dumpMap(map, key);
-			} else if (obj instanceof List) {
-				List<?> list = (List<?>)obj;
-				return dumpList(list, key);
-			} else if (obj instanceof Theme) {
-				Theme theme = (Theme)obj;
-				return dumpTheme(theme, key);
-			}
-		}
-		return key + ":" + obj;
+	    //convert Map  to String
+	    return new GsonBuilder().setPrettyPrinting().create().toJson(obj);
+//
+//		if (obj == null) {
+//			obj = execContext.getNamedMap(key);
+//		}
+//		if (obj != null) {
+//			if (obj instanceof Map) {
+//				Map<String, Object> map = (Map<String, Object>) obj;
+//				return dumpMap(map, key);
+//			} else if (obj instanceof List) {
+//				List<?> list = (List<?>)obj;
+//				return dumpList(list, key);
+//			} else if (obj instanceof Theme) {
+//				Theme theme = (Theme)obj;
+//				return dumpTheme(theme, key);
+//			}
+//		}
+//		return key + ":" + obj;
 	}
 	
 	private String dumpMap(Map<String, Object> map, String mapName) {

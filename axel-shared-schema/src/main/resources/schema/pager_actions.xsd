@@ -163,7 +163,7 @@
 				
 				Example with parameters<br/>
 				<code>
-					&lt;axel:http url="https://google.com"/&gt;
+					&lt;axel:http href="https://google.com"/&gt;
 					&#160;&#160;&#160;&lt;axel:param value="q=spain"/&gt;<br/>
 					&lt;/axel:http&gt;
 				</code>
