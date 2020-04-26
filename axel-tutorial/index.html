@@ -3,12 +3,24 @@
 <head>
     <!--
     cerulean
+    cyborg
+    darkly
+    flatly
     journal
     lumen
+    lux
+    materia
+    minty
+    pulse
+    sandstone
+    simplex
+    sketchy
+    slate
+    solar
     spacelab
     superhero
-    minty
     united
+    yeti
 -->
 
 
@@ -19,7 +31,7 @@
 <title>Axel Framework Tutorial</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/bootstrap/cerulean//bootstrap.min.css">
+<link rel="stylesheet" href="/bootstrap/solar//bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/2ff5ff2a49.js" crossorigin="anonymous"></script>
@@ -78,14 +90,49 @@
             <a class="nav-link" href="#capture_browser_parameters">Capture Browser Parameters</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#http_call" title="How to load data from an external site">Http Call</a>
+            <a class="nav-link" href="#http_call_json" title="How to load data from an external site">Http Call Json</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#json_presentation" title="Presentation of the loaded data">Json Presentation</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#http_call_xml" title="How to load data from an external site">Http Call Xml</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#xml_presentation" title="Presentation of the loaded data">Xml Presentation</a>
+        </li>
 
-        
-        
+<!--
+        json_get
+        bean Presentation
+
+
+
+        code
+
+        put
+        get
+        remove
+
+        if
+        else
+        elseif
+
+        escape
+        unescape
+
+        range
+        eval
+
+        transform
+        date_formatter
+        content_type
+
+        log
+        debug
+        echo
+-->
+
     </ul>
 </div>
             </div>
@@ -152,7 +199,7 @@
 <ol>
     <li>
         <p>
-            Download the latest version of axel-run jar file from this link <a href="versions/axel-run-2.3.3.jar">axel-run-2.3.3.jar</a>
+            Download the latest version of axel-run jar file from this link <a href="versions/axel-run-2.3.4.jar">axel-run-2.3.4.jar</a>
         </p>
     </li>    
     <li>
@@ -180,7 +227,7 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 17:57
+    Hello World!!! 20:22
 </div>
 
 
@@ -215,7 +262,7 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 17:57<br/>
+    Hello World!!! 20:22<br/>
     This is an Axel Framework Header Component Page
 </div>
 
@@ -244,14 +291,14 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 17:57
+    Hello World!!! 20:22
     This is an Axel Framework Header Component Page
     Hello Mr Flinstone
 </div>
 
 
         <hr>
-        <h4 id="http_call"><span class="badge badge-info">4</span> example - http call</h4>
+        <h4 id="http_call_json"><span class="badge badge-info">4</span> example - http call</h4>
 <p style="padding-left:20px">
     <small>
         The http action will make a http call and return the result.  The response may also be stored in the
@@ -416,6 +463,177 @@ Hello World!!!  &dollar;{current.time}
                 </p>
                 </div>
               </div>
+        
+</div>
+
+
+        <hr>
+        <h4 id="http_call_xml"><span class="badge badge-info">6</span> example - http call xml</h4>
+<p style="padding-left:20px">
+    <small>
+        The http action will make a http call and return the result.  The response may also be stored in the
+        exceContext using the key attribute which can then be retrieved for use by a presentation action.
+    </small>
+</p>
+    <div class="alert alert-light rounded">
+    How to get data from an external site.
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>&lt;axel:http href="http://axelframework.org/data/people.xml" method="get"/&gt;</pre></code>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the http response.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    <textarea rows="40" cols="40"><?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <element>
+      <address>1 Lower Street</address>
+      <age>40</age>
+      <city>York</city>
+      <country>UK</country>
+      <name>Fred Flinstone</name>
+      <phone>555-5551</phone>
+      <state>Yorkshire</state>
+   </element>
+   <element>
+      <address>1 Lower Street</address>
+      <age>39</age>
+      <city>York</city>
+      <country>UK</country>
+      <name>Wilma Flinstone</name>
+      <phone>555-5552</phone>
+      <state>Yorkshire</state>
+   </element>
+   <element>
+      <address>2 Lower Street</address>
+      <age>38</age>
+      <city>York</city>
+      <country>UK</country>
+      <name>Barney Rubble</name>
+      <phone>555-5553</phone>
+      <state>Yorkshire</state>
+   </element>
+   <element>
+      <address>2 Lower Street</address>
+      <age>37</age>
+      <city>York</city>
+      <country>UK</country>
+      <name>Betty Rubble</name>
+      <phone>555-5554</phone>
+      <state>Yorkshire</state>
+   </element>
+</root></textarea>
+</div>
+
+
+        <hr>
+        <h4 id="xml_presentation"><span class="badge badge-info">7</span> example - xml presentation</h4>
+<p style="padding-left:20px">
+    <small>
+        The xml presentation action will map selected content of a XML feed to a presentation form.
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Present the xml data from an external site.
+</div>
+<ol>
+    <li>
+        <p>
+            Now add the following content to the <i>index.html</i> page.
+            <code>
+                <pre>
+&lt;axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/>
+&lt;axel:map_xml_to_presentation xml_data="&dollar;{people_xml}" xml_path="/root/element">
+    &lt;axel:form>
+        &lt;div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+            &lt;div class="card-header">&dollar;{row:name} age:&dollar;{row:age}&lt;/div>
+            &lt;div class="card-body">
+                &lt;h4 class="card-title">Address&lt;/h4>
+                &lt;p class="card-text">
+                &dollar;{row:address}&lt;br/>
+                &dollar;{row:city}&lt;br/>
+                &dollar;{row:state}&lt;br/>
+                &dollar;{row:country}&lt;br/>
+                &dollar;{row:phone}
+            &lt;/p>
+            &lt;/div>
+            &lt;/div>
+    &lt;/axel:form>
+&lt;/axel:map_xml_to_presentation>
+                </pre>
+            </code>
+        </p>
+    </li>
+    <li>
+        Refresh the browser and now you see the new content from the http response.
+    </li>    
+</ol>
+<div class="alert aert-dark rounded">
+    
+    
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Fred Flinstone age:40</div>
+                <div class="card-body">
+                    <h4 class="card-title">Address</h4>
+                    <p class="card-text">
+                        1 Lower Street<br/>
+                        York<br/>
+                        Yorkshire<br/>
+                        UK<br/>
+                        555-5551
+                    </p>
+                </div>
+            </div>
+        
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Wilma Flinstone age:39</div>
+                <div class="card-body">
+                    <h4 class="card-title">Address</h4>
+                    <p class="card-text">
+                        1 Lower Street<br/>
+                        York<br/>
+                        Yorkshire<br/>
+                        UK<br/>
+                        555-5552
+                    </p>
+                </div>
+            </div>
+        
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Barney Rubble age:38</div>
+                <div class="card-body">
+                    <h4 class="card-title">Address</h4>
+                    <p class="card-text">
+                        2 Lower Street<br/>
+                        York<br/>
+                        Yorkshire<br/>
+                        UK<br/>
+                        555-5553
+                    </p>
+                </div>
+            </div>
+        
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Betty Rubble age:37</div>
+                <div class="card-body">
+                    <h4 class="card-title">Address</h4>
+                    <p class="card-text">
+                        2 Lower Street<br/>
+                        York<br/>
+                        Yorkshire<br/>
+                        UK<br/>
+                        555-5554
+                    </p>
+                </div>
+            </div>
         
 </div>
 
