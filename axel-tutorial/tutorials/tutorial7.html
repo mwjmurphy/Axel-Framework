@@ -41,15 +41,13 @@
 </ol>
 <div class="alert aert-dark rounded">
     <axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/>
-    <axel:map_xml_to_presentation xml_data="${people_xml}" xml_path="root/element" row_map_name="map">
+    <axel:map_xml_to_presentation xml_data="${people_xml}" xml_path="/root/element">
         <axel:form>
             <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
                 <div class="card-header">${row:name} age:${row:age}</div>
                 <div class="card-body">
                     <h4 class="card-title">Address</h4>
                     <p class="card-text">
-                        ${address}<br/>
-                        ${map:address}<br/>
                         ${row:address}<br/>
                         ${row:city}<br/>
                         ${row:state}<br/>

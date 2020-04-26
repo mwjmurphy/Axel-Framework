@@ -519,8 +519,12 @@ public class XMLObject implements Serializable {
 	 * @return the XMLObject if found or null if not.
 	 */
 	public XMLObject findXMLObjectByPath(String path, int index) {
-		if (path == null || path.length() == 0)
+		if (path == null || path.length() == 0) {
 			return (this);
+		}
+		if (path.startsWith("/") && path.length() > 1) {
+			path = path.substring(1);	// remove leading '/'
+		}
 		String[] paths = mapPaths(path);
 		XMLObject xo = this;
 		if (paths.length > 0) {
