@@ -1,0 +1,64 @@
+<h4 id="xml_presentation"><span class="badge badge-info">7</span> example - xml presentation</h4>
+<p style="padding-left:20px">
+    <small>
+        The xml presentation action will map selected content of a XML feed to a presentation form.
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Present the xml data from an external site.
+</div>
+<ol>
+    <li>
+        <p>
+            Now add the following content to the <i>index.html</i> page.
+            <code>
+                <pre>
+&lt;axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/>
+&lt;axel:map_xml_to_presentation xml_data="&dollar;{people_xml}" xml_path="/root/element">
+    &lt;axel:form>
+        &lt;div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+            &lt;div class="card-header">&dollar;{row:name} age:&dollar;{row:age}&lt;/div>
+            &lt;div class="card-body">
+                &lt;h4 class="card-title">Address&lt;/h4>
+                &lt;p class="card-text">
+                &dollar;{row:address}&lt;br/>
+                &dollar;{row:city}&lt;br/>
+                &dollar;{row:state}&lt;br/>
+                &dollar;{row:country}&lt;br/>
+                &dollar;{row:phone}
+            &lt;/p>
+            &lt;/div>
+            &lt;/div>
+    &lt;/axel:form>
+&lt;/axel:map_xml_to_presentation>
+                </pre>
+            </code>
+        </p>
+    </li>
+    <li>
+        Refresh the browser and now you see the new content from the http response.
+    </li>    
+</ol>
+<div class="alert aert-dark rounded">
+    <axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/>
+    <axel:map_xml_to_presentation xml_data="${people_xml}" xml_path="root/element" row_map_name="map">
+        <axel:form>
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">${row:name} age:${row:age}</div>
+                <div class="card-body">
+                    <h4 class="card-title">Address</h4>
+                    <p class="card-text">
+                        ${address}<br/>
+                        ${map:address}<br/>
+                        ${row:address}<br/>
+                        ${row:city}<br/>
+                        ${row:state}<br/>
+                        ${row:country}<br/>
+                        ${row:phone}
+                    </p>
+                </div>
+            </div>
+        </axel:form>
+    </axel:map_xml_to_presentation>
+</div>
+
