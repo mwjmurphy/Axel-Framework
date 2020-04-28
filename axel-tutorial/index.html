@@ -45,6 +45,24 @@
         <h3>axel framework - tutorial</h3>
     </nav>
 </header>
+    <div>
+        <?php
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+?>
+
+<?php
+if(!isset($_COOKIE[$cookie_name])) {
+     echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+     echo "Cookie '" . $cookie_name . "' is set!<br>";
+     echo "Value is: " . $_COOKIE[$cookie_name];
+}
+?>
+
+
+    </div>
     <div class="container-fluid text-center">    
         <div id="title" class="jumbotron axel">
     <div class="row content">
@@ -204,7 +222,7 @@
     </li>    
     <li>
         <p>
-            From the command line type <b><i>java -jar axel-run-2.3.3.jar</i></b>
+            From the command line type <b><i>java -jar axel-run-2.3.4.jar</i></b>
         </p>
     </li>    
     <li>
@@ -227,7 +245,7 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 20:22
+    Hello World!!! 13:15
 </div>
 
 
@@ -262,7 +280,7 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 20:22<br/>
+    Hello World!!! 13:15<br/>
     This is an Axel Framework Header Component Page
 </div>
 
@@ -291,7 +309,7 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 20:22
+    Hello World!!! 13:15
     This is an Axel Framework Header Component Page
     Hello Mr Flinstone
 </div>

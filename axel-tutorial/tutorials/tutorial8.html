@@ -1,0 +1,41 @@
+<h4 id="json_get"><span class="badge badge-info">8</span> example - json get</h4>
+<p style="padding-left:20px">
+    <small>
+        Get an object/s from a json document.
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Get an object/s from a json document that already exists in the execContext.
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>&lt;axel:json_get json_data="&dollar;{people_json}" json_path="name"/&gt;</pre></code>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    name: <axel:json_get json_data="${people_json}" json_path="name"/>
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content, note the <b>index="1"</b>
+            <code><pre>&lt;axel:json_get json_data="&dollar;{people_json}" json_path="name" index="1"/&gt;</pre></code>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document showing the second name.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    name: <axel:json_get json_data="${people_json}" json_path="name" index="1"/>
+</div>

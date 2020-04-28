@@ -1,0 +1,1850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+   targetNamespace="http://www.xmlactions.org/pager_db_actions"
+   xmlns="http://www.xmlactions.org/pager_db_actions"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:pager="http://www.xmlactions.org/pager_actions"
+   attributeFormDefault="unqualified"
+   elementFormDefault="qualified">
+
+	<xsd:import namespace="http://www.xmlactions.org/pager_actions" schemaLocation="pager_actions.xsd"/>
+	<!-- <xsd:include schemaLocation="pager_actions.xsd" /> -->
+	<xsd:include schemaLocation="pager_types.xsd" />
+	<xsd:include schemaLocation="pager_attributes.xsd" />
+
+	<xsd:annotation><xsd:documentation><![CDATA[
+		<h4>Database Actions</h4>
+	
+		The Database Actions schema "pager_db_actions.xsd" describes the actions that are used to work
+		with one or more databases.  These actions bind database fields to the presentation fields
+		(html inputs). While the framework has a simple presentation layer for quick and easy presentation
+		of the data it is also highly customizable giving you complete control on how the data is presented
+		on screen. 
+		
+		Database actions compliment the pager_actions.xsd schema.  It is recommended that you use
+		the "axel" namespace to reference the pager_actions and use the "db" namespace to reference
+		this pager_db_actions.xsd schema.  These are only recomendations and any namespace may be used.
+		
+		The following is a list of the primary database actions:<br/>
+		<a href="#list">list</a> - draws a presentation of inputs from a database query.<br/>
+		<a href="#listcp">listcp</a> - draws a control panel for a list display.  This includes media like inputs for paging over large list results.<br/>
+		<a href="#search">search</a> - draws a search input as part of a control panel.<br/>
+		<a href="#add">add</a> - draws a presentation of inputs for adding a record to the database.<br/>
+		<a href="#edit">edit</a> - draws a presentation of inputs for editing a record.<br/>
+		
+		Actions use a database defined by the "storage.xsd" schema for information on the database. 
+		
+		Database actions are placed in the html pages and when executed on the server the result
+		of the action either replaces the action on the page or is stored for later use.
+		
+		<div class="bs-callout bs-callout-info">
+			<h4>Standards/Conventions</h4>
+			<p>
+				When working with the database actions you should reference a field by combining
+				the table name with the field name using a dot seperator. i.e. <b>"table.fieldname"</b>.
+				Following this convention you quickly become familiar with where your data is
+				located in the database.
+			</p>
+			<p>				
+				While it is possible to work with a single table using just the field name it is
+				not possible to do so when working with data from multiple tables. By using the
+				"table.fieldname" convention you can accurately work with data across multiple
+				tables. 
+			</p>
+		</div>
+		<div class="bs-callout bs-callout-info">
+			<h4>Skillset Required</h4>
+			<p>
+				A medium level of expertise in html and xml is required to work with database actions. You should
+				also be able to understand the storage definition of the tables and fields contained in the
+				database.
+			</p>
+			<p>
+				A low level of expertise in SQL is required to use "where", "order_by" and "group_by" attributes
+				when using filters and sorted on a query.
+			</p>
+			<p>
+				A medium level of expertise in Javascript and JSON is required to interact with these actions.  
+			</p> 
+		</div>
+	]]></xsd:documentation></xsd:annotation>
+
+	<xsd:element name="list">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			Builds a presentation around the response from a database query.
+            
+            To build the query the "list" action needs to know which table/s and fields are
+            required.  Each of the tables and fields are added to the field_list element.
+            There is also an option to use an SQL inplace of the field_list.
+            
+            Parameters may also be passed to the list from the browser, parameters that are passed from the browser
+            will override any parameters that are set in the page.
+            
+            As an example <b>page.html?rows=20</b>
+            
+            The following is a list of the parameters that are accepted from a browser request<br/>
+            
+			where,		// - A where is used to select the data returned from a select.<br/>
+						// Do not provide the 'where' syntax for the where clause. Instead only provide the conditions of the where clause.<br/>
+						// Example: tb1.id=tb2.id or tb1.name like 'fred'<br/>
+			order_by,	// -	An order_by is used to order the data returned from a select.<br/>
+						// Do not provide the 'order by' syntax for the order by clause. Instead only provide the conditions of the order by clause.<br/>
+						// example: TB_FIELD DESC or TB_FIELD, TB_DATE DESC<br/>
+			group_by,	// -	A group_by is used to group the data returned from a select.<br/>
+						// Do not provide the 'group by' syntax for the group by clause. Instead only provide the field names.<br/>
+			   			// example: TB_FIELD or TB_FIELD, TB_DATE<br/>
+			rows,		// - The number of table rows to display on screen.<br/>
+			page		// - The page number to retrieve from the table. The page is a value of rows * page and references the first row to return form the query.<br/>
+             
+		]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="field_list" minOccurs="0" maxOccurs="1">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						Specifies a list of data fields.
+						
+						Data fields reference the storage fields and are used to specify the table.fieldname that this field is associated with.
+						It binds the database fields with the presentation fields. Combining the attributes of both the "storage field definition"
+						and the "field presentation definiton" provides a powerful yet simple means of moving data in an out of the database and
+						presenting this data on screen.
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+	            <xsd:element ref="pager:link" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+        		    	Specifies a href link.
+        		    	
+        		    	These link/s are displayed beneath the field_list and are used to provide page navigation such as "save", "add" etc.
+					]]></xsd:documentation></xsd:annotation>
+    	        </xsd:element>
+				<xsd:element ref="pager:popup" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+    			        Builds a popup window that is populated from a server page uri.<br/>
+			            example &lt;axel:popup id="xxx" uri="page.uhtml"/&gt;
+					]]></xsd:documentation></xsd:annotation>
+	            </xsd:element>
+				<xsd:element ref="pager:form" minOccurs="0" maxOccurs="1">
+					<xsd:annotation><xsd:documentation><![CDATA[
+        				If this is set then the content of this form (which is html) is used to build the presentation of the data for this action.
+        				This "form" element takes precedence over the "presentation_form" attribute. 
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute ref="id" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+        			This is an identifier for this action.
+        			
+        			In most cases an id should be unique to the page.  This will allow for distinct reference to the actions on the page and allow
+        			multiple actions of the same type to work independantly of each other.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute ref="visible" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+        			The "visible" attribute allows you to show or hide this action when it is first displayed on screen.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute ref="storage_config_ref" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+        			The "storage_config_ref" provides a reference to a spring configured StorageConfiguration.
+        			
+        			A StorageConfiguration is used to configure a database connection abd a storage definition.
+
+					The "storage_config_ref" may be set here or can also setup with a default value in a (web.properties) configuration
+					file with the key "default_storage_config_ref". i.e. <b>default_storage_config_ref=storageConfig</b>
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute ref="table_name" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+	                  This is the name of the <i>primary</i> table.
+	              ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute ref="sql" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					An sql may be used in place of the generated sql.
+
+					The naming convention around field names must be applied for the presentation to work. i.e. "table.fieldname"
+
+					The whereClause, orderBy are supported
+
+					The from - to limits using the ListCP are also supported.
+				]]></xsd:documentation></xsd:annotation>
+         	</xsd:attribute>
+			<xsd:attribute name="join" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+                  This join will be added to the select statement. It can be left join, right join, center join.
+
+                  A left join can be used to retrieve data that is not in a table. Example:
+<pre>
+SELECT table1.* FROM table1<br/>
+ LEFT JOIN table2<br/>
+  ON table1.id = table2.id<br/>
+ WHERE table2.id IS NULL<br/>
+</pre>
+			]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="where" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  A where is used to select the data returned from a select.
+
+                  Do not provide the 'where' syntax for the where clause. Instead
+                  only provide the conditions of the where clause.
+
+                  example:
+                  tb1.id=tb2.id
+                  or
+                  tb1.name like 'fred'
+                  
+                  You can also have the values for the where clause set into the PreparedStatement as parameters instead of
+                  directly in the sql.  This has a performance advantage of using cached sql.
+                  
+                  To setup parameters for the PreparedStatement simply use a ? in front of the value.
+                  
+                  example:
+                  tb1.name like ?'fred'
+			]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="order_by" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  An order_by is used to order the data returned from a select.
+
+                  Do not provide the 'order by' syntax for the order by clause. Instead
+                  only provide the conditions of the order by clause.
+
+                  example:
+                  TB_FIELD DESC
+                  or
+                  TB_FIELD, TB_DATE DESC 
+                ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="group_by" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+            	A  group_by is used to group the data returned from a select.
+
+                  Do not provide the 'group by' syntax for the group by clause. Instead
+                  only provide the field names.
+
+                  example:
+                  TB_FIELD
+                  or
+                  TB_FIELD, TB_DATE 
+               ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="theme_name" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  Is optional if the theme is provided by a parent action. 
+
+                  Or set in a configuration file using the key 'default_theme_name'.
+                  i.e. default_theme_name=blue 
+	         ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="width" use="optional" />
+         <xsd:attribute ref="title" use="optional" />
+         <xsd:attribute name="header_align" type="alignment_options" use="optional" default="center">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  The header alignment setting, this will be
+                  applied to all headers in the table list.
+                  Options are center, left, right.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="rows" type="xsd:int" use="optional" default="10">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  The number of table rows to display on screen.
+			]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="page" type="xsd:int" use="optional" default="10">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  The page number to retrieve from the table. The page is a value
+                  of rows * page and references the first row to return form the query.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="row_height" type="xsd:int" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  The height of each row in the list presentation.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="presentation_form" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  The file name of a presentation form that each row will be drawn into.
+
+                  Each row from the query will be drawn into this form.
+                  <br />
+                  Use the ${...} markers to insert the fields from the query into the form.
+                  <br />
+
+                  As an example to insert the value for field table.fieldName into the form
+                  use ${row:table.fieldName}.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="output_format" type="output_format_options" use="optional" default="html">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  By default the result of a "list" will be a presentation in html. If this is set
+               	  to json then the list will be returned in json format. If this is set to xml the
+               	  list will be returned in xml format.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  If this is set with a value the result of the list will be stored into 
+                  the execContext using this key. When required for mapping or for code calls
+                  it can be retrieved from the execContext using get{${key}); 
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="remove_html" type="true_false_options" use="optional" default="true">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  If this is set true (which is the default setting) then the outer html element is removed from the presentation form (if a presentation_form is used).
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the fields from a single row.
+               	  
+               	  When the "list" action performs the query and returns a set of data containing one or more rows. Each of these rows is processed in turn
+               	  and the fields from that row are stored in a java map.  The map is then stored in the execContext using the "row_map_name".  When you want
+               	  to access the data from a row you use the replacement marker syntax ${row_map_name:table.field_name} to place the data on the page.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="listcp">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+				A List Control Panel.
+                
+                This action combines a Title, Search, List and Pagination for working with a list returned from a database query.
+                
+                The data can be selected by a field list or from a custom sql.
+                
+                @see <a href="#list">list</a> for how lists are created.
+
+                @see <a href="#search">search</a> on how a search is put together
+                
+                The pagination allows for traversing the data in the display, each time a new page is called it will refresh the data from the database.
+                
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="search" minOccurs="0" />
+            <xsd:element ref="list" minOccurs="1" />
+         </xsd:sequence>
+         <xsd:attribute ref="id" use="required" />
+         <xsd:attribute name="href" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The href we call when any of the control panel
+                  links are clicked.
+                  <p>
+                  Additional details are added to the link such as
+                  the limit range, or page numner.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="ajax_load" type="xsd:boolean" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  We can use this to have the control panel load and repopulate the display using ajax
+                  in place of doing a complete page reload.
+                  <p>
+                  If using this feature you should build the listcp element in its own file
+                  and import this into the page where it will be displayed.  Then set the href
+                  link to point to the listcp file so it will only bring back the information
+                  from the listcp and not the whole page.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="theme_name" use="optional" />
+         <xsd:attribute name="method" type="method_options" use="optional" default="post">
+            <xsd:annotation>
+               <xsd:documentation>
+                  If used, apply this method value to the form
+                  value. Options are post or get.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="display_as" type="link_display_options" use="optional" default="link">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Displays a link as a 'link' or as a 'button'.
+                  The selected theme for a link = INPUT_LINK and for a
+                  button = INPUT_BUTTON.
+                </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="title" use="optional" />
+         <xsd:attribute ref="visible" use="optional" />
+         <xsd:attribute ref="width" use="optional" />
+         <xsd:attribute ref="storage_config_ref" use="optional" />
+         <xsd:attribute ref="table_name" use="optional" />
+         <xsd:attribute name="control_panel_position" type="position_options" use="optional" default="bottom" />
+         <xsd:attribute name="script_before" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This script will be called before the popup is opened.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="script_after" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This script will be called after the popup is opened.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="show_pagination" type="true_false_options" use="optional" default="true">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This will either show or hide the pagination navigator.
+                  
+                  If set to true (default) then the framework pagination is shown.
+                  
+                  if set to false then no pagination is shown and you provide the pagination navigator.
+                  
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <!-- <xsd:attribute name="slider_size" type="xsd:integer" use="required"> <xsd:annotation> <xsd:documentation> This 
+            the size of the slider in pixels. It is used to set the length or height of the slider, depending on the position of the 
+            slider as set by the control_panel_position. </xsd:documentation> <xsd:documentation> If the control_panel_position is set 
+            top or bottom then the size is the length of the slider. If the control_panel_position is set left or right it is the height 
+            of the slider. </xsd:documentation> </xsd:annotation> </xsd:attribute> -->
+         <!-- <xsd:attribute name="form_id" type="xsd:string" use="optional"> <xsd:annotation> <xsd:documentation> This is 
+            used if there are any buttons within the control panel. </xsd:documentation> <xsd:documentation> When set it should contain 
+            the name of the html form that you want to pull the inputs from when submitting the page. </xsd:documentation> </xsd:annotation> 
+            </xsd:attribute> -->
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="search">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Builds a search record option on screen for the user to enter the details of the fields.
+
+            After the user enters the search details and selects the 'go' link a query is created from 
+            the selected field list and the response is presented back on screen.
+
+            @see <a href="#listcp">listcp</a> and <a href="#list">list</a> actions. 
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="field_list" minOccurs="0" />
+            <xsd:element ref="pager:link" minOccurs="0" />
+            <xsd:element ref="pager:button" minOccurs="0" />
+            <xsd:element ref="pager:popup" minOccurs="0" />
+         </xsd:sequence>
+         <xsd:attribute ref="id" use="required" />
+         <xsd:attribute ref="title" use="optional" />
+         <xsd:attribute ref="visible" use="optional" />
+         <xsd:attribute ref="table_name" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Is optional if provided by a parent action. 
+	            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="theme_name" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Is optional if the theme is provided by a parent action. 
+		            </xsd:documentation>
+               <xsd:documentation>
+                  Or set in a configuration file using the key 'default_theme_name'.
+                  i.e. default_theme_name=blue 
+		            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="label_position" use="optional" />
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the fields from a single row.
+               	  
+               	  When the "list" action performs the query and returns a set of data containing one or more rows. Each of these rows is processed in turn
+               	  and the fields from that row are stored in a java map.  The map is then stored in the execContext using the "row_map_name".  When you want
+               	  to access the data from a row you use the replacement marker syntax ${row_map_name:table.field_name} to place the data on the page.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="add">
+      <xsd:annotation><xsd:documentation><![CDATA[
+		Builds an add record presentation on screen for the user to enter the details of the fields.
+	    
+		The "add" action can add records to one or more tables from a single entry form. This has some
+	    limitiations and does not support adding multiple records to the same table from a single form.
+
+		There are two methods to commit the data.
+
+		1) Add a link with submit=true.<br/>
+		2) Add your own selectable element such as an "a" or "button" element.  Add a javascript that
+			will call the axel saveRecord(id) javascript.<br/>
+
+		Example 1 using a "link"<br/>
+		<code>&lt;axel:link name="submit" href="index.html" submit="true" display_as="link"/&gt;</code>
+
+		Example 2 using an "a"<br/>
+		<code>&lt;a onclick="saveRecord('id')"&gt;Submit&lt;/a&gt;</code>
+
+		If you need to construct your own presentation of the Add action you will be able to retrieve configured
+		settings from the execContext using the ${...} syntax.  The information available will be related to the
+		fields that you have selected. The key for retrieving the information is<br/>
+		<code>
+			<br/>- row:value_TABLE.FIELD - for the value of the field
+			<br/>- row:label_TABLE.FIELD - for the label of the field
+			<br/>- row:tooltip_TABLE.FIELD - for the tooltip of the field
+		</code>
+      ]]></xsd:documentation></xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="pre_processes" minOccurs="0" />
+            <xsd:element ref="field_list" minOccurs="0" />
+            <xsd:element ref="post_processes" minOccurs="0" />
+            <xsd:element ref="pager:link" minOccurs="0" />
+            <xsd:element ref="pager:button" minOccurs="0" />
+            <xsd:element ref="pager:form" minOccurs="0" maxOccurs="1">
+    	        <xsd:annotation>
+        			<xsd:documentation>
+        				If this is set then the content of this form (which is html) is used to build the presentation of the data for this action.
+        				This "form" element takes precedence over the "presentation_form" attribute. 
+		            </xsd:documentation>
+	            </xsd:annotation>
+            </xsd:element>
+		 </xsd:sequence>
+         <xsd:attribute ref="id" use="required" />
+         <xsd:attribute ref="title" use="optional" />
+         <xsd:attribute ref="visible" use="optional" />
+         <xsd:attribute ref="storage_config_ref" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Is optional if the storage_config_ref is provided by a parent action. 
+		            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="table_name" use="required" />
+         <xsd:attribute ref="theme_name" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Is optional if the theme is provided by a parent action. 
+		            </xsd:documentation>
+               <xsd:documentation>
+                  Or set in a configuration file using the key 'default_theme_name'.
+                  i.e. default_theme_name=blue 
+		            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="label_position" use="optional" />
+         <xsd:attribute ref="presentation_form" use="optional">
+   	        <xsd:annotation>
+       			<xsd:documentation>
+       				The name of a file containing the presentation html which is locative relative to the web "context root".
+       				If this is set then the content of this file (which is html) is used to build the presentation of the data for this action.
+       				The "form" element takes precedence over this "presentation_form" attribute. 
+	            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the fields from a single row.
+               	  
+               	  When the "list" action performs the query and returns a set of data containing one or more rows. Each of these rows is processed in turn
+               	  and the fields from that row are stored in a java map.  The map is then stored in the execContext using the "row_map_name".  When you want
+               	  to access the data from a row you use the replacement marker syntax ${row_map_name:table.field_name} to place the data on the page.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="add_record">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Inserts a record into the database,
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="field_list" minOccurs="1" maxOccurs="1"/>
+         </xsd:sequence>
+         <xsd:attribute ref="storage_config_ref" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Is optional if the storage_config_ref is provided by a parent action. 
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="table_name" use="required" />
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  If you set the key to a value in the configuration then
+                  the PK value of the new inserted record will be stored
+                  in the execContext using this key.  It can be retrieved
+                  from the execContext using ${key}. 
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="add_record_link">
+      <xsd:annotation>
+         <xsd:documentation>
+            Adds a record to a storage table when user clicks on the link/button.
+            </xsd:documentation>
+         <xsd:documentation>
+            This action is only available from a list action.
+            </xsd:documentation>
+         <xsd:documentation>
+            Substitution markers may be used in the field content to dynamically populate the fields.
+            </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="field" minOccurs="0">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     Field elements are used to provide the data inserted to new records.
+                     <br/>
+                     Substitution markers may be used to dynamically populate the fields.
+                     <br/>
+                     Any query row data is stored in the execContext as a named map. The map name
+                     is "row". To access any of the attributes returned in the query use
+                     "row:tb_name.field_name"
+    	    	    	</xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute ref="id" use="required" />
+         <xsd:attribute ref="presentation_name" use="required" />
+         <xsd:attribute ref="header_name" use="required" />
+         <xsd:attribute name="href" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the href that gets called for this action.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="display_as" use="optional" default="link" />
+         <!-- <xsd:attribute name="submit" type="pt:true_false_options" use="optional" default="false"> <xsd:annotation> 
+            <xsd:documentation> Set this optional attribute to "true" if this link is to service an ajax.submission for 'add', 'update' 
+            or 'delete'. If no links have this attribute set for one of the ajax.submission calls then an exception will be thrown. If 
+            more than one link have this attribute set for one of the ajax.submission calls then the first one in the list is selected. 
+            The href attribute will be ignored of this attribute is set true. </xsd:documentation> </xsd:annotation> </xsd:attribute> -->
+         <xsd:attribute ref="tooltip" use="optional" />
+         <xsd:attribute ref="table_name" use="optional" />
+         <xsd:attribute name="image" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>src for image file</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Use this to specify the width of an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_height" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Use this to specify the height of an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="border" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Sets the border if using an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_pos" type="left_right_options" use="optional" default="left">
+            <xsd:annotation>
+               <xsd:documentation>If using text which side does the image appear on, left or right</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="update_record_link">
+      <xsd:annotation>
+         <xsd:documentation>
+            Updates a record to a storage table when user clicks on the link/button.
+            </xsd:documentation>
+         <xsd:documentation>
+            This action is only available from a list action.
+            </xsd:documentation>
+         <xsd:documentation>
+            Substitution markers may be used in the field content to dynamically populate the fields.
+            </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="field" minOccurs="0">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     Field elements are used to provide the data updated to existing records.
+    	    	    	</xsd:documentation>
+                  <xsd:documentation>
+                     Substitution markers may be used to dynamically populate the fields.
+    	    	    	</xsd:documentation>
+                  <xsd:documentation>
+                     Any query row data is stored in the execContext as a named map. The map name
+                     is "row". To access any of the attributes returned in the query use
+                     "row:tb_name.field_name"
+    	    	    	</xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute ref="id" use="required" />
+         <xsd:attribute ref="presentation_name" use="required" />
+         <xsd:attribute ref="header_name" use="required" />
+         <xsd:attribute name="href" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the href that gets called for this action.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="display_as" use="optional" default="link" />
+         <!-- <xsd:attribute name="submit" type="pt:true_false_options" use="optional" default="false"> <xsd:annotation> 
+            <xsd:documentation> Set this optional attribute to "true" if this link is to service an ajax.submission for 'add', 'update' 
+            or 'delete'. If no links have this attribute set for one of the ajax.submission calls then an exception will be thrown. If 
+            more than one link have this attribute set for one of the ajax.submission calls then the first one in the list is selected. 
+            The href attribute will be ignored of this attribute is set true. </xsd:documentation> </xsd:annotation> </xsd:attribute> -->
+         <xsd:attribute ref="tooltip" use="optional" />
+         <xsd:attribute ref="table_name" use="required" />
+         <xsd:attribute name="pk_value" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is required for the where clause to select the row that
+                  should be updated.
+                  <br />
+                  This pk value is matched to the table primary key.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="confirm_message" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  If this is not null then the message will be presented to the operator before update of the record.
+               </xsd:documentation>
+               <xsd:documentation>
+                  The message may use replacement markers for substitution with ExecContext data.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="is_allowed" type="xsd:boolean" use="optional" default="true">
+            <xsd:annotation>
+               <xsd:documentation>
+                  if set true then this subchild is drawn.  Used by authorisation restrictions.
+                  <p>
+                  	if this is not set true then by default it will be drawn.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>src for image file</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Use this to specify the width of an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_height" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Use this to specify the height of an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="border" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Sets the border if using an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_pos" type="left_right_options" use="optional" default="left">
+            <xsd:annotation>
+               <xsd:documentation>If using text which side does the image appear on, left or right</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="delete_record_link">
+      <xsd:annotation>
+         <xsd:documentation>
+            Deletes a record from a storage table when user clicks on the link/button.
+         </xsd:documentation>
+         <xsd:documentation>
+            This action is only available from a list action.
+            </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="field" minOccurs="0" />
+         </xsd:sequence>
+         <xsd:attribute ref="presentation_name" use="required" />
+         <xsd:attribute ref="header_name" use="required" />
+         <xsd:attribute name="href" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the href that gets called for this action.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="display_as" use="optional" />
+         <xsd:attribute ref="tooltip" use="optional" />
+         <xsd:attribute name="confirm_message" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  If this is not null then the message will be presented to the operator before deletion of the record.
+               </xsd:documentation>
+               <xsd:documentation>
+                  The message may use replacement markers for substitution with ExecContext data.  
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="pk_value" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Set to the Primary Key value of the row that we want to delete from the table.
+               </xsd:documentation>
+               <xsd:documentation>
+                  If not set then the system will use the primary key for this record.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="table_name" use="optional" />
+         <xsd:attribute name="is_allowed" type="xsd:boolean" use="optional" default="true">
+            <xsd:annotation>
+               <xsd:documentation>
+                  if set true then this subchild is drawn.  Used by authorisation restrictions.
+                  <p>
+                  	if this is not set true then by default it will be drawn.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>src for image file</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Use this to specify the width of an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_height" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Use this to specify the height of an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="border" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>Sets the border if using an image</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="image_pos" type="left_right_options" use="optional" default="left">
+            <xsd:annotation>
+               <xsd:documentation>If using text which side does the image appear on, left or right</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="view">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            View an existing record
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="field_list" minOccurs="0" />
+            <xsd:element ref="pager:link" minOccurs="0" />
+            <xsd:element ref="pager:button" minOccurs="0" />
+         </xsd:sequence>
+         <xsd:attribute ref="id" use="required" />
+         <xsd:attribute ref="title" use="optional" />
+         <xsd:attribute ref="visible" use="optional" />
+         <xsd:attribute ref="table_name" use="required" />
+         <xsd:attribute name="pk_value" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the pk (primary key) value used to match the record
+                  in the table.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="storage_config_ref" use="required" />
+         <xsd:attribute ref="theme_name" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Is optional if the theme is provided by a parent action. 
+		            </xsd:documentation>
+               <xsd:documentation>
+                  Or set in a configuration file using the key 'default_theme_name'.
+                  i.e. default_theme_name=blue 
+		            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="label_position" use="optional" default="left" />
+         <xsd:attribute ref="presentation_name" use="required" />
+         <xsd:attribute name="presentation_form" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The file name of a presentation form that data will be drawn into.
+               </xsd:documentation>
+               <xsd:documentation>
+                  Each result of the query will be drawn into this form.
+                  <br />
+                  Use the ${...} markers to insert the fields from the query into the form.
+                  <br />
+               </xsd:documentation>
+               <xsd:documentation>
+                  As an example to insert the value for field table.fieldName into the form
+                  use ${row:table.fieldName}.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the fields from a single row.
+               	  
+               	  When the "list" action performs the query and returns a set of data containing one or more rows. Each of these rows is processed in turn
+               	  and the fields from that row are stored in a java map.  The map is then stored in the execContext using the "row_map_name".  When you want
+               	  to access the data from a row you use the replacement marker syntax ${row_map_name:table.field_name} to place the data on the page.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="edit">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            	Edit an existing record.
+            	
+	            The "edit" action can edit records in one or more tables from a single entry form.  It will also
+	            add records to secondary tables if they are included in the entry form and have not yet been
+	            created from a previous "add" action. This has some limitiations and does not support adding
+	            multiple records to the same table from a single form.
+            	
+            	This action will retrieve the editable data from the database and present it on
+            	screen for the user to edit.  It provides a link to save the edited data or if
+            	preferred you can also use your mechanism for saving the edited data.
+            	
+				There are two methods to commit the data.
+				<ul>
+					<li>Add a link with submit=true.</li>
+					<li>Add your own selectable element such as an "a" or "button" element.  Add a
+						javascript that will call the axel saveRecord(id) javascript.</li>
+				</ul>
+				Example 1 using a "link"<br/>
+				<pre>
+					<axel:link name="submit" href="index.html" submit="true" display_as="link"/>
+				</pre>
+				Example 2 using an "a"<br/>
+				<pre>
+					<a onclick="saveRecord('id')">Submit</a>
+				</pre>
+				The saveRecord('id') will serialise all the inputs within the form and pass these
+				to the saveRecord action for updating the data to the database. 
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="pre_processes" minOccurs="0" />
+            <xsd:element ref="field_list" minOccurs="0" />
+            <xsd:element ref="post_processes" minOccurs="0" />
+            <xsd:element ref="pager:link" minOccurs="0" />
+            <xsd:element ref="pager:button" minOccurs="0" />
+            <xsd:element ref="pager:form" minOccurs="0" maxOccurs="1">
+    	        <xsd:annotation>
+        			<xsd:documentation>
+        				If this is set then the content of this form (which is html) is used to build the presentation of the data for this action.
+        				This "form" element takes precedence over the "presentation_form" attribute. 
+		            </xsd:documentation>
+	            </xsd:annotation>
+            </xsd:element>
+		 </xsd:sequence>
+         <xsd:attribute ref="id" use="required" />
+         <xsd:attribute ref="title" use="optional" />
+         <xsd:attribute ref="visible" use="optional" />
+         <xsd:attribute ref="table_name" use="required" />
+         <xsd:attribute name="pk_value" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the pk (primary key) value used to match the record
+                  in the table.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="storage_config_ref" use="required" />
+         <xsd:attribute ref="theme_name" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Is optional if the theme is provided by a parent action. 
+                  </xsd:documentation>
+               <xsd:documentation>
+                  Or set in a configuration file using the key 'default_theme_name'.
+                  i.e. default_theme_name=blue 
+                  </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="label_position" use="optional" default="left" />
+         <xsd:attribute ref="presentation_name" use="optional" />
+         <xsd:attribute ref="presentation_form" use="optional">
+   	        <xsd:annotation><xsd:documentation><![CDATA[
+       			The name of a file containing the presentation html which is located relative to the
+       			web "context root".
+       			
+       			If this is set then the content of this file (which is html) is used to build the
+       			presentation of the data for this action.
+       			
+       			The "form" element takes precedence over this "presentation_form" attribute. 
+	        ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the fields from a single row.
+               	  
+               	  When the "list" action performs the query and returns a set of data containing one or more rows. Each of these rows is processed in turn
+               	  and the fields from that row are stored in a java map.  The map is then stored in the execContext using the "row_map_name".  When you want
+               	  to access the data from a row you use the replacement marker syntax ${row_map_name:table.field_name} to place the data on the page.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="enforce_concurrency" type="xsd:boolean" use="optional" default="true">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "enforce_concurrency" will switch on (default) or off the enforcement of concurrency.
+               	  
+               	  Concurrency is used when editing a record.  Its purpose is to stop two people from editing the same
+               	  record concurrently. 
+               	  
+               	  Concurrency works in conjunction with the table definition of a version number.  A version_number
+               	  field must be declared in the table storage definition.  @See storage.xsd
+               	  
+               	  When concurrency is applied each record read from the table/s will also include the version_number
+               	  value.  This is added to the edit form as a hidden input and when the form is submitted to the server
+               	  the version_number is included in the update. If the version_number has changed on the row to be updated
+               	  then an error is thrown back to the browser.  The user then needs to refresh the page and reload the
+               	  values for the form from the database.               	  
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+
+   <xsd:element name="query">
+		<xsd:annotation>
+			<xsd:documentation>
+                	A query is used to retrieve information from the database in XML.
+                	
+                	The retrieved data is stored in the execContext with the key attributre value and is retrieved
+                	from the database using	the same key. i.e. ${key} or execContext.get(key) where key is the value
+                	of the key attribute.
+
+					There are two query input attributes one of which must be set.
+					
+					- query_xml_file_name - references a file containing the query that is compliant with the http://xmlactions.org/schema/query.xsd schema
+					
+					- sql_ref - a reference to an db_specific sql query defined in the database storage defined in the http://xmlactions.org/schema/storage.xsd schema.
+
+          	</xsd:documentation>
+		</xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="query_xml_file_name" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+               		<p>
+						This is the name of xml query definition file. The content
+						of the file are validated against the query.xsd. 
+               		</p>
+					<p>
+						If this is not used then the sql_ref attribute must be used instead.
+					</p>               		
+            	</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="sql_ref" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+						This is a reference to a query defined in the db_specific database storage http://xmlactions.org/schema/storage.xsd schema. 
+						If this is not set the either the sql or the query_xml_file_name attribute must be used instead.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="sql" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+						This is the query to execute if the sql_ref is not set. Then the sql_ref or query_xml_file_name will be used.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  When a query is retrieved it is stored into the execContext
+                  using this key. When required for mapping or for code calls
+                  it can be retrieved from the execContext using get{${key}); 
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="output" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Set the output format - default is xml, can be 'xml' or 'json'.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="storage_config_ref" use="optional" />
+         <xsd:attribute name="path" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Additional path, prepended to the page.
+               </xsd:documentation>
+               <xsd:documentation>
+                  If this is not set then the default will be the Web Root.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="field">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Specifies a data source field.  A field is a database table field.  
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="pager:link" minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     If a link is required for a field it can be configured here.
+	                    </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="field" minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     If a field should control other fields for reloading or
+                     population then add the field or list of fields here.
+	              </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="pager:code" minOccurs="0" maxOccurs="1">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     <p>
+                     <b>A</b>dd code to process / access the data from this field. Usefull
+                     if you need to do a lookup / replacement.
+                     </p>
+                  </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="populator_sql" minOccurs="0" maxOccurs="1">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     <p>
+                     Used if we want to pre-populate a list as a select option.
+                     </p>
+                     <p>
+                     Note, you may select either an populator_sql or a populator_code
+                     but not both.
+                     </p>
+                   </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="populator_code" minOccurs="0" maxOccurs="1">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     <p>
+                     Used if we want to pre-populate a list as a select option.
+                     </p>
+                     <p>
+                     Note, you may select either an populator_sql or a populator_code
+                     but not both.
+                     </p>
+                   </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="attributes" minOccurs="0" maxOccurs="1">
+               <xsd:annotation>
+                  <xsd:documentation>
+
+                     These can be used to provide additional attributes to the drawing
+                     element for this field.  These are treated as html attributes
+                     and are added to the drawing element.
+
+                     As an example, if you are creating an edit form and this field
+                     represents a text input, then the attributes will be added to
+                     the input element.
+
+                   </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the name of the field that matches the
+                  corresponding field in
+                  the table.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="x" use="optional" />
+         <xsd:attribute ref="y" use="optional" />
+         <xsd:attribute ref="width" use="optional" />
+         <xsd:attribute ref="height" use="optional" />
+         <xsd:attribute name="align" type="xsd:string" use="optional" default="center">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The alignment of the field, when shown in a
+                  table.
+                  options are left, center, right, justify
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="valign" type="xsd:string" use="optional" default="center">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The vertical alignment of the field, when shown in a
+                  table.
+                  options are left, center, right, justify
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <!-- deprecated
+         <xsd:attribute name="display" type="search_display_options" use="optional" default="default">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Options to pre-populate the data and show as a select list box.
+                    </xsd:documentation>
+               <xsd:documentation>
+                  If set to select then an sql_ref may be used to populate the dropdown list. @see sql_ref.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+          -->
+         <xsd:attribute ref="tooltip" use="optional" />
+         <xsd:attribute name="function" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  If we want to call a function in the sql.
+                    </xsd:documentation>
+               <xsd:documentation>
+                  Will overwrite any functions set in the storage definition.
+                    </xsd:documentation>
+               <xsd:documentation>
+                  The function uses the '%s' String.format syntax to have
+                  the field name replaced in the function.
+                    </xsd:documentation>
+               <xsd:documentation>
+                  example to_char(%s, 'DD/MM/RRRR HH24:MI.SS')
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="pre_format" use="optional" type="xsd:string">
+   	        <xsd:annotation><xsd:documentation><![CDATA[
+       			The "pre_format" is used to format the data before displaying on screen.
+       			
+       			This calls a function that will convert the data from one format to another. See the
+       			"date_formatter" in the "pager_actions" schema for examples on how this works. 
+       			
+       			The "pre_format" must contain two values 1) the origin format and 2) the destination format
+       			seperated by a comma. As an example "dd/MM/yyyy,dd-MMM-yyyy". If you need to use a comma or
+       			a quote in the format you should escape them, replace <b>,</b> with <b>%2C</b> and <b>"</b> with <b>%22</b>
+       			
+       			A "pre_format" is not used by the <a href="#add">add</a> action.
+	        ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="post_format" use="optional" type="xsd:string">
+   	        <xsd:annotation><xsd:documentation><![CDATA[
+       			The "post_format" is used to format the data before saving it to the database.
+       			
+       			This calls a function that will convert the data from one format to another. See the
+       			"date_formatter" in the "pager_actions" schema for examples on how this works. 
+       			
+       			The "post_format" must contain two values 1) the origin format and 2) the destination format
+       			seperated by a comma. As an example "dd/MM/yyyy,dd-MMM-yyyy". If you need to use a comma or
+       			a quote in the format you should escape them, replace <b>,</b> with <b>%2C</b> and <b>"</b> with <b>%22</b>
+	        ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="direction" type="direction_options" use="optional" default="down" />
+         <xsd:attribute name="css" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This css is a reference to one or more css elements. If this is
+                  set the content will be appened to any generated css.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onclick" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Script to be run when an element is clicked.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onchanged" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Script to be run when this field changes
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onselect" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Script to be run when this field is selected
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onfocus" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Script to be run when this field gets focus
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="prefix" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  prepend this value to the current value when editing
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="postfix" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  append this value to the current value when editing
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="snippet_ref" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Use this to have the field drawn into a drawing template.
+                  <p>
+                     A drawing template is a pre-constructed html snippet that
+                     is used to present field data on screen.
+                  </p>
+                  <p>
+                     <b>html snippet replacement markers</b>
+                     <br />
+                     The html snippet can provide replacement markers for these items
+                     <li>label/header - ${label}</li>
+                     <li>value - ${value}</li>
+                     <li>name - ${name}</li>
+                     <li>id - ${id}</li>
+                  </p>
+                  <p>
+                     The replacement markers will be substutited when the snippet is drawn
+                     onto the page.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         
+      </xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="field_code">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Specifies a data source field.  A field is a database table field.  
+            ]]></xsd:documentation>
+         <xsd:documentation><![CDATA[
+            Document not up to date.  Needs to be validated against the field_code action  
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="pager:code" minOccurs="0" maxOccurs="1">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     <p>
+                     <b>A</b>dd code to process / access the data from this field. Usefull
+                     if you need to do a lookup / replacement.
+                     </p>
+                  </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="attributes" minOccurs="0" maxOccurs="1">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     These can be used to provide additional attributes to the drawing
+                     element for this field.  These are treated as html attributes
+                     and are added to the drawing element.
+
+                     As an example, if you are creating an edit form and this field
+                     represents a text input, then the attributes will be added to
+                     the input element.
+                   </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the name of the field that matches the
+                  corresponding field in
+                  the table.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="x" use="optional" />
+         <xsd:attribute ref="y" use="optional" />
+         <xsd:attribute ref="width" use="optional" />
+         <xsd:attribute ref="height" use="optional" />
+         <xsd:attribute name="align" type="xsd:string" use="optional" default="center">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The alignment of the field, when shown in a
+                  table.
+                  options are left, center, right, justify
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="valign" type="xsd:string" use="optional" default="center">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The vertical alignment of the field, when shown in a
+                  table.
+                  options are left, center, right, justify
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="tooltip" use="optional" />
+         <xsd:attribute name="direction" type="direction_options" use="optional" default="down" />
+         <xsd:attribute name="css" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This css is a reference to one or more css elements. If this is
+                  set the content will be appened to any generated css.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onclick" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Script to be run when an element is clicked.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onchanged" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Script to be run when this field changes
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onselect" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Script to be run when this field is selected
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onfocus" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Script to be run when this field gets focus
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="snippet_ref" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Use this to have the field drawn into a drawing template.
+                  <p>
+                     A drawing template is a pre-constructed html snippet that
+                     is used to present field data on screen.
+                  </p>
+                  <p>
+                     <b>html snippet replacement markers</b>
+                     <br />
+                     The html snippet can provide replacement markers for these items
+                     <li>label/header - ${label}</li>
+                     <li>value - ${value}</li>
+                     <li>name - ${name}</li>
+                     <li>id - ${id}</li>
+                  </p>
+                  <p>
+                     The replacement markers will be substutited when the snippet is draw
+                     onto the page.
+                  </p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="field_raw">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Specifies a data source field.  This is part of a field_list and provides a means for inserting raw input to an list.  
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <!-- 
+            <xsd:simpleContent/>
+            -->
+         </xsd:sequence>
+         <xsd:attribute ref="header_name" use="required" />
+      </xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="field_hide">
+      <xsd:annotation>
+         <xsd:documentation>
+            Add a hidden input to a form for an Add Action.
+            </xsd:documentation>
+         <xsd:documentation>
+            Use this to add hidden inputs to an Add Action that will pass these inputs to the insert method.
+            </xsd:documentation>
+         <xsd:documentation>
+            Substitution markers may be used in the field content to dynamically populate the fields.
+            </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the name of the field that matches the
+                  corresponding field in the table.
+                    </xsd:documentation>
+               <xsd:documentation>
+                  The name may include the table name or alias using the "table.fieldname" format.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="value" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The value to be inserted into the table may be stored here.
+                    </xsd:documentation>
+               <xsd:documentation><![CDATA[
+						If the value is not stored here then it must be stored as the content of the element.
+						i.e. <field_hide name="xyz">The value to store in the database</field_name>
+                    ]]></xsd:documentation>
+               <xsd:documentation>
+                  Substitution markers may be used in the field content to dynamically populate the fields.
+		            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+
+   <xsd:element name="field_list">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Specifies a list of data source fields.  
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:choice>
+            <xsd:element ref="field" minOccurs="0" />
+            <xsd:element ref="add_record_link" minOccurs="0" />
+            <xsd:element ref="delete_record_link" minOccurs="0" />
+            <xsd:element ref="update_record_link" minOccurs="0" />
+            <xsd:element ref="field_code" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element ref="field_hide" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element ref="field_raw" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="pager:link" minOccurs="0" />
+            <xsd:element ref="pager:popup" minOccurs="0" />
+         </xsd:choice>
+      </xsd:complexType>
+   </xsd:element>
+
+
+   <xsd:element name="insert_record">
+      <xsd:annotation>
+         <xsd:documentation>
+	            Inserts a record into the database.
+	            
+	            This action is called by the "add" action when it wants to commit a new record.
+
+         		This actions work with a storage configuration to determine the tables and fields to use
+         		when inserting data into the database.
+
+         		An insert_record can insert data into the target table and any related tables if they have been configured in
+         		the storage configuration.
+
+				Insert works with these parameters:
+
+         		- storage.config.ref - (mandatory) - The Storage Configuration Reference
+
+         		- table.name - (mandatory) - The name of the table as named if the storage configuration file.
+
+         		- pre.processor - (optional) - A list of Java Code Calls. These are called before the processing has completed for this action. See following pre.process documentation on how these are setup.
+
+         		- post.processor - (optional) - A list of Java Code Calls. These are called after the processing has completed for this action. See following post.process documentation on how these are setup.
+
+         		- table.fieldnames - (mandatory - one or more for each field) - Add an entry with table.fieldname = value.  From this the framework will be able to determine how to store the information into the database.
+
+         		An example passing these parameters to a web server might look like:
+         		
+         		table.name=tb_person&amp;storage.config.ref=mydb&amp;tb_person.firstname=fred&amp;tb_person.surname=flinstone&amp;tb_age=21         		
+           		
+           		The pre.processor/s and post.processor/s provides java code calls with parameters.  These are used to perform business functions before
+           		and / or after inserting data into the database.  These are usually configured by the "add" action using "code" actions with "param"eters.
+
+           		To configure a pre.processor manually the syntax is pre.processor.1.xxx where:
+           		
+           		 	- pre.processor.1 = the java code call in the format package.class.method
+
+           		  	- pre.processor.1.1 = the first parameter
+           		  	
+           		  	- pre.processor.1.2 = the second parameter
+           		  	
+           		  	- etc etc for each parameter
+				
+				For each additional code call add a new pre.processor and increment the .1 to .2 and so on.
+
+           		To configure a post.processor follow the above instructions replacing pre. with post.
+
+ 				The result of this action will be a response starting with one of the following:
+ 				
+ 					- "OK:pk_value" - Action performed without failure and the primary key value for the insert of the named table.
+ 				
+ 					- "ER:xxx" - An error occured during the action and "xxx" = a description of the error.
+ 				
+ 					- "EX:xxx" - An exception occured during the action and "xxx" = a description of the exception.
+ 				
+ 				If an error or an exception occured during the action process then the transaction will rollback. 
+         </xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+
+   <xsd:element name="update_record">
+      <xsd:annotation>
+         <xsd:documentation>
+	            Updates a record in the database.
+	            
+	            This action is called by the "edit" action when it wants to update a existing record.
+
+         		This actions work with a storage configuration to determine the tables and fields to use
+         		when updating data to the database.
+
+         		An update_record can update data into the target table and any related tables if they have been configured in
+         		the storage configuration.
+
+				Update works with these parameters:
+         			
+         			- storage.config.ref - (mandatory) - The Storage Configuration Reference
+         			- table.name - (mandatyory) - The name of the table as named if the storage configuration file.
+         			- pk.value - (mandatyory) - The primary key value for the table to be updated.
+         			- pre.processor - (optional) - A list of Java Code Calls. These are called before the processing has completed for this action.
+         				 				See following pre.process documentation on how these are setup.
+         			- post.processor - (optional) - A list of Java Code Calls. These are called after the processing has completed for this action.
+         								See following post.process documentation on how these are setup.
+         			- table.fieldnames - (mandatory - one or more for each field) - Add an entry with table.fieldname = value.  From this the
+         								framework will be able to determine how to store the information into the database.
+
+         		An example passing these parameters to a web server might look like:
+         		
+				table.name=tb_person&amp;pk.value=102&amp;storage.config.ref=mydb&amp;tb_person.firstname=fred&amp;tb_person.surname=flinstone&amp;tb_age=21         		
+
+
+           		The pre.processor/s and post.processor/s provides java code calls with parameters.  These are used to perform business functions before
+           		and / or after updating data into the database.  These are usually configured by the "add" action using "code" actions with "param"eters.
+
+           		To configure a pre.processor manually the syntax is pre.processor.1.xxx where:
+
+           			- pre.processor.1 = the java code call in the format package.class.method
+           			
+           			- pre.processor.1.1 = the first parameter
+           			
+           			- pre.processor.1.2 = the second parameter
+           			
+           			- etc etc for each parameter
+
+				For each additional code call add a new pre.processor and increment the .1 to .2 and so on.          			
+
+           		To configure a post.processor follow the above instructions replacing pre. with post.
+
+ 				The result of this action will be a response starting with one of the following:
+
+ 					- "OK:" - Action performed without failure.
+ 					
+ 					- "ER:xxx" - An error occured during the action and "xxx" = a description of the error.
+ 					
+ 					- "EX:xxx" - An exception occured during the action and "xxx" = a description of the exception.
+
+ 				If an error or an exception occured during the action process then the transaction will rollback. 
+         </xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+
+      
+   <xsd:element name="delete_record">
+      <xsd:annotation>
+         <xsd:documentation>
+	            Deletes a record in the database.
+	            
+	            This action is called by the "delete_record_link" action when it wants to delete a existing record.
+
+         		This actions work with a storage configuration to determine the tables and fields to use when deleting data in the database.
+
+         		A delete_record can delete data from the target table and not related tables.
+
+				Delete works with these parameters:
+
+         			- storage.config.ref - (mandatory) - The Storage Configuration Reference
+         			- table.name - (mandatyory) - The name of the table as named if the storage configuration file.
+         			- pk.value - (mandatyory) - The primary key value for the table to be updated.
+
+         		An example passing these parameters to a web server might look like:
+
+				table.name=tb_person&amp;pk.value=102&amp;storage.config.ref=mydb         		
+
+ 				The result of this action will be a response starting with one of the following:
+
+ 					- "OK:" - Action performed without failure.
+ 					
+ 					- "ER:xxx" - An error occured during the action and "xxx" = a description of the error.
+ 					
+ 					- "EX:xxx" - An exception occured during the action and "xxx" = a description of the exception.
+
+ 				If an error or an exception occured during the action process then the transaction will rollback. 
+         </xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+      
+   
+	<xsd:element name="populator_sql">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Used to build a dropdown list for search, edit and add.
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="ref" use="required">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+		            This is a reference to the sql that is used for population.
+		            ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="default_value" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+		            Which row to select as the default.
+		            ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="populator_code">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Used to build a dropdown list for search, edit and add.
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="pager:code">
+               <xsd:annotation>
+                  <xsd:documentation>
+                     <p>
+                     This is a reference to the code action that will be used to 
+                     build the dropdown list.
+                     </p>
+                     <p>
+                     The code must return an xml string containing a "root"
+                     element that contains one or more child elements. The child
+                     element must have 2 or 3 attributes. The first attribute is 
+                     ignored as this is commonly used as a row index.
+                     </p>
+                     <p>
+                     If 2 attributes are used the the 2nd is both the label and
+                     the value.
+                     </p>
+                     <p>
+                     If 3 attributes are used the the 2nd is value and the 3rd is 
+                     the label.
+                     </p>
+                     <p>
+                     Example:<br/>
+                     &lt;root&gt;
+                      &lt;any_name index="1" value="1" label="fred" /&gt;
+                      &lt;any_name index="2" value="12" label="barney"/&gt;
+                      &lt;any_name index="3" value="123" label="wilma"/&gt;
+                     &lt;/root&gt;                  
+                     </p>
+                  </xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="pre_processes">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            A list of Java Code Calls. This is called before the processing has completed for this action. 
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="pager:code" minOccurs="0" maxOccurs="unbounded" />
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="post_processes">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            A list of Java Code Calls. This is called after the processing has completed for this action. 
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="pager:code" minOccurs="0" maxOccurs="unbounded" />
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+
+
+   <xsd:element name="processor">
+      <xsd:annotation>
+         <xsd:documentation>
+            Invoke Java code. 
+            </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="call" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+					Full path, class and method name.
+					]]></xsd:documentation>
+               <xsd:documentation><![CDATA[
+                    Use param to pass parameters to the code call.
+                    ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="attributes">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            This is a container element for attributes.
+            
+            Any attributes that are contained within this element will be used by the parent owner of the attributes, such as 
+            a field element.
+
+			An example
+            	&lt;axel:attibutes name="item1" placeholder="Enter Name Here" pattern="[A-Z a-z]*"/&gt;
+         ]]></xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+
+   
+</xsd:schema>

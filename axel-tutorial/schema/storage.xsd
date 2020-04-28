@@ -1,0 +1,2145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.xmlactions.org/storage"
+   targetNamespace="http://www.xmlactions.org/storage"
+   attributeFormDefault="unqualified"
+   elementFormDefault="qualified">
+
+	<xsd:annotation><xsd:documentation><![CDATA[
+		<h4>Storage - database definitions</h4>
+			
+		The storage schema describes the details of a database in a way that the framework
+		understands. From this description the framework can move data in and out of a database
+		and present	it to a browser using forms such as Add, Edit, List or as XML or JSON formatted data.
+			
+		Contained in the storage definition are databases, tables, fields, functions, customised sql.
+		These are extended by you with additional information specifically for presentation.
+			
+		Using tools included with the framework you can build a storage definition by reverse engineering
+		a database from it's metadata. These tools will build the largest part of the storage definition.
+		The presentation values such as width, height, regex, pattern etc are yours to configure as you need.
+		
+		The actions in the "pager_db_actions.xsd" are used to present the data from the storage database
+		definition to the user.
+		
+		<div class="bs-callout bs-callout-info">
+			<h4>Skillset Required</h4>
+			A level of expertise in database development, xml and html is required to work with storage
+			definitions. When constructed correctly storage definitions create a strong foundation for
+			your application development.
+		</div> 
+	]]></xsd:documentation></xsd:annotation>
+
+	<xsd:element name="storage">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			A "storage" definition is used by the framework to define one or more data repositories such
+			as a Database.
+				
+			The framework uses the storage to map data to and from a storage repository by creating
+			instructions for querying, inserting and updating the data.
+				 
+			Future versions may contain XML resources, file properties and resources.
+		]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="database" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						A Database definition that describes the tables, customised sql, functions and
+						other features of a database that are used by the framework to map data between
+						web pages and the database.
+								
+						A storage can have multiple database definitions. Each database definition can
+						have it's own database connection or a shared database connection.  This allows
+						you to separate large databases into smaller definitions.
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="name" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of this Storage definition.  The framework does not require this attribute.
+					It's purpose is for your reference only.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="database">
+		<xsd:annotation><xsd:documentation><![CDATA[
+				A "database" describes the tables, customised sql, functions and other features
+				of a database that are used by the framework to map data between web pages and
+				the database.
+			]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="insert" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						Insert other database definitions into this database.  This is a runtime
+						process and is used to construct a database from smaller database definitions.
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="db_specific" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						When database specific configuration is required.
+						
+						These will be database specific configurations such as primary key creation,
+						sql, functions that only apply to a specific database such as oracle or mysql.
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="pk_create" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						How primary keys should be created.
+						
+						These are necessary when the primary key must be set before inserting a new record
+						into a table.
+							
+						This will contain an sql instrction for obtaining the primary key.
+						
+						These are not used if the database has been configured to create the primary
+						key on insertion of the record to the table.
+							
+						The oracle database usually requires a <b>pk_create</b> when inserting new records.
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="sql" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						Used when generic hand made sql is required that will work for all databases.
+						
+						This sql must work on all databases that the application is designed for such
+						as oracle or mysql. If you need to use specific database sql then use the
+						db_specific element.
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="function" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						Used to insert functions into the sql.
+						
+						In some cases you may need to use a function in the sql to format a date or
+						something like this.
+						
+						When a function is needed you first create the function and then set a reference to
+						it in the field that requires it.  
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="table" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						The definition of a table.
+						
+						A database can have many tables and each table can have many fields.  This is
+						a list of the tables that you want to use in your application.  You only need
+						to list the tables you want and can exclude those that you don't.
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The database name
+					
+					Each database must have it's own unique name.  This is referenced in the spring
+					configuration when setting up database connections.
+					
+					This name is also used by the insert process when inserting a database into another
+					database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="datetime_format" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "datetime_format" can be used to set the datetime for a "datetime" field and a
+					"timestamp" field.
+					
+					This will be the default datetime format when saving data to the database. This can be
+					overridden by a date_format used in the date, time and datetime fields.
+					
+					The format contains both the date and the time format combined.  As an example this format
+					"yyyy-MM-dd HH:mm:ss.SSS" matchs this date and time "2001-01-25 12:30:30.100".  
+					
+					When the "datetime_format" is used, all datetime values are expected to be in this format when
+					saving.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="date_format" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "date_format" can be used to set the datetime for a "date" field.
+					
+					This will be the default date format when saving data to the database. This can be overridden
+					by a date_format used in the date, time and datetime fields.
+					
+					The format contains only the date format.  As an example this format "yyyy-MM-dd" matchs this
+					date "2001-01-25".  
+					
+					When the "date_format" is used, all date values are expected to be in this format when saving.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="time_format" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "time_format" can be used to set the time for a "time" field.
+					
+					This will be the default time format when saving data to the database. This can be overridden
+					by a date_format used in the date, time and datetime fields.
+					
+					The format contains only the time format.  As an example this format "HH:mm:ss.SSS" matchs this
+					time "12:30:30.100".  
+					
+					When the "time_format" is used all time values are expected to be in this format when saving.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="update_field_version_num" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					This attribute is used to tell the system which field in the table is used as the version_num.
+					
+					Each table has an option to set this value.  The table value will override the database value.
+					
+					It is only applied to SQLs that update records, and not inserts or deletes.
+					
+					The version_num field is expected to increment each time the row is modified.  Usually the increment
+					is performed by a trigger in the database. 
+					
+					By remembering the value stored in the version_num when the row was last read you can eliminate
+					writing to the row if the data was modified by someone else after your last read.
+					
+					To guarantee that you don't overwrite unknown changes in the row you should use a where
+					clause when doing an update. The where clause should use a pk and also the version_num value.
+					If the update returns 0 rows updated then you know the data was modified between your read
+					and write.
+					
+					If this attribute is used then by default the system will apply the synchronized update option. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="insert">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			An "insert" definition that inserts one database into another.  This process occurs when
+            the storage definition is being loaded at startup.
+                  
+			When a database has many tables, customised sql's etc it is easier to break down the
+			database into multiple database definitions instead of using just one big definition.
+                  
+			Breaking the database into multiple definitions makes it easier to manage and allows you
+			to focus on certain parts of the database. As an example you might have a database that
+			has accounts, personnel and customers.  From these you could make 3 seperate database
+			definition files named "accounts.xml", "personnel.xml" and "customers.xml" each of these
+			containing the table definitions etc for that area of the database.  Then create a
+			"company.xml" database definition and have this insert each of the smaller definitions
+			into one company definition.  
+        ]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="file" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The database definition file.  This includes the full path from a classpath location.
+						
+					This is an optional setting, if its not used then the system will look in the current storage definition to find the database.  
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="database" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the database to insert.
+						
+					This may come from a "file" or from the current storage definition.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="db_specific">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			A "db_specific" definition is used for a specific database such as "oracle" or "mysql"
+
+			These will be database specific configurations such as primary key creation, customised
+			sql, functions that only apply to a specific database such as oracle or mysql.
+			
+			The "total_record_count_sql" and "total_record_count_field" attributes are used to get the
+			total record count from an sql. The total_record_count is the total number of records that
+			are available from a select statement before any limits are applied.  The framework uses
+			this value to determine how many records are available when using the database "list" and
+			"list_cp" actions.
+			
+		]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="pk_create" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						How primary keys should be created.
+						
+						These are necessary when the primary key must be set before inserting a new record
+						into a table.
+							
+						This will contain an sql instrction for obtaining the primary key.
+						
+						These are not used if the database has been configured to create the primary
+						key on insertion of the record to the table.
+							
+						The oracle database usually requires a <b>pk_create</b> when inserting new records.
+                    ]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="sql" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						Used when generic hand made sql is required that will work for all databases.
+						
+						This sql must work on all databases that the application is designed for such
+						as oracle or mysql. If you need to use specific database sql then use the
+						db_specific element.
+                    ]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="function" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						Used to insert functions into the sql.
+						
+						In some cases you may need to use a function in the sql to format a date or
+						something like this.
+						
+						When a function is needed you first create the function and then set a reference to
+						it in the field that requires it.  
+					]]></xsd:documentation></xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Identifier for this db_specific element.
+					
+					Each "db_specific" must have it's own unique name.  This is referenced in the spring configuration when
+					setting up database connections.
+                 ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="total_record_count_sql" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					This value is used to count the total records. In Oracle it could be "count(1) OVER (PARTITION BY 1)"
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="total_record_count_field" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of this attribute is used to store the result of the "total_record_count_sql" into the
+					sql result and also makes it available in the execContext using the ${row:...} syntax.
+					
+					The sql might look like  "count(1) OVER (PARTITION BY 1) as TOTAL_RECORDS" if you set this
+					value to "TOTAL_RECORDS"
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="pk_create">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			How primary keys should be created.
+
+			These are necessary when the primary key must be set before inserting a new record
+			into a table.
+
+			This will contain an sql instrction for obtaining the primary key.
+
+			These are not used if the database has been configured to create the primary
+			key on insertion of the record to the table.
+
+			The oracle database usually requires a <b>pk_create</b> when inserting new records.
+		]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					This is the unique identifier for this "pk_create".
+						
+					The name is the reference used by the table primary key field that needs to generate the id for the
+					primary key.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="sql" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					This is the sql that is used to generate the primary key value.
+					
+					This sql is executed on the database and the result returned and set into the primary key value
+					before a record is inserted into the database.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="sql">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			"sql" is generic hand made sql that is available to the framework when using list's or queries.
+			
+            The sql may be wrapped inside a CDATA section. This will allow for sql to contain all character
+            types such as < and > which may break an xml parser.
+
+			Note that replacements markers using the ${...} syntax may be included in the sql. These will
+			be replaced when preparing the sql for execution.  This allows you to inject data from the
+			execContext into the sql before it is executed on the database.
+            
+		]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "name" is an identifier for this sql.
+						
+					Both the list and query actions use the "name" to reference this sql. 
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="sql" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The hand made sql statement.
+
+					This attribute is optional and only suitable for a short sql statement. Instead
+					the sql can be placed in this element content, this is more suitable for
+					larger sql statements.
+                 ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="params" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+						The params attribute can be used to pass parameters in a more optimised way to
+						the database using cached queries.
+						
+						In the handmade sql you use a '?' as a marker. Each ? will require a param value
+						from the params list.
+						 
+						The params list uses "key=value" syntax seperated by a ','. As an example "p1=100,
+						p2=${person.name}".
+						    
+						There must be a parameter for every ? in the sql. As an example "select * from
+						tablex where tablex.id=? and tablex.personName=?"
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="function">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			Used to build functions into the sql when retrieving data from a database
+
+			In some cases you may need to use a function in the sql to format a date or
+			something like this.
+						
+			When a function is needed you first create the function and then set a reference to
+			it in the field that requires it.
+			
+			A function takes one parameter, this is the name of the field that you want to apply
+			the function to.
+			
+			An example function for mysql
+			<pre>&lt;function name="date_format" sql="DATE_FORMAT(${p1},'%Y-%m-%d')" /&gt;</pre>
+        ]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "name" is an identifier for this function.
+						
+					Any field that wants to use this function simply adds the "function_ref"
+					attribute with the function name.
+                 ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="sql" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The sql to use for this function.
+						
+					Note that str replacements using the ${...} may be included in the sql and ${p1}
+					is used to insert the field name.
+					
+					Example:
+					<pre>&lt;function name="date_format" sql="DATE_FORMAT(${p1},'%Y-%m-%d')" />&gt;</pre>
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="table">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			The definition of a database table.
+			
+			Each table that you want the framework to access must be described.
+			
+			The "table" describes each of the fields in the table that you want to access. These
+			include "Primary Keys" and "Foreign Keys" which are required by the framework to know
+			how to link tables together.			 
+
+			You can assign an alias to a table and then use it to access the table instead of the table
+			name.  This is useful for two reasons 1) to shorten the table name, which may be required
+			if the table name + the field name exceeds a maximum length allowed for a field label. 2)
+			an alias may be more suitable then the actual table name. Once an alias is assigned to a
+			table you use it to reference the table instead of the table name.
+			
+			This can also be a description of a view, in which case the table name attribute
+			should be the name of the view.
+					
+			<div class="bs-callout bs-callout-info">
+				<h4>A view is readonly</h4>
+				In most case a view is readonly so it can be used by lists and queries. An error will
+				occur if you use an Add or Edit action to write to a readonly view.
+			</div>
+		]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:group ref="table_fields" />
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The table name - it must match the database table name or the database view name.
+					
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="alias" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					This is used instead of the table name when building the query field outputs.
+
+					When the system is building an SQL query the table name is placed before the field name
+					to create a unique identifier. eg. "table.fieldname".
+
+					This is also used when building the identifier for the "as". eg.
+					"select table.fieldname as table_fieldname from"...
+
+					If "alias" is set then the alias value will replace the table name for the output. eg.
+					"select table.fieldname as <b>alias</b>_fieldname from"...
+
+					If "alias" is set to an empty string than the table name will not be used for the output. eg.
+					"select table.fieldname as fieldname from"...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="update_field_version_num" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					This attribute is used to tell the system which field in the table is used as the version_num.
+					
+					It is only applied to SQLs that update records, and not inserts or deletes.
+					
+					The version_num field is expected to increment each time the row is modified.  Usually the increment
+					is performed by a trigger in the database. 
+					
+					By remembering the value stored in the version_num when the row was last read you can eliminate
+					writing to the row if the data was modified by someone else after your last read.
+					
+					To guarantee that you don't overwrite unknown changes in the row you should use a where
+					clause when doing an update. The where clause should use a pk and also the version_num value.
+					If the update returns 0 rows updated then you know the data was modified between your read
+					and write.
+					
+					If this attribute is used then by default the system will apply the synchronized update option. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+
+	<xsd:element name="pk">
+		<xsd:annotation><xsd:documentation><![CDATA[
+            A primary key definition.
+            
+            A primary key is a unique identifier for each row in a table.  It is commonly known as an ID and
+            is used by other tables as a reference or link to this table.
+            See <a href="#fk"><abbr title="Foreign Key"><b>fk</b></abbr></a> on how tables are linked to each
+            other.
+            
+            The primary key combined with a foreign key are used by the framework to link table together. This
+            mechanism allows you to select data from multiple tables without having to write any sql. It also
+            allows you to write to multiple table when using the Add and Edit actions.             
+        ]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pk_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Reference to a primary key creator.
+					
+					This is used when a primary key must be created before adding a record to the database.
+					See <a href="#pk_create"><b>pk_create</b></a> for a full description on how to use a primary
+					key creator.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression.
+					
+					This is used to validate the form input data before sending it to the database.  This
+					is processed on the server side and not on the browser.  See the pattern attribute
+					on how to setup validation on the browser.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="fk">
+		<xsd:annotation><xsd:documentation><![CDATA[
+            A foreign key definition.
+            
+            A foreign key is a reference to another table in the database and is how the framework links these
+            tables.  This is defined by the metadata of a database and the key value is usually the Primary Key
+            of another table.  See <a href="#pk"><abbr title="Primary Key"><b>pk</b></abbr></a> on Primary Keys.
+            The database metadata will contain the table name and the field of the foreign key.
+            
+            The tools mentioned at the start of the schema will construct the foreign key table and field name
+            from the database metadata.  If your building the definition by hand you will need to enter the
+            the foreign key table and field name. 
+        ]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:group ref="table_fields">
+					<xsd:annotation><xsd:documentation><![CDATA[
+						List of fields, one or more which may be included within the foreign key. These fields must match
+						those in the referencing table, the presentation_name and length may differ.
+					
+						This mechanism is redundant and should not be used.
+                	]]></xsd:documentation></xsd:annotation>
+				</xsd:group>
+			</xsd:sequence>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="foreign_table" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the foreign table that this foreign key references.
+					
+					This must match the table name as described in the database.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="foreign_table_alias" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The foreign_table_alias is used TO set the alias table name in the "from" list.
+
+					Example "select t.id from table as t"
+					
+					In the above example the table is renamed to t and its fields may be referenced
+					using t.fieldname.
+
+					The foreign_table_alias is <b>required</b> if you need to retrieve multiple sets
+					of data from a table using different where clauses.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="foreign_key" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The field in the reference table field that this key references.
+					
+					This name must match the name of the field in the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+						Set to true to allow editing of this field.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set to true to mark this field as mandatory when editing.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="where" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A where is used to select the data returned from a select.
+					
+					In this location the where can fine tune the result of the query, applying it specifically
+					to the foreign table.
+
+					Do not provide the 'where' syntax for the where clause. Instead only provide the conditions of
+					the where clause.
+
+					example:
+						<br /> tb1.id=tb2.id
+						<br /> or
+						<br /> tb1.name like 'fred'
+						<br /> or
+						<br /> tb1.id=tb2.id and tb1.name like 'fred'
+						<br />
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="text">
+		<xsd:annotation><xsd:documentation><![CDATA[
+            A definition for a text field.  This is displayed as a single line. @See <a href="#textarea">textarea</a> for multiple line display. 
+        ]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html input presentation of the field. This value is stored in the input size attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="length" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The storage size of the field in the database.
+					
+					This is the maximum allowed size of the field when it is stored in the database.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="unique" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as unique.
+
+					All fields that are marked as <b>unique</b> have an "**" appended to their label when the framework builds the html
+					presentation of the field.
+					
+					By default all fields are non-unique with the exception of "pk" fields.
+						
+					If you set the "unique" value to "true" then the field is marked as unique.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="query_sql" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                	This attribute may be used to select which field, fields or value to use to populate the field. 
+
+					As an example you can combine multiple fields into one using oracle syntax "PERSON.FIRSTNAME || ' ' || PERSON.LASTNAME" or
+                    hardcode a value using "€100.23"
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="textarea">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            A definition for a text area field.  This is displayed on multiple lines. @See <a href="#text">text</a> for a single line display. 
+            ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html textarea presentation of the field. This value is stored in the textarea <b>cols</b> attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="length" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The storage size of the field in the database.
+					
+					This is the maximum allowed size of the field when it is stored in the database.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_height" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display height of the field.
+					
+					This is used when the framework builds a html textarea presentation of the field. This value is stored in the textarea <b>rows</b> attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="want_html_edit" type="xsd:boolean" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+						If this is set true then a html edit page is displayed when editing this field.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="unique" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as unique.
+
+					All fields that are marked as <b>unique</b> have an "**" appended to their label when the framework builds the html
+					presentation of the field.
+					
+					By default all fields are non-unique with the exception of "pk" fields.
+						
+					If you set the "unique" value to "true" then the field is marked as unique.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="password">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            A definition for a password field.
+            ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html textarea presentation of the field. This value is stored in the textarea <b>cols</b> attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="length" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The storage size of the field in the database.
+					
+					This is the maximum allowed size of the field when it is stored in the database.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="link">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            A definition for a link (href).
+            ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html textarea presentation of the field. This value is stored in the textarea <b>cols</b> attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="length" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The storage size of the field in the database.
+					
+					This is the maximum allowed size of the field when it is stored in the database.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="image">
+		<xsd:annotation><xsd:documentation><![CDATA[
+            A definition for a image (img).
+            
+            Unused - this action is not complete and should not be used.
+        ]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html textarea presentation of the field. This value is stored in the textarea <b>cols</b> attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="length" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The storage size of the field in the database.
+					
+					This is the maximum allowed size of the field when it is stored in the database.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="max_width" type="xsd:integer" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The max allowed width of the image.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="max_height" type="xsd:integer" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+				The max allowed height of the image.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="int">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            A definition for an integer field.
+            ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html input presentation of the field. This value is stored in the input size attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="binary">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            A definition for a checkbox field. This works with a database
+            binary field type. And can be display as a checkbox.
+            ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="alias" type="xsd:string" use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string"
+				use="required">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer"
+				use="required">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html input presentation of the field. This value is stored in the input size attribute.
+                ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean"
+				default="true" use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean"
+				default="false" use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						<p>
+							Sets the acceptable binary pattern for false/true, no/yes, N/Y, 0/1.
+						</p>
+						<p>
+							Note the false value must be first followed by the seperator /
+							followed
+							by the true value.
+						</p>
+						<p>
+							The first entry in the pattern is always considered the false
+							value and the second entry in the pattern is always considered
+							the true value.
+						</p>
+						<p>
+							The seperator between the false and true value is the / character.
+						</p>
+						<p>
+							Any leading or trailing whitespace is removed.
+						</p>
+						<p>
+							Example:
+							<br />
+							<ul>
+								<li>N/Y</li>
+								<li>false/true</li>
+								<li>0/1</li>
+								<li>X/Y</li>
+							</ul>
+						</p>
+						<p>
+							This is an optional attribute and if not used the default pattern
+							is true/false
+						</p>
+					]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string"
+				use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="timestamp">
+		<xsd:annotation><xsd:documentation><![CDATA[
+            A definition for a timestamp field. This is displayed as a single line.
+            
+            
+            The value of a timestamp differs between databases.
+            <ul> 
+            	<li>mysql format: YYYY-MM-DD HH:MM:SS.sss</li>
+            	<li>mssql format: unique number (possibly system time)</ul>
+            </ul>
+        ]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html input presentation of the field. This value is stored in the input size attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="date_format" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "date_format" is used to set the format of the date when saving to the database.
+					
+					This value will override any value that may have been set by the database "date_format" ,
+					"time_format or "datetime_format".
+
+					The format contains both the date and the time format combined.  As an example this format
+					"yyyy-MM-dd HH:mm:ss.SSS" matchs this date and time "2001-01-25 12:30:30.100".  
+
+					When the "date_format" is used, all datetime values for this field are expected to be in this
+					format when saving.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="datetime">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            A definition for a datetime field.  This is displayed as a single line.
+            
+            The value of datetime is YYYY-MM-DD HH:MM:SS (the format may change based on the locale)
+            ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html input presentation of the field. This value is stored in the input size attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="date_format" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "date_format" is used to set the format of the date when saving to the database.
+					
+					This value will override any value that may have been set by the database "date_format" ,
+					"time_format or "datetime_format".
+
+					The format contains both the date and the time format combined.  As an example this format
+					"yyyy-MM-dd HH:mm:ss.SSS" matchs this date and time "2001-01-25 12:30:30.100".  
+
+					When the "date_format" is used, all datetime values for this field are expected to be in this
+					format when saving.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="date">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            A definition for a date field.  This is displayed as a single line. The
+            value of datetime is YYYY-MM-DD
+            ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html input presentation of the field. This value is stored in the input size attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="date_format" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "date_format" is used to set the format of the date when saving to the database.
+					
+					This value will override any value that may have been set by the database "date_format" ,
+					"time_format or "datetime_format".
+
+					The format contains only the date format.  As an example this format "yyyy-MM-dd" matchs this
+					date "2001-01-25 12:30:30.100".  
+
+					When the "date_format" is used, all date values for this field are expected to be in this
+					format when saving.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+   <xsd:element name="timeofday">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            A definition for a timeofday field.  This is displayed as a single line. The
+            value of datetime is HH:MM:SS or HH:MM
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="presentation_width" type="xsd:integer" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The display width of the field.
+					
+					This is used when the framework builds a html input presentation of the field. This value is stored in the input size attribute.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="function_ref" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "function_ref" is used to reference a function defined in storage definition.
+					
+					See <a href="#function"><b>function</b></a> for a full description on how to use a function.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="date_format" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The "date_format" is used to set the format of the time when saving to the database.
+					
+					This value will override any value that may have been set by the database "date_format" ,
+					"time_format or "datetime_format".
+
+					The format contains only the time format.  As an example this format "HH:mm:ss.SSS" matchs this
+					time "12:30:30.100".  
+
+					When the "date_format" is used, all time values for this field are expected to be in this
+					format when saving.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="select">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Multi Option Selection used by a radio button display with single
+            or multi select option.
+            <br/>            
+            Use for entries such as "Y,N" or "Y,N,U" or "Yes,No,Maybe,Perhaps" or "true,false"
+            or "Fast Car;Slow Car;"
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of the field.  It must match the actual name of the field in the table.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+            <xsd:attribute name="alias" type="xsd:string" use="optional">
+                <xsd:annotation><xsd:documentation><![CDATA[
+                    An alias is used in place of the name when you need to shorten the name and / or
+                    to simplify the reference to the name.
+                        
+                    As an example if you have a primary key field that has a name of "table_name_id"
+                    you can replace it with a simple "id" then when you want to reference the field
+                    just use the "id".  In most cases you will prefix the field name or alias with 
+                    the table name or table alias.
+                ]]></xsd:documentation></xsd:annotation>
+            </xsd:attribute>
+			<xsd:attribute name="presentation_name" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The value of the "presentation_name" is used as the label or header for the field when
+					it is presentated on screen from a List, Add or Edit action.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="editable" type="xsd:boolean" default="true" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to allow editing of this field.
+						
+					This attribute is used to allow editing of the field when it is displayed in html.  By default all fields are editable
+					with the exception of "pk" and "fk" fields.
+						
+					If you set the editable value to "false" then the field will be displayed but will not be editable.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="mandatory" type="xsd:boolean" default="false" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					Set true to mark this field as mandatory when editing.
+					
+					All fields that are marked as <b>mandatory</b> have an "*" appended to their label when the framework builds the html
+					presentation of the field. 
+					
+					By default all fields are optional with the exception of "pk" fields.
+						
+					If you set the "mandatory" value to "true" then the field is marked as mandatory.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="tooltip" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A tooltip is used to provide some useful information to the user when
+					they hover the mouse over a field.
+					
+					The tooltip is placed in the title of the containing element for the field, such
+					as an &lt;input...
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="regex" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A Java Regular Expression used to validate the field data before storing it into the database.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="select" type="select_options" use="optional" default="single"/>
+			<xsd:attribute name="pattern" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type pattern that will be used for an add or an edit input of this field.
+					
+					The pattern attribute specifies a regular expression that the &lt;input&gt; element's value is checked against. 
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="placeholder" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					A html5 type placeholder that will be used for an add or edit input of this field.
+					
+					The placeholder attribute specifies a short hint that describes the expected value of an
+					input field (e.g. a sample value or a short description of the expected format).
+					
+					The short hint is displayed in the input field before the user enters a value.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:group name="table_fields">
+      <xsd:annotation>
+         <xsd:documentation>
+            Implies an inclusion for the list of field elements for a table.
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="pk" minOccurs="0" />
+            <xsd:element ref="fk" minOccurs="0" />
+            <xsd:element ref="text" minOccurs="0" />
+            <xsd:element ref="textarea" minOccurs="0" />
+            <xsd:element ref="link" minOccurs="0" />
+            <xsd:element ref="password" minOccurs="0" />
+            <xsd:element ref="image" minOccurs="0" />
+            <xsd:element ref="int" minOccurs="0" />
+            <xsd:element ref="timestamp" minOccurs="0" />
+            <xsd:element ref="datetime" minOccurs="0" />
+            <xsd:element ref="date" minOccurs="0" />
+            <xsd:element ref="timeofday" minOccurs="0" />
+            <xsd:element ref="binary" minOccurs="0" />
+            <xsd:element ref="select" minOccurs="0" />
+            <xsd:element ref="table_path" minOccurs="0" />
+         </xsd:choice>
+      </xsd:sequence>
+   </xsd:group>
+
+
+	<xsd:element name="table_path">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			A table path is used to identify relationship tables when a "fk" (foreign key) is not used directly between the
+			two tables and a link table is used instead.
+			
+			It identifies which tables are linked in the relationship.  The relationship can be a 'OneToOne', 'OneToMany', 'ManyToOne' and 'ManyToMany'.
+		]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="table_b" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of one of the foreign tables that are referenced from this table.
+                ]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="table_a" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The name of one of the foreign tables that are referenced from this table.
+                ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+   <xsd:simpleType name="select_options">
+		<xsd:annotation><xsd:documentation><![CDATA[
+            Can select a single or multiple select set of radio buttons or check boxes.
+		]]></xsd:documentation></xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="single" />
+			<xsd:enumeration value="multiple" />
+		</xsd:restriction>
+   </xsd:simpleType>
+   
+</xsd:schema>
+

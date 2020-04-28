@@ -36,6 +36,8 @@ public class ActionUtils
 	public static boolean evaluateExpression(IExecContext execContext, String exp)
 	{
 
+		// first replace any markers
+		exp = execContext.replace(exp);
 		String script = null;
 		try {
 			//script = convertExpressionAmps(execContext.replace(exp));

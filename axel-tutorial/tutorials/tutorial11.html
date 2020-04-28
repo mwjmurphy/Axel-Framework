@@ -1,0 +1,73 @@
+<h4 id="if_else_elseif"><span class="badge badge-info">10</span> example - if, else and elseif</h4>
+<p style="padding-left:20px">
+    <small>
+        How to add conditional logic if, else and elseif.
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Use if, else and elseif to add content on the page.
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>
+&lt;axel:put key="a_number">10*10/5&lt;/axel:put>
+&lt;axel:if expression="&dollar;{a_number} == 20">
+    if - a_number: &lt;axel:get key="a_number"/>
+&lt;/axel:if>
+&lt;br/>            
+&lt;axel:if expression="&dollar;{a_number} == 21">
+    a_number: 21
+&lt;axel:else>
+    else - a_number != 21 it's &lt;axel:get key="a_number"/>
+&lt;/axel:else>
+&lt;/axel:if>
+&lt;br/>            
+&lt;axel:if expression="&dollar;{a_number} == 21">
+    a_number: 21
+&lt;axel:elseif expression="&dollar;{a_number} == 19">
+    a_number: 19
+&lt;/axel:elseif>
+&lt;axel:elseif expression="&dollar;{a_number} == 20">
+    elseif - a_number: &lt;axel:get key="a_number"/>
+&lt;/axel:elseif>
+&lt;axel:else>
+    a_number != 21 or 19 it's &lt;axel:get key="a_number"/>
+&lt;/axel:else>
+&lt;/axel:if></pre></code>
+        </p>
+    </li>    
+    <small>Stores a value 10*10/5 (20) for key "a_number", then shows all usage of <b>if</b>, <b>elseif</b> and <b>else</b></small>
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    <axel:put key="a_number">10*10/5</axel:put>
+    <axel:if expression="${a_number} == 20">
+        if - a_number: <axel:get key="a_number"/>
+    </axel:if>
+    <br/>
+    <axel:if expression="${a_number} == 21">
+        a_number: 21
+    <axel:else>
+        else - a_number = <axel:get key="a_number"/>
+    </axel:else>
+    </axel:if>
+    <br/>
+    <axel:if expression="${a_number} == 21">
+        a_number: 21
+    <axel:elseif expression="${a_number} == 19">
+        a_number: 19
+    </axel:elseif>
+    <axel:elseif expression="${a_number} == 20">
+        elseif - a_number: <axel:get key="a_number"/>
+    </axel:elseif>
+    <axel:else>
+        a_number != 21 or 19 it's <axel:get key="a_number"/>
+    </axel:else>
+    </axel:if>
+</div>

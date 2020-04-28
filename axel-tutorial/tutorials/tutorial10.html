@@ -1,0 +1,37 @@
+<h4 id="put_get"><span class="badge badge-info">10</span> example - put and get</h4>
+<p style="padding-left:20px">
+    <small>
+        How to put, get and remove content from execContext
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Put some content into execContext and Get some content from execContext and Remove some content from execContext
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>
+&lt;axel:put key="a_key">This is the value stored for a_key&lt;/axel:put>
+&lt;axel:get key="a_key"/>&lt;
+&lt;axel:remove key="a_key"/>
+&lt;axel:get key="a_key"/>
+        </pre></code>
+        </p>
+    </li>    
+    <small>Stores a value for "a_key" into the execContext using axel:put then uses axel:get to retrieve it, then uses axel:remove to remove it.</small>
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    <axel:put key="a_key">This is the value stored for a_key</axel:put>
+    <axel:get key="a_key"/>
+    <axel:remove key="a_key"/>
+    <axel:get key="a_key"/>
+    <p>
+        <small>the "null" shows the value has been removed</small>
+    </p>
+</div>

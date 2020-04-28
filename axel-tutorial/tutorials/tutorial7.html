@@ -39,7 +39,7 @@
         Refresh the browser and now you see the new content from the http response.
     </li>    
 </ol>
-<div class="alert aert-dark rounded">
+<div class="alert alert-dark rounded">
     <axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/>
     <axel:map_xml_to_presentation xml_data="${people_xml}" xml_path="/root/element">
         <axel:form>

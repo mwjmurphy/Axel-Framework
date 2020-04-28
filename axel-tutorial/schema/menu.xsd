@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.xmlactions.org/menu"
+    targetNamespace="http://www.xmlactions.org/menu"
+    attributeFormDefault="unqualified" elementFormDefault="qualified"
+>
+
+   <xsd:element name="menubar">
+      <xsd:annotation>
+         <xsd:documentation>
+            menubar is used to build a presentation menu 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="menu" minOccurs="1" maxOccurs="unbounded" />
+         </xsd:sequence>
+         <xsd:attribute name="position" type="position_attributes" use="optional" />
+         <xsd:attribute name="left" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="top" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="right" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="bottom" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The total width of the menu bar.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="zindex" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Set the menu z-index 
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="menu">
+      <xsd:annotation>
+         <xsd:documentation>
+            menu is used to build an individual menu on the menu bar. 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="image" minOccurs="0" maxOccurs="1">
+               <xsd:annotation><xsd:documentation>
+                  this image is placed on the left of the menu name.
+               </xsd:documentation></xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="sub_menu" minOccurs="0" maxOccurs="1">
+               <xsd:annotation><xsd:documentation>
+                  This sub_menu is placed below the menu. It may contain one or more sub_menu_items.
+               </xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the name that appears as the menu
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="href" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  href link called when the mouse is pressed. This will be ignored
+                  if the onclick attribute is used.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onclick" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  Instead of using the href you can call a javascript to
+                  provide the action when this is clicked. 
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="position" type="position_attributes" use="optional" />
+         <xsd:attribute name="left" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="top" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="right" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="bottom" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The total width of the menu bar.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="tooltip" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Shows as a tooltip in the title of sub_menu_item.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="sub_menu">
+      <xsd:annotation>
+         <xsd:documentation>
+            menu is used to build an individual menu on the menu bar. 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="sub_menu_item" minOccurs="1" maxOccurs="unbounded">
+               <xsd:annotation><xsd:documentation>
+                  sub_menu_items are contained in the sub_menu
+               </xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="id" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is a unique id for the submenu. This is used to show and hide the manu
+                  as the mouse moves over them.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="position" type="position_attributes" use="optional" />
+         <xsd:attribute name="left" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="top" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="right" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="bottom" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  left position of menu. relates to the selected position.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The total width of the menu bar.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="sub_menu_item">
+      <xsd:annotation>
+         <xsd:documentation>
+            menu is used to build an individual menu on the menu bar. 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="image" minOccurs="0" maxOccurs="1">
+               <xsd:annotation><xsd:documentation>
+                  this image is placed on the left of the menu item name.
+               </xsd:documentation></xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="sub_menu" minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation><xsd:documentation>
+                  This sub_menu is placed on the right of the sub_menu_item. It may contain one or more sub_menu_items.
+               </xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation><xsd:documentation>
+                  This is the name that appears as on the menu item
+            </xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="href" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  href link called when the mouse is pressed. This will be ignored
+                  if the onclick attribute is used.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="onclick" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  Instead of using the href you can call a javascript to
+                  provide the action when this is clicked. 
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="confirm" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  A confirmation javascript to be run before calling the href.
+                  i.e. confirm('are you sure')
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="tooltip" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Shows as a tooltip in the title of sub_menu_item.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+
+   <xsd:element name="image">
+      <xsd:annotation>
+         <xsd:documentation>
+            menu is used to build an individual menu on the menu bar. 
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="src" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The image name and location.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="width" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The presentation width of the image
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="height" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The presentation height of the image
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="border" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Apply border to image. Will default to border=0
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+   
+   <xsd:simpleType name="position_attributes">
+
+      <xsd:restriction base="xsd:string">
+
+         <xsd:enumeration value="static">
+            <xsd:annotation>
+               <xsd:documentation>
+                  default - places the menu relative to the page
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+
+         <xsd:enumeration value="absolute">
+            <xsd:annotation>
+               <xsd:documentation>
+                  places the menu relative to the first parent element that has a position
+                  other than static. If no such element is found, the containing block is &lt;html&gt;
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="relative">
+            <xsd:annotation>
+               <xsd:documentation>
+                  places the menu relative to the page.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="fixed">
+            <xsd:annotation>
+               <xsd:documentation>
+                  "fixed" places the menu relative to the screen. It won't move as the screen is scrolled.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:enumeration>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+</xsd:schema>
+

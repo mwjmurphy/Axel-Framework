@@ -1681,7 +1681,7 @@
    <xsd:element name="map_bean_to_xml">
       <xsd:annotation>
          <xsd:documentation><![CDATA[
-            Maps an a java bean to xml.
+            Maps a java bean to xml.
          ]]></xsd:documentation>
       </xsd:annotation>
       <xsd:complexType>
