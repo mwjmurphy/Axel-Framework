@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.xmlactions.web.conceal.HttpPager;
 
 @SpringBootApplication
-@RestController
 public class AxelApplication {
 
     private static final Logger log = LoggerFactory.getLogger(AxelApplication.class);

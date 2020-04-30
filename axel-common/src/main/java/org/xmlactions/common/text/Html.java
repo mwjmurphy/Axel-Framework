@@ -8,7 +8,10 @@ public class Html {
     public final static String	CONTENT_TYPE_KEY = "content_type",
     							CONTENT_TYPE_HTML = "text/html;charset=UTF-8",
     							CONTENT_TYPE_XML = "text/xml;charset=UTF-8",
-    							CONTENT_TYPE_JSON = "application/json;charset=UTF-8";
+    							CONTENT_TYPE_JSON = "application/json;charset=UTF-8",
+	    						CONTENT_TYPE_JS = "text/javascript;charset=UTF-8",
+    	    	    			CONTENT_TYPE_CSS = "text/css;charset=UTF-8";
+    							
 
 	
 	private String contentType = null;

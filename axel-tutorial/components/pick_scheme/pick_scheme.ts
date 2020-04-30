@@ -1,4 +1,11 @@
-class PickScheme {
+declare const $:any;        // make sure jquery is loaded
+declare const moment:any;   // make sure momentjs is loaded
+
+export class PickScheme {
+
+    constructor () {
+        console.log("constructor for PickScheme");
+    }
 
     setCookie(name: string, val: string) {
         const date = new Date();
@@ -16,7 +23,7 @@ class PickScheme {
         const parts = value.split("; " + name + "=");
         
         if (parts.length == 2) {
-            return parts.pop().split(";").shift();
+            // return parts.pop().split(";").shift();
         }
         return null;
     }
@@ -30,8 +37,13 @@ class PickScheme {
         // Set it
         document.cookie = name+"=; expires="+date.toUTCString()+"; path=/";
     }
+
+    hello(): string {
+        return 'Hello World!!!';
+
+    }
 }
 
 var pickScheme = new PickScheme();
-var cookie = pickScheme.getCookie("axelframework");
-console.log("cookie:" + cookie);
+//var cookie = pickScheme.getCookie("axelframework");
+console.log("To be or not to be");

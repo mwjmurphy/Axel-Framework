@@ -85,7 +85,9 @@ public interface IExecContext extends Map<String, Object> {
     public final static String	CONTENT_TYPE_KEY = Html.CONTENT_TYPE_KEY,
     							CONTENT_TYPE_HTML = Html.CONTENT_TYPE_HTML,
     							CONTENT_TYPE_XML = Html.CONTENT_TYPE_XML,
-    							CONTENT_TYPE_JSON = Html.CONTENT_TYPE_JSON;
+    							CONTENT_TYPE_JSON = Html.CONTENT_TYPE_JSON,
+    							CONTENT_TYPE_JS = Html.CONTENT_TYPE_JS,
+    							CONTENT_TYPE_CSS = Html.CONTENT_TYPE_CSS;
 
 	//public Object get(String key);
 	//public void set(String key, Object value);

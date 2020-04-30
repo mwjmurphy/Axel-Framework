@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,48 +29,120 @@
 
 
    
-<title>Axel Framework Tutorial</title>
 <meta charset="utf-8">
+<title>Axel Framework Tutorial 2020</title>
+<link rel="shortcut icon" type="image/png" href="img/axel.ico"/>
+<meta name="description" content="A framework designed for building web pages on the server side, combining html with axel instructions bringing together your databases, external and local services.">
+<link rel="canonical" href="https://axelframewwork.org/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="/bootstrap/solar//bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/2ff5ff2a49.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/axel.css">
 
     
 </head>
 <body>
-    <header class="container-fluid text-center axel">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-center">
-        <h3>axel framework - tutorial</h3>
-    </nav>
-</header>
-    <div>
-        <?php
-$cookie_name = "user";
-$cookie_value = "John Doe";
-setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-?>
-
-<?php
-if(!isset($_COOKIE[$cookie_name])) {
-     echo "Cookie named '" . $cookie_name . "' is not set!";
-} else {
-     echo "Cookie '" . $cookie_name . "' is set!<br>";
-     echo "Value is: " . $_COOKIE[$cookie_name];
-}
-?>
-
-
-    </div>
     <div class="container-fluid text-center">    
+        <style>
+#navbar {
+  _overflow: hidden;
+  _background-color: #333;
+  z-index: 900;
+  width: 100%;
+}
+
+.content {
+  padding: 16px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+}
+.sticky + .content {
+  padding-top: 0px;
+}
+</style>
+<header id="navbar" class="container-fluid text-center axel">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-center">
+  <img src="/img/axel.png" alt="Axel Framework Logo" width="64"/>&nbsp;&nbsp;
+  <a class="navbar-brand" href="#"> Axel Framework</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!--
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Axel Actions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#introduction">Introduction</a>
+          <a class="dropdown-item" href="#how_it_works">How It Works</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#hello_world">Hello World!!!</a>
+          <a class="dropdown-item" href="#insert_component_page">Insert Component Page</a>
+          <a class="dropdown-item" href="#capture_browser_parameters">Capture Browser Parameters</a>
+          <a class="dropdown-item" href="#http_call_json" title="How to load data from an external site">Http Call Json</a>
+          <a class="dropdown-item" href="#json_presentation" title="Presentation of the loaded data">Json Presentation</a>
+          <a class="dropdown-item" href="#http_call_xml" title="How to load data from an external site">Http Call Xml</a>
+          <a class="dropdown-item" href="#xml_presentation" title="Presentation of the loaded data">Xml Presentation</a>
+          <a class="dropdown-item" href="#json_get" title="Get an object/s from a json document">Json Get</a>
+          <a class="dropdown-item" href="#code" title="Executes a java bean method">Code</a>
+          <a class="dropdown-item" href="#put_get_remove" title="Put, Get and Remove content from execContext">Put and Get and Remove</a>
+          <a class="dropdown-item" href="#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
+        </div>
+      </li>
+      <!--
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+      -->
+    </ul>
+    <!--
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    -->
+  </div>    
+</nav>
+
+</header>
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+        <div style="padding-top: 50px">
+        </div>
         <div id="title" class="jumbotron axel">
     <div class="row content">
         <div class="col-sm-3 sidenav">
             <img src="img/languages.png" width="250">
         </div>
-        <div class="col-sm-6 sidenav">
+        <div class="col-sm-6 ssidenav">
             <h1 class="display-3">axel framework</h1>
             <p class="lead">The framework builds web pages using instructions, commonly known as actions, placed inside each page.</p>
             <hr class="my-4">
@@ -81,7 +154,7 @@ if(!isset($_COOKIE[$cookie_name])) {
                 To get started you need some knowledge on command line such as windows cmd, using a browser and a basic understanding of html.
             </p>
         </div>
-        <div class="col-sm-3 sidenav">
+        <div class="col-sm-3 ssidenav">
             <img src="img/servers.png" width="250">
         </div>
     </div>
@@ -119,22 +192,22 @@ if(!isset($_COOKIE[$cookie_name])) {
         <li class="nav-item">
             <a class="nav-link" href="#xml_presentation" title="Presentation of the loaded data">Xml Presentation</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#json_get" title="Get an object/s from a json document">Json Get</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#code" title="Executes a java bean method">Code</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#put_get_remove" title="Put, Get and Remove content from execContext">Put and Get and Remove</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
+        </li>
 
 <!--
-        json_get
         bean Presentation
 
-
-
-        code
-
-        put
-        get
-        remove
-
-        if
-        else
-        elseif
 
         escape
         unescape
@@ -154,7 +227,7 @@ if(!isset($_COOKIE[$cookie_name])) {
     </ul>
 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" style="">
                 <div id="introduction" class="text-left axel"> 
     <h3>Introduction</h3>
     <p class="text-justify">
@@ -203,26 +276,27 @@ if(!isset($_COOKIE[$cookie_name])) {
 </div>
 
                 <div class="tutorial text-left axel">
-        <h3>Tutorials</h3>
-        <p>
-            To help with building the examples in this tutorial we use an application that runs on your workstation to replicate a
-            web server.  The instructions for downloading and running this application are shown in the first example
-            <a href="#hello_world">Hello World!!!</a>
-        </p>
-        <hr>
-        <h4 id="hello_world"><span class="badge badge-info">1</span> example - hello world!!!</h4>
+    <h3>Tutorials</h3>
+    <p>
+        To help with building the examples in this tutorial we use an application that runs on your workstation to replicate a
+        web server.  The instructions for downloading and running this application are shown in the first example
+        <a href="#hello_world">Hello World!!!</a>
+    </p>
+    <hr>
+    <div id="hello_world" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">1</span> example - hello world!!!</h4>
 <div class="alert alert-light rounded">
     Show <strong>Hello World!!! time</strong> in your browser.
 </div>
 <ol>
     <li>
         <p>
-            Download the latest version of axel-run jar file from this link <a href="versions/axel-run-2.3.4.jar">axel-run-2.3.4.jar</a>
+            Download the latest version of axel-run jar file from this link <a href="versions/axel-run-2.3.5.jar">axel-run-2.3.5.jar</a>
         </p>
     </li>    
     <li>
         <p>
-            From the command line type <b><i>java -jar axel-run-2.3.4.jar</i></b>
+            From the command line type <b><i>java -jar axel-run-2.3.5.jar</i></b>
         </p>
     </li>    
     <li>
@@ -245,12 +319,13 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 13:15
+    Hello World!!! 21:23
 </div>
 
 
-        <hr>
-        <h4 id="insert_componen_page"><span class="badge badge-info">2</span> example - insert component page</h4>
+    <hr>
+    <div id="insert_component_page" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">2</span> example - insert component page</h4>
 <div class="alert alert-light rounded">
     <p>
         Inserting a <b>component page</b> into the index.html
@@ -280,13 +355,14 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 13:15<br/>
+    Hello World!!! 21:23<br/>
     This is an Axel Framework Header Component Page
 </div>
 
 
-        <hr>
-        <h4 id="capture_browser_parameters"><span class="badge badge-info">3</span> example - capture browser parameters</h4>
+    <hr>
+    <div id="capture_browser_parameters" style="padding-top: 80px;"></div>
+<h4 ><span class="badge badge-info">3</span> example - capture browser parameters</h4>
 <div class="alert alert-light rounded">
     How to access the parameters from the browser
 </div>
@@ -309,14 +385,15 @@ Hello World!!!  &dollar;{current.time}
     </li>    
 </ol>
 <div class="alert alert-dark rounded">
-    Hello World!!! 13:15
+    Hello World!!! 21:23
     This is an Axel Framework Header Component Page
     Hello Mr Flinstone
 </div>
 
 
-        <hr>
-        <h4 id="http_call_json"><span class="badge badge-info">4</span> example - http call</h4>
+    <hr>
+    <div id="http_call_json" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">4</span> example - http call</h4>
 <p style="padding-left:20px">
     <small>
         The http action will make a http call and return the result.  The response may also be stored in the
@@ -344,7 +421,7 @@ Hello World!!!  &dollar;{current.time}
     {
         "name": "Fred Flinstone",
         "age": 40,
-        "phone": "555-5555",
+        "phone": "555-5551",
         "address": "1 Main Street",
         "city": "York",
         "state": "Yorkshire",
@@ -353,7 +430,7 @@ Hello World!!!  &dollar;{current.time}
     {
         "name": "Wilma Flinstone",
         "age": 39,
-        "phone": "555-5555",
+        "phone": "555-5552",
         "address": "1 Main Street",
         "city": "York",
         "state": "Yorkshire",
@@ -362,7 +439,7 @@ Hello World!!!  &dollar;{current.time}
     {
         "name": "Barney Rubble",
         "age": 38,
-        "phone": "555-5555",
+        "phone": "555-5553",
         "address": "2 Main Street",
         "city": "York",
         "state": "Yorkshire",
@@ -371,7 +448,7 @@ Hello World!!!  &dollar;{current.time}
     {
         "name": "Betty Rubble",
         "age": 37,
-        "phone": "555-5555",
+        "phone": "555-5554",
         "address": "2 Main Street",
         "city": "York",
         "state": "Yorkshire",
@@ -381,8 +458,9 @@ Hello World!!!  &dollar;{current.time}
 </div>
 
 
-        <hr>
-        <h4 id="json_presentation"><span class="badge badge-info">5</span> example - json presentation</h4>
+    <hr>
+    <div id="json_presentation" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">5</span> example - json presentation</h4>
 <p style="padding-left:20px">
     <small>
         The json presentation action will map selected content of a JSON feed to a presentation form.
@@ -435,7 +513,7 @@ Hello World!!!  &dollar;{current.time}
                     York<br/>
                     Yorkshire<br/>
                     UK<br/>
-                    555-5555
+                    555-5551
                 </p>
                 </div>
               </div>
@@ -449,7 +527,7 @@ Hello World!!!  &dollar;{current.time}
                     York<br/>
                     Yorkshire<br/>
                     UK<br/>
-                    555-5555
+                    555-5552
                 </p>
                 </div>
               </div>
@@ -463,7 +541,7 @@ Hello World!!!  &dollar;{current.time}
                     York<br/>
                     Yorkshire<br/>
                     UK<br/>
-                    555-5555
+                    555-5553
                 </p>
                 </div>
               </div>
@@ -477,7 +555,7 @@ Hello World!!!  &dollar;{current.time}
                     York<br/>
                     Yorkshire<br/>
                     UK<br/>
-                    555-5555
+                    555-5554
                 </p>
                 </div>
               </div>
@@ -485,8 +563,9 @@ Hello World!!!  &dollar;{current.time}
 </div>
 
 
-        <hr>
-        <h4 id="http_call_xml"><span class="badge badge-info">6</span> example - http call xml</h4>
+    <hr>
+    <div id="http_call_xml" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">6</span> example - http call xml</h4>
 <p style="padding-left:20px">
     <small>
         The http action will make a http call and return the result.  The response may also be stored in the
@@ -552,8 +631,9 @@ Hello World!!!  &dollar;{current.time}
 </div>
 
 
-        <hr>
-        <h4 id="xml_presentation"><span class="badge badge-info">7</span> example - xml presentation</h4>
+    <hr>
+    <div id="xml_presentation" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">7</span> example - xml presentation</h4>
 <p style="padding-left:20px">
     <small>
         The xml presentation action will map selected content of a XML feed to a presentation form.
@@ -594,7 +674,7 @@ Hello World!!!  &dollar;{current.time}
         Refresh the browser and now you see the new content from the http response.
     </li>    
 </ol>
-<div class="alert aert-dark rounded">
+<div class="alert alert-dark rounded">
     
     
             <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
@@ -656,6 +736,223 @@ Hello World!!!  &dollar;{current.time}
 </div>
 
 
+    <hr>
+    <div id="json_get" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">8</span> example - json get</h4>
+<p style="padding-left:20px">
+    <small>
+        Get an object/s from a json document.
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Get an object/s from a json document that already exists in the execContext.
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>&lt;axel:json_get json_data="&dollar;{people_json}" json_path="name"/&gt;</pre></code>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    name: Fred Flinstone
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content, note the <b>index="1"</b>
+            <code><pre>&lt;axel:json_get json_data="&dollar;{people_json}" json_path="name" index="1"/&gt;</pre></code>
+        </p>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document showing the second name.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    name: Wilma Flinstone
+</div>
+
+    <hr>
+    <div id="code" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">9</span> example - execute java code</h4>
+<p style="padding-left:20px">
+    <small>
+        The code action will invoke a java bean method.
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Execute a java method, the result can be shown on the page or stored in the execContext
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>&lt;axel:code call="axel.AxelCodeExample.getProjectTitle"/></pre></code>
+        </p>
+    </li>    
+    <small>Calls the getProjectTitle method that returns the property setting for "project.title"</small>
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    axel run
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>
+&lt;axel:code call="axel.AxelCodeExample.hello">
+    &lt;axel:param value="Fred"/>
+&lt;/axel:code></pre></code>
+        </p>
+        <small>Calls the hello method passing the name parameter and returns "Hello " + name</small>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+        Hello Fred
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>&lt;axel:code call="axel.AxelCodeExample.getListOf10Beans" key="beans10"/></pre></code>
+        </p>
+        <small>Gets a list of the the first 10 beans from the spring framework alphabetically sorted:</small>
+    </li>    
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    
+    <div style="padding-left:10px">
+        _relProvider<br/>annotationRelProvider<br/>applicationTaskExecutor<br/>axelApplication<br/>axelConfig<br/>axelController<br/>axelServlet<br/>basicErrorController<br/>beanNameHandlerMapping<br/>beanNameViewResolver<br/>characterEncodingFilter<br/>
+    </div>
+</div>
+
+    <hr>
+    <div id="put_get" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">10</span> example - put and get</h4>
+<p style="padding-left:20px">
+    <small>
+        How to put, get and remove content from execContext
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Put some content into execContext and Get some content from execContext and Remove some content from execContext
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>
+&lt;axel:put key="a_key">This is the value stored for a_key&lt;/axel:put>
+&lt;axel:get key="a_key"/>&lt;
+&lt;axel:remove key="a_key"/>
+&lt;axel:get key="a_key"/>
+        </pre></code>
+        </p>
+    </li>    
+    <small>Stores a value for "a_key" into the execContext using axel:put then uses axel:get to retrieve it, then uses axel:remove to remove it.</small>
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    
+    This is the value stored for a_key
+    
+    null
+    <p>
+        <small>the "null" shows the value has been removed</small>
+    </p>
+</div>
+
+    <hr>
+    <div id="if_else_elseif" style="padding-top: 80px;"></div>
+<h4><span class="badge badge-info">10</span> example - if, else and elseif</h4>
+<p style="padding-left:20px">
+    <small>
+        How to add conditional logic if, else and elseif.
+    </small>
+</p>
+<div class="alert alert-light rounded">
+    Use if, else and elseif to add content on the page.
+</div>
+<ol>
+    <li>
+        <p>
+            Edit the <i>index.html</i> page and add the following  content
+            <code><pre>
+&lt;axel:put key="a_number">10*10/5&lt;/axel:put>
+&lt;axel:if expression="&dollar;{a_number} == 20">
+    if - a_number: &lt;axel:get key="a_number"/>
+&lt;/axel:if>
+&lt;br/>            
+&lt;axel:if expression="&dollar;{a_number} == 21">
+    a_number: 21
+&lt;axel:else>
+    else - a_number != 21 it's &lt;axel:get key="a_number"/>
+&lt;/axel:else>
+&lt;/axel:if>
+&lt;br/>            
+&lt;axel:if expression="&dollar;{a_number} == 21">
+    a_number: 21
+&lt;axel:elseif expression="&dollar;{a_number} == 19">
+    a_number: 19
+&lt;/axel:elseif>
+&lt;axel:elseif expression="&dollar;{a_number} == 20">
+    elseif - a_number: &lt;axel:get key="a_number"/>
+&lt;/axel:elseif>
+&lt;axel:else>
+    a_number != 21 or 19 it's &lt;axel:get key="a_number"/>
+&lt;/axel:else>
+&lt;/axel:if></pre></code>
+        </p>
+    </li>    
+    <small>Stores a value 10*10/5 (20) for key "a_number", then shows all usage of <b>if</b>, <b>elseif</b> and <b>else</b></small>
+    <li>
+        <p>
+            Refresh the browser and now you see the new content from the json document.
+        </p>
+    </li>    
+</ol>
+<div class="alert alert-dark rounded">
+    
+    
+        if - a_number: 10*10/5
+    
+    <br/>
+    
+        else - a_number = 10*10/5
+    
+    <br/>
+    
+        elseif - a_number: 10*10/5
+    
+</div>
+
 </div>
 
             </div>
@@ -681,9 +978,12 @@ Hello World!!!  &dollar;{current.time}
     </div>
     <footer class="container-fluid text-center axel">
     <h3> axel framework - tutorial 
-        <a href="https://github.com/mwjmurphy/Axel-Framework" title="join our team on github" target="_blank"><i class="fab fa-github-square fa-1x"></i></a>
-        <a href="https://www.facebook.com/AxelFramework/" title="read about axel on facebook" target="_blank"><i class="fab fa-facebook-square fa-1x"></i></a>
-</h3>
+        &nbsp;&nbsp;<a href="https://github.com/mwjmurphy/Axel-Framework" title="join our team on github" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>
+        &nbsp;&nbsp;<a href="https://www.facebook.com/AxelFramework/" title="read about axel on facebook" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>
+    </h3>
+    <h1>This is pick_schema</h1>
+<script type="module" src="/components/pick_scheme/pick_scheme.js"></script>
+
 </footer>
 </body>
 </html>

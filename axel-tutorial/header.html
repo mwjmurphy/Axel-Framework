@@ -1,5 +1,38 @@
-<header class="container-fluid text-center axel">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-center">
-        <h3>axel framework - tutorial</h3>
-    </nav>
+<style>
+#navbar {
+  _overflow: hidden;
+  _background-color: #333;
+  z-index: 900;
+  width: 100%;
+}
+
+.content {
+  padding: 16px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+}
+.sticky + .content {
+  padding-top: 0px;
+}
+</style>
+<header id="navbar" class="container-fluid text-center axel">
+    <axel:insert page="top_nav.html"/>
 </header>
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>

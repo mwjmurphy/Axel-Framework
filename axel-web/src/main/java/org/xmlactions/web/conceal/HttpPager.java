@@ -308,12 +308,12 @@ public class HttpPager {
 		return execContext;
 	}
 
-	public void processPage(ServletRequest request, ServletResponse response,
-			String page) throws ServletException, IOException {
+	public void processPage(ServletRequest request, ServletResponse response, String page) throws ServletException, IOException {
 		IExecContext execContext = null;
-		if (response instanceof HttpServletResponse
-				&& request instanceof HttpServletRequest) {
+		if (response instanceof HttpServletResponse	&& request instanceof HttpServletRequest) {
 			try {
+				
+				String defaultContextType = "text/html;charset=UTF-8";
 				HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 				HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
@@ -357,22 +357,17 @@ public class HttpPager {
 					page = processAjaxCall(
 							httpServletRequest,
 							httpServletResponse,
-							pageName.substring(1,
-									pageName.length() - ".ajax".length()),
+							pageName.substring(1, pageName.length() - ".ajax".length()),
 							execContext);
 					page = StrSubstitutor.replace(page, execContext);
-				} else if (pageName.endsWith(".bin")
-						|| pageName.endsWith(".pdfbin")) {
+				} else if (pageName.endsWith(".bin") || pageName.endsWith(".pdfbin")) {
 					String pn = null;
 					if (pageName.endsWith(".pdfbin")) {
-						pn = pageName.substring(1, pageName.length()
-								- ".pdfbin".length());
+						pn = pageName.substring(1, pageName.length() - ".pdfbin".length());
 					} else {
-						pn = pageName.substring(1,
-								pageName.length() - ".bin".length());
+						pn = pageName.substring(1, pageName.length() - ".bin".length());
 					}
-					page = processAjaxCall(httpServletRequest,
-							httpServletResponse, pn, execContext);
+					page = processAjaxCall(httpServletRequest, httpServletResponse, pn, execContext);
 
 					if (page.startsWith("EX:")) {
 						PrintWriter out = response.getWriter();
@@ -470,10 +465,12 @@ public class HttpPager {
 
 				if (pageName.toLowerCase().endsWith("soap")) {
 					response.setContentType(IExecContext.CONTENT_TYPE_XML);
-
 				} else if (pageName.toLowerCase().endsWith("json")) {
-						response.setContentType(IExecContext.CONTENT_TYPE_JSON);
-
+					response.setContentType(IExecContext.CONTENT_TYPE_JSON);
+				} else if (pageName.toLowerCase().endsWith(".js")) {
+					response.setContentType(IExecContext.CONTENT_TYPE_JS);
+				} else if (pageName.toLowerCase().endsWith(".css")) {
+					response.setContentType(IExecContext.CONTENT_TYPE_CSS);
 				} else {
 					response.setContentType(IExecContext.CONTENT_TYPE_HTML);
 				}

@@ -1,6 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "strict": true
-  }
+  	"module": "ES6",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": false,
+    "target": "ES2015",
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "compileOnSave": true
 }

@@ -30,7 +30,8 @@ import org.xmlactions.web.conceal.HttpPager;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-@RestController
+// @RestController
+@Controller
 public class AxelController implements ServletContextAware, ServletConfigAware {
 
 	private static Logger logger = LoggerFactory.getLogger(AxelController.class);
@@ -47,6 +48,11 @@ public class AxelController implements ServletContextAware, ServletConfigAware {
 	public void setServletContext(ServletContext servletContext) {
 		this.context = servletContext;
 	}
+	
+//	@RequestMapping("/")
+//	public String home() {
+//		return "Hello, World!";
+//	}
 
 	/** Handle all files from root path */
 	@RequestMapping(value = "/{filename}", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
