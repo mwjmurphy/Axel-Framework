@@ -5,7 +5,8 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": false,
-    "target": "ES2015",
+    "target": "ES2016",
+    "outDir": "./js/axel",
   },
   "include": [
     "**/*"

@@ -1,49 +1,58 @@
 declare const $:any;        // make sure jquery is loaded
 declare const moment:any;   // make sure momentjs is loaded
+import { RequestParams } from "../common/request_params.js";
 
 export class PickScheme {
 
+    request_selected_theme = "selected_theme";  // comes from http
+    selected_theme = "selected_theme";
+    default_theme = "solar";
+    requestParams:RequestParams;
     constructor () {
         console.log("constructor for PickScheme");
+        this.requestParams = new RequestParams(); 
+        this.showScheme();
     }
 
-    setCookie(name: string, val: string) {
-        const date = new Date();
-        const value = val;
+    // Show the select or default theme
+    showScheme() {
+        let scheme:string = this.requestParams.getParam(this.request_selected_theme);
     
-        // Set it expire in 7 days
-        date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
-    
-        // Set it
-        document.cookie = name+"="+value+"; expires="+date.toUTCString()+"; path=/";
-    }
-
-    getCookie(name: string): any {
-        const value = "; " + document.cookie;
-        const parts = value.split("; " + name + "=");
-        
-        if (parts.length == 2) {
-            // return parts.pop().split(";").shift();
+        if (scheme) {
+            this.put(this.selected_theme, scheme);
+            console.log("value from httprequest:"+scheme);
         }
-        return null;
+        scheme = this.get(this.selected_theme);
+        if (scheme) {
+            console.log("value from get:"+scheme);
+            $('head').append('<link rel="stylesheet" href="/bootstrap/' + scheme + '/bootstrap.min.css">');
+        } else {
+            scheme = this.default_theme;
+            console.log("value from default:"+scheme);
+            $('head').append('<link rel="stylesheet" href="/bootstrap/' + scheme + '/bootstrap.min.css">');
+            this.put(this.selected_theme, scheme);
+        }
     }
 
-    deleteCookie(name: string) {
-        const date = new Date();
-    
-        // Set it expire in -1 days
-        date.setTime(date.getTime() + (-1 * 24 * 60 * 60 * 1000));
-    
-        // Set it
-        document.cookie = name+"=; expires="+date.toUTCString()+"; path=/";
+    setScheme(scheme: string) {
+        this.put(this.selected_theme, scheme);
     }
 
-    hello(): string {
-        return 'Hello World!!!';
-
+    // put a value
+    put(key:string, value:any) : void {
+        localStorage.setItem(key, value);
     }
+
+    // get a value
+    get(key:string) : any {
+        return localStorage.getItem(key);
+    }
+
+    // remove a value
+    remove(key:string): void {
+        localStorage.removeItem(key);
+    }
+
 }
 
 var pickScheme = new PickScheme();
-//var cookie = pickScheme.getCookie("axelframework");
-console.log("To be or not to be");
