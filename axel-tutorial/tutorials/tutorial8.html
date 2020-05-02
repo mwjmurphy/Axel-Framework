@@ -1,42 +1,39 @@
 <div id="json_get" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">8</span> example - json get</h4>
-<p style="padding-left:20px">
-    <small>
-        Get an object/s from a json document.
-    </small>
-</p>
-<div class="alert alert-light rounded">
-    Get an object/s from a json document that already exists in the execContext.
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">${tutorial_page_index}</span> example - json get</h4>
+        <p style="padding-left:40px">
+            How to get an object/s from a json document.
+        </p>
+    </div>
+    <div class="card-body">
+        <axel:range name="instruction-counter" from="1" to="100"/>
+        <div class="card-title title">Get an object/s from a json document that already exists in the execContext.</div>
+        <div class="card-text instruction">${instruction-counter}. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    <axel:escape>
+name: <axel:json_get json_data="&dollar;{people_json}" json_path="name"/>
+                    </axel:escape>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Gets an object called "name" from a json object stored in the execContext with key "people_json"</div>
+        <div class="card-text instruction">${instruction-counter}. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <axel:range name="axel-index" from="1" to="100"/>
+        <div class="card-text code">
+            <pre>
+                <code>
+name: <axel:json_get json_data="${people_json}" json_path="name"/>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The "person_json" was stored in the execContext in a previous tutorial and this was used to get the "name" object from the "people_json" object.</div>
+    </div>    
 </div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>&lt;axel:json_get json_data="&dollar;{people_json}" json_path="name"/&gt;</pre></code>
-        </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    name: <axel:json_get json_data="${people_json}" json_path="name"/>
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content, note the <b>index="1"</b>
-            <code><pre>&lt;axel:json_get json_data="&dollar;{people_json}" json_path="name" index="1"/&gt;</pre></code>
-        </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document showing the second name.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    name: <axel:json_get json_data="${people_json}" json_path="name" index="1"/>
-</div>
+

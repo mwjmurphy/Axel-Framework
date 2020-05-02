@@ -1,7 +1,5 @@
 package org.xmlactions.pager.actions.escaping;
 
-import java.io.IOException;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -20,7 +18,7 @@ public class UnEscapeAction extends CommonFormFields {
     private String ref_key;
 
     /** Which type of un-escaping to we want to do */
-    private String format = "html";
+    private String format = "pre";
 
     /** Where we store the result of the unescaping - may be null. */
     private String key;
@@ -40,8 +38,8 @@ public class UnEscapeAction extends CommonFormFields {
     }
 
     public void validate(IExecContext execContext) {
-        if (StringUtils.isEmpty(getRef_key())) {
-            throw new IllegalArgumentException("Missing ref_key attribute in " + actionName + ". This is required and must reference a key in the execContext that contains the data.");
+        if (StringUtils.isEmpty(getRef_key()) && StringUtils.isEmpty(getContent())) {
+            throw new IllegalArgumentException("Missing ref_key attribute in " + actionName + ". Either set a reference key in the execContext that contains the data or add the content to the element.");
         }
         if (StringUtils.isEmpty(getFormat())) {
             throw new IllegalArgumentException("Missing format attribute in " + actionName + ". This is required and must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'");
@@ -49,14 +47,20 @@ public class UnEscapeAction extends CommonFormFields {
     }
 
 
-    private String process(IExecContext execContext) throws IOException {
+    private String process(IExecContext execContext) throws Exception {
     	String unescapedData = null;
-    	String data = execContext.getString(getRef_key());
-    	if (StringUtils.isEmpty(data)) {
-            throw new IllegalArgumentException("The ref_key [" + getRef_key() + "] does not contain any value in the execContext in " + actionName);
+    	String data = null;
+    	if (StringUtils.isEmpty(getRef_key())) {
+    		// data = new Action().processPage(execContext, getContent());
+    		data = getContent();
+    		this.clearActions();	// dont process any child actions
+    	} else { 
+    		data = execContext.getString(getRef_key());
     	}
-    	if (getFormat().equals("html")) {
-    		unescapedData = StringEscapeUtils.unescapeHtml(data);
+    	if (getFormat().equals("pre")) {
+    		unescapedData = presentationUnEscape(data);
+    	} else if (getFormat().equals("html")) {
+        	unescapedData = StringEscapeUtils.unescapeHtml(data);
     	} else if (getFormat().equals("xml")) {
     		unescapedData = StringEscapeUtils.unescapeXml(data);
     	} else if (getFormat().equals("java")) {
@@ -69,6 +73,12 @@ public class UnEscapeAction extends CommonFormFields {
         return unescapedData;
     }
 
+    private String presentationUnEscape(String data) {
+    	data = data.replace("&lt;", "<" );
+    	data = data.replace("&gt;", ">");
+    	data = data.replace("&dollar;", "$");
+    	return data;
+    }
 
 
 

@@ -21,6 +21,7 @@ public class PutAction extends BaseAction implements ReplacementHandlerAction
 	{
 		Action action = new Action();
 		String page = action.processPage(execContext, getContent());
+		this.clearActions();
 		execContext.put(getKey(), page);
 		// execContext.put(getKey(), StrSubstitutor.replace(getContent(), execContext));
 		// return 

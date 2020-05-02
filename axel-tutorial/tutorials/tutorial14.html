@@ -1,0 +1,47 @@
+<div id="evaluate" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">${tutorial_page_index}</span> example - eval</h4>
+        <p style="padding-left:40px">
+            The eval "evaluate" action uses javascript evaluations.  As an example eval(10*10/2) = 50
+        </p>
+    </div>
+    <div class="card-body">
+        <axel:put key="number">5</axel:put>
+        <axel:range name="instruction-counter" from="1" to="100"/>
+        <!-- 1 -->
+        <div class="card-title title">Evaluations of numbers and text content</div>
+        <div class="card-text instruction">${instruction-counter}. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    <axel:escape>
+eval1:<axel:eval expression="10*10/2"/>
+eval2:<axel:eval expression="10*10/2+${number}"/>
+eval3:<axel:eval expression="10*10/2+' textcontent' + ' more textcontent'"/>
+<axel:eval expression="100/9.8" key="eval_result"/> <!-- store the result in the execContext with key "eval_result" -->
+eval4:${evel_result}
+                    </axel:escape>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Adding the axel:escape action with some xml content</div>
+        <div class="card-text instruction">${instruction-counter}. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+eval1:<axel:eval expression="10*10/2"/>
+eval2:<axel:eval expression="10*10/2+${number}"/>
+eval3:<axel:eval expression="10*10/2+' textcontent' + ' more textcontent'"/>
+<axel:eval expression="100/9.8" key="eval_result"/> <!-- store the result in the execContext with key "eval_result" -->
+eval4:${eval_result}
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Some examples of how axel:eval works.  Including number and string combinations.  Note the eval_result stored in the execContext and used on the line after the evaluation.</div>
+    </div>
+</div>

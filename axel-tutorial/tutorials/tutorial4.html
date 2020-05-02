@@ -1,28 +1,37 @@
 <div id="http_call_json" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">4</span> example - http call</h4>
-<p style="padding-left:20px">
-    <small>
-        The http action will make a http call and return the result.  The response may also be stored in the
-        exceContext using the key attribute which can then be retrieved for use by a presentation action.
-    </small>
-</p>
-    <div class="alert alert-light rounded">
-    How to get data from an external site.
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>&lt;axel:http href="http://axelframework.org/data/people.json" method="get"/&gt;</pre></code>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">${tutorial_page_index}</span> example - http call</h4>
+        <p style="padding-left:40px">
+            The http action will make a http call and return the result.
         </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the http response.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    <pre><axel:http href="http://axelframework.org/data/people.json" method="get"/></pre>
+    </div>
+    <div class="card-body">
+        <axel:range name="instruction-counter" from="1" to="100"/>
+        <div class="card-title title">How to get data from an external site.</div>
+        <div class="card-text instruction">${instruction-counter}. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    <axel:escape>
+<axel:http href="http://axelframework.org/data/people.json" method="get"/>
+                    </axel:escape>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Calls a rest service http://axelframework.org/data/people.json that returns a json object.</div>
+        <div class="card-text instruction">${instruction-counter}. Refresh the browser and now you see the new content from the http response.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+<axel:http href="http://axelframework.org/data/people.json" method="get"/>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The people_json that was returned from the call to http://axelframework.org/data/people.json.</div>
+    </div>    
 </div>
-

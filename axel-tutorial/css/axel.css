@@ -7,13 +7,34 @@ axel {
 }
 .axel h4 {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 22px;
+}
+.axel h5 {
+    font-weight: 600;
+    font-size: 16px;
 }
 .axel p {
     font-size: 14px;
 }
 .axel a {
     font-size: 14px;
+}
+.axel .title {
+    font-weight: 600;
+    font-size: 18px;
+}
+.axel .instruction {
+    padding-top: 30px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.axel .whatitdoes {
+    font-weight: 500;
+    font-size: 14px;
+}
+.axel code {
+    font-size: 14px;
+    font-family: monospace, 'Courier New', Courier;
 }
 
 .terminology label {

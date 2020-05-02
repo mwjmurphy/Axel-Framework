@@ -1,0 +1,93 @@
+<div id="escaping" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">${tutorial_page_index}</span> example - escape and unescape content</h4>
+        <p style="padding-left:40px">
+            Escape and Unescape actions for java, html, xml, javascript, csv and pre (axel presentation - default)
+            The tutorial shows how the escape action works, the unescape action is the reverse of the escape action.
+        </p>
+    </div>
+    <axel:put key="secret">This is the secret</axel:put>
+    <div class="card-body">
+        <axel:range name="instruction-counter" from="1" to="100"/>
+        <!-- 1 -->
+        <div class="card-title title">Escape content for axel <b>pre</b> presentation this is the default.</div>
+        <div class="card-text instruction">${instruction-counter}. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    <axel:escape>
+&lt;axel:escape>
+    <xml>
+        <name>Fred</name>
+        <phone>555 5555</phone>
+        <secret>${secret}</secret>
+    </xml>
+&lt;/axel:escape>
+                    </axel:escape>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Adding the axel:escape action with some xml content</div>
+        <div class="card-text instruction">${instruction-counter}. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    <axel:escape>
+<xml>
+    <name>Fred</name>
+    <phone>555 5555</phone>
+    <secret>${secret}</secret>
+</xml>
+                </axel:escape>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The escape action with default format of pre converted the xml content for presentation on the page.</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card-body">
+    <div class="card-title title">Escape content for <b>html</b> presentation.</div>
+    <div class="card-text instruction">${instruction-counter}. Edit the <i>index.html</i> page and add the following  content</div>
+    <hr/>
+    <div class="card-text code">
+        <pre>
+            <code>
+                <axel:escape>
+&lt;axel:escape format="html">
+<xml>
+    <name>Fred</name>
+    <phone>555 5555</phone>
+    <secret>${secret}</secret>
+</xml>
+&lt;/axel:escape>
+                </axel:escape>
+            </code>
+        </pre>
+    </div>
+    <hr/>
+    <div class="card-text whatitdoes">Adding the axel:escape action with some xml content and setting the format to "html"</div>
+    <div class="card-text instruction">${instruction-counter}. Refresh the browser and now you see the new content showing the results.</div>
+    <hr/>
+    <div class="card-text code">
+        <pre>
+            <code>
+                <axel:escape format="html">
+<xml>
+<name>Fred</name>
+<phone>555 5555</phone>
+<secret>${secret}</secret>
+</xml>
+            </axel:escape>
+            </code>
+        </pre>
+    </div>
+    <hr/>
+    <div class="card-text whatitdoes">The escape action with format html converted the xml content for presentation on the page and the &dollar;{secret} was replaced with the exceContext for "secret".</div>
+</div>
+</div>

@@ -1,28 +1,39 @@
 <div id="http_call_xml" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">6</span> example - http call xml</h4>
-<p style="padding-left:20px">
-    <small>
-        The http action will make a http call and return the result.  The response may also be stored in the
-        exceContext using the key attribute which can then be retrieved for use by a presentation action.
-    </small>
-</p>
-    <div class="alert alert-light rounded">
-    How to get data from an external site.
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>&lt;axel:http href="http://axelframework.org/data/people.xml" method="get"/&gt;</pre></code>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">${tutorial_page_index}</span> example - http call xml</h4>
+        <p style="padding-left:40px">
+            The http action will make a http call and return the result.  The response may also be stored in the
+            exceContext using the key attribute which can then be retrieved for use by a presentation action.
         </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the http response.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    <textarea rows="40" cols="40"><axel:http href="http://axelframework.org/data/people.xml" method="get"/></textarea>
+    </div>
+    <div class="card-body">
+        <axel:range name="instruction-counter" from="1" to="100"/>
+        <div class="card-title title">How to get data from an external site.</div>
+        <div class="card-text instruction">${instruction-counter}. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    <axel:escape>
+<axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/>
+<pre><code><axel:escape format="xml" ref_key="people_xml"/></code></pre>
+                    </axel:escape>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">
+            The first line calls a rest service http://axelframework.org/data/people.xml that returns an
+            xml object.  The second line presents the xml on the page using axel:escape to convert the xml to a presentable format.
+        </div>
+        <div class="card-text instruction">${instruction-counter}. Refresh the browser and now you see the new content from the http response.</div>
+        <hr/>
+        <div class="card-text code">
+            <axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/>
+            <pre><code><axel:escape format="xml" ref_key="people_xml"/></code></pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Shows the people_xml that was returned from the call to http://axelframework.org/data/people.xml.</div>
+    </div>    
 </div>
-

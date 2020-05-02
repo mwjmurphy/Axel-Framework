@@ -1,6 +1,6 @@
 package org.xmlactions.pager.actions.escaping;
 
-import java.io.IOException;
+import java.util.regex.Matcher;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
@@ -20,7 +20,7 @@ public class EscapeAction extends CommonFormFields {
     private String ref_key;
 
     /** Which type of un-escaping to we want to do */
-    private String format = "html";
+    private String format = "pre";
 
     /** Where we store the result of the unescaping - may be null. */
     private String key;
@@ -40,8 +40,9 @@ public class EscapeAction extends CommonFormFields {
     }
 
     public void validate(IExecContext execContext) {
-        if (StringUtils.isEmpty(getRef_key())) {
-            throw new IllegalArgumentException("Missing ref_key attribute in " + actionName + ". This is required and must reference a key in the execContext that contains the data.");
+    	// if there is concen
+        if (StringUtils.isEmpty(getRef_key()) && StringUtils.isEmpty(getContent())) {
+            throw new IllegalArgumentException("Missing ref_key attribute in " + actionName + ". Either set a reference key in the execContext that contains the data or add the content to the element.");
         }
         if (StringUtils.isEmpty(getFormat())) {
             throw new IllegalArgumentException("Missing format attribute in " + actionName + ". This is required and must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'");
@@ -49,14 +50,23 @@ public class EscapeAction extends CommonFormFields {
     }
 
 
-    private String process(IExecContext execContext) throws IOException {
+    private String process(IExecContext execContext) throws Exception {
     	String escapedData = null;
-    	String data = execContext.getString(getRef_key());
-    	if (StringUtils.isEmpty(data)) {
-            throw new IllegalArgumentException("The ref_key [" + getRef_key() + "] does not contain any value in the execContext in " + actionName);
+    	String data = null;
+    	if (StringUtils.isEmpty(getRef_key())) {
+    		// data = new Action().processPage(execContext, getContent());
+    		data = getContent();
+    		this.clearActions();	// dont process any child actions
+    	} else { 
+    		data = execContext.getString(getRef_key());
     	}
-    	if (getFormat().equals("html")) {
-    		escapedData = StringEscapeUtils.escapeHtml(data);
+    	if (StringUtils.isEmpty(data)) {
+            throw new IllegalArgumentException("The ref_key [" + getRef_key() + "] does not contain any value in the execContext in " + actionName + " or set the content in the action");
+    	}
+    	if (getFormat().equals("pre")) {	// presentation
+    		escapedData = presentationEscape(data);
+    	} else if (getFormat().equals("html")) {
+        		escapedData = StringEscapeUtils.escapeHtml(data);
     	} else if (getFormat().equals("xml")) {
     		escapedData = StringEscapeUtils.escapeXml(data);
     	} else if (getFormat().equals("java")) {
@@ -69,8 +79,12 @@ public class EscapeAction extends CommonFormFields {
         return escapedData;
     }
 
-
-
+    private String presentationEscape(String data) {
+    	data = data.replace("<", "&lt;");
+    	data = data.replace(">", "&gt;");
+    	data = data.replace("$", "&dollar;");
+    	return data;
+    }
 
 
     public String getRef_key() {

@@ -36,7 +36,7 @@
 <link rel="canonical" href="https://axelframewwork.org/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="/bootstrap/solar//bootstrap.min.css">
+<link rel="stylesheet" href="/bootstrap/cerulean//bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/2ff5ff2a49.js" crossorigin="anonymous"></script>
@@ -103,6 +103,10 @@
         <a class="dropdown-item" href="#code" title="Executes a java bean method">Code</a>
         <a class="dropdown-item" href="#put_get_remove" title="Put, Get and Remove content from execContext">Put and Get and Remove</a>
         <a class="dropdown-item" href="#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
+        <a class="dropdown-item" href="#range" title="Numeric indexing">Range</a>
+        <a class="dropdown-item" href="#escaping" title="Escaping content for different formats">Escaping and Unescaping</a>
+        <a class="dropdown-item" href="#evaluate" title="Javascript evaluation">Evaluating</a>
+        <a class="dropdown-item" href="#date_formatting" title="Formatting dates">Date Formatting</a>
       </div>
     </li>
     <li class="nav-item dropdown">
@@ -230,16 +234,23 @@ function myFunction() {
         <li class="nav-item">
             <a class="nav-link" href="#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#range" title="Numeric indexing">Range</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#escaping" title="Escaping content for different formats">Escaping and Unescaping</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#evaluate" title="Javascript evaluation">Evaluating</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#date_formatting" title="Formatting dates">Date Formatting</a>
+        </li>
+        
 
 <!--
         bean Presentation
 
-
-        escape
-        unescape
-
-        range
-        eval
 
         transform
         date_formatter
@@ -312,141 +323,170 @@ function myFunction() {
         <a href="#hello_world">Hello World!!!</a>
     </p>
     <hr>
+    
     <div id="hello_world" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">1</span> example - hello world!!!</h4>
-<div class="alert alert-light rounded">
-    Show <strong>Hello World!!! time</strong> in your browser.
-</div>
-<ol>
-    <li>
-        <p>
-            Download the latest version of axel-run jar file from this link <a href="versions/axel-run-2.3.5.jar">axel-run-2.3.5.jar</a>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">1</span> example - hello world!!!</h4>
+        <p style="padding-left:40px">
+            This first tutorial shows how to download the axel-run application which is used for all the tutorials.
         </p>
-    </li>    
-    <li>
-        <p>
-            From the command line type <b><i>java -jar axel-run-2.3.5.jar</i></b>
-        </p>
-    </li>    
-    <li>
-        <p>
-            When the application has started open your web browser and enter <b>localhost</b> - you'll see an error <b>"Whitelabel Error Page"</b>
-        </p>
-    </li>    
-    <li>
-        <p>
-            In the same location, create a new file called <i>index.html</i> and edit the file adding
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Show "Hello World!!! time" in your browser.</div>
+        <div class="card-text instruction">1. Download the latest version of axel-run jar file from this link <a href="versions/axel-run-2.3.6.jar">axel-run-2.3.6.jar</a></div>
+        <hr/>
+        <div class="card-text instruction">2. From the command line type <b><i>java -jar axel-run-2.3.6.jar</i></b></div>
+        <hr/>
+        <div class="card-text instruction">3. When the application has started open your web browser and enter <b>localhost</b> - you'll see an error <b>"Whitelabel Error Page"</b></div>
+        <hr/>
+        <div class="card-text instruction">4. In the same location, create a new file called <i>index.html</i> and edit the file adding</div>
+        <hr/>
+        <div class="card-text code">
             <pre>
-Hello World!!!  &dollar;{current.time}
+                <code>
+                    
+Hello World!!! &dollar;{current.time}
+                    
+                </code>
             </pre>
-        </p>
-    </li>    
-    <li>
-        <p>
-            In your web browser now type <b>localhost/index.html</b> and you'll see
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    Hello World!!! 12:16
-</div>
-
-
-    <hr>
-    <div id="insert_component_page" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">2</span> example - insert component page</h4>
-<div class="alert alert-light rounded">
-    <p>
-        Inserting a <b>component page</b> into the index.html
-    </p>
-</div>
-<ol>
-    <li>
-        <p>
-            Create a new file called <i>header.html</i> and add the following content
+        </div>
+        <hr/>
+        <div class="card-text instruction">5. In your web browser now type <b>localhost/index.html</b> and you'll see.  <i>The time show here will have changed to show your time.</i></div>
+        <hr/>
+        <div class="card-text code">
             <pre>
-&lt;h5>This is an Axel Framework Header Component Page&lt;/h5>
+                <code>
+Hello World!!! 17:11
+                </code>
             </pre>
-        </p>
-    </li>    
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <pre>
-&lt;axel:insert page="header.html"/>
-            </pre>
-        </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    Hello World!!! 12:16<br/>
-    This is an Axel Framework Header Component Page
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">You've just created your first html page with axel that shows Hello World!!! with your local time.</div>
+    </div>    
 </div>
 
+    <div id="insert_componen_page" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">2</span> example - insert a component page</h4>
+        <p style="padding-left:40px">
+            How to import components into a html page.
+        </p>
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Inserting a <b>component</b> into the index.html</div>
+        <div class="card-text instruction">1. Create a new file called <i>comp.html</i> and add the following content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;h5&gt;This is an Axel Framework Component Page&lt;/h5&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">You've just created a simple html component.</div>
+        <div class="card-text instruction">2. Edit the <i>index.html</i> page and add the following content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:insert page="comp.html"/&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">You've added the axel instruction for inserting a component into the <i>index.html</i> page</div>
+        <div class="card-text instruction">3. Refresh the browser and now you see</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+Hello World!!! 17:11<br/>
+<h5>This is an Axel Framework Component Page</h5>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The new component has been inserted into the <i>indexl.html</i> page</div>
+    </div>    
+</div>
 
-    <hr>
     <div id="capture_browser_parameters" style="padding-top: 80px;"></div>
-<h4 ><span class="badge badge-info">3</span> example - capture browser parameters</h4>
-<div class="alert alert-light rounded">
-    How to access the parameters from the browser
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following content
-            <pre>&lt;h5>Hello ${request:title} ${request:surname}&lt;/h5></pre>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">3</span> example - capture browser parameters</h4>
+        <p style="padding-left:40px">
+            How to access the parameters from the browser using axel
         </p>
-    </li>    
-    <li>
-        <p>
-            In your browser type <b>localhost/index.html?title=Mr&surname=Flinstone</b>b
-        </p>
-    </li>    
-    <li>
-        <p>
-            Now you see this in your browser
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    Hello World!!! 12:16
-    This is an Axel Framework Header Component Page
-    Hello Mr Flinstone
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Accessing parameters from a browser request.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;h5&gt;Hello &dollar;{request:title} &dollar;{request:surname}&lt;/h5&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Shows Hello with two request parameters named "title" and "surname"</div>
+        <div class="card-text instruction">2. In your browser type <b>localhost/index.html?title=Mr&surname=Flinstone</b></div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+<h5>Hello Mr Flinstone</h5>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Now you can the two paraameters on screen instead of the replacement markers &dollar;{request:title} &dollar;{request:surname}</div>
+    </div>    
 </div>
 
-
-    <hr>
     <div id="http_call_json" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">4</span> example - http call</h4>
-<p style="padding-left:20px">
-    <small>
-        The http action will make a http call and return the result.  The response may also be stored in the
-        exceContext using the key attribute which can then be retrieved for use by a presentation action.
-    </small>
-</p>
-    <div class="alert alert-light rounded">
-    How to get data from an external site.
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>&lt;axel:http href="http://axelframework.org/data/people.json" method="get"/&gt;</pre></code>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">4</span> example - http call</h4>
+        <p style="padding-left:40px">
+            The http action will make a http call and return the result.
         </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the http response.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    <pre>[
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">How to get data from an external site.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:http href="http://axelframework.org/data/people.json" method="get"/&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Calls a rest service http://axelframework.org/data/people.json that returns a json object.</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content from the http response.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+[
     {
         "name": "Fred Flinstone",
         "age": 40,
@@ -483,503 +523,767 @@ Hello World!!!  &dollar;{current.time}
         "state": "Yorkshire",
         "country": "UK"
     }
-]</pre>
+]
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The people_json that was returned from the call to http://axelframework.org/data/people.json.</div>
+    </div>    
 </div>
 
-
-    <hr>
     <div id="json_presentation" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">5</span> example - json presentation</h4>
-<p style="padding-left:20px">
-    <small>
-        The json presentation action will map selected content of a JSON feed to a presentation form.
-    </small>
-</p>
-<div class="alert alert-light rounded">
-    Present the json data from an external site.
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> and add the following content.
-            <code>
-                <pre>
-&lt;axel:http href="http://axelframework.org/data/people.json" method="get" key="people_json"/>
-&lt;axel:map_json_to_presentation json_data="&dollar;{people_json}" json_path="/">
-    &lt;axel:form>
-        &lt;div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-            &lt;div class="card-header">&dollar;{row:name} age:&dollar;{row:age}&lt;/div>
-            &lt;div class="card-body">
-                &lt;h4 class="card-title">Address&lt;/h4>
-                &lt;p class="card-text">
-                &dollar;{row:address}&lt;br/>
-                &dollar;{row:city}&lt;br/>
-                &dollar;{row:state}&lt;br/>
-                &dollar;{row:country}&lt;br/>
-                &dollar;{row:phone}
-            &lt;/p>
-            &lt;/div>
-            &lt;/div>
-    &lt;/axel:form>
-&lt;/axel:map_json_to_presentation>
-                </pre>
-            </code>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">5</span> example - json presentation</h4>
+        <p style="padding-left:40px">
+            The json presentation action will map selected content of a JSON feed to a presentation form.
         </p>
-    </li>
-    <li>
-        Refresh the browser and now you see the new content from the http response.
-    </li>    
-</ol>
-<div class="alert aert-dark rounded">
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Present the json data from an external site.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:http href="http://axelframework.org/data/people.json" method="get" key="people_json"/&gt;
+&lt;axel:map_json_to_presentation json_data="&dollar;{people_json}" json_path="/"&gt;
+    &lt;axel:form&gt;
+        &lt;div&gt;
+            &lt;h5&gt;&dollar;{row:name} age:&dollar;{row:age}&lt;/h5&gt;
+            &lt;p style="padding-left:20px;"&gt;
+                &dollar;{row:address}&lt;br/&gt;
+                &dollar;{row:city}&lt;br/&gt;
+                &dollar;{row:state}&lt;br/&gt;
+                &dollar;{row:country}&lt;br/&gt;
+                &dollar;{row:phone}
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/axel:form&gt;
+&lt;/axel:map_json_to_presentation&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Calls a rest service http://axelframework.org/data/people.json that returns a json object and presents the object using axel:map_json_to_presentation.</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content from the http response.</div>
+        <hr/>
+        <div class="card-text code">
+
+
+        <div>
+            <h5>Fred Flinstone age:40</h5>
+            <p style="padding-left:20px;">
+                1 Main Street<br/>
+                York<br/>
+                Yorkshire<br/>
+                UK<br/>
+                555-5551
+            </p>
+        </div>
     
+        <div>
+            <h5>Wilma Flinstone age:39</h5>
+            <p style="padding-left:20px;">
+                1 Main Street<br/>
+                York<br/>
+                Yorkshire<br/>
+                UK<br/>
+                555-5552
+            </p>
+        </div>
     
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Fred Flinstone age:40</div>
-                <div class="card-body">
-                  <h4 class="card-title">Address</h4>
-                  <p class="card-text">
-                    1 Main Street<br/>
-                    York<br/>
-                    Yorkshire<br/>
-                    UK<br/>
-                    555-5551
-                </p>
-                </div>
-              </div>
-        
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Wilma Flinstone age:39</div>
-                <div class="card-body">
-                  <h4 class="card-title">Address</h4>
-                  <p class="card-text">
-                    1 Main Street<br/>
-                    York<br/>
-                    Yorkshire<br/>
-                    UK<br/>
-                    555-5552
-                </p>
-                </div>
-              </div>
-        
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Barney Rubble age:38</div>
-                <div class="card-body">
-                  <h4 class="card-title">Address</h4>
-                  <p class="card-text">
-                    2 Main Street<br/>
-                    York<br/>
-                    Yorkshire<br/>
-                    UK<br/>
-                    555-5553
-                </p>
-                </div>
-              </div>
-        
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Betty Rubble age:37</div>
-                <div class="card-body">
-                  <h4 class="card-title">Address</h4>
-                  <p class="card-text">
-                    2 Main Street<br/>
-                    York<br/>
-                    Yorkshire<br/>
-                    UK<br/>
-                    555-5554
-                </p>
-                </div>
-              </div>
-        
+        <div>
+            <h5>Barney Rubble age:38</h5>
+            <p style="padding-left:20px;">
+                2 Main Street<br/>
+                York<br/>
+                Yorkshire<br/>
+                UK<br/>
+                555-5553
+            </p>
+        </div>
+    
+        <div>
+            <h5>Betty Rubble age:37</h5>
+            <p style="padding-left:20px;">
+                2 Main Street<br/>
+                York<br/>
+                Yorkshire<br/>
+                UK<br/>
+                555-5554
+            </p>
+        </div>
+    
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The people_json that was returned from the call to http://axelframework.org/data/people.json.</div>
+    </div>    
 </div>
-
-
-    <hr>
     <div id="http_call_xml" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">6</span> example - http call xml</h4>
-<p style="padding-left:20px">
-    <small>
-        The http action will make a http call and return the result.  The response may also be stored in the
-        exceContext using the key attribute which can then be retrieved for use by a presentation action.
-    </small>
-</p>
-    <div class="alert alert-light rounded">
-    How to get data from an external site.
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>&lt;axel:http href="http://axelframework.org/data/people.xml" method="get"/&gt;</pre></code>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">6</span> example - http call xml</h4>
+        <p style="padding-left:40px">
+            The http action will make a http call and return the result.  The response may also be stored in the
+            exceContext using the key attribute which can then be retrieved for use by a presentation action.
         </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the http response.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    <textarea rows="40" cols="40"><?xml version="1.0" encoding="UTF-8"?>
-<root>
-   <element>
-      <address>1 Lower Street</address>
-      <age>40</age>
-      <city>York</city>
-      <country>UK</country>
-      <name>Fred Flinstone</name>
-      <phone>555-5551</phone>
-      <state>Yorkshire</state>
-   </element>
-   <element>
-      <address>1 Lower Street</address>
-      <age>39</age>
-      <city>York</city>
-      <country>UK</country>
-      <name>Wilma Flinstone</name>
-      <phone>555-5552</phone>
-      <state>Yorkshire</state>
-   </element>
-   <element>
-      <address>2 Lower Street</address>
-      <age>38</age>
-      <city>York</city>
-      <country>UK</country>
-      <name>Barney Rubble</name>
-      <phone>555-5553</phone>
-      <state>Yorkshire</state>
-   </element>
-   <element>
-      <address>2 Lower Street</address>
-      <age>37</age>
-      <city>York</city>
-      <country>UK</country>
-      <name>Betty Rubble</name>
-      <phone>555-5554</phone>
-      <state>Yorkshire</state>
-   </element>
-</root></textarea>
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">How to get data from an external site.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/&gt;
+&lt;pre&gt;&lt;code&gt;&lt;axel:escape format="xml" ref_key="people_xml"/&gt;&lt;/code&gt;&lt;/pre&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">
+            The first line calls a rest service http://axelframework.org/data/people.xml that returns an
+            xml object.  The second line presents the xml on the page using axel:escape to convert the xml to a presentable format.
+        </div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content from the http response.</div>
+        <hr/>
+        <div class="card-text code">
+            
+            <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;root&gt;
+   &lt;element&gt;
+      &lt;address&gt;1 Lower Street&lt;/address&gt;
+      &lt;age&gt;40&lt;/age&gt;
+      &lt;city&gt;York&lt;/city&gt;
+      &lt;country&gt;UK&lt;/country&gt;
+      &lt;name&gt;Fred Flinstone&lt;/name&gt;
+      &lt;phone&gt;555-5551&lt;/phone&gt;
+      &lt;state&gt;Yorkshire&lt;/state&gt;
+   &lt;/element&gt;
+   &lt;element&gt;
+      &lt;address&gt;1 Lower Street&lt;/address&gt;
+      &lt;age&gt;39&lt;/age&gt;
+      &lt;city&gt;York&lt;/city&gt;
+      &lt;country&gt;UK&lt;/country&gt;
+      &lt;name&gt;Wilma Flinstone&lt;/name&gt;
+      &lt;phone&gt;555-5552&lt;/phone&gt;
+      &lt;state&gt;Yorkshire&lt;/state&gt;
+   &lt;/element&gt;
+   &lt;element&gt;
+      &lt;address&gt;2 Lower Street&lt;/address&gt;
+      &lt;age&gt;38&lt;/age&gt;
+      &lt;city&gt;York&lt;/city&gt;
+      &lt;country&gt;UK&lt;/country&gt;
+      &lt;name&gt;Barney Rubble&lt;/name&gt;
+      &lt;phone&gt;555-5553&lt;/phone&gt;
+      &lt;state&gt;Yorkshire&lt;/state&gt;
+   &lt;/element&gt;
+   &lt;element&gt;
+      &lt;address&gt;2 Lower Street&lt;/address&gt;
+      &lt;age&gt;37&lt;/age&gt;
+      &lt;city&gt;York&lt;/city&gt;
+      &lt;country&gt;UK&lt;/country&gt;
+      &lt;name&gt;Betty Rubble&lt;/name&gt;
+      &lt;phone&gt;555-5554&lt;/phone&gt;
+      &lt;state&gt;Yorkshire&lt;/state&gt;
+   &lt;/element&gt;
+&lt;/root&gt;</code></pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Shows the people_xml that was returned from the call to http://axelframework.org/data/people.xml.</div>
+    </div>    
 </div>
-
-
-    <hr>
     <div id="xml_presentation" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">7</span> example - xml presentation</h4>
-<p style="padding-left:20px">
-    <small>
-        The xml presentation action will map selected content of a XML feed to a presentation form.
-    </small>
-</p>
-<div class="alert alert-light rounded">
-    Present the xml data from an external site.
-</div>
-<ol>
-    <li>
-        <p>
-            Now add the following content to the <i>index.html</i> page.
-            <code>
-                <pre>
-&lt;axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/>
-&lt;axel:map_xml_to_presentation xml_data="&dollar;{people_xml}" xml_path="/root/element">
-    &lt;axel:form>
-        &lt;div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-            &lt;div class="card-header">&dollar;{row:name} age:&dollar;{row:age}&lt;/div>
-            &lt;div class="card-body">
-                &lt;h4 class="card-title">Address&lt;/h4>
-                &lt;p class="card-text">
-                &dollar;{row:address}&lt;br/>
-                &dollar;{row:city}&lt;br/>
-                &dollar;{row:state}&lt;br/>
-                &dollar;{row:country}&lt;br/>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">7</span> example - xml presentation</h4>
+        <p style="padding-left:40px">
+            The xml presentation action will map selected content of an XML feed to a presentation form.
+        </p>
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Present the xml data retrieved from an external site.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:http href="http://axelframework.org/data/people.xml" method="get" key="people_xml"/&gt;
+&lt;axel:map_xml_to_presentation xml_data="&dollar;{people_xml}" xml_path="/root/element"&gt;
+    &lt;axel:form&gt;
+        &lt;div&gt;
+            &lt;h5&gt;&dollar;{row:name} age:&dollar;{row:age}&lt;/h5&gt;
+            &lt;p style="padding-left:20px;"&gt;
+                &dollar;{row:address}&lt;br/&gt;
+                &dollar;{row:city}&lt;br/&gt;
+                &dollar;{row:state}&lt;br/&gt;
+                &dollar;{row:country}&lt;br/&gt;
                 &dollar;{row:phone}
-            &lt;/p>
-            &lt;/div>
-            &lt;/div>
-    &lt;/axel:form>
-&lt;/axel:map_xml_to_presentation>
-                </pre>
-            </code>
-        </p>
-    </li>
-    <li>
-        Refresh the browser and now you see the new content from the http response.
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/axel:form&gt;
+&lt;/axel:map_xml_to_presentation&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Calls a rest service http://axelframework.org/data/people.xml that returns an xml object that is stored in the execContext with key "people_xml"</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        
+        <div class="card-text code">
+
+
+        <div>
+            <h5>Fred Flinstone age:40</h5>
+            <p style="padding-left:20px;">
+                1 Lower Street<br/>
+                York<br/>
+                Yorkshire<br/>
+                UK<br/>
+                555-5551
+            </p>
+        </div>
     
+        <div>
+            <h5>Wilma Flinstone age:39</h5>
+            <p style="padding-left:20px;">
+                1 Lower Street<br/>
+                York<br/>
+                Yorkshire<br/>
+                UK<br/>
+                555-5552
+            </p>
+        </div>
     
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Fred Flinstone age:40</div>
-                <div class="card-body">
-                    <h4 class="card-title">Address</h4>
-                    <p class="card-text">
-                        1 Lower Street<br/>
-                        York<br/>
-                        Yorkshire<br/>
-                        UK<br/>
-                        555-5551
-                    </p>
-                </div>
-            </div>
-        
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Wilma Flinstone age:39</div>
-                <div class="card-body">
-                    <h4 class="card-title">Address</h4>
-                    <p class="card-text">
-                        1 Lower Street<br/>
-                        York<br/>
-                        Yorkshire<br/>
-                        UK<br/>
-                        555-5552
-                    </p>
-                </div>
-            </div>
-        
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Barney Rubble age:38</div>
-                <div class="card-body">
-                    <h4 class="card-title">Address</h4>
-                    <p class="card-text">
-                        2 Lower Street<br/>
-                        York<br/>
-                        Yorkshire<br/>
-                        UK<br/>
-                        555-5553
-                    </p>
-                </div>
-            </div>
-        
-            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Betty Rubble age:37</div>
-                <div class="card-body">
-                    <h4 class="card-title">Address</h4>
-                    <p class="card-text">
-                        2 Lower Street<br/>
-                        York<br/>
-                        Yorkshire<br/>
-                        UK<br/>
-                        555-5554
-                    </p>
-                </div>
-            </div>
-        
+        <div>
+            <h5>Barney Rubble age:38</h5>
+            <p style="padding-left:20px;">
+                2 Lower Street<br/>
+                York<br/>
+                Yorkshire<br/>
+                UK<br/>
+                555-5553
+            </p>
+        </div>
+    
+        <div>
+            <h5>Betty Rubble age:37</h5>
+            <p style="padding-left:20px;">
+                2 Lower Street<br/>
+                York<br/>
+                Yorkshire<br/>
+                UK<br/>
+                555-5554
+            </p>
+        </div>
+    
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Loops through each object in the people_xml and presents the response.</div>
+    </div>    
 </div>
-
-
-    <hr>
     <div id="json_get" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">8</span> example - json get</h4>
-<p style="padding-left:20px">
-    <small>
-        Get an object/s from a json document.
-    </small>
-</p>
-<div class="alert alert-light rounded">
-    Get an object/s from a json document that already exists in the execContext.
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>&lt;axel:json_get json_data="&dollar;{people_json}" json_path="name"/&gt;</pre></code>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">8</span> example - json get</h4>
+        <p style="padding-left:40px">
+            How to get an object/s from a json document.
         </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    name: Fred Flinstone
-</div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content, note the <b>index="1"</b>
-            <code><pre>&lt;axel:json_get json_data="&dollar;{people_json}" json_path="name" index="1"/&gt;</pre></code>
-        </p>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document showing the second name.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    name: Wilma Flinstone
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Get an object/s from a json document that already exists in the execContext.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+name: &lt;axel:json_get json_data="&dollar;{people_json}" json_path="name"/&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Gets an object called "name" from a json object stored in the execContext with key "people_json"</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        
+        <div class="card-text code">
+            <pre>
+                <code>
+name: Fred Flinstone
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The "person_json" was stored in the execContext in a previous tutorial and this was used to get the "name" object from the "people_json" object.</div>
+    </div>    
 </div>
 
-    <hr>
+
     <div id="code" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">9</span> example - execute java code</h4>
-<p style="padding-left:20px">
-    <small>
-        The code action will invoke a java bean method.
-    </small>
-</p>
-<div class="alert alert-light rounded">
-    Execute a java method, the result can be shown on the page or stored in the execContext
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">9</span> example - execute java code</h4>
+        <p style="padding-left:40px">
+            The code action invokes java bean methods.
+        </p>
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Execute a java method, the result can be shown on the page or stored in the execContext</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:code call="axel.AxelCodeExample.getProjectTitle"/&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Calls the getProjectTitle method that returns the property setting for "project.title"</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+axel run
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">
+            The method getProjectTitle in the java class AxelCodeExample returns the project title that came
+            from a execContext property that was set when the application started.
+        </div>
+    </div>    
+    <div class="card-body">
+        <div class="card-title title">Execute a java method that takes a "name" parameter.</div>
+        <div class="card-text instruction">3. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:code call="axel.AxelCodeExample.hello"&gt;
+    &lt;axel:param value="Fred"/&gt;
+&lt;/axel:code&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Calls the hello method that takes the name as a parameter and returns "Hello " + name</div>
+        <div class="card-text instruction">4. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+Hello Fred
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">
+            The method hello in the java class AxelCodeExample returns a string value "Hello Fred".
+        </div>
+    </div>    
+    <div class="card-body">
+        <div class="card-title title">Execute a java method that gets a sorted list of the first 10 java beans setup in the spring applicationContext.</div>
+        <div class="card-text instruction">5. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:code call="axel.AxelCodeExample.getListOf10Beans" key="beans10"/&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Calls the getListOf10Beans method that returns the sorted names 10 beans stored in the execContext key = "beans10".</div>
+        <div class="card-text instruction">6. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+_relProvider<br/>annotationRelProvider<br/>applicationTaskExecutor<br/>axelApplication<br/>axelConfig<br/>axelController<br/>axelServlet<br/>basicErrorController<br/>beanNameHandlerMapping<br/>beanNameViewResolver<br/>characterEncodingFilter<br/>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">
+            The method getListOf10Beans in the java class AxelCodeExample returns a list of the first 10 sorted bean names from the spring applicationContext.
+        </div>
+    </div>    
 </div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>&lt;axel:code call="axel.AxelCodeExample.getProjectTitle"/></pre></code>
+    <div id="put_get_remove" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">10</span> example - put, get and remove</h4>
+        <p style="padding-left:40px">
+            How to put, get and remove content from execContext.
         </p>
-    </li>    
-    <small>Calls the getProjectTitle method that returns the property setting for "project.title"</small>
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    axel run
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Put, Get and Remove some content from execContext</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:put key="a_key"&gt;This is the value stored for a_key&lt;/axel:put&gt;
+"&lt;axel:get key="a_key"/&gt;"
+&lt;axel:remove key="a_key"/&gt;
+"&lt;axel:get key="a_key"/&gt;"
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Stores a value for "a_key" into the execContext using axel:put then uses axel:get to retrieve it, then uses axel:remove to remove it.</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        
+        <div class="card-text code">
+            <pre>
+                <code>
+
+"This is the value stored for a_key"
+
+"null"
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The first axel:get returns "This is the value stored for a_key", then the a_key is removed and the 2nd axel:get returns "null"</div>
+    </div>    
 </div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>
-&lt;axel:code call="axel.AxelCodeExample.hello">
-    &lt;axel:param value="Fred"/>
-&lt;/axel:code></pre></code>
+    <div id="if_else_elseif" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">11</span>  example - if, else and elseif</h4>
+        <p style="padding-left:40px">
+            How to add conditional logic if, else and elseif.
         </p>
-        <small>Calls the hello method passing the name parameter and returns "Hello " + name</small>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-        Hello Fred
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Use if, else and elseif to apply conditional logic.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code class="xml">
+                    
+&lt;axel:put key="a_number"&gt;10*10/5&lt;/axel:put&gt;
+&lt;axel:if expression="&dollar;{a_number} == 20"&gt;
+    1. if - a_number: 20
+&lt;/axel:if&gt;
+&lt;br/&gt;
+&lt;axel:if expression="&dollar;{a_number} == 21"&gt;
+    2.1. if - a_number: 21
+&lt;axel:else&gt;
+    2.2. else - a_number = 20
+&lt;/axel:else&gt;
+&lt;/axel:if&gt;
+&lt;br/&gt;
+&lt;axel:if expression="&dollar;{a_number} == 21"&gt;
+    3.1. if - a_number: 21
+&lt;axel:elseif expression="&dollar;{a_number} == 19"&gt;
+    3.2. elseif - a_number: 19
+&lt;/axel:elseif&gt;
+&lt;axel:elseif expression="&dollar;{a_number} == 20"&gt;
+    3.3. elseif - elseif - a_number: 20
+&lt;/axel:elseif&gt;
+&lt;axel:else&gt;
+    3.4. - elseif - a_number != 21 or 19 it's 20
+&lt;/axel:else&gt;
+&lt;/axel:if&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Stores a value 10*10/5 (20) for key "a_number", then shows all usage of <b>if</b>, <b>elseif</b> and <b>else</b></div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content from the json document.</div>
+        <hr/>
+        
+        <div class="card-text code"><pre><code>
+            
+                1. if - a_number: 20
+            
+            <br/>
+            
+                2.2. else - a_number = 20
+            
+            <br/>
+            
+                3.3. elseif - elseif - a_number: 20
+            
+        </code></pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The results of conditional combinations for if, else and elseif.</div>
+    </div>    
 </div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>&lt;axel:code call="axel.AxelCodeExample.getListOf10Beans" key="beans10"/></pre></code>
+
+
+    <div id="range" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">12</span> example - range</h4>
+        <p style="padding-left:40px">
+            Numeric range values that increase or decrease each time they are accessed.
         </p>
-        <small>Gets a list of the the first 10 beans from the spring framework alphabetically sorted:</small>
-    </li>    
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    
-    <div style="padding-left:10px">
-        _relProvider<br/>annotationRelProvider<br/>applicationTaskExecutor<br/>axelApplication<br/>axelConfig<br/>axelController<br/>axelServlet<br/>basicErrorController<br/>beanNameHandlerMapping<br/>beanNameViewResolver<br/>characterEncodingFilter<br/>
+    </div>
+    <div class="card-body">
+        
+        <div class="card-title title">Use to create incremental/decremental indexing values.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+&lt;axel:range name="axel-index" from="1" to="100"/>
+axel-index:1
+axel-index:2
+axel-index:3
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Creates an incremental index between 1 and 100 named axel-index</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+axel-index:4
+axel-index:5
+axel-index:6
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The range changes by 1 each time its shown on the page.  In this example it's displayed 1, 2 and 3.</div>
     </div>
 </div>
 
-    <hr>
-    <div id="put_get" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">10</span> example - put and get</h4>
-<p style="padding-left:20px">
-    <small>
-        How to put, get and remove content from execContext
-    </small>
-</p>
-<div class="alert alert-light rounded">
-    Put some content into execContext and Get some content from execContext and Remove some content from execContext
+    <div id="escaping" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">13</span> example - escape and unescape content</h4>
+        <p style="padding-left:40px">
+            Escape and Unescape actions for java, html, xml, javascript, csv and pre (axel presentation - default)
+            The tutorial shows how the escape action works, the unescape action is the reverse of the escape action.
+        </p>
+    </div>
+    
+    <div class="card-body">
+        
+        <!-- 1 -->
+        <div class="card-title title">Escape content for axel <b>pre</b> presentation this is the default.</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;axel:escape&gt;
+    &lt;xml&gt;
+        &lt;name&gt;Fred&lt;/name&gt;
+        &lt;phone&gt;555 5555&lt;/phone&gt;
+        &lt;secret&gt;&dollar;{secret}&lt;/secret&gt;
+    &lt;/xml&gt;
+&lt;/axel:escape&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Adding the axel:escape action with some xml content</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+&lt;xml&gt;
+    &lt;name&gt;Fred&lt;/name&gt;
+    &lt;phone&gt;555 5555&lt;/phone&gt;
+    &lt;secret&gt;&dollar;{secret}&lt;/secret&gt;
+&lt;/xml&gt;
+                
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The escape action with default format of pre converted the xml content for presentation on the page.</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card-body">
+    <div class="card-title title">Escape content for <b>html</b> presentation.</div>
+    <div class="card-text instruction">3. Edit the <i>index.html</i> page and add the following  content</div>
+    <hr/>
+    <div class="card-text code">
+        <pre>
+            <code>
+                
+&lt;axel:escape format="html"&gt;
+&lt;xml&gt;
+    &lt;name&gt;Fred&lt;/name&gt;
+    &lt;phone&gt;555 5555&lt;/phone&gt;
+    &lt;secret&gt;&dollar;{secret}&lt;/secret&gt;
+&lt;/xml&gt;
+&lt;/axel:escape&gt;
+                
+            </code>
+        </pre>
+    </div>
+    <hr/>
+    <div class="card-text whatitdoes">Adding the axel:escape action with some xml content and setting the format to "html"</div>
+    <div class="card-text instruction">4. Refresh the browser and now you see the new content showing the results.</div>
+    <hr/>
+    <div class="card-text code">
+        <pre>
+            <code>
+                
+&lt;xml&gt;
+&lt;name&gt;Fred&lt;/name&gt;
+&lt;phone&gt;555 5555&lt;/phone&gt;
+&lt;secret&gt;This is the secret&lt;/secret&gt;
+&lt;/xml&gt;
+            
+            </code>
+        </pre>
+    </div>
+    <hr/>
+    <div class="card-text whatitdoes">The escape action with format html converted the xml content for presentation on the page and the &dollar;{secret} was replaced with the exceContext for "secret".</div>
 </div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>
-&lt;axel:put key="a_key">This is the value stored for a_key&lt;/axel:put>
-&lt;axel:get key="a_key"/>&lt;
-&lt;axel:remove key="a_key"/>
-&lt;axel:get key="a_key"/>
-        </pre></code>
-        </p>
-    </li>    
-    <small>Stores a value for "a_key" into the execContext using axel:put then uses axel:get to retrieve it, then uses axel:remove to remove it.</small>
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    
-    This is the value stored for a_key
-    
-    null
-    <p>
-        <small>the "null" shows the value has been removed</small>
-    </p>
 </div>
 
-    <hr>
-    <div id="if_else_elseif" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">10</span> example - if, else and elseif</h4>
-<p style="padding-left:20px">
-    <small>
-        How to add conditional logic if, else and elseif.
-    </small>
-</p>
-<div class="alert alert-light rounded">
-    Use if, else and elseif to add content on the page.
+    <div id="evaluate" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">14</span> example - eval</h4>
+        <p style="padding-left:40px">
+            The eval "evaluate" action uses javascript evaluations.  As an example eval(10*10/2) = 50
+        </p>
+    </div>
+    <div class="card-body">
+        
+        
+        <!-- 1 -->
+        <div class="card-title title">Evaluations of numbers and text content</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+eval1:&lt;axel:eval expression="10*10/2"/&gt;
+eval2:&lt;axel:eval expression="10*10/2+&dollar;{number}"/&gt;
+eval3:&lt;axel:eval expression="10*10/2+' textcontent' + ' more textcontent'"/&gt;
+&lt;axel:eval expression="100/9.8" key="eval_result"/&gt; &lt;!-- store the result in the execContext with key "eval_result" --&gt;
+eval4:&dollar;{evel_result}
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Adding the axel:escape action with some xml content</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+eval1:50
+eval2:55
+eval3:50 textcontent more textcontent
+ <!-- store the result in the execContext with key "eval_result" -->
+eval4:10.204081632653061
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Some examples of how axel:eval works.  Including number and string combinations.  Note the eval_result stored in the execContext and used on the line after the evaluation.</div>
+    </div>
 </div>
-<ol>
-    <li>
-        <p>
-            Edit the <i>index.html</i> page and add the following  content
-            <code><pre>
-&lt;axel:put key="a_number">10*10/5&lt;/axel:put>
-&lt;axel:if expression="&dollar;{a_number} == 20">
-    if - a_number: &lt;axel:get key="a_number"/>
-&lt;/axel:if>
-&lt;br/>            
-&lt;axel:if expression="&dollar;{a_number} == 21">
-    a_number: 21
-&lt;axel:else>
-    else - a_number != 21 it's &lt;axel:get key="a_number"/>
-&lt;/axel:else>
-&lt;/axel:if>
-&lt;br/>            
-&lt;axel:if expression="&dollar;{a_number} == 21">
-    a_number: 21
-&lt;axel:elseif expression="&dollar;{a_number} == 19">
-    a_number: 19
-&lt;/axel:elseif>
-&lt;axel:elseif expression="&dollar;{a_number} == 20">
-    elseif - a_number: &lt;axel:get key="a_number"/>
-&lt;/axel:elseif>
-&lt;axel:else>
-    a_number != 21 or 19 it's &lt;axel:get key="a_number"/>
-&lt;/axel:else>
-&lt;/axel:if></pre></code>
+
+    <div id="date_formatting" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">15</span> example - date formatting</h4>
+        <p style="padding-left:40px">
+            Date Formatting converts dates and times to different formats.
         </p>
-    </li>    
-    <small>Stores a value 10*10/5 (20) for key "a_number", then shows all usage of <b>if</b>, <b>elseif</b> and <b>else</b></small>
-    <li>
-        <p>
-            Refresh the browser and now you see the new content from the json document.
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    
-    
-        if - a_number: 10*10/5
-    
-    <br/>
-    
-        else - a_number = 10*10/5
-    
-    <br/>
-    
-        elseif - a_number: 10*10/5
-    
+    </div>
+    <div class="card-body">
+        
+        <!-- 1 -->
+        <div class="card-title title">Selection of date and time formatting</div>
+        <div class="card-text instruction">1. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    
+          yyyy-MM-dd: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="yyyy-MM-dd"/&gt;
+          dd-MM-yyyy: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MM-yyyy"/&gt;
+            dd-MM-yy: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MM-yy"/&gt;
+      E, MMM dd yyyy: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="E, MMM dd yyyy"/&gt;
+        dd-MMMM-yyyy: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MMMM-yyyy"/&gt;
+    yyyy-MM-dd hh:mm: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="yyyy-MM-dd hh:mm"/&gt;
+E, MMM dd yyyy hh:mm: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="E, MMM dd yyyy hh:mm"/&gt;
+    MM-dd-yyyy hh:mm: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="MM-dd-yyyy hh:mm"/&gt;
+               hh:mm: &lt;axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="hh:mm"/&gt;
+                    
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Adding the axel:date_formatter actions with different destination_formats</div>
+        <div class="card-text instruction">2. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+          yyyy-MM-dd: 2021-12-25
+          dd-MM-yyyy: 25-12-2021
+            dd-MM-yy: 25-12-21
+      E, MMM dd yyyy: Sat, Dec 25 2021
+        dd-MMMM-yyyy: 25-December-2021
+    yyyy-MM-dd hh:mm: 2021-12-25 12:30
+E, MMM dd yyyy hh:mm: Sat, Dec 25 2021 12:30
+    MM-dd-yyyy hh:mm: 12-25-2021 12:30
+               hh:mm: 12:30
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Some examples of how axel:date_formatter works.</div>
+    </div>
 </div>
 
 </div>

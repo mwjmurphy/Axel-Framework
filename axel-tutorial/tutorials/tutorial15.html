@@ -1,0 +1,54 @@
+<div id="date_formatting" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">${tutorial_page_index}</span> example - date formatting</h4>
+        <p style="padding-left:40px">
+            Date Formatting converts dates and times to different formats.
+        </p>
+    </div>
+    <div class="card-body">
+        <axel:range name="instruction-counter" from="1" to="100"/>
+        <!-- 1 -->
+        <div class="card-title title">Selection of date and time formatting</div>
+        <div class="card-text instruction">${instruction-counter}. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+                    <axel:escape>
+          yyyy-MM-dd: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="yyyy-MM-dd"/>
+          dd-MM-yyyy: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MM-yyyy"/>
+            dd-MM-yy: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MM-yy"/>
+      E, MMM dd yyyy: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="E, MMM dd yyyy"/>
+        dd-MMMM-yyyy: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MMMM-yyyy"/>
+    yyyy-MM-dd hh:mm: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="yyyy-MM-dd hh:mm"/>
+E, MMM dd yyyy hh:mm: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="E, MMM dd yyyy hh:mm"/>
+    MM-dd-yyyy hh:mm: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="MM-dd-yyyy hh:mm"/>
+               hh:mm: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="hh:mm"/>
+                    </axel:escape>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Adding the axel:date_formatter actions with different destination_formats</div>
+        <div class="card-text instruction">${instruction-counter}. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+          yyyy-MM-dd: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="yyyy-MM-dd"/>
+          dd-MM-yyyy: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MM-yyyy"/>
+            dd-MM-yy: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MM-yy"/>
+      E, MMM dd yyyy: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="E, MMM dd yyyy"/>
+        dd-MMMM-yyyy: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="dd-MMMM-yyyy"/>
+    yyyy-MM-dd hh:mm: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="yyyy-MM-dd hh:mm"/>
+E, MMM dd yyyy hh:mm: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="E, MMM dd yyyy hh:mm"/>
+    MM-dd-yyyy hh:mm: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="MM-dd-yyyy hh:mm"/>
+               hh:mm: <axel:date_formatter date_value="2021-12-25 12:30" origin_format="yyyy-MM-dd hh:mm" destination_format="hh:mm"/>
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Some examples of how axel:date_formatter works.</div>
+    </div>
+</div>

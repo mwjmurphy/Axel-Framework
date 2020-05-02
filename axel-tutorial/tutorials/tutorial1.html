@@ -1,39 +1,42 @@
 <div id="hello_world" style="padding-top: 80px;"></div>
-<h4><span class="badge badge-info">1</span> example - hello world!!!</h4>
-<div class="alert alert-light rounded">
-    Show <strong>Hello World!!! time</strong> in your browser.
-</div>
-<ol>
-    <li>
-        <p>
-            Download the latest version of axel-run jar file from this link <a href="versions/${axel_run_version}.jar">${axel_run_version}.jar</a>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">${tutorial_page_index}</span> example - hello world!!!</h4>
+        <p style="padding-left:40px">
+            This first tutorial shows how to download the axel-run application which is used for all the tutorials.
         </p>
-    </li>    
-    <li>
-        <p>
-            From the command line type <b><i>java -jar ${axel_run_version}.jar</i></b>
-        </p>
-    </li>    
-    <li>
-        <p>
-            When the application has started open your web browser and enter <b>localhost</b> - you'll see an error <b>"Whitelabel Error Page"</b>
-        </p>
-    </li>    
-    <li>
-        <p>
-            In the same location, create a new file called <i>index.html</i> and edit the file adding
+    </div>
+    <div class="card-body">
+        <axel:range name="instruction-counter" from="1" to="100"/>
+        <div class="card-title title">Show "Hello World!!! time" in your browser.</div>
+        <div class="card-text instruction">${instruction-counter}. Download the latest version of axel-run jar file from this link <a href="versions/${axel_run_version}.jar">${axel_run_version}.jar</a></div>
+        <hr/>
+        <div class="card-text instruction">${instruction-counter}. From the command line type <b><i>java -jar ${axel_run_version}.jar</i></b></div>
+        <hr/>
+        <div class="card-text instruction">${instruction-counter}. When the application has started open your web browser and enter <b>localhost</b> - you'll see an error <b>"Whitelabel Error Page"</b></div>
+        <hr/>
+        <div class="card-text instruction">${instruction-counter}. In the same location, create a new file called <i>index.html</i> and edit the file adding</div>
+        <hr/>
+        <div class="card-text code">
             <pre>
-Hello World!!!  &dollar;{current.time}
+                <code>
+                    <axel:escape>
+Hello World!!! ${current.time}
+                    </axel:escape>
+                </code>
             </pre>
-        </p>
-    </li>    
-    <li>
-        <p>
-            In your web browser now type <b>localhost/index.html</b> and you'll see
-        </p>
-    </li>    
-</ol>
-<div class="alert alert-dark rounded">
-    Hello World!!! ${current.time}
+        </div>
+        <hr/>
+        <div class="card-text instruction">${instruction-counter}. In your web browser now type <b>localhost/index.html</b> and you'll see.  <i>The time show here will have changed to show your time.</i></div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+Hello World!!! ${current.time}
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">You've just created your first html page with axel that shows Hello World!!! with your local time.</div>
+    </div>    
 </div>
-

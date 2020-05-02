@@ -69,6 +69,12 @@ public abstract class BaseAction
 
 		this.actions = actions;
 	}
+	
+    public void clearActions() {
+    	this.setActions(new ArrayList<BaseAction>());
+    }
+
+
 
 	public void setAction(BaseAction action)
 	{

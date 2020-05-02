@@ -1,0 +1,40 @@
+<div id="range" style="padding-top: 80px;"></div>
+<div class="card mb-3" style="width: 100%">
+    <div class="card-header">
+        <h4><span class="badge badge-info">${tutorial_page_index}</span> example - range</h4>
+        <p style="padding-left:40px">
+            Numeric range values that increase or decrease each time they are accessed.
+        </p>
+    </div>
+    <div class="card-body">
+        <axel:range name="instruction-counter" from="1" to="100"/>
+        <div class="card-title title">Use to create incremental/decremental indexing values.</div>
+        <div class="card-text instruction">${instruction-counter}. Edit the <i>index.html</i> page and add the following  content</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code>
+&lt;axel:range name="axel-index" from="1" to="100"/>
+axel-index:${axel-index}
+axel-index:${axel-index}
+axel-index:${axel-index}
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">Creates an incremental index between 1 and 100 named axel-index</div>
+        <div class="card-text instruction">${instruction-counter}. Refresh the browser and now you see the new content showing the results.</div>
+        <hr/>
+        <div class="card-text code">
+            <pre>
+                <code><axel:range name="axel-index" from="1" to="100"/>
+axel-index:${axel-index}
+axel-index:${axel-index}
+axel-index:${axel-index}
+                </code>
+            </pre>
+        </div>
+        <hr/>
+        <div class="card-text whatitdoes">The range changes by 1 each time its shown on the page.  In this example it's displayed 1, 2 and 3.</div>
+    </div>
+</div>

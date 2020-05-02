@@ -20,4 +20,16 @@ public class TestUnEscape {
 		assertEquals("\" &", result);
 	}
 
+	@Test
+	public void testEscapePre() throws Exception {
+		UnEscapeAction unescape = new UnEscapeAction();
+		unescape.setFormat("pre");
+		unescape.setRef_key("html");
+		String data = "&quot; &amp; &lt;&dollar;&gt;";
+		IExecContext execContext = new NoPersistenceExecContext(null, null);
+		execContext.put("html", data);
+		String result = unescape.execute(execContext);
+		assertEquals("&quot; &amp; <$>", result);
+	}
+
 }
