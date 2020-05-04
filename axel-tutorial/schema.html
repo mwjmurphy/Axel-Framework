@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <axel:insert page="core/includes.html"/>
+    <axel:insert page="style.html"/>
+</head>
+<body>
+    <div class="container-fluid text-center">    
+        <axel:insert page="header.html"/>
+        <div style="padding-top: 50px">
+        </div>
+        <axel:insert page="title.html"/>
+        <div class="row content">
+            <div class="col-sm-3 sidenav">
+                <axel:insert page="schema/axel_core_actions_index.html"/>
+            </div>
+            <div class="col-sm-9" style="">
+                <axel:insert page="schema/axel_core_actions_doc.html"/>
+                <axel:insert page="schema/axel_core_actions.html"/>
+            </div>
+        </div>
+    </div>
+    <axel:insert page="footer.html"/>
+</body>
+</html>

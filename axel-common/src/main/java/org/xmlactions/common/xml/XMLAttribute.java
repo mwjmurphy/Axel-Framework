@@ -47,6 +47,10 @@ public class XMLAttribute
 	{
 		return(key);
 	}
-
+	
+	@Override
+	public String toString() {
+		return getKey() + ":" + getValueAsString();
+	}
 
 }

@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: axel-shared-schema
+  profiles:
+    active: ${serverName:stage}
+  jmx:
+    default-domain: ${spring.application.name}
+  cache:
+    caffeine:
+      spec: expireAfterWrite=15m
+server:
+  port: 80
+  servlet:
+    context-path: /
+  contextPath: /
+logging:
+  pattern:
+    console: "[${serverName}:${spring.application.name}] %date{HH:mm:ss} %-6level %-10([%thread]) %logger{1}.%method:%line %message%n"
+    file:    "[${serverName}:${spring.application.name}] %date{HH:mm:ss} %-6level %-10([%thread]) %logger{1}.%method:%line %message%n"
+  file: /var/log/ts/api-${spring.application.name}.log
+  level:
+    org.apache: WARN
+    org.springframework: WARN
+    org.hibernate: WARN
+
+---
+spring:
+  profiles: stage
+logging:
+    level:
+      ROOT: INFO
+---
+spring:
+  profiles: uat
+logging:
+    level:
+      ROOT: WARN
+---
+spring:
+  profiles: prod
+
+logging:
+    level:
+      org.springframework: WARN
+      ROOT: WARN
+---

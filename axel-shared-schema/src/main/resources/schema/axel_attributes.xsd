@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   attributeFormDefault="unqualified"
+   elementFormDefault="unqualified">
+
+	<xsd:include schemaLocation="pager_types.xsd"/>
+	
+	<!--
+		COMMON ATTRIBUTES 
+	 -->
+	<xsd:attribute name="x" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+			The presentation x position. Same usage as html in that
+			it can represent percentage, px and any other html
+			applicable format. 
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="y" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+			The presentation y position. Same usage as html in that
+			it can represent percentage, px and any other html
+			applicable format. 
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="width" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				The display width of the form, when shown in a table.
+				The width can also be an equation or a percentage - note the
+				xsd:string
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	
+	<xsd:attribute name="height" type="xsd:string" >
+		<xsd:annotation>
+			<xsd:documentation>
+			The presentation height. Same usage as html in that
+			it can represent percentage, px and any other html
+			applicable format. 
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="id" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				Used to identify this form if more than	one are set on a page.
+				This can then be used to show or hide this form using the pager.js and
+				also makes it available in javascript using getElementById(...)
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	
+	<xsd:attribute name="title" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				Title displayed for this form. If this is empty
+				no title will be displayed.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="tooltip" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				Adds a tooltip to the link when displayed.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	
+	<xsd:attribute name="visible" type="xsd:boolean" default="true">
+		<xsd:annotation><xsd:documentation><![CDATA[
+				Set to "false" to hide the form when it is displayed on the screen.
+				
+				Set to "true" <i>the default setting</i> to show the form on screen.
+				
+				Call javascript show("id") to display the form.
+				
+				Default value = "true" 
+		]]></xsd:documentation></xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="storage_config_ref" type="xsd:string">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			This is the bean reference to the StorageConfig to use for this action. The StorageConfig/s
+			are configured in the Spring Configuration file.
+			
+			A spring configuration for a StorageConfig looks like
+			
+<pre>
+&lt;bean id="storageConfig" class="org.xmlactions.db.config.StorageConfig" scope="singleton"&gt;<br/>
+	&lt;property name="dbConnector" ref="mysqlDataSource_school" /&gt;<br/>
+	&lt;property name="storageContainer" ref="storageContainer" /&gt;<br/>
+	&lt;property name="databaseName" value="school" /&gt;<br/>
+	&lt;property name="sqlBuilder" ref="sqlBuilder" /&gt;<br/>
+	&lt;property name="dbSpecificName" value="mysql" /&gt;<br/>
+&lt;/bean&gt;<br/>
+</pre>
+
+			The StorageConfig is pre-configured and stored in the execution context.
+
+			The StorageConfig contains the dbConnector, storageContainer and the databaseName. 
+
+			A default storage_config_ref may be set in the execContext using the key "default_storage_config_ref".
+			Usually this gets set in the web.properties.
+
+		]]></xsd:documentation></xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="storage_ref" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the bean reference to the storage we want to use.
+				A storage is a pre-loaded definition such as a database
+				that includes the meta-data.
+				i.e. db_layout.xml.
+				The storage_ref is used to retrieve the data source from 
+				the execContext.
+				This is an optional setting as it may retrieve the value
+				from a parent element such as "listcp".
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="database_name" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the name of the database in the data storage.
+				If no database_name is entered then the first one in
+				the	storage definition is used.
+				The table_name attribute is contained in this database.
+				This is an optional setting as it may retrieve the
+				value from a parent element such as "listcp".
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="table_name" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the name of the table in the data source
+				table to search. To limit the fields required for
+				the search the fields may also be specified in this action. 
+				This is an optional setting as it may retrieve the
+				value from a parent element such as "listcp".
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	
+	<xsd:attribute name="sql" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is an sql statement or a reference to a stored
+				sql statement.
+			</xsd:documentation>
+			<xsd:documentation>
+				This can be used in place of a table_name where you
+				provide the full sql.
+			</xsd:documentation>
+			<xsd:documentation>
+				The sql parameter may be either an sql statement or
+				a reference to an sql stored in the execContext.
+			</xsd:documentation>
+			<xsd:documentation>
+				A replace markers is performed on the sql before it
+				is sent to the database.  This will replace any of
+				the ${...} marker settings configured in the sql
+				with replacement data from the execution context.
+				Which enables you to enter parameters into the sql
+				itself.
+			</xsd:documentation>
+			<xsd:documentation>
+				Example: select tb_name.name from tb_name where tb_name.name='${match_this_name}'
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	
+	<xsd:attribute name="data_source_ref" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the name of data source that will provide the database connection.
+			</xsd:documentation>
+			<xsd:documentation>
+				This is a reference to a spring configuered bean.
+			</xsd:documentation>
+			<xsd:documentation>
+				The data source is usually configured on the application/web server, 
+				if not it can be setup from a spring configuration.
+			</xsd:documentation>
+			<xsd:documentation>
+				@see myDataSource configured in the spring-pager-web-startup.xml
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="theme_name" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the theme name, reference to a pre-loaded theme
+				property file that has the attribute settings for drawing
+				this theme.
+				@see theme.doc or theme.txt
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="label_position" type="label_position_options" default="left">
+		<xsd:annotation>
+			<xsd:documentation>
+				Selects how to display the label and field.
+				left = label displayed to left of field.
+				above = label displayed above field.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="presentation_name" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the presentation name for the link 
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	
+    <xsd:attribute name="presentation_form" type="xsd:string">
+        <xsd:annotation><xsd:documentation><![CDATA[
+            <p>
+                The file name of a presentation form to draw into.
+            </p>
+            <p>
+                A presentation_form will contain replacement markers that will
+                be populated from the execContext.
+            </p>
+            <p>
+                For a list - each row from the query will be drawn into this form.<br/>
+                Use the ${...} replacement markers to insert the fields from the query into the form.<br/>
+            </p>
+            <p>
+                As an example to insert the value for field table.fieldName into the form
+                use ${table.fieldName}.
+            </p>
+            <p>
+                When using JSON use a <b>/</b> as a seperator in place of a <b>.</b>
+            </p>
+        ]]></xsd:documentation></xsd:annotation>
+    </xsd:attribute>
+    
+	<xsd:attribute name="header_name" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the presentation name for the header if displayed in a list. 
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+
+	<xsd:attribute name="expression" type="xsd:string">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			An expression to be evaluated using JavaScript.
+			
+			If this expression evaluates to true then any enclosing actions are executed.
+			
+			The expression may contain parameter references using the replacement markers. e.g. ${session:key}.
+			
+			The characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters
+			&lt;, &gt; and &amp;.
+			
+			If a value for a replacement marker is not found it will be replace with a null. 
+		]]></xsd:documentation></xsd:annotation>
+	</xsd:attribute>
+	
+   <!-- 
+	<xsd:attribute name="path" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				Relative path to storage location where file is stored.
+			</xsd:documentation>
+			<xsd:documentation>
+				Use . if you want the file stored on the root.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+    -->
+	
+	<xsd:attribute name="uri" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the uri (page) that gets called for this link.
+				All input and option fields will be included in the page
+				request.
+				This attribute may be set to "" if the submit attribute
+				is set "true", this will cause the containing action class
+				such as add to hide the add from after a successfull submit.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	
+	<xsd:attribute name="display_as" type="link_display_options" default="link">
+		<xsd:annotation>
+			<xsd:documentation>
+				Displays a link as a 'link' or as a 'button'.
+				The	selected theme for a link = INPUT_LINK and for a
+				button = INPUT_BUTTON.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+    
+</xsd:schema>

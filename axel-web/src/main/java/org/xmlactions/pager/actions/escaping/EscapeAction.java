@@ -79,10 +79,15 @@ public class EscapeAction extends CommonFormFields {
         return escapedData;
     }
 
-    private String presentationEscape(String data) {
+    public static String presentationEscape(String data) {
     	data = data.replace("<", "&lt;");
     	data = data.replace(">", "&gt;");
     	data = data.replace("$", "&dollar;");
+    	return data;
+    }
+
+    public static String jsonEscape(String data) {
+    	data = data.replace("\"", "\"");
     	return data;
     }
 

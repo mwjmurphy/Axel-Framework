@@ -1,0 +1,1269 @@
+<xsd:schema
+   xmlns="http://www.axelframework.org/axel_core"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   targetNamespace="http://www.axelframework.org/axel_core"
+   attributeFormDefault="unqualified"
+   elementFormDefault="unqualified"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <xsd:include schemaLocation="axel_types.xsd"/>
+   <xsd:include schemaLocation="axel_attributes.xsd" />
+
+	<xsd:annotation><xsd:documentation><![CDATA[
+		<h4>Actions</h4>
+		
+		The framework uses actions to perform tasks inside a web html page. Tasks vary in functionality
+		and can be a simple date format to a complex page insert.  This schema describes the core actions
+		provided by the framework.
+		
+		Actions are placed into the static html page content.  When that page is serviced by the server the
+		actions are replaced with the result of each action..
+		
+		The following example is an html page with an insert action. The insert action in this case inserts a page named
+		head.html into the html before it is shown on the browser.  The head.html as you might conclude contains the
+		css and javascript that this page requires.  It could contain anything needed by this and other pages. Now
+		any page that requires these css and javascripts can simply use the insert command to have them inserted into
+		the page. The insert action is highlighted in red.<br/>
+		
+		When an action is processed on a web page the response from an action if not null will replace the
+		action content (syntax) on the web page. If the response is null the action syntax is removed from
+		the web page.
+		
+		Now start to think about dynamically building an html page, changing the content based on user
+		selections, retrieving data from a database or other such sources. Being able to seperate out
+		pages for specific tasks gives you object orientation. 
+		
+		<div class="bs-callout bs-callout-info">
+			<h4>Skillset Required</h4>
+			<p>
+				A medium level of expertise in html and xml is required to work with the core actions.
+			</p>
+			<p>
+				A medium level of expertise in Javascript and JSON is required to interact with these actions.  
+			</p> 
+		</div>
+	
+	]]></xsd:documentation></xsd:annotation>
+
+	<xsd:element name="code">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			The code action will invoke Java code from the web page.
+			
+            If there is a response from the java call it will replace the code element in the page. If there
+            is no response then the code element is removed from the page.
+            
+            The response may also be stored in the exceContext using the key attribute.
+      ]]></xsd:documentation></xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="param" minOccurs="0">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The param element may be used to pass one or more parameters to the code call.
+					
+		            @see <a href="#param">param</a> definiton. 
+		      	]]></xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="call" type="xsd:string" use="required">
+            <xsd:annotation><xsd:documentation><![CDATA[
+				This must be the full path, class and method name of the java class that you want to invoke.
+				
+				Example<br/>
+				<code>
+					&lt;axel:code call="my.class.method"/&gt;
+				</code>
+				
+				Example with parameters<br/>
+				<code>
+					&lt;axel:code call="org.xmlactions.common.date.DateUtils.getDate"&gt;<br/>
+					&#160;&#160;&#160;&lt;axel:param value="2010-10-02"/&gt;<br/>
+					&#160;&#160;&#160;&lt;axel:param value="yyyy-MM-dd"/&gt;<br/>
+					&lt;/axel:code&gt;
+				</code>
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The key / name for the variable.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+	<xsd:element name="http">
+		<xsd:annotation><xsd:documentation><![CDATA[
+			The http action will make a http rest call to the url.
+			
+			The response is expected to be in json format.
+			
+            The response may also be stored in the exceContext using the key attribute.
+      ]]></xsd:documentation></xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="param" minOccurs="0">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					The param element may be used to pass one or more parameters to the code call.
+					
+		            @see <a href="#param">param</a> definiton. 
+		      	]]></xsd:documentation></xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="method" type="method_options" use="required" default="get">
+            <xsd:annotation><xsd:documentation><![CDATA[
+				The method determines the http method such as get or post
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="href" type="xsd:string" use="required">
+            <xsd:annotation><xsd:documentation><![CDATA[
+				This is the full address of the http call excluding parameters
+				
+				Example<br/>
+				<code>
+					&lt;axel:http href="https://google.com"/&gt;
+				</code>
+				
+				Example with parameters<br/>
+				<code>
+					&lt;axel:http href="https://google.com"/&gt;
+					&#160;&#160;&#160;&lt;axel:param value="q=spain"/&gt;<br/>
+					&lt;/axel:http&gt;
+				</code>
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The key / name for the variable.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="param">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+			Provides parameters for some of the actions such as code, http or transform 
+			]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="value" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                  This is either<br/>
+                  <ul/>
+                     <li/> The key used to retrieve the value from the execContext
+                     <li/> The value for the parameter.
+                  </ul>
+                  
+                  If the value is used as part of an http call then it should should contain the key=value
+				]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="name" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                  The "name" may be used to provide a name for the HttpAction.<br/>
+                  <code>
+                  	&lt;axel:http .../&gt;
+						&lt;axel:param name="p1" value="value for p1"/&gt;<br/>
+                  	&lt;/axel:http&gt;<br/>
+                  </code>
+				]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="type" type="param_converter_types" use="optional" default="String">
+			<xsd:annotation>
+				<xsd:documentation><![CDATA[
+					Use this attribute to force a conversion on the parameter.  This may be required
+					if the parameter type does not match that of the code parameter.
+                  
+					@see <a href="#param_converter_types">param_converter_types</a> definiton. 
+               ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation><![CDATA[
+                  Not required for code actions.
+
+                  Required only if mapping the params to a map, will be used as
+                  the key in the map.
+			]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+	<xsd:element name="insert">
+		<xsd:annotation>
+			<xsd:documentation>
+            Insert files into a page.
+            
+            The insert action is used to insert files into a page as it is being built on the server.  The benefit of this is that
+            you can separate out presentation objects into simpler pages and then combine them into the final presentation page before
+            the page is rendered to the browser.
+            
+			<div class="bs-callout bs-callout-info">
+				<h4>Notes</h4>
+				<p>
+					Inserted pages may contain their own actions.  These actions will be executed before
+					insertion of the page.
+				</p>
+				<p>
+					Inserted pages may also contain other inserted pages.
+				</p>
+				<p>
+					Object orientation of pages allows them to be shared by others.
+				</p>
+			</div>
+            
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="page" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						The name of the file to insert.
+
+                  		The name of the file may also include the path location relative to the web context root.
+		            ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="path" type="xsd:string" use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+                  		Additional path, prepended to the page.
+
+						By default it is set to the web context root.
+		            ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="namespace" type="xsd:string" use="optional" default="axel">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						Namespace used with pager action commands.
+						
+						This allows you to declare the namespace to use for the inserted page.  Usefull when you
+						don't want to provide the html declaration.
+            		]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="remove_html" type="true_false_options" use="optional" default="true">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						If this is set true (which is the default setting) then the outermost html element is removed.
+						This may be necessary when using strict conformant html. 
+            		]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="insert_into">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            	Insert the current processing page into another page.
+           		
+           		This is used when you have an outer wrapper style page.  The outer page could contain the head, body etc. The
+           		outer page must have a replacement marker key where the current page is inserted into.  The marker must follow
+           		the standard ${insert_here} syntax.  The "insert_here" can be any valid name. 
+           		have a key placed where the this page should be inserted into.
+           		
+			<div class="bs-callout bs-callout-info">
+				<h4>Notes</h4>
+				<p>
+					One of the particular benifits of this action is the way that the page is called from the browser. Calling the
+					inner page is very specific and can be easily traced from the browser.
+				</p>
+				<p>
+					Another benifit is the ability to have a consistant wrapper page that could contain title, menus, breadcrumbs etc.
+					And having a number of pages inject themselves into the wrapper page.  Each of the pages would only to be concerned
+					about themselves, what they need to display and not be concerened about what they are in. 
+				</p>
+			</div>
+            ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="page" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						The name of the page file that the current page will be inserted into.
+
+                  		The name of the file may also include the path location relative to the web root.
+            		]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="path" type="xsd:string" use="optional">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+                  		Additional path, prepended to the page.
+
+						By default it is set to the web context root.
+		            ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="namespace" type="xsd:string" use="optional" default="axel">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						Namespace used with pager action commands.
+						
+						This allows you to declare the namespace to use for the inserted page.  Usefull when you
+						don't want to provide the html declaration.
+            		]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="key" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						This is the replacement marker key that matches the replacement marker on the wrapper page.
+
+						The content of the current page will be replaced in the wrapper page using this replacement market.
+		            ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="remove_html" type="true_false_options" use="optional" default="true">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						If this is set true (which is the default setting) then the outermost html element is removed.
+						This may be necessary when using strict conformant html.
+		            ]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="echo">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+	            Echos content to page 
+            ]]></xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:element name="if">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+	            A conditional expression evaluation in javascript.
+	            
+	            If the expression evaluates to true then any content contained inside the if clause will be processed.
+	            
+	            Example:<br/>
+				<code>
+					&lt;axel:if expression="${index} == 1"&gt;<br/>
+						&#160;&#160;&#160;show this if the value of index is 1<br/>
+					&lt;/axel:if&gt;
+				</code>
+	            
+	            The if action may also include elseif and else actions.
+			]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						List of actions that are executed if the expression evaluates to true.
+					]]></xsd:documentation>
+				</xsd:annotation>
+				<xsd:group ref="actions" />
+			</xsd:sequence>
+			<xsd:attribute ref="expression" use="required">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						An expression to be evaluated using JavaScript.
+						
+						If this expression evaluates to true then the inside content is presented on the page and any actions contained
+						inside the content are executed.
+						
+						The expression may contain parameter references using the replacement markers. e.g. ${session:key}.
+						
+						The characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters
+						&lt;, &gt; and &amp;.
+						
+						If a value for a replacement marker is not found it will be replaced with a null. 
+					]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="elseif">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+            A conditional elseif expression evaluation in javascript.
+            
+            if the expression evaluates to true then any enclosing actions are executed.
+            
+            The elseif action is part of the if, elseif, else actions.
+        ]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:documentation>
+						List of actions that are executed if the xpression evaluates to true.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:group ref="actions" />
+			</xsd:sequence>
+			<xsd:attribute ref="expression" use="required">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+						An expression to be evaluated using JavaScript.
+						
+						If this expression evaluates to true then any enclosing actions are executed.
+						
+						The expression may contain parameter references using the replacement markers. e.g. ${session:key}.
+						
+						The characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters
+						&lt;, &gt; and &amp;.
+						
+						If a value for a replacement marker is not found it will be replace with a null. 
+					]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+   <xsd:element name="else">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Conditional elseif expression evaluation if true executes enclosing actions.
+            The else action is the latter part of the if, elseif, else actions.
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:annotation>
+               <xsd:documentation>
+                  List of actions that are executed if neither the if or any of
+                  the elseif/s evaluates to true.
+                    </xsd:documentation>
+            </xsd:annotation>
+            <xsd:group ref="actions" />
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="put">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Put a variable into a map.  Can be retrieved with ${key}.
+            The element content is the value for the variable.
+            ]]></xsd:documentation>
+         <xsd:documentation>
+            <br />
+            example:
+            <br />
+            &lt;pager:put key="age"&gt;35&lt;/pager:put&gt;
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The key / name for the variable.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="remove">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Remove a variable from the execContext
+            ]]></xsd:documentation>
+         <xsd:documentation>
+            <br />
+            example:
+            <br />
+            &lt;pager:remove key="age"/&gt;
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  The key / name for the variable to remove.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="get">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Get a variable from the execContext map.
+            ]]></xsd:documentation>
+         <xsd:documentation>
+            <br />
+            example:
+            <br />
+            &lt;pager:get key="age"/&gt;
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <p>
+                  The key / name for the variable to get from the execContext.
+                  </p>
+                  <p>
+                  Note. key may also contain prefidex map or lang reference i.e. lang:key
+                  </p>
+            </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="json_get">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Get an object/s from a json document.
+            ]]></xsd:documentation>
+         <xsd:documentation>
+            <br />
+            The objects are stored into the execContext using the row_map_name.
+            <br/>
+            The objects can be retrieved from the execContext using the ${...} notation. The names of the objects
+            will be the corresponding keys from the json document or if an array will be the last entry in the path.
+            <br/> 
+            usage example:
+            <br />
+            &lt;pager:json_get json_data="${jsonData}" json_path="list" index="0" row_map_name="row"/&gt;
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="json_data" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+   	           		This is the json data or a key to get the json from the ExecContext (if used)
+           			This is optional and may be used in place if the json_filename 
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="json_path" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                   This is the path into the json data that is iterated to produce the data for each row.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="index" type="xsd:integer" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                   This is an index into any array that it finds in the json_path.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the data from a single row.
+               	  
+               	  When the "json_get" gets the data from json it stores the results into a map.  By default the map
+               	  name is "row", this can be changed by setting the map name in the "row_map_name" field.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="eval">
+        <xsd:annotation><xsd:documentation>
+            Evaluate a javascript expression.
+
+           	The eval action can be used to perform expressions such as "1+1" or "1+${x}" or "string + ' added to string'"
+		</xsd:documentation></xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="expression" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+					The expression to be evaluated.  The expression may contain parameter references using
+					the	replacement markers. e.g. ${session:key}. The characters &amp;lt;, &amp;gt; and &amp;amp; must be used in
+					place of their replacement characters &lt;, &gt; and &amp;.
+    
+    				The content of the element may be used to store the expression in place of the expression attribute.
+
+					The element content may be used to contain the expression in place of the expression attribute.
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+               		<p>
+	               		If the resultant expression is to be stored in the execContext then set the key name here.
+	               		The result can then be retrieved using the replacement marker syntax.
+               		</p>
+               		<p>
+               			Using the key to store the result in the execContext has the same effect as the put action. 
+               		</p>
+               		
+				</xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+  
+	<xsd:element name="date_formatter">
+		<xsd:annotation><xsd:documentation><![CDATA[
+            Convert a date from one format to another format.
+            
+            This action takes a date in one format such as "2014-12-30" and converts it to anther format such as "30-DEC-2014".
+            The formatter will handle both date and time individually or combined such as "2014-12-30 10:30" to "30-DEC-2014 10:30".
+            
+			Some of the common date and time patterns in ‘SimpleDateFormat’ for Java String to Date conversion are:
+				<ul>
+					<li>Letter 'y' represents Year.</li>
+					<li>Letter 'M' represents Month in Year.</li>
+					<li>Letter 'D' represents Day in Month and ‘E’ is Day Name in Week.</li>
+					<li>Letter 'a' represents AM/PM marker and ‘h’ is Hour in AM/PM.</li>
+					<li>Letter 'H' represents Hour in a Day, ‘m’ represents Minute in Hour and‘s’ is Second in Minute.</li>
+            	</ul>
+            	
+            	Some Helpful Examples<br/>
+					"dd/MM/yyyy" = "12/05/2014"<br/>
+					"dd-MM-yyyy HH:mm:ss" = "12-05-2014 22:37:50"<br/>
+					"dd-MMM-yyyy" = "12-May-2014"<br/>
+					"MM dd, yyyy" = "05 12, 2014"<br/>
+					"E, MMM dd yyyy" = "Mon, May 12 2014"<br/>
+					"E, MMM dd yyyy HH:mm:ss" = "Mon, May 12 2014 23:37:50"<br/>
+					"dd-MMMM-yy"= "14-September-14"<br/>
+            ]]></xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="date_value" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+						This is the original date that we want to convert to another format.
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="origin_format" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					This is the format of the original date in java syntax. i.e.  "dd/MM/yyyy" = "12/05/2014"
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="destination_format" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					This is the format that we want to convert the date to in java syntax. i.e.  "dd-MMM-yyyy" = "12-May-2014"
+				]]></xsd:documentation></xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="key" type="xsd:string" use="optional">
+				<xsd:annotation><xsd:documentation><![CDATA[
+					If you need to have the result stored into the execContext set this the key value here.  It can then be retrieved from the execContext using ${key.value}.
+				]]></xsd:documentation></xsd:annotation>
+	         </xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+
+
+   <xsd:element name="transform">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Transform an xml document using an xsd style sheet.
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="param" minOccurs="0">
+               <xsd:annotation>
+                  <xsd:documentation><![CDATA[
+                     Parameters if used will be passed to the transformer.  Making them available
+                     for the transformation. 
+                     ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+         </xsd:sequence>
+         <xsd:attribute name="xslt_file_name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+		            The name of the transformation file that will perform the transformation. 
+		            ]]></xsd:documentation>
+               <xsd:documentation><![CDATA[
+		            Multiple transformation files may be combined by appending one after the other using a ; seperator.  Usefull if you
+		            need to show the content of an include.  
+		            ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="xml_file_name" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+		            The name of the xml file to transform. 
+		            ]]></xsd:documentation>
+               <xsd:documentation><![CDATA[
+		            Multiple xml files may be combined by appending one after the other using a ; seperator.  Usefull if you
+		            need to show the content of an include. 
+		            ]]></xsd:documentation>
+               <xsd:documentation><![CDATA[
+                    Instead of using an xml file a xml string may be referenced by using
+                    the xml_ref attribute.
+                    ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="xml_ref" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                    The key used to get the xml as a String from the execContext. 
+                    ]]></xsd:documentation>
+               <xsd:documentation><![CDATA[
+                    Instead of using an xml_ref an xml file name may be used by setting
+                    the name of the file in the xml_file_name attribute.
+                    ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                    If this is set than the transformed output will be placed
+                    into the execContex with this key.  Can be retrieved from the 
+                    execContext using the same key.    
+                    ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="transformer_factory" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                  If this is set than this factory will be used to perform the transformation.    
+               ]]></xsd:documentation>
+               <xsd:documentation><![CDATA[
+                  xalan transformer factory = org.apache.xalan.processor.TransformerFactoryImpl     
+               ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="escape">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            This action will escape data to a number of different formats.
+            
+            The code uses StringEscapeUtils from apache.
+            
+            The types of data that can be escaped are 'html', 'xml', 'java', 'javascript', 'csv'
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="ref_key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                    The key used to get the data as a String from the execContext. 
+               ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                    If this is set than the escaped output will be placed into the execContex with this key. Can be
+                    retrieved from the execContext using the same key.
+                    
+                    If this is not set then the output will replace the action on the page.
+                    ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="format" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                  This must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'.     
+               ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="unescape">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            This action will unescape data from a number of different formats.
+            
+            The code uses StringEscapeUtils from apache.
+            
+            The types of data that can be unescaped are 'html', 'xml', 'java', 'javascript', 'csv'
+            ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="ref_key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                    The key used to get the data as a String from the execContext. 
+               ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                    If this is set than the unescaped output will be placed
+                    into the execContex with this key.  Can be retrieved from the 
+                    execContext using the same key.
+                    
+                    If this is not set then the output will replace the action on the page.
+                    ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="format" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation><![CDATA[
+                  This must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'.     
+               ]]></xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+
+   <xsd:element name="debug">
+      <xsd:annotation><xsd:documentation>
+         Display debug information on the presentation page.
+         <br/>
+         The debug works similar to log4j in that there are selectable
+         display levels such as debug, error...
+      </xsd:documentation></xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="level" type="debug_options" use="required">
+            <xsd:annotation><xsd:documentation>
+               level at which the debug information will be displayed
+            </xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+
+   <xsd:element name="log">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Logs the content of the ExecContext to output.
+         ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                   You can be more specific about what gets logged by setting a key name.  The key name
+                   can be a specific reference to an entry in the ExecContext.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="range">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+	            Creates a Range bean that provides an incremental/decremental index or a random index.
+
+	            It uses a from-to as the incremental/decremental range or the random range. If from < to
+	            the number will increment. If from > to the number will decrement.
+
+	            THe range will start at "from" and increment/decrement until it reaches the "to" value. Then
+	            it restarts at the "from" continuing the loop. If from=5 and to=12 it will return 5,6,7,8,9,10,11,12
+	            in a continuous loop. If from=12 and to=5 it will return 12,11,10,9,8,7,6,5
+	            in a continuous loop.
+
+	            For a random value it randomly picks a number between "from" and "to" 
+
+            	Example:<br/>
+            	<axel:range from="1" to="10" name="inc_1_10"/><br/>
+            	To apply the next range value simply add <b>${inc_1_10}</b> to the page. This will be replaced
+            	with the next incremental number in the range 1-10.  Each time the ${inc_1_10} is found it will
+            	be replaced with the next number. 
+
+         ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                   This is the name of the range as it will be stored in the ExecContext. When referencing
+                   the range simply use ${range_name} to get the next value from the range.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="from" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                   This is the "from" value for the range.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="to" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                   This is the "to" value for the range.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="random" type="xsd:boolean" use="optional" default="false">
+            <xsd:annotation>
+               <xsd:documentation>
+               		<p>
+						Set to true to generate a random number
+               		</p>
+               		<p>
+               			Set to false to generate an incremental number
+               		</p>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="map_xml_to_bean">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Maps an xml to a java bean.
+            
+            The mapping is defined in the xml_to_bean.xsd.  See the "Mapping Xml to Java" page for more
+            information on how the mapping file is constructed.   
+         ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="map_file_name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                   The xml mapping file that conforms to the xml_to_bean.xsd schema definition.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="xml_key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the key used to retrieve the xml from the execContext.
+                  This is the xml that will be mapped to an Object using the map_file_name mapping file.
+                  The "xml_file_name" may be used insead of this attribute;
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="xml_file_name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the file containing the xml that will be mapped to an Object using the map_file_name mapping file.
+                  The "xml_key" may be used instead of this attribute
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Ths is the key used to store the resultant mapped object into
+                  the execContext
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="map_bean_to_xml">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+            Maps a java bean to xml.
+         ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="map_file_name" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                   The xml mapping file that conforms to bean_to_xml.xsd
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="bean_key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  This is the key used to retrieve the bean from the execContext.
+                  This is the object that will be mapped to xml using the map_file_name mapping file.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+                  Ths is the key used to store the resultant xml into the execContext
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="script">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+			The "script" action will execute a javascript.
+			
+			The javascript is written in the content of the "script" element and may be wrapped with a
+			CDATA element.
+			
+			Replacement Markers may be added to the script.  These will be injected before execution of the
+			script.
+			
+			The "key" attribute may be set with a value that will be used to store the result of the executed
+			javascript back into the execContext.  You can get at this using the ${key} syntax.
+			
+			A scipt action example:
+			
+<pre>
+&lt;axel:script key="MyScriptResult"&gt;<br/>
+	var x = "My Name is ${user.name}";<br/>
+	var y = "My other name is not ${user.name}";<br/>
+	var p = x + y;<br/>
+	p;<br/>
+&lt;/axel:script&gt;<br/>
+</pre> 
+			]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+			<xsd:annotation><xsd:documentation><![CDATA[]
+				This attribute is used if you want to store the results of the script back into
+				the execContext.
+				
+				If you don't use the key attribute the results of the script are returned.
+			]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="map_xml_to_presentation">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+			Map selected content of an XML to a presentation form.
+            
+            The ${...} replacement markers are used presenting the data in a form.
+         ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+      	 <xsd:sequence>
+      	    <xsd:element ref="form" minOccurs="0" maxOccurs="1">
+    	        <xsd:annotation>
+        			<xsd:documentation>
+        				If this is set then the content of this form (which is html) is used to build the presentation of the data for this action.
+        				This "form" element takes precedence over the "presentation_form" attribute. 
+		            </xsd:documentation>
+	            </xsd:annotation>
+            </xsd:element>
+      	 </xsd:sequence>
+         <xsd:attribute name="xml_filename" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                   The file containing the data in xml format.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="xml_data" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+               		The xml data or a key reference to it in the ExecContext.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="xml_path" type="xsd:string" use="required">
+            <xsd:annotation>
+               <xsd:documentation>
+					This is the path into the xml data that is iterated to produce the data for each row.
+					The path uses forward slashes '/' as element seperators. i.e. root/row
+                    
+                    <div class="bs-callout bs-callout-info">
+                        <h4>NOTE:</h4>
+                        <p>
+                            Each xml_path will need its own map_xml_to_presentation action to reach layered data.
+                        </p>
+                    </div>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="presentation_form" use="required"/>
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the data from a single row.
+               	  
+               	  When the "map_xml_to_presentation" action performs the query and returns a set of data containing one or more rows.
+               	  Each of these rows is processed in turn and the data (properties) from that row are stored in a java map.  The map
+               	  is then stored in the execContext using the "row_map_name".  When you want to access the data from a row you use the
+               	  replacement marker syntax ${row_map_name:property_name} to place the data on the page.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="map_json_to_presentation">
+      <xsd:annotation>
+         <xsd:documentation><![CDATA[
+				Map selected content of a JSON object to a presentation form.
+         ]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+      	 <xsd:sequence>
+      	    <xsd:element ref="form" minOccurs="0" maxOccurs="1">
+    	        <xsd:annotation>
+        			<xsd:documentation>
+        				If this is set then the content of this form (which is html) is used to build the presentation of the data for this action.
+        				This "form" element takes precedence over the "presentation_form" attribute. 
+		            </xsd:documentation>
+	            </xsd:annotation>
+            </xsd:element>
+      	 </xsd:sequence>
+         <xsd:attribute name="json_data" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+   	           		This is the json data or a key to get the json from the ExecContext (if used)
+           			This is optional and may be used in place if the json_filename 
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="json_filename" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+   	           		This is a file name to the file containing the json data
+           			This is optional and may be used in place if the json_data
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="json_path" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                   This is the path into the json data that is iterated to produce the data for each row.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute ref="presentation_form" use="required"/>
+         <xsd:attribute name="row_map_name" type="xsd:string" use="optional" default="row">
+            <xsd:annotation><xsd:documentation><![CDATA[
+               	  The "row_map_name" is used by the system to name a java map that contains the data from a single row.
+               	  
+               	  When the "map_json_to_presentation" action performs the query and returns a set of data containing one or more rows.
+               	  Each of these rows is processed in turn and the data (properties) from that row are stored in a java map.  The map
+               	  is then stored in the execContext using the "row_map_name".  When you want to access the data from a row you use the
+               	  replacement marker syntax ${row_map_name:property_name} to place the data on the page.
+            ]]></xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="map_xml_to_json">
+      <xsd:annotation>
+         <xsd:documentation>
+				Map XML to JSON
+
+				The XML is supplied as a file name or as an XML string.
+
+				The output is JSON formatted data
+
+				If the key attribute is set then the JSON data is stored into the execContext using the key.
+				Else the JSON data is returned to the client (browser).
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:attribute name="xml_filename" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+		            The name of the xml file to map to JSON format. 
+
+                    The xml_ref attribute can be used instead of the xml_filename. The xml_ref will be the
+                    key to get the XML as a string value from the execContext.
+           	   </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="xml_ref" type="xsd:string" use="optional">
+            <xsd:annotation>
+               <xsd:documentation>
+                    The key used to get the xml as a String from the execContext.
+
+                    Instead of using an xml_ref an xml filename may be used by setting
+                    the name of the file in the xml_filename attribute.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="key" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation>
+				If this is set than the json output will be placed
+                into the execContext with this key.  Can be retrieved from the 
+                execContext using the same key.
+            </xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="escape_xml" type="xsd:boolean" use="optional" default="true">
+            <xsd:annotation>
+               <xsd:documentation>
+                    If this is set true (the default value) then the xml is escaped before mapping from xml to json.
+
+                  	Currently only the &amp; is escaped.
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="path" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation>
+                  Additional path, prepended to the page.
+
+                  By default it is set to the web context root.
+            </xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+         <xsd:attribute name="xml_path" type="xsd:string" use="optional">
+            <xsd:annotation><xsd:documentation>
+            	The xml_path is used to select an element or attribute value.
+            	
+            	The syntax used for xpath is similar to an xpath parser including path and or attribute.
+            	
+				Example 1
+				
+				   xml = &lt;root&gt;&lt;row index="1" data="This is the data"/&gt;&lt;/root&gt;
+				   
+				   xpath = root/row[@data]
+				   
+				   path = root/row
+				   
+				   attribute = data
+				   
+				Example 2
+				
+				   xml = &lt;root&gt;&lt;row index="1" data="This is the data"/&gt;&lt;/root&gt;
+				   
+				   xpath = root/row
+				   
+				   path = root/row
+				   
+				   attribute = null
+				   
+            </xsd:documentation></xsd:annotation>
+         </xsd:attribute>
+      </xsd:complexType>
+   </xsd:element>
+
+	<xsd:element name="content_type">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+			This actions allows the page to change the http request content type.
+			
+			Required when you have one type of page returning a different content type.
+			
+			As an example if a html page is returning json data then you set the value to "application/json;charset=UTF-8"
+			
+			Looks like this on the page <b>&lt;content_type value="application/json;charset=UTF-8"/&gt;</b>
+			 
+			]]></xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="value" type="xsd:string" use="required">
+				<xsd:annotation><xsd:documentation><![CDATA[
+                  The value you want to set in the response content type
+				]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+   <xsd:group name="actions">
+      <xsd:annotation>
+         <xsd:documentation>
+            Implies an inclusion for the list of action
+            elements, which may be any element.
+            </xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded" />
+         </xsd:choice>
+      </xsd:sequence>
+   </xsd:group>
+
+</xsd:schema>
