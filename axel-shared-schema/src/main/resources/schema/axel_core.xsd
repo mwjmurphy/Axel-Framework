@@ -71,7 +71,7 @@
 				Example<br/>
 				<code>
 					&lt;axel:code call="my.class.method"/&gt;
-				</code>
+				</code><br/>
 				
 				Example with parameters<br/>
 				<code>

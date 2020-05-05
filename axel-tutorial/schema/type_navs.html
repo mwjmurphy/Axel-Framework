@@ -1,0 +1,13 @@
+<axel:range from="1" to="1000" name="action_page_index"/>
+<h4>List of Types</h4>
+<axel:map_json_to_presentation json_filename="schema/axel_core.json" json_path="schema/types" row_map_name="type">
+    <axel:form>
+        <div id="type_${type:name}" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">${action_page_index}</span> ${type:name}</h4>
+                <p>options: ${type:options}</p>
+            </div>
+        </div>
+    </axel:form>
+</axel:map_json_to_presentation>

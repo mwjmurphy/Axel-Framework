@@ -1,0 +1,37 @@
+<axel:range from="1" to="1000" name="action_page_index"/>
+<h4>List of Actions</h4>
+<axel:map_json_to_presentation json_filename="schema/axel_core.json" json_path="schema/elements" row_map_name="action">
+    <axel:form>
+        <div id="action_${action:name}" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">${action_page_index}</span> ${action:name} action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="${action:documentation|no docs}"></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    <axel:map_json_to_presentation json_data="${action:params}" json_path="" row_map_name="param">
+                    <axel:form>
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="${param:documentation|no docs}"></img>
+                            <axel:if expression="'${param:ref|}' != ''">
+                                ${param:ref}
+                            <axel:else>
+                                ${param:name}
+                            </axel:else>
+                            </axel:if>
+                        </td>
+                        <td>${param:type|}</td>
+                        <td>${param:use|required}</td>
+                        <td>${param:default|}</td>
+                        <td>${param:minOccurs|1}</td>
+                    </tr>
+                    </axel:form>
+                </axel:map_json_to_presentation>
+            </table>
+        </div>
+    </axel:form>
+</axel:map_json_to_presentation>

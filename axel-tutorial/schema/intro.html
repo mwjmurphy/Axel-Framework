@@ -1,0 +1,29 @@
+<div id="introduction" style="padding-top: 80px;"></div>
+<div class="text-left axel"> 
+    <h3>The Axel Core Schema</h3>
+    <p class="text-justify">
+        The schema details the axel core actions and their attributes.
+    </p>
+    <p class="text-justify">
+        As an example - the <b><i>code</i></b> action has three attribures which are
+        <ul>
+            <li>param - @see the <a href="#action_param">param</a> on how this works</li>
+            <li>call - this is the full package.class.method name to call in the java code</li>
+            <li>key - if we want to store the result of the call for later use we add it to the execContex with the key.</li>
+        </ul>
+        This would look like:
+        <pre><code>
+            <axel:escape>
+<axel:code call="package.class.method">
+    <axel:param value="A parameter"/>
+    <axel:param value="Another parameter"/>
+</axel:code>
+            </axel:escape>
+        </code></pre>
+    </p>
+    <p>
+        The List of Types shows the options available when an action references a type. As an example - the<b><i>http</i></b> action
+        references <a href="#type_method_options">method_options</a> which defaults to 'get'.
+    </p>
+
+</div>

@@ -1,0 +1,12 @@
+<div class="sidenav text-left axel">
+    <h4>Actions</h4>
+    <ul class="nav flex-column">
+        <axel:map_json_to_presentation json_filename="schema/axel_core.json" json_path="schema/elements" row_map_name="action">
+            <axel:form>
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_${action:name}">${action:name}</a>
+                </li>
+            </axel:form>
+        </axel:map_json_to_presentation>
+    </ul>
+</div>

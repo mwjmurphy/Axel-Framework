@@ -5,6 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xmlactions.common.text.XmlCData;
 import org.xmlactions.common.xml.XMLAttribute;
 import org.xmlactions.common.xml.XMLObject;
 import org.xmlactions.pager.actions.escaping.EscapeAction;
@@ -336,7 +337,8 @@ public class ToJson {
 
 	private void mapDocumentation(JSONObject parent, XMLObject element) {
 		if (element.getContent() != null) {
-			String content = EscapeAction.jsonEscape(element.getContent());
+			String content = XmlCData.removeAllCData(EscapeAction.jsonEscape(element.getContent()));
+			content = content.replace("\"", "&quot;");
 			parent.put(element.getElementName(), content);
 		}
 	}

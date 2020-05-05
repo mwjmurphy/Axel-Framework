@@ -1,25 +1,2552 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <axel:insert page="core/includes.html"/>
-    <axel:insert page="style.html"/>
+    <!--
+    cerulean
+    cyborg
+    darkly
+    flatly
+    journal
+    lumen
+    lux
+    materia
+    minty
+    pulse
+    sandstone
+    simplex
+    sketchy
+    slate
+    solar
+    spacelab
+    superhero
+    united
+    yeti
+-->
+
+
+
+
+
+
+
+   
+<meta charset="utf-8">
+<title>Axel Framework Tutorial 2020</title>
+<link rel="shortcut icon" type="image/png" href="img/axel.ico"/>
+<meta name="description" content="A framework designed for building web pages on the server side, combining html with axel instructions bringing together your databases, external and local services.">
+<link rel="canonical" href="https://axelframewwork.org/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="/bootstrap/cerulean//bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script-->
+<script src="https://kit.fontawesome.com/2ff5ff2a49.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/axel.css">
+<script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+</script>
+    
+    
 </head>
 <body>
     <div class="container-fluid text-center">    
-        <axel:insert page="header.html"/>
+        <style>
+#navbar {
+  _overflow: hidden;
+  _background-color: #333;
+  z-index: 900;
+  width: 100%;
+}
+
+.content {
+  padding: 16px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+}
+.sticky + .content {
+  padding-top: 0px;
+}
+</style>
+<header id="navbar" class="container-fluid text-center axel">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-center">
+  <img src="/img/axel.png" alt="Axel Framework Logo" width="64"/>&nbsp;&nbsp;
+  <a class="navbar-brand" href="#"> Axel Framework</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!--
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Bootstrap Theme
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="?selected_theme=cerulean">cerulean</a>
+        <a class="dropdown-item" href="?selected_theme=cyborg">cyborg</a>
+        <a class="dropdown-item" href="?selected_theme=darkly">darkly</a>
+        <a class="dropdown-item" href="?selected_theme=flatly">flatly</a>
+        <a class="dropdown-item" href="?selected_theme=journal">journal</a>
+        <a class="dropdown-item" href="?selected_theme=lumen">lumen</a>
+        <a class="dropdown-item" href="?selected_theme=lux">lux</a>
+        <a class="dropdown-item" href="?selected_theme=materia">materia</a>
+        <a class="dropdown-item" href="?selected_theme=minty">minty</a>
+        <a class="dropdown-item" href="?selected_theme=pulse">pulse</a>
+        <a class="dropdown-item" href="?selected_theme=sandstone">sandstone</a>
+        <a class="dropdown-item" href="?selected_theme=simplex">simplex</a>
+        <a class="dropdown-item" href="?selected_theme=sketchy">sketchy</a>
+        <a class="dropdown-item" href="?selected_theme=slate">slate</a>
+        <a class="dropdown-item" href="?selected_theme=solar">solar</a>
+        <a class="dropdown-item" href="?selected_theme=spacelab">spacelab</a>
+        <a class="dropdown-item" href="?selected_theme=superhero">superhero</a>
+        <a class="dropdown-item" href="?selected_theme=united">united</a>
+        <a class="dropdown-item" href="?selected_theme=yeti">yeti</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Axel Actions
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/index.html#introduction">Introduction</a>
+        <a class="dropdown-item" href="/index.html#how_it_works">How It Works</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/index.html#hello_world">Hello World!!!</a>
+        <a class="dropdown-item" href="/index.html#insert_component_page">Insert Component Page</a>
+        <a class="dropdown-item" href="/index.html#capture_browser_parameters">Capture Browser Parameters</a>
+        <a class="dropdown-item" href="/index.html#http_call_json" title="How to load data from an external site">Http Call Json</a>
+        <a class="dropdown-item" href="/index.html#json_presentation" title="Presentation of the loaded data">Json Presentation</a>
+        <a class="dropdown-item" href="/index.html#http_call_xml" title="How to load data from an external site">Http Call Xml</a>
+        <a class="dropdown-item" href="/index.html#xml_presentation" title="Presentation of the loaded data">Xml Presentation</a>
+        <a class="dropdown-item" href="/index.html#json_get" title="Get an object/s from a json document">Json Get</a>
+        <a class="dropdown-item" href="/index.html#code" title="Executes a java bean method">Code</a>
+        <a class="dropdown-item" href="/index.html#put_get_remove" title="Put, Get and Remove content from execContext">Put and Get and Remove</a>
+        <a class="dropdown-item" href="/index.html#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
+        <a class="dropdown-item" href="/index.html#range" title="Numeric indexing">Range</a>
+        <a class="dropdown-item" href="/index.html#escaping" title="Escaping content for different formats">Escaping and Unescaping</a>
+        <a class="dropdown-item" href="/index.html#evaluate" title="Javascript evaluation">Evaluating</a>
+        <a class="dropdown-item" href="/index.html#date_formatting" title="Formatting dates">Date Formatting</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Axel Schema
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        
+          <a class="dropdown-item" href="/schema.html#action_code">code</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_http">http</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_param">param</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_insert">insert</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_insert_into">insert_into</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_echo">echo</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_if">if</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_elseif">elseif</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_else">else</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_put">put</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_remove">remove</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_get">get</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_json_get">json_get</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_eval">eval</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_date_formatter">date_formatter</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_transform">transform</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_escape">escape</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_unescape">unescape</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_debug">debug</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_log">log</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_range">range</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_map_xml_to_bean">map_xml_to_bean</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_map_bean_to_xml">map_bean_to_xml</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_script">script</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_map_xml_to_presentation">map_xml_to_presentation</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_map_json_to_presentation">map_json_to_presentation</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_map_xml_to_json">map_xml_to_json</a>
+        
+          <a class="dropdown-item" href="/schema.html#action_content_type">content_type</a>
+        
+      </div>
+    </li>
+  <!--
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+      -->
+    </ul>
+    <!--
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    -->
+  </div>    
+</nav>
+<script type="module" src="/js/axel/pick_scheme/pick_scheme.js"></script>
+</header>
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
         <div style="padding-top: 50px">
         </div>
-        <axel:insert page="title.html"/>
+        <div id="title" class="jumbotron axel">
+    <div class="row content">
+        <div class="col-sm-3 sidenav">
+            <img src="img/languages.png" width="250">
+        </div>
+        <div class="col-sm-6 ssidenav">
+            <h1 class="display-3">axel framework</h1>
+            <p class="lead">The framework builds web pages using instructions, commonly known as actions, placed inside each page.</p>
+            <hr class="my-4">
+            <p>
+                Details on how to use each action are shown in the tutorials. You'll also learn how to build and deploy web applications.
+                How to connect to backend and external resources such as databases and json feeds.  
+            </p>
+            <p>
+                To get started you need some knowledge on command line such as windows cmd, using a browser and a basic understanding of html.
+            </p>
+        </div>
+        <div class="col-sm-3 ssidenav">
+            <img src="img/servers.png" width="250">
+        </div>
+    </div>
+</div>
+
         <div class="row content">
             <div class="col-sm-3 sidenav">
-                <axel:insert page="schema/axel_core_actions_index.html"/>
+                <div class="sidenav text-left axel">
+    <h4>Actions</h4>
+    <ul class="nav flex-column">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_code">code</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_http">http</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_param">param</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_insert">insert</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_insert_into">insert_into</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_echo">echo</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_if">if</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_elseif">elseif</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_else">else</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_put">put</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_remove">remove</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_get">get</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_json_get">json_get</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_eval">eval</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_date_formatter">date_formatter</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_transform">transform</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_escape">escape</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_unescape">unescape</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_debug">debug</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_log">log</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_range">range</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_map_xml_to_bean">map_xml_to_bean</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_map_bean_to_xml">map_bean_to_xml</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_script">script</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_map_xml_to_presentation">map_xml_to_presentation</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_map_json_to_presentation">map_json_to_presentation</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_map_xml_to_json">map_xml_to_json</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#action_content_type">content_type</a>
+                </li>
+            
+    </ul>
+</div>
             </div>
-            <div class="col-sm-9" style="">
-                <axel:insert page="schema/axel_core_actions_doc.html"/>
-                <axel:insert page="schema/axel_core_actions.html"/>
+            <div class="col-sm-6">
+                <div id="introduction" style="padding-top: 80px;"></div>
+<div class="text-left axel"> 
+    <h3>The Axel Core Schema</h3>
+    <p class="text-justify">
+        The schema details the axel core actions and their attributes.
+    </p>
+    <p class="text-justify">
+        As an example - the <b><i>code</i></b> action has three attribures which are
+        <ul>
+            <li>param - @see the <a href="#action_param">param</a> on how this works</li>
+            <li>call - this is the full package.class.method name to call in the java code</li>
+            <li>key - if we want to store the result of the call for later use we add it to the execContex with the key.</li>
+        </ul>
+        This would look like:
+        <pre><code>
+            
+&lt;axel:code call="package.class.method"&gt;
+    &lt;axel:param value="A parameter"/&gt;
+    &lt;axel:param value="Another parameter"/&gt;
+&lt;/axel:code&gt;
+            
+        </code></pre>
+    </p>
+    <p>
+        The List of Types shows the options available when an action references a type. As an example - the<b><i>http</i></b> action
+        references <a href="#type_method_options">method_options</a> which defaults to 'get'.
+    </p>
+
+</div>
+
+                
+<h4>List of Actions</h4>
+
+        <div id="action_code" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">1</span> code action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+			The code action will invoke Java code from the web page.
+			
+            If there is a response from the java call it will replace the code element in the page. If there
+            is no response then the code element is removed from the page.
+            
+            The response may also be stored in the exceContext using the key attribute.
+      "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+					The param element may be used to pass one or more parameters to the code call.
+					
+		            @see <a href=&quot;#param&quot;>param</a> definiton. 
+		      	"></img>
+                            
+                                param
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>0</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+				This must be the full path, class and method name of the java class that you want to invoke.
+				
+				Example<br/>
+				<code>
+					&lt;axel:code call=&quot;my.class.method&quot;/&gt;
+				</code><br/>
+				
+				Example with parameters<br/>
+				<code>
+					&lt;axel:code call=&quot;org.xmlactions.common.date.DateUtils.getDate&quot;&gt;<br/>
+					&#160;&#160;&#160;&lt;axel:param value=&quot;2010-10-02&quot;/&gt;<br/>
+					&#160;&#160;&#160;&lt;axel:param value=&quot;yyyy-MM-dd&quot;/&gt;<br/>
+					&lt;/axel:code&gt;
+				</code>
+            "></img>
+                            
+                                call
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  The key / name for the variable.
+				"></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_http" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">2</span> http action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+			The http action will make a http rest call to the url.
+			
+			The response is expected to be in json format.
+			
+            The response may also be stored in the exceContext using the key attribute.
+      "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+					The param element may be used to pass one or more parameters to the code call.
+					
+		            @see <a href=&quot;#param&quot;>param</a> definiton. 
+		      	"></img>
+                            
+                                param
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>0</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+				The method determines the http method such as get or post
+            "></img>
+                            
+                                method
+                            
+                        </td>
+                        <td>method_options</td>
+                        <td>required</td>
+                        <td>get</td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+				This is the full address of the http call excluding parameters
+				
+				Example<br/>
+				<code>
+					&lt;axel:http href=&quot;https://google.com&quot;/&gt;
+				</code>
+				
+				Example with parameters<br/>
+				<code>
+					&lt;axel:http href=&quot;https://google.com&quot;/&gt;
+					&#160;&#160;&#160;&lt;axel:param value=&quot;q=spain&quot;/&gt;<br/>
+					&lt;/axel:http&gt;
+				</code>
+            "></img>
+                            
+                                href
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  The key / name for the variable.
+				"></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_param" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">3</span> param action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+			Provides parameters for some of the actions such as code, http or transform 
+			"></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  This is either<br/>
+                  <ul/>
+                     <li/> The key used to retrieve the value from the execContext
+                     <li/> The value for the parameter.
+                  </ul>
+                  
+                  If the value is used as part of an http call then it should should contain the key=value
+				"></img>
+                            
+                                value
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  The &quot;name&quot; may be used to provide a name for the HttpAction.<br/>
+                  <code>
+                  	&lt;axel:http .../&gt;
+						&lt;axel:param name=&quot;p1&quot; value=&quot;value for p1&quot;/&gt;<br/>
+                  	&lt;/axel:http&gt;<br/>
+                  </code>
+				"></img>
+                            
+                                name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+					Use this attribute to force a conversion on the parameter.  This may be required
+					if the parameter type does not match that of the code parameter.
+                  
+					@see <a href=&quot;#param_converter_types&quot;>param_converter_types</a> definiton. 
+               "></img>
+                            
+                                type
+                            
+                        </td>
+                        <td>param_converter_types</td>
+                        <td>optional</td>
+                        <td>String</td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  Not required for code actions.
+
+                  Required only if mapping the params to a map, will be used as
+                  the key in the map.
+			"></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_insert" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">4</span> insert action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            Insert files into a page.
+            
+            The insert action is used to insert files into a page as it is being built on the server.  The benefit of this is that
+            you can separate out presentation objects into simpler pages and then combine them into the final presentation page before
+            the page is rendered to the browser.
+            
+			"></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						The name of the file to insert.
+
+                  		The name of the file may also include the path location relative to the web context root.
+		            "></img>
+                            
+                                page
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  		Additional path, prepended to the page.
+
+						By default it is set to the web context root.
+		            "></img>
+                            
+                                path
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						Namespace used with pager action commands.
+						
+						This allows you to declare the namespace to use for the inserted page.  Usefull when you
+						don't want to provide the html declaration.
+            		"></img>
+                            
+                                namespace
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td>axel</td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						If this is set true (which is the default setting) then the outermost html element is removed.
+						This may be necessary when using strict conformant html. 
+            		"></img>
+                            
+                                remove_html
+                            
+                        </td>
+                        <td>true_false_options</td>
+                        <td>optional</td>
+                        <td>true</td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_insert_into" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">5</span> insert_into action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            	Insert the current processing page into another page.
+           		
+           		This is used when you have an outer wrapper style page.  The outer page could contain the head, body etc. The
+           		outer page must have a replacement marker key where the current page is inserted into.  The marker must follow
+           		the standard ${insert_here} syntax.  The &quot;insert_here&quot; can be any valid name. 
+           		have a key placed where the this page should be inserted into.
+           		
+			<div class=&quot;bs-callout bs-callout-info&quot;>
+				<h4>Notes</h4>
+				<p>
+					One of the particular benifits of this action is the way that the page is called from the browser. Calling the
+					inner page is very specific and can be easily traced from the browser.
+				</p>
+				<p>
+					Another benifit is the ability to have a consistant wrapper page that could contain title, menus, breadcrumbs etc.
+					And having a number of pages inject themselves into the wrapper page.  Each of the pages would only to be concerned
+					about themselves, what they need to display and not be concerened about what they are in. 
+				</p>
+			</div>
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						The name of the page file that the current page will be inserted into.
+
+                  		The name of the file may also include the path location relative to the web root.
+            		"></img>
+                            
+                                page
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  		Additional path, prepended to the page.
+
+						By default it is set to the web context root.
+		            "></img>
+                            
+                                path
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						Namespace used with pager action commands.
+						
+						This allows you to declare the namespace to use for the inserted page.  Usefull when you
+						don't want to provide the html declaration.
+            		"></img>
+                            
+                                namespace
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td>axel</td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						This is the replacement marker key that matches the replacement marker on the wrapper page.
+
+						The content of the current page will be replaced in the wrapper page using this replacement market.
+		            "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						If this is set true (which is the default setting) then the outermost html element is removed.
+						This may be necessary when using strict conformant html.
+		            "></img>
+                            
+                                remove_html
+                            
+                        </td>
+                        <td>true_false_options</td>
+                        <td>optional</td>
+                        <td>true</td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_echo" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">6</span> echo action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+	            Echos content to page 
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_if" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">7</span> if action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+						List of actions that are executed if the expression evaluates to true.
+					"></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						An expression to be evaluated using JavaScript.
+						
+						If this expression evaluates to true then the inside content is presented on the page and any actions contained
+						inside the content are executed.
+						
+						The expression may contain parameter references using the replacement markers. e.g. ${session:key}.
+						
+						The characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters
+						&lt;, &gt; and &amp;.
+						
+						If a value for a replacement marker is not found it will be replaced with a null. 
+					"></img>
+                            
+                                expression
+                            
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_elseif" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">8</span> elseif action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+						List of actions that are executed if the xpression evaluates to true.
+					"></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						An expression to be evaluated using JavaScript.
+						
+						If this expression evaluates to true then any enclosing actions are executed.
+						
+						The expression may contain parameter references using the replacement markers. e.g. ${session:key}.
+						
+						The characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters
+						&lt;, &gt; and &amp;.
+						
+						If a value for a replacement marker is not found it will be replace with a null. 
+					"></img>
+                            
+                                expression
+                            
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_else" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">9</span> else action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+                  List of actions that are executed if neither the if or any of
+                  the elseif/s evaluates to true.
+                    "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_put" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">10</span> put action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  The key / name for the variable.
+				"></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_remove" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">11</span> remove action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  The key / name for the variable to remove.
+				"></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_get" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">12</span> get action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_json_get" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">13</span> json_get action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+   	           		This is the json data or a key to get the json from the ExecContext (if used)
+           			This is optional and may be used in place if the json_filename 
+               "></img>
+                            
+                                json_data
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   This is the path into the json data that is iterated to produce the data for each row.
+               "></img>
+                            
+                                json_path
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   This is an index into any array that it finds in the json_path.
+               "></img>
+                            
+                                index
+                            
+                        </td>
+                        <td>xsd:integer</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+               	  The &quot;row_map_name&quot; is used by the system to name a java map that contains the data from a single row.
+               	  
+               	  When the &quot;json_get&quot; gets the data from json it stores the results into a map.  By default the map
+               	  name is &quot;row&quot;, this can be changed by setting the map name in the &quot;row_map_name&quot; field.
+            "></img>
+                            
+                                row_map_name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td>row</td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_eval" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">14</span> eval action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            Evaluate a javascript expression.
+
+           	The eval action can be used to perform expressions such as &quot;1+1&quot; or &quot;1+${x}&quot; or &quot;string + ' added to string'&quot;
+		"></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+					The expression to be evaluated.  The expression may contain parameter references using
+					the	replacement markers. e.g. ${session:key}. The characters &amp;lt;, &amp;gt; and &amp;amp; must be used in
+					place of their replacement characters &lt;, &gt; and &amp;.
+    
+    				The content of the element may be used to store the expression in place of the expression attribute.
+
+					The element content may be used to contain the expression in place of the expression attribute.
+				"></img>
+                            
+                                expression
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+               		"></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_date_formatter" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">15</span> date_formatter action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            Convert a date from one format to another format.
+            
+            This action takes a date in one format such as &quot;2014-12-30&quot; and converts it to anther format such as &quot;30-DEC-2014&quot;.
+            The formatter will handle both date and time individually or combined such as &quot;2014-12-30 10:30&quot; to &quot;30-DEC-2014 10:30&quot;.
+            
+			Some of the common date and time patterns in â€˜SimpleDateFormatâ€™ for Java String to Date conversion are:
+				<ul>
+					<li>Letter 'y' represents Year.</li>
+					<li>Letter 'M' represents Month in Year.</li>
+					<li>Letter 'D' represents Day in Month and â€˜Eâ€™ is Day Name in Week.</li>
+					<li>Letter 'a' represents AM/PM marker and â€˜hâ€™ is Hour in AM/PM.</li>
+					<li>Letter 'H' represents Hour in a Day, â€˜mâ€™ represents Minute in Hour andâ€˜sâ€™ is Second in Minute.</li>
+            	</ul>
+            	
+            	Some Helpful Examples<br/>
+					&quot;dd/MM/yyyy&quot; = &quot;12/05/2014&quot;<br/>
+					&quot;dd-MM-yyyy HH:mm:ss&quot; = &quot;12-05-2014 22:37:50&quot;<br/>
+					&quot;dd-MMM-yyyy&quot; = &quot;12-May-2014&quot;<br/>
+					&quot;MM dd, yyyy&quot; = &quot;05 12, 2014&quot;<br/>
+					&quot;E, MMM dd yyyy&quot; = &quot;Mon, May 12 2014&quot;<br/>
+					&quot;E, MMM dd yyyy HH:mm:ss&quot; = &quot;Mon, May 12 2014 23:37:50&quot;<br/>
+					&quot;dd-MMMM-yy&quot;= &quot;14-September-14&quot;<br/>
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+						This is the original date that we want to convert to another format.
+				"></img>
+                            
+                                date_value
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+					This is the format of the original date in java syntax. i.e.  &quot;dd/MM/yyyy&quot; = &quot;12/05/2014&quot;
+				"></img>
+                            
+                                origin_format
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+					This is the format that we want to convert the date to in java syntax. i.e.  &quot;dd-MMM-yyyy&quot; = &quot;12-May-2014&quot;
+				"></img>
+                            
+                                destination_format
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+					If you need to have the result stored into the execContext set this the key value here.  It can then be retrieved from the execContext using ${key.value}.
+				"></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_transform" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">16</span> transform action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            Transform an xml document using an xsd style sheet.
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                     Parameters if used will be passed to the transformer.  Making them available
+                     for the transformation. 
+                     "></img>
+                            
+                                param
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>0</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+		            Multiple transformation files may be combined by appending one after the other using a ; seperator.  Usefull if you
+		            need to show the content of an include.  
+		            "></img>
+                            
+                                xslt_file_name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    Instead of using an xml file a xml string may be referenced by using
+                    the xml_ref attribute.
+                    "></img>
+                            
+                                xml_file_name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    Instead of using an xml_ref an xml file name may be used by setting
+                    the name of the file in the xml_file_name attribute.
+                    "></img>
+                            
+                                xml_ref
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    If this is set than the transformed output will be placed
+                    into the execContex with this key.  Can be retrieved from the 
+                    execContext using the same key.    
+                    "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  xalan transformer factory = org.apache.xalan.processor.TransformerFactoryImpl     
+               "></img>
+                            
+                                transformer_factory
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_escape" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">17</span> escape action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            This action will escape data to a number of different formats.
+            
+            The code uses StringEscapeUtils from apache.
+            
+            The types of data that can be escaped are 'html', 'xml', 'java', 'javascript', 'csv'
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    The key used to get the data as a String from the execContext. 
+               "></img>
+                            
+                                ref_key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    If this is set than the escaped output will be placed into the execContex with this key. Can be
+                    retrieved from the execContext using the same key.
+                    
+                    If this is not set then the output will replace the action on the page.
+                    "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  This must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'.     
+               "></img>
+                            
+                                format
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_unescape" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">18</span> unescape action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            This action will unescape data from a number of different formats.
+            
+            The code uses StringEscapeUtils from apache.
+            
+            The types of data that can be unescaped are 'html', 'xml', 'java', 'javascript', 'csv'
+            "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    The key used to get the data as a String from the execContext. 
+               "></img>
+                            
+                                ref_key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    If this is set than the unescaped output will be placed
+                    into the execContex with this key.  Can be retrieved from the 
+                    execContext using the same key.
+                    
+                    If this is not set then the output will replace the action on the page.
+                    "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  This must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'.     
+               "></img>
+                            
+                                format
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_debug" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">19</span> debug action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+         Display debug information on the presentation page.
+         "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+               level at which the debug information will be displayed
+            "></img>
+                            
+                                level
+                            
+                        </td>
+                        <td>debug_options</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_log" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">20</span> log action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            Logs the content of the ExecContext to output.
+         "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   You can be more specific about what gets logged by setting a key name.  The key name
+                   can be a specific reference to an entry in the ExecContext.
+               "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_range" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">21</span> range action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+	            Creates a Range bean that provides an incremental/decremental index or a random index.
+
+	            It uses a from-to as the incremental/decremental range or the random range. If from < to
+	            the number will increment. If from > to the number will decrement.
+
+	            THe range will start at &quot;from&quot; and increment/decrement until it reaches the &quot;to&quot; value. Then
+	            it restarts at the &quot;from&quot; continuing the loop. If from=5 and to=12 it will return 5,6,7,8,9,10,11,12
+	            in a continuous loop. If from=12 and to=5 it will return 12,11,10,9,8,7,6,5
+	            in a continuous loop.
+
+	            For a random value it randomly picks a number between &quot;from&quot; and &quot;to&quot; 
+
+            	Example:<br/>
+            	<axel:range from=&quot;1&quot; to=&quot;10&quot; name=&quot;inc_1_10&quot;/><br/>
+            	To apply the next range value simply add <b>${inc_1_10}</b> to the page. This will be replaced
+            	with the next incremental number in the range 1-10.  Each time the ${inc_1_10} is found it will
+            	be replaced with the next number. 
+
+         "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   This is the name of the range as it will be stored in the ExecContext. When referencing
+                   the range simply use ${range_name} to get the next value from the range.
+               "></img>
+                            
+                                name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   This is the &quot;from&quot; value for the range.
+               "></img>
+                            
+                                from
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   This is the &quot;to&quot; value for the range.
+               "></img>
+                            
+                                to
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+               		"></img>
+                            
+                                random
+                            
+                        </td>
+                        <td>xsd:boolean</td>
+                        <td>optional</td>
+                        <td>false</td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_map_xml_to_bean" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">22</span> map_xml_to_bean action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            Maps an xml to a java bean.
+            
+            The mapping is defined in the xml_to_bean.xsd.  See the &quot;Mapping Xml to Java&quot; page for more
+            information on how the mapping file is constructed.   
+         "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   The xml mapping file that conforms to the xml_to_bean.xsd schema definition.
+               "></img>
+                            
+                                map_file_name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  This is the key used to retrieve the xml from the execContext.
+                  This is the xml that will be mapped to an Object using the map_file_name mapping file.
+                  The &quot;xml_file_name&quot; may be used insead of this attribute;
+               "></img>
+                            
+                                xml_key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  This is the file containing the xml that will be mapped to an Object using the map_file_name mapping file.
+                  The &quot;xml_key&quot; may be used instead of this attribute
+               "></img>
+                            
+                                xml_file_name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  Ths is the key used to store the resultant mapped object into
+                  the execContext
+               "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_map_bean_to_xml" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">23</span> map_bean_to_xml action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+            Maps a java bean to xml.
+         "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   The xml mapping file that conforms to bean_to_xml.xsd
+               "></img>
+                            
+                                map_file_name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  This is the key used to retrieve the bean from the execContext.
+                  This is the object that will be mapped to xml using the map_file_name mapping file.
+               "></img>
+                            
+                                bean_key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  Ths is the key used to store the resultant xml into the execContext
+               "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_script" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">24</span> script action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+			The &quot;script&quot; action will execute a javascript.
+			
+			The javascript is written in the content of the &quot;script&quot; element and may be wrapped with a
+			CDATA element.
+			
+			Replacement Markers may be added to the script.  These will be injected before execution of the
+			script.
+			
+			The &quot;key&quot; attribute may be set with a value that will be used to store the result of the executed
+			javascript back into the execContext.  You can get at this using the ${key} syntax.
+			
+			A scipt action example:
+			
+<pre>
+&lt;axel:script key=&quot;MyScriptResult&quot;&gt;<br/>
+	var x = &quot;My Name is ${user.name}&quot;;<br/>
+	var y = &quot;My other name is not ${user.name}&quot;;<br/>
+	var p = x + y;<br/>
+	p;<br/>
+&lt;/axel:script&gt;<br/>
+</pre> 
+			"></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="]
+				This attribute is used if you want to store the results of the script back into
+				the execContext.
+				
+				If you don't use the key attribute the results of the script are returned.
+			"></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_map_xml_to_presentation" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">25</span> map_xml_to_presentation action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+			Map selected content of an XML to a presentation form.
+            
+            The ${...} replacement markers are used presenting the data in a form.
+         "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+        				If this is set then the content of this form (which is html) is used to build the presentation of the data for this action.
+        				This &quot;form&quot; element takes precedence over the &quot;presentation_form&quot; attribute. 
+		            "></img>
+                            
+                                form
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>0</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   The file containing the data in xml format.
+               "></img>
+                            
+                                xml_filename
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+               		The xml data or a key reference to it in the ExecContext.
+               "></img>
+                            
+                                xml_data
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+					This is the path into the xml data that is iterated to produce the data for each row.
+					The path uses forward slashes '/' as element seperators. i.e. root/row
+                    
+                    "></img>
+                            
+                                xml_path
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="no docs"></img>
+                            
+                                presentation_form
+                            
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+               	  The &quot;row_map_name&quot; is used by the system to name a java map that contains the data from a single row.
+               	  
+               	  When the &quot;map_xml_to_presentation&quot; action performs the query and returns a set of data containing one or more rows.
+               	  Each of these rows is processed in turn and the data (properties) from that row are stored in a java map.  The map
+               	  is then stored in the execContext using the &quot;row_map_name&quot;.  When you want to access the data from a row you use the
+               	  replacement marker syntax ${row_map_name:property_name} to place the data on the page.
+            "></img>
+                            
+                                row_map_name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td>row</td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_map_json_to_presentation" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">26</span> map_json_to_presentation action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+				Map selected content of a JSON object to a presentation form.
+         "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+        				If this is set then the content of this form (which is html) is used to build the presentation of the data for this action.
+        				This &quot;form&quot; element takes precedence over the &quot;presentation_form&quot; attribute. 
+		            "></img>
+                            
+                                form
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>0</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+   	           		This is the json data or a key to get the json from the ExecContext (if used)
+           			This is optional and may be used in place if the json_filename 
+               "></img>
+                            
+                                json_data
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+   	           		This is a file name to the file containing the json data
+           			This is optional and may be used in place if the json_data
+               "></img>
+                            
+                                json_filename
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                   This is the path into the json data that is iterated to produce the data for each row.
+               "></img>
+                            
+                                json_path
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="no docs"></img>
+                            
+                                presentation_form
+                            
+                            
+                        </td>
+                        <td></td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+               	  The &quot;row_map_name&quot; is used by the system to name a java map that contains the data from a single row.
+               	  
+               	  When the &quot;map_json_to_presentation&quot; action performs the query and returns a set of data containing one or more rows.
+               	  Each of these rows is processed in turn and the data (properties) from that row are stored in a java map.  The map
+               	  is then stored in the execContext using the &quot;row_map_name&quot;.  When you want to access the data from a row you use the
+               	  replacement marker syntax ${row_map_name:property_name} to place the data on the page.
+            "></img>
+                            
+                                row_map_name
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td>row</td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_map_xml_to_json" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">27</span> map_xml_to_json action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+				Map XML to JSON
+
+				The XML is supplied as a file name or as an XML string.
+
+				The output is JSON formatted data
+
+				If the key attribute is set then the JSON data is stored into the execContext using the key.
+				Else the JSON data is returned to the client (browser).
+         "></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+		            The name of the xml file to map to JSON format. 
+
+                    The xml_ref attribute can be used instead of the xml_filename. The xml_ref will be the
+                    key to get the XML as a string value from the execContext.
+           	   "></img>
+                            
+                                xml_filename
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    The key used to get the xml as a String from the execContext.
+
+                    Instead of using an xml_ref an xml filename may be used by setting
+                    the name of the file in the xml_filename attribute.
+               "></img>
+                            
+                                xml_ref
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+				If this is set than the json output will be placed
+                into the execContext with this key.  Can be retrieved from the 
+                execContext using the same key.
+            "></img>
+                            
+                                key
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                    If this is set true (the default value) then the xml is escaped before mapping from xml to json.
+
+                  	Currently only the &amp; is escaped.
+               "></img>
+                            
+                                escape_xml
+                            
+                        </td>
+                        <td>xsd:boolean</td>
+                        <td>optional</td>
+                        <td>true</td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  Additional path, prepended to the page.
+
+                  By default it is set to the web context root.
+            "></img>
+                            
+                                path
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+            	The xml_path is used to select an element or attribute value.
+            	
+            	The syntax used for xpath is similar to an xpath parser including path and or attribute.
+            	
+				Example 1
+				
+				   xml = &lt;root&gt;&lt;row index=&quot;1&quot; data=&quot;This is the data&quot;/&gt;&lt;/root&gt;
+				   
+				   xpath = root/row[@data]
+				   
+				   path = root/row
+				   
+				   attribute = data
+				   
+				Example 2
+				
+				   xml = &lt;root&gt;&lt;row index=&quot;1&quot; data=&quot;This is the data&quot;/&gt;&lt;/root&gt;
+				   
+				   xpath = root/row
+				   
+				   path = root/row
+				   
+				   attribute = null
+				   
+            "></img>
+                            
+                                xml_path
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>optional</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+        <div id="action_content_type" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">28</span> content_type action
+                    <img src="img/popup_icon.png" width="32px" data-toggle="popover" data-content="
+			This actions allows the page to change the http request content type.
+			
+			Required when you have one type of page returning a different content type.
+			
+			As an example if a html page is returning json data then you set the value to &quot;application/json;charset=UTF-8&quot;
+			
+			Looks like this on the page <b>&lt;content_type value=&quot;application/json;charset=UTF-8&quot;/&gt;</b>
+			 
+			"></img>
+                </h4>
+            </div>
+            <table class="table table-sm">
+                <tr><th>attribute</th><th>type</th><th>use</th><th>default</th><th>minoccurs</th></tr>
+                    
+                    <tr>
+
+                        <td>
+                            <img src="img/popup_icon.png" width="24px" data-toggle="popover" data-content="
+                  The value you want to set in the response content type
+				"></img>
+                            
+                                value
+                            
+                        </td>
+                        <td>xsd:string</td>
+                        <td>required</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    
+            </table>
+        </div>
+    
+
+            </div>
+            <div class="col-sm-3 sidenav">
+                
+<h4>List of Types</h4>
+
+        <div id="type_debug_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">1</span> debug_options</h4>
+                <p>options: none,debug,info,warn,error</p>
+            </div>
+        </div>
+    
+        <div id="type_popup_display_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">2</span> popup_display_options</h4>
+                <p>options: self,iframe,other</p>
+            </div>
+        </div>
+    
+        <div id="type_output_format_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">3</span> output_format_options</h4>
+                <p>options: html,json,xml</p>
+            </div>
+        </div>
+    
+        <div id="type_method_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">4</span> method_options</h4>
+                <p>options: post,get</p>
+            </div>
+        </div>
+    
+        <div id="type_link_display_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">5</span> link_display_options</h4>
+                <p>options: link,button,menu</p>
+            </div>
+        </div>
+    
+        <div id="type_true_false_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">6</span> true_false_options</h4>
+                <p>options: true,false</p>
+            </div>
+        </div>
+    
+        <div id="type_left_right_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">7</span> left_right_options</h4>
+                <p>options: left,right</p>
+            </div>
+        </div>
+    
+        <div id="type_label_position_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">8</span> label_position_options</h4>
+                <p>options: left,above</p>
+            </div>
+        </div>
+    
+        <div id="type_alignment_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">9</span> alignment_options</h4>
+                <p>options: left,center,right</p>
+            </div>
+        </div>
+    
+        <div id="type_valignment_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">10</span> valignment_options</h4>
+                <p>options: top,middle,bottom</p>
+            </div>
+        </div>
+    
+        <div id="type_direction_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">11</span> direction_options</h4>
+                <p>options: down,across</p>
+            </div>
+        </div>
+    
+        <div id="type_position_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">12</span> position_options</h4>
+                <p>options: top,bottom,left,right</p>
+            </div>
+        </div>
+    
+        <div id="type_position" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">13</span> position</h4>
+                <p>options: absolute,relative</p>
+            </div>
+        </div>
+    
+        <div id="type_search_display_options" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">14</span> search_display_options</h4>
+                <p>options: default,select</p>
+            </div>
+        </div>
+    
+        <div id="type_list_populator_types" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">15</span> list_populator_types</h4>
+                <p>options: sql_ref</p>
+            </div>
+        </div>
+    
+        <div id="type_param_converter_types" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">16</span> param_converter_types</h4>
+                <p>options: boolean,byte,short,int,long,float,double,char,String,object</p>
+            </div>
+        </div>
+    
+        <div id="type_xml_json" style="padding-top: 80px;"></div>
+        <div class="panel panel-warning text-left">
+            <div class="panel-heading  panel-warning ">
+                <h4><span class="badge badge-info">17</span> xml_json</h4>
+                <p>options: xml,json</p>
+            </div>
+        </div>
+    
+
             </div>
         </div>
     </div>
-    <axel:insert page="footer.html"/>
+    <footer class="container-fluid text-center axel">
+    <h3> axel framework - tutorial 
+        &nbsp;&nbsp;<a href="https://github.com/mwjmurphy/Axel-Framework" title="join our team on github" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>
+        &nbsp;&nbsp;<a href="https://www.facebook.com/AxelFramework/" title="read about axel on facebook" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>
+    </h3>
+</footer>
 </body>
 </html>

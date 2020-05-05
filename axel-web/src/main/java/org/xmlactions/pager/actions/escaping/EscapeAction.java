@@ -66,7 +66,7 @@ public class EscapeAction extends CommonFormFields {
     	if (getFormat().equals("pre")) {	// presentation
     		escapedData = presentationEscape(data);
     	} else if (getFormat().equals("html")) {
-        		escapedData = StringEscapeUtils.escapeHtml(data);
+        	escapedData = StringEscapeUtils.escapeHtml(data);
     	} else if (getFormat().equals("xml")) {
     		escapedData = StringEscapeUtils.escapeXml(data);
     	} else if (getFormat().equals("java")) {

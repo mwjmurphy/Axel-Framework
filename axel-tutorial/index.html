@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +27,8 @@
 
 
 
+
+
    
 <meta charset="utf-8">
 <title>Axel Framework Tutorial 2020</title>
@@ -38,10 +39,16 @@
 
 <link rel="stylesheet" href="/bootstrap/cerulean//bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script-->
 <script src="https://kit.fontawesome.com/2ff5ff2a49.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/axel.css">
-
+<script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+</script>
+    
     
 </head>
 <body>
@@ -86,31 +93,6 @@
     -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Axel Actions
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#introduction">Introduction</a>
-        <a class="dropdown-item" href="#how_it_works">How It Works</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#hello_world">Hello World!!!</a>
-        <a class="dropdown-item" href="#insert_component_page">Insert Component Page</a>
-        <a class="dropdown-item" href="#capture_browser_parameters">Capture Browser Parameters</a>
-        <a class="dropdown-item" href="#http_call_json" title="How to load data from an external site">Http Call Json</a>
-        <a class="dropdown-item" href="#json_presentation" title="Presentation of the loaded data">Json Presentation</a>
-        <a class="dropdown-item" href="#http_call_xml" title="How to load data from an external site">Http Call Xml</a>
-        <a class="dropdown-item" href="#xml_presentation" title="Presentation of the loaded data">Xml Presentation</a>
-        <a class="dropdown-item" href="#json_get" title="Get an object/s from a json document">Json Get</a>
-        <a class="dropdown-item" href="#code" title="Executes a java bean method">Code</a>
-        <a class="dropdown-item" href="#put_get_remove" title="Put, Get and Remove content from execContext">Put and Get and Remove</a>
-        <a class="dropdown-item" href="#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
-        <a class="dropdown-item" href="#range" title="Numeric indexing">Range</a>
-        <a class="dropdown-item" href="#escaping" title="Escaping content for different formats">Escaping and Unescaping</a>
-        <a class="dropdown-item" href="#evaluate" title="Javascript evaluation">Evaluating</a>
-        <a class="dropdown-item" href="#date_formatting" title="Formatting dates">Date Formatting</a>
-      </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Select Bootstrap Theme
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -133,6 +115,95 @@
         <a class="dropdown-item" href="?selected_theme=superhero">superhero</a>
         <a class="dropdown-item" href="?selected_theme=united">united</a>
         <a class="dropdown-item" href="?selected_theme=yeti">yeti</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Axel Actions
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/_index.html#introduction">Introduction</a>
+        <a class="dropdown-item" href="/_index.html#how_it_works">How It Works</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/_index.html#hello_world">Hello World!!!</a>
+        <a class="dropdown-item" href="/_index.html#insert_component_page">Insert Component Page</a>
+        <a class="dropdown-item" href="/_index.html#capture_browser_parameters">Capture Browser Parameters</a>
+        <a class="dropdown-item" href="/_index.html#http_call_json" title="How to load data from an external site">Http Call Json</a>
+        <a class="dropdown-item" href="/_index.html#json_presentation" title="Presentation of the loaded data">Json Presentation</a>
+        <a class="dropdown-item" href="/_index.html#http_call_xml" title="How to load data from an external site">Http Call Xml</a>
+        <a class="dropdown-item" href="/_index.html#xml_presentation" title="Presentation of the loaded data">Xml Presentation</a>
+        <a class="dropdown-item" href="/_index.html#json_get" title="Get an object/s from a json document">Json Get</a>
+        <a class="dropdown-item" href="/_index.html#code" title="Executes a java bean method">Code</a>
+        <a class="dropdown-item" href="/_index.html#put_get_remove" title="Put, Get and Remove content from execContext">Put and Get and Remove</a>
+        <a class="dropdown-item" href="/_index.html#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
+        <a class="dropdown-item" href="/_index.html#range" title="Numeric indexing">Range</a>
+        <a class="dropdown-item" href="/_index.html#escaping" title="Escaping content for different formats">Escaping and Unescaping</a>
+        <a class="dropdown-item" href="/_index.html#evaluate" title="Javascript evaluation">Evaluating</a>
+        <a class="dropdown-item" href="/_index.html#date_formatting" title="Formatting dates">Date Formatting</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Axel Schema
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        
+          <a class="dropdown-item" href="/_schema.html#action_code">code</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_http">http</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_param">param</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_insert">insert</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_insert_into">insert_into</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_echo">echo</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_if">if</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_elseif">elseif</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_else">else</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_put">put</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_remove">remove</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_get">get</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_json_get">json_get</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_eval">eval</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_date_formatter">date_formatter</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_transform">transform</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_escape">escape</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_unescape">unescape</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_debug">debug</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_log">log</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_range">range</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_map_xml_to_bean">map_xml_to_bean</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_map_bean_to_xml">map_bean_to_xml</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_script">script</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_map_xml_to_presentation">map_xml_to_presentation</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_map_json_to_presentation">map_json_to_presentation</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_map_xml_to_json">map_xml_to_json</a>
+        
+          <a class="dropdown-item" href="/_schema.html#action_content_type">content_type</a>
+        
       </div>
     </li>
   <!--
@@ -196,55 +267,55 @@ function myFunction() {
     <h4>Navigation</h4>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="#introduction">Introduction</a>
+            <a class="nav-link" href="/_index.html#introduction">Introduction</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#how_it_works">How It Works</a>
+            <a class="nav-link" href="/_index.html#how_it_works">How It Works</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#hello_world">Hello World!!!</a>
+            <a class="nav-link" href="/_index.html#hello_world">Hello World!!!</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#insert_component_page">Insert Component Page</a>
+            <a class="nav-link" href="/_index.html#insert_component_page">Insert Component Page</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#capture_browser_parameters">Capture Browser Parameters</a>
+            <a class="nav-link" href="/_index.html#capture_browser_parameters">Capture Browser Parameters</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#http_call_json" title="How to load data from an external site">Http Call Json</a>
+            <a class="nav-link" href="/_index.html#http_call_json" title="How to load data from an external site">Http Call Json</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#json_presentation" title="Presentation of the loaded data">Json Presentation</a>
+            <a class="nav-link" href="/_index.html#json_presentation" title="Presentation of the loaded data">Json Presentation</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#http_call_xml" title="How to load data from an external site">Http Call Xml</a>
+            <a class="nav-link" href="/_index.html#http_call_xml" title="How to load data from an external site">Http Call Xml</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#xml_presentation" title="Presentation of the loaded data">Xml Presentation</a>
+            <a class="nav-link" href="/_index.html#xml_presentation" title="Presentation of the loaded data">Xml Presentation</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#json_get" title="Get an object/s from a json document">Json Get</a>
+            <a class="nav-link" href="/_index.html#json_get" title="Get an object/s from a json document">Json Get</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#code" title="Executes a java bean method">Code</a>
+            <a class="nav-link" href="/_index.html#code" title="Executes a java bean method">Code</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#put_get_remove" title="Put, Get and Remove content from execContext">Put and Get and Remove</a>
+            <a class="nav-link" href="/_index.html#put_get_remove" title="Put, Get and Remove content from execContext">Put and Get and Remove</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
+            <a class="nav-link" href="/_index.html#if_else_elseif" title="Conditional coding using if, else and elseif">If, Else and Elseif</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#range" title="Numeric indexing">Range</a>
+            <a class="nav-link" href="/_index.html#range" title="Numeric indexing">Range</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#escaping" title="Escaping content for different formats">Escaping and Unescaping</a>
+            <a class="nav-link" href="/_index.html#escaping" title="Escaping content for different formats">Escaping and Unescaping</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#evaluate" title="Javascript evaluation">Evaluating</a>
+            <a class="nav-link" href="/_index.html#evaluate" title="Javascript evaluation">Evaluating</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#date_formatting" title="Formatting dates">Date Formatting</a>
+            <a class="nav-link" href="/_index.html#date_formatting" title="Formatting dates">Date Formatting</a>
         </li>
         
 
@@ -358,7 +429,7 @@ Hello World!!! &dollar;{current.time}
         <div class="card-text code">
             <pre>
                 <code>
-Hello World!!! 17:25
+Hello World!!! 14:25
                 </code>
             </pre>
         </div>
@@ -409,7 +480,7 @@ Hello World!!! 17:25
         <div class="card-text code">
             <pre>
                 <code>
-Hello World!!! 17:25<br/>
+Hello World!!! 14:25<br/>
 <h5>This is an Axel Framework Component Page</h5>
                 </code>
             </pre>

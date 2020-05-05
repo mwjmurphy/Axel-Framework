@@ -62,7 +62,7 @@
             "options": "default,select"
         },
         {
-            "documentation": "<![CDATA[\r\n            These are the available types of list population.\r\n            ]]>",
+            "documentation": "\r\n            These are the available types of list population.\r\n            ",
             "name": "list_populator_types",
             "options": "sql_ref"
         },
@@ -76,20 +76,20 @@
         }
     ],
     "targetNamespace": "http://www.axelframework.org/axel_core",
-    "documentation": "<![CDATA[\r\n\t\t<h4>Actions<\/h4>\r\n\t\t\r\n\t\tThe framework uses actions to perform tasks inside a web html page. Tasks vary in functionality\r\n\t\tand can be a simple date format to a complex page insert.  This schema describes the core actions\r\n\t\tprovided by the framework.\r\n\t\t\r\n\t\tActions are placed into the static html page content.  When that page is serviced by the server the\r\n\t\tactions are replaced with the result of each action..\r\n\t\t\r\n\t\tThe following example is an html page with an insert action. The insert action in this case inserts a page named\r\n\t\thead.html into the html before it is shown on the browser.  The head.html as you might conclude contains the\r\n\t\tcss and javascript that this page requires.  It could contain anything needed by this and other pages. Now\r\n\t\tany page that requires these css and javascripts can simply use the insert command to have them inserted into\r\n\t\tthe page. The insert action is highlighted in red.<br/>\r\n\t\t\r\n\t\tWhen an action is processed on a web page the response from an action if not null will replace the\r\n\t\taction content (syntax) on the web page. If the response is null the action syntax is removed from\r\n\t\tthe web page.\r\n\t\t\r\n\t\tNow start to think about dynamically building an html page, changing the content based on user\r\n\t\tselections, retrieving data from a database or other such sources. Being able to seperate out\r\n\t\tpages for specific tasks gives you object orientation. \r\n\t\t\r\n\t\t<div class=\"bs-callout bs-callout-info\">\r\n\t\t\t<h4>Skillset Required<\/h4>\r\n\t\t\t<p>\r\n\t\t\t\tA medium level of expertise in html and xml is required to work with the core actions.\r\n\t\t\t<\/p>\r\n\t\t\t<p>\r\n\t\t\t\tA medium level of expertise in Javascript and JSON is required to interact with these actions.  \r\n\t\t\t<\/p> \r\n\t\t<\/div>\r\n\t\r\n\t]]>",
+    "documentation": "\r\n\t\t<h4>Actions<\/h4>\r\n\t\t\r\n\t\tThe framework uses actions to perform tasks inside a web html page. Tasks vary in functionality\r\n\t\tand can be a simple date format to a complex page insert.  This schema describes the core actions\r\n\t\tprovided by the framework.\r\n\t\t\r\n\t\tActions are placed into the static html page content.  When that page is serviced by the server the\r\n\t\tactions are replaced with the result of each action..\r\n\t\t\r\n\t\tThe following example is an html page with an insert action. The insert action in this case inserts a page named\r\n\t\thead.html into the html before it is shown on the browser.  The head.html as you might conclude contains the\r\n\t\tcss and javascript that this page requires.  It could contain anything needed by this and other pages. Now\r\n\t\tany page that requires these css and javascripts can simply use the insert command to have them inserted into\r\n\t\tthe page. The insert action is highlighted in red.<br/>\r\n\t\t\r\n\t\tWhen an action is processed on a web page the response from an action if not null will replace the\r\n\t\taction content (syntax) on the web page. If the response is null the action syntax is removed from\r\n\t\tthe web page.\r\n\t\t\r\n\t\tNow start to think about dynamically building an html page, changing the content based on user\r\n\t\tselections, retrieving data from a database or other such sources. Being able to seperate out\r\n\t\tpages for specific tasks gives you object orientation. \r\n\t\t\r\n\t\t<div class=&quot;bs-callout bs-callout-info&quot;>\r\n\t\t\t<h4>Skillset Required<\/h4>\r\n\t\t\t<p>\r\n\t\t\t\tA medium level of expertise in html and xml is required to work with the core actions.\r\n\t\t\t<\/p>\r\n\t\t\t<p>\r\n\t\t\t\tA medium level of expertise in Javascript and JSON is required to interact with these actions.  \r\n\t\t\t<\/p> \r\n\t\t<\/div>\r\n\t\r\n\t",
     "elements": [
         {
-            "documentation": "<![CDATA[\r\n\t\t\tThe code action will invoke Java code from the web page.\r\n\t\t\t\r\n            If there is a response from the java call it will replace the code element in the page. If there\r\n            is no response then the code element is removed from the page.\r\n            \r\n            The response may also be stored in the exceContext using the key attribute.\r\n      ]]>",
+            "documentation": "\r\n\t\t\tThe code action will invoke Java code from the web page.\r\n\t\t\t\r\n            If there is a response from the java call it will replace the code element in the page. If there\r\n            is no response then the code element is removed from the page.\r\n            \r\n            The response may also be stored in the exceContext using the key attribute.\r\n      ",
             "name": "code",
             "params": [
                 {
                     "minOccurs": "0",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\tThe param element may be used to pass one or more parameters to the code call.\r\n\t\t\t\t\t\r\n\t\t            @see <a href=\"#param\">param<\/a> definiton. \r\n\t\t      \t]]>",
+                    "documentation": "\r\n\t\t\t\t\tThe param element may be used to pass one or more parameters to the code call.\r\n\t\t\t\t\t\r\n\t\t            @see <a href=&quot;#param&quot;>param<\/a> definiton. \r\n\t\t      \t",
                     "name": "param"
                 },
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\tThis must be the full path, class and method name of the java class that you want to invoke.\r\n\t\t\t\t\r\n\t\t\t\tExample<br/>\r\n\t\t\t\t<code>\r\n\t\t\t\t\t&lt;axel:code call=\"my.class.method\"/&gt;\r\n\t\t\t\t<\/code>\r\n\t\t\t\t\r\n\t\t\t\tExample with parameters<br/>\r\n\t\t\t\t<code>\r\n\t\t\t\t\t&lt;axel:code call=\"org.xmlactions.common.date.DateUtils.getDate\"&gt;<br/>\r\n\t\t\t\t\t&#160;&#160;&#160;&lt;axel:param value=\"2010-10-02\"/&gt;<br/>\r\n\t\t\t\t\t&#160;&#160;&#160;&lt;axel:param value=\"yyyy-MM-dd\"/&gt;<br/>\r\n\t\t\t\t\t&lt;/axel:code&gt;\r\n\t\t\t\t<\/code>\r\n            ]]>",
+                    "documentation": "\r\n\t\t\t\tThis must be the full path, class and method name of the java class that you want to invoke.\r\n\t\t\t\t\r\n\t\t\t\tExample<br/>\r\n\t\t\t\t<code>\r\n\t\t\t\t\t&lt;axel:code call=&quot;my.class.method&quot;/&gt;\r\n\t\t\t\t<\/code><br/>\r\n\t\t\t\t\r\n\t\t\t\tExample with parameters<br/>\r\n\t\t\t\t<code>\r\n\t\t\t\t\t&lt;axel:code call=&quot;org.xmlactions.common.date.DateUtils.getDate&quot;&gt;<br/>\r\n\t\t\t\t\t&#160;&#160;&#160;&lt;axel:param value=&quot;2010-10-02&quot;/&gt;<br/>\r\n\t\t\t\t\t&#160;&#160;&#160;&lt;axel:param value=&quot;yyyy-MM-dd&quot;/&gt;<br/>\r\n\t\t\t\t\t&lt;/axel:code&gt;\r\n\t\t\t\t<\/code>\r\n            ",
                     "name": "call",
                     "type": "xsd:string"
                 },
@@ -102,24 +102,24 @@
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n\t\t\tThe http action will make a http rest call to the url.\r\n\t\t\t\r\n\t\t\tThe response is expected to be in json format.\r\n\t\t\t\r\n            The response may also be stored in the exceContext using the key attribute.\r\n      ]]>",
+            "documentation": "\r\n\t\t\tThe http action will make a http rest call to the url.\r\n\t\t\t\r\n\t\t\tThe response is expected to be in json format.\r\n\t\t\t\r\n            The response may also be stored in the exceContext using the key attribute.\r\n      ",
             "name": "http",
             "params": [
                 {
                     "minOccurs": "0",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\tThe param element may be used to pass one or more parameters to the code call.\r\n\t\t\t\t\t\r\n\t\t            @see <a href=\"#param\">param<\/a> definiton. \r\n\t\t      \t]]>",
+                    "documentation": "\r\n\t\t\t\t\tThe param element may be used to pass one or more parameters to the code call.\r\n\t\t\t\t\t\r\n\t\t            @see <a href=&quot;#param&quot;>param<\/a> definiton. \r\n\t\t      \t",
                     "name": "param"
                 },
                 {
                     "default": "get",
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\tThe method determines the http method such as get or post\r\n            ]]>",
+                    "documentation": "\r\n\t\t\t\tThe method determines the http method such as get or post\r\n            ",
                     "name": "method",
                     "type": "method_options"
                 },
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\tThis is the full address of the http call excluding parameters\r\n\t\t\t\t\r\n\t\t\t\tExample<br/>\r\n\t\t\t\t<code>\r\n\t\t\t\t\t&lt;axel:http href=\"https://google.com\"/&gt;\r\n\t\t\t\t<\/code>\r\n\t\t\t\t\r\n\t\t\t\tExample with parameters<br/>\r\n\t\t\t\t<code>\r\n\t\t\t\t\t&lt;axel:http href=\"https://google.com\"/&gt;\r\n\t\t\t\t\t&#160;&#160;&#160;&lt;axel:param value=\"q=spain\"/&gt;<br/>\r\n\t\t\t\t\t&lt;/axel:http&gt;\r\n\t\t\t\t<\/code>\r\n            ]]>",
+                    "documentation": "\r\n\t\t\t\tThis is the full address of the http call excluding parameters\r\n\t\t\t\t\r\n\t\t\t\tExample<br/>\r\n\t\t\t\t<code>\r\n\t\t\t\t\t&lt;axel:http href=&quot;https://google.com&quot;/&gt;\r\n\t\t\t\t<\/code>\r\n\t\t\t\t\r\n\t\t\t\tExample with parameters<br/>\r\n\t\t\t\t<code>\r\n\t\t\t\t\t&lt;axel:http href=&quot;https://google.com&quot;/&gt;\r\n\t\t\t\t\t&#160;&#160;&#160;&lt;axel:param value=&quot;q=spain&quot;/&gt;<br/>\r\n\t\t\t\t\t&lt;/axel:http&gt;\r\n\t\t\t\t<\/code>\r\n            ",
                     "name": "href",
                     "type": "xsd:string"
                 },
@@ -132,31 +132,31 @@
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n\t\t\tProvides parameters for some of the actions such as code, http or transform \r\n\t\t\t]]>",
+            "documentation": "\r\n\t\t\tProvides parameters for some of the actions such as code, http or transform \r\n\t\t\t",
             "name": "param",
             "params": [
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                  This is either<br/>\r\n                  <ul/>\r\n                     <li/> The key used to retrieve the value from the execContext\r\n                     <li/> The value for the parameter.\r\n                  <\/ul>\r\n                  \r\n                  If the value is used as part of an http call then it should should contain the key=value\r\n\t\t\t\t]]>",
+                    "documentation": "\r\n                  This is either<br/>\r\n                  <ul/>\r\n                     <li/> The key used to retrieve the value from the execContext\r\n                     <li/> The value for the parameter.\r\n                  <\/ul>\r\n                  \r\n                  If the value is used as part of an http call then it should should contain the key=value\r\n\t\t\t\t",
                     "name": "value",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                  The \"name\" may be used to provide a name for the HttpAction.<br/>\r\n                  <code>\r\n                  \t&lt;axel:http .../&gt;\r\n\t\t\t\t\t\t&lt;axel:param name=\"p1\" value=\"value for p1\"/&gt;<br/>\r\n                  \t&lt;/axel:http&gt;<br/>\r\n                  <\/code>\r\n\t\t\t\t]]>",
+                    "documentation": "\r\n                  The &quot;name&quot; may be used to provide a name for the HttpAction.<br/>\r\n                  <code>\r\n                  \t&lt;axel:http .../&gt;\r\n\t\t\t\t\t\t&lt;axel:param name=&quot;p1&quot; value=&quot;value for p1&quot;/&gt;<br/>\r\n                  \t&lt;/axel:http&gt;<br/>\r\n                  <\/code>\r\n\t\t\t\t",
                     "name": "name",
                     "type": "xsd:string"
                 },
                 {
                     "default": "String",
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\tUse this attribute to force a conversion on the parameter.  This may be required\r\n\t\t\t\t\tif the parameter type does not match that of the code parameter.\r\n                  \r\n\t\t\t\t\t@see <a href=\"#param_converter_types\">param_converter_types<\/a> definiton. \r\n               ]]>",
+                    "documentation": "\r\n\t\t\t\t\tUse this attribute to force a conversion on the parameter.  This may be required\r\n\t\t\t\t\tif the parameter type does not match that of the code parameter.\r\n                  \r\n\t\t\t\t\t@see <a href=&quot;#param_converter_types&quot;>param_converter_types<\/a> definiton. \r\n               ",
                     "name": "type",
                     "type": "param_converter_types"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                  Not required for code actions.\r\n\r\n                  Required only if mapping the params to a map, will be used as\r\n                  the key in the map.\r\n\t\t\t]]>",
+                    "documentation": "\r\n                  Not required for code actions.\r\n\r\n                  Required only if mapping the params to a map, will be used as\r\n                  the key in the map.\r\n\t\t\t",
                     "name": "key",
                     "type": "xsd:string"
                 }
@@ -168,81 +168,81 @@
             "params": [
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\t\tThe name of the file to insert.\r\n\r\n                  \t\tThe name of the file may also include the path location relative to the web context root.\r\n\t\t            ]]>",
+                    "documentation": "\r\n\t\t\t\t\t\tThe name of the file to insert.\r\n\r\n                  \t\tThe name of the file may also include the path location relative to the web context root.\r\n\t\t            ",
                     "name": "page",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                  \t\tAdditional path, prepended to the page.\r\n\r\n\t\t\t\t\t\tBy default it is set to the web context root.\r\n\t\t            ]]>",
+                    "documentation": "\r\n                  \t\tAdditional path, prepended to the page.\r\n\r\n\t\t\t\t\t\tBy default it is set to the web context root.\r\n\t\t            ",
                     "name": "path",
                     "type": "xsd:string"
                 },
                 {
                     "default": "axel",
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\t\tNamespace used with pager action commands.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThis allows you to declare the namespace to use for the inserted page.  Usefull when you\r\n\t\t\t\t\t\tdon't want to provide the html declaration.\r\n            \t\t]]>",
+                    "documentation": "\r\n\t\t\t\t\t\tNamespace used with pager action commands.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThis allows you to declare the namespace to use for the inserted page.  Usefull when you\r\n\t\t\t\t\t\tdon't want to provide the html declaration.\r\n            \t\t",
                     "name": "namespace",
                     "type": "xsd:string"
                 },
                 {
                     "default": "true",
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\t\tIf this is set true (which is the default setting) then the outermost html element is removed.\r\n\t\t\t\t\t\tThis may be necessary when using strict conformant html. \r\n            \t\t]]>",
+                    "documentation": "\r\n\t\t\t\t\t\tIf this is set true (which is the default setting) then the outermost html element is removed.\r\n\t\t\t\t\t\tThis may be necessary when using strict conformant html. \r\n            \t\t",
                     "name": "remove_html",
                     "type": "true_false_options"
                 }
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n            \tInsert the current processing page into another page.\r\n           \t\t\r\n           \t\tThis is used when you have an outer wrapper style page.  The outer page could contain the head, body etc. The\r\n           \t\touter page must have a replacement marker key where the current page is inserted into.  The marker must follow\r\n           \t\tthe standard ${insert_here} syntax.  The \"insert_here\" can be any valid name. \r\n           \t\thave a key placed where the this page should be inserted into.\r\n           \t\t\r\n\t\t\t<div class=\"bs-callout bs-callout-info\">\r\n\t\t\t\t<h4>Notes<\/h4>\r\n\t\t\t\t<p>\r\n\t\t\t\t\tOne of the particular benifits of this action is the way that the page is called from the browser. Calling the\r\n\t\t\t\t\tinner page is very specific and can be easily traced from the browser.\r\n\t\t\t\t<\/p>\r\n\t\t\t\t<p>\r\n\t\t\t\t\tAnother benifit is the ability to have a consistant wrapper page that could contain title, menus, breadcrumbs etc.\r\n\t\t\t\t\tAnd having a number of pages inject themselves into the wrapper page.  Each of the pages would only to be concerned\r\n\t\t\t\t\tabout themselves, what they need to display and not be concerened about what they are in. \r\n\t\t\t\t<\/p>\r\n\t\t\t<\/div>\r\n            ]]>",
+            "documentation": "\r\n            \tInsert the current processing page into another page.\r\n           \t\t\r\n           \t\tThis is used when you have an outer wrapper style page.  The outer page could contain the head, body etc. The\r\n           \t\touter page must have a replacement marker key where the current page is inserted into.  The marker must follow\r\n           \t\tthe standard ${insert_here} syntax.  The &quot;insert_here&quot; can be any valid name. \r\n           \t\thave a key placed where the this page should be inserted into.\r\n           \t\t\r\n\t\t\t<div class=&quot;bs-callout bs-callout-info&quot;>\r\n\t\t\t\t<h4>Notes<\/h4>\r\n\t\t\t\t<p>\r\n\t\t\t\t\tOne of the particular benifits of this action is the way that the page is called from the browser. Calling the\r\n\t\t\t\t\tinner page is very specific and can be easily traced from the browser.\r\n\t\t\t\t<\/p>\r\n\t\t\t\t<p>\r\n\t\t\t\t\tAnother benifit is the ability to have a consistant wrapper page that could contain title, menus, breadcrumbs etc.\r\n\t\t\t\t\tAnd having a number of pages inject themselves into the wrapper page.  Each of the pages would only to be concerned\r\n\t\t\t\t\tabout themselves, what they need to display and not be concerened about what they are in. \r\n\t\t\t\t<\/p>\r\n\t\t\t<\/div>\r\n            ",
             "name": "insert_into",
             "params": [
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\t\tThe name of the page file that the current page will be inserted into.\r\n\r\n                  \t\tThe name of the file may also include the path location relative to the web root.\r\n            \t\t]]>",
+                    "documentation": "\r\n\t\t\t\t\t\tThe name of the page file that the current page will be inserted into.\r\n\r\n                  \t\tThe name of the file may also include the path location relative to the web root.\r\n            \t\t",
                     "name": "page",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                  \t\tAdditional path, prepended to the page.\r\n\r\n\t\t\t\t\t\tBy default it is set to the web context root.\r\n\t\t            ]]>",
+                    "documentation": "\r\n                  \t\tAdditional path, prepended to the page.\r\n\r\n\t\t\t\t\t\tBy default it is set to the web context root.\r\n\t\t            ",
                     "name": "path",
                     "type": "xsd:string"
                 },
                 {
                     "default": "axel",
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\t\tNamespace used with pager action commands.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThis allows you to declare the namespace to use for the inserted page.  Usefull when you\r\n\t\t\t\t\t\tdon't want to provide the html declaration.\r\n            \t\t]]>",
+                    "documentation": "\r\n\t\t\t\t\t\tNamespace used with pager action commands.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThis allows you to declare the namespace to use for the inserted page.  Usefull when you\r\n\t\t\t\t\t\tdon't want to provide the html declaration.\r\n            \t\t",
                     "name": "namespace",
                     "type": "xsd:string"
                 },
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\t\tThis is the replacement marker key that matches the replacement marker on the wrapper page.\r\n\r\n\t\t\t\t\t\tThe content of the current page will be replaced in the wrapper page using this replacement market.\r\n\t\t            ]]>",
+                    "documentation": "\r\n\t\t\t\t\t\tThis is the replacement marker key that matches the replacement marker on the wrapper page.\r\n\r\n\t\t\t\t\t\tThe content of the current page will be replaced in the wrapper page using this replacement market.\r\n\t\t            ",
                     "name": "key",
                     "type": "xsd:string"
                 },
                 {
                     "default": "true",
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\t\tIf this is set true (which is the default setting) then the outermost html element is removed.\r\n\t\t\t\t\t\tThis may be necessary when using strict conformant html.\r\n\t\t            ]]>",
+                    "documentation": "\r\n\t\t\t\t\t\tIf this is set true (which is the default setting) then the outermost html element is removed.\r\n\t\t\t\t\t\tThis may be necessary when using strict conformant html.\r\n\t\t            ",
                     "name": "remove_html",
                     "type": "true_false_options"
                 }
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n\t            Echos content to page \r\n            ]]>",
+            "documentation": "\r\n\t            Echos content to page \r\n            ",
             "name": "echo"
         },
         {
-            "documentation": "<![CDATA[\r\n\t\t\t\t\t\tList of actions that are executed if the expression evaluates to true.\r\n\t\t\t\t\t]]>",
+            "documentation": "\r\n\t\t\t\t\t\tList of actions that are executed if the expression evaluates to true.\r\n\t\t\t\t\t",
             "name": "if",
             "params": [{
                 "ref": "expression",
                 "use": "required",
-                "documentation": "<![CDATA[\r\n\t\t\t\t\t\tAn expression to be evaluated using JavaScript.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tIf this expression evaluates to true then the inside content is presented on the page and any actions contained\r\n\t\t\t\t\t\tinside the content are executed.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThe expression may contain parameter references using the replacement markers. e.g. ${session:key}.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThe characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters\r\n\t\t\t\t\t\t&lt;, &gt; and &amp;.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tIf a value for a replacement marker is not found it will be replaced with a null. \r\n\t\t\t\t\t]]>",
+                "documentation": "\r\n\t\t\t\t\t\tAn expression to be evaluated using JavaScript.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tIf this expression evaluates to true then the inside content is presented on the page and any actions contained\r\n\t\t\t\t\t\tinside the content are executed.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThe expression may contain parameter references using the replacement markers. e.g. ${session:key}.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThe characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters\r\n\t\t\t\t\t\t&lt;, &gt; and &amp;.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tIf a value for a replacement marker is not found it will be replaced with a null. \r\n\t\t\t\t\t",
                 "name": "ref"
             }]
         },
@@ -252,7 +252,7 @@
             "params": [{
                 "ref": "expression",
                 "use": "required",
-                "documentation": "<![CDATA[\r\n\t\t\t\t\t\tAn expression to be evaluated using JavaScript.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tIf this expression evaluates to true then any enclosing actions are executed.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThe expression may contain parameter references using the replacement markers. e.g. ${session:key}.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThe characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters\r\n\t\t\t\t\t\t&lt;, &gt; and &amp;.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tIf a value for a replacement marker is not found it will be replace with a null. \r\n\t\t\t\t\t]]>",
+                "documentation": "\r\n\t\t\t\t\t\tAn expression to be evaluated using JavaScript.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tIf this expression evaluates to true then any enclosing actions are executed.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThe expression may contain parameter references using the replacement markers. e.g. ${session:key}.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tThe characters &amp;lt;, &amp;gt; and &amp;amp; must be used in place of their replacement characters\r\n\t\t\t\t\t\t&lt;, &gt; and &amp;.\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tIf a value for a replacement marker is not found it will be replace with a null. \r\n\t\t\t\t\t",
                 "name": "ref"
             }]
         },
@@ -315,14 +315,14 @@
                 {
                     "default": "row",
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n               \t  The \"row_map_name\" is used by the system to name a java map that contains the data from a single row.\r\n               \t  \r\n               \t  When the \"json_get\" gets the data from json it stores the results into a map.  By default the map\r\n               \t  name is \"row\", this can be changed by setting the map name in the \"row_map_name\" field.\r\n            ]]>",
+                    "documentation": "\r\n               \t  The &quot;row_map_name&quot; is used by the system to name a java map that contains the data from a single row.\r\n               \t  \r\n               \t  When the &quot;json_get&quot; gets the data from json it stores the results into a map.  By default the map\r\n               \t  name is &quot;row&quot;, this can be changed by setting the map name in the &quot;row_map_name&quot; field.\r\n            ",
                     "name": "row_map_name",
                     "type": "xsd:string"
                 }
             ]
         },
         {
-            "documentation": "\r\n            Evaluate a javascript expression.\r\n\r\n           \tThe eval action can be used to perform expressions such as \"1+1\" or \"1+${x}\" or \"string + ' added to string'\"\r\n\t\t",
+            "documentation": "\r\n            Evaluate a javascript expression.\r\n\r\n           \tThe eval action can be used to perform expressions such as &quot;1+1&quot; or &quot;1+${x}&quot; or &quot;string + ' added to string'&quot;\r\n\t\t",
             "name": "eval",
             "params": [
                 {
@@ -340,119 +340,119 @@
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n            Convert a date from one format to another format.\r\n            \r\n            This action takes a date in one format such as \"2014-12-30\" and converts it to anther format such as \"30-DEC-2014\".\r\n            The formatter will handle both date and time individually or combined such as \"2014-12-30 10:30\" to \"30-DEC-2014 10:30\".\r\n            \r\n\t\t\tSome of the common date and time patterns in â\u20ac˜SimpleDateFormatâ\u20ac™ for Java String to Date conversion are:\r\n\t\t\t\t<ul>\r\n\t\t\t\t\t<li>Letter 'y' represents Year.<\/li>\r\n\t\t\t\t\t<li>Letter 'M' represents Month in Year.<\/li>\r\n\t\t\t\t\t<li>Letter 'D' represents Day in Month and â\u20ac˜Eâ\u20ac™ is Day Name in Week.<\/li>\r\n\t\t\t\t\t<li>Letter 'a' represents AM/PM marker and â\u20ac˜hâ\u20ac™ is Hour in AM/PM.<\/li>\r\n\t\t\t\t\t<li>Letter 'H' represents Hour in a Day, â\u20ac˜mâ\u20ac™ represents Minute in Hour andâ\u20ac˜sâ\u20ac™ is Second in Minute.<\/li>\r\n            \t<\/ul>\r\n            \t\r\n            \tSome Helpful Examples<br/>\r\n\t\t\t\t\t\"dd/MM/yyyy\" = \"12/05/2014\"<br/>\r\n\t\t\t\t\t\"dd-MM-yyyy HH:mm:ss\" = \"12-05-2014 22:37:50\"<br/>\r\n\t\t\t\t\t\"dd-MMM-yyyy\" = \"12-May-2014\"<br/>\r\n\t\t\t\t\t\"MM dd, yyyy\" = \"05 12, 2014\"<br/>\r\n\t\t\t\t\t\"E, MMM dd yyyy\" = \"Mon, May 12 2014\"<br/>\r\n\t\t\t\t\t\"E, MMM dd yyyy HH:mm:ss\" = \"Mon, May 12 2014 23:37:50\"<br/>\r\n\t\t\t\t\t\"dd-MMMM-yy\"= \"14-September-14\"<br/>\r\n            ]]>",
+            "documentation": "\r\n            Convert a date from one format to another format.\r\n            \r\n            This action takes a date in one format such as &quot;2014-12-30&quot; and converts it to anther format such as &quot;30-DEC-2014&quot;.\r\n            The formatter will handle both date and time individually or combined such as &quot;2014-12-30 10:30&quot; to &quot;30-DEC-2014 10:30&quot;.\r\n            \r\n\t\t\tSome of the common date and time patterns in â\u20ac˜SimpleDateFormatâ\u20ac™ for Java String to Date conversion are:\r\n\t\t\t\t<ul>\r\n\t\t\t\t\t<li>Letter 'y' represents Year.<\/li>\r\n\t\t\t\t\t<li>Letter 'M' represents Month in Year.<\/li>\r\n\t\t\t\t\t<li>Letter 'D' represents Day in Month and â\u20ac˜Eâ\u20ac™ is Day Name in Week.<\/li>\r\n\t\t\t\t\t<li>Letter 'a' represents AM/PM marker and â\u20ac˜hâ\u20ac™ is Hour in AM/PM.<\/li>\r\n\t\t\t\t\t<li>Letter 'H' represents Hour in a Day, â\u20ac˜mâ\u20ac™ represents Minute in Hour andâ\u20ac˜sâ\u20ac™ is Second in Minute.<\/li>\r\n            \t<\/ul>\r\n            \t\r\n            \tSome Helpful Examples<br/>\r\n\t\t\t\t\t&quot;dd/MM/yyyy&quot; = &quot;12/05/2014&quot;<br/>\r\n\t\t\t\t\t&quot;dd-MM-yyyy HH:mm:ss&quot; = &quot;12-05-2014 22:37:50&quot;<br/>\r\n\t\t\t\t\t&quot;dd-MMM-yyyy&quot; = &quot;12-May-2014&quot;<br/>\r\n\t\t\t\t\t&quot;MM dd, yyyy&quot; = &quot;05 12, 2014&quot;<br/>\r\n\t\t\t\t\t&quot;E, MMM dd yyyy&quot; = &quot;Mon, May 12 2014&quot;<br/>\r\n\t\t\t\t\t&quot;E, MMM dd yyyy HH:mm:ss&quot; = &quot;Mon, May 12 2014 23:37:50&quot;<br/>\r\n\t\t\t\t\t&quot;dd-MMMM-yy&quot;= &quot;14-September-14&quot;<br/>\r\n            ",
             "name": "date_formatter",
             "params": [
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\t\tThis is the original date that we want to convert to another format.\r\n\t\t\t\t]]>",
+                    "documentation": "\r\n\t\t\t\t\t\tThis is the original date that we want to convert to another format.\r\n\t\t\t\t",
                     "name": "date_value",
                     "type": "xsd:string"
                 },
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\tThis is the format of the original date in java syntax. i.e.  \"dd/MM/yyyy\" = \"12/05/2014\"\r\n\t\t\t\t]]>",
+                    "documentation": "\r\n\t\t\t\t\tThis is the format of the original date in java syntax. i.e.  &quot;dd/MM/yyyy&quot; = &quot;12/05/2014&quot;\r\n\t\t\t\t",
                     "name": "origin_format",
                     "type": "xsd:string"
                 },
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\tThis is the format that we want to convert the date to in java syntax. i.e.  \"dd-MMM-yyyy\" = \"12-May-2014\"\r\n\t\t\t\t]]>",
+                    "documentation": "\r\n\t\t\t\t\tThis is the format that we want to convert the date to in java syntax. i.e.  &quot;dd-MMM-yyyy&quot; = &quot;12-May-2014&quot;\r\n\t\t\t\t",
                     "name": "destination_format",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n\t\t\t\t\tIf you need to have the result stored into the execContext set this the key value here.  It can then be retrieved from the execContext using ${key.value}.\r\n\t\t\t\t]]>",
+                    "documentation": "\r\n\t\t\t\t\tIf you need to have the result stored into the execContext set this the key value here.  It can then be retrieved from the execContext using ${key.value}.\r\n\t\t\t\t",
                     "name": "key",
                     "type": "xsd:string"
                 }
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n            Transform an xml document using an xsd style sheet.\r\n            ]]>",
+            "documentation": "\r\n            Transform an xml document using an xsd style sheet.\r\n            ",
             "name": "transform",
             "params": [
                 {
                     "minOccurs": "0",
-                    "documentation": "<![CDATA[\r\n                     Parameters if used will be passed to the transformer.  Making them available\r\n                     for the transformation. \r\n                     ]]>",
+                    "documentation": "\r\n                     Parameters if used will be passed to the transformer.  Making them available\r\n                     for the transformation. \r\n                     ",
                     "name": "param"
                 },
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n\t\t            Multiple transformation files may be combined by appending one after the other using a ; seperator.  Usefull if you\r\n\t\t            need to show the content of an include.  \r\n\t\t            ]]>",
+                    "documentation": "\r\n\t\t            Multiple transformation files may be combined by appending one after the other using a ; seperator.  Usefull if you\r\n\t\t            need to show the content of an include.  \r\n\t\t            ",
                     "name": "xslt_file_name",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                    Instead of using an xml file a xml string may be referenced by using\r\n                    the xml_ref attribute.\r\n                    ]]>",
+                    "documentation": "\r\n                    Instead of using an xml file a xml string may be referenced by using\r\n                    the xml_ref attribute.\r\n                    ",
                     "name": "xml_file_name",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                    Instead of using an xml_ref an xml file name may be used by setting\r\n                    the name of the file in the xml_file_name attribute.\r\n                    ]]>",
+                    "documentation": "\r\n                    Instead of using an xml_ref an xml file name may be used by setting\r\n                    the name of the file in the xml_file_name attribute.\r\n                    ",
                     "name": "xml_ref",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                    If this is set than the transformed output will be placed\r\n                    into the execContex with this key.  Can be retrieved from the \r\n                    execContext using the same key.    \r\n                    ]]>",
+                    "documentation": "\r\n                    If this is set than the transformed output will be placed\r\n                    into the execContex with this key.  Can be retrieved from the \r\n                    execContext using the same key.    \r\n                    ",
                     "name": "key",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                  xalan transformer factory = org.apache.xalan.processor.TransformerFactoryImpl     \r\n               ]]>",
+                    "documentation": "\r\n                  xalan transformer factory = org.apache.xalan.processor.TransformerFactoryImpl     \r\n               ",
                     "name": "transformer_factory",
                     "type": "xsd:string"
                 }
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n            This action will escape data to a number of different formats.\r\n            \r\n            The code uses StringEscapeUtils from apache.\r\n            \r\n            The types of data that can be escaped are 'html', 'xml', 'java', 'javascript', 'csv'\r\n            ]]>",
+            "documentation": "\r\n            This action will escape data to a number of different formats.\r\n            \r\n            The code uses StringEscapeUtils from apache.\r\n            \r\n            The types of data that can be escaped are 'html', 'xml', 'java', 'javascript', 'csv'\r\n            ",
             "name": "escape",
             "params": [
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n                    The key used to get the data as a String from the execContext. \r\n               ]]>",
+                    "documentation": "\r\n                    The key used to get the data as a String from the execContext. \r\n               ",
                     "name": "ref_key",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                    If this is set than the escaped output will be placed into the execContex with this key. Can be\r\n                    retrieved from the execContext using the same key.\r\n                    \r\n                    If this is not set then the output will replace the action on the page.\r\n                    ]]>",
+                    "documentation": "\r\n                    If this is set than the escaped output will be placed into the execContex with this key. Can be\r\n                    retrieved from the execContext using the same key.\r\n                    \r\n                    If this is not set then the output will replace the action on the page.\r\n                    ",
                     "name": "key",
                     "type": "xsd:string"
                 },
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n                  This must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'.     \r\n               ]]>",
+                    "documentation": "\r\n                  This must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'.     \r\n               ",
                     "name": "format",
                     "type": "xsd:string"
                 }
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n            This action will unescape data from a number of different formats.\r\n            \r\n            The code uses StringEscapeUtils from apache.\r\n            \r\n            The types of data that can be unescaped are 'html', 'xml', 'java', 'javascript', 'csv'\r\n            ]]>",
+            "documentation": "\r\n            This action will unescape data from a number of different formats.\r\n            \r\n            The code uses StringEscapeUtils from apache.\r\n            \r\n            The types of data that can be unescaped are 'html', 'xml', 'java', 'javascript', 'csv'\r\n            ",
             "name": "unescape",
             "params": [
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n                    The key used to get the data as a String from the execContext. \r\n               ]]>",
+                    "documentation": "\r\n                    The key used to get the data as a String from the execContext. \r\n               ",
                     "name": "ref_key",
                     "type": "xsd:string"
                 },
                 {
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n                    If this is set than the unescaped output will be placed\r\n                    into the execContex with this key.  Can be retrieved from the \r\n                    execContext using the same key.\r\n                    \r\n                    If this is not set then the output will replace the action on the page.\r\n                    ]]>",
+                    "documentation": "\r\n                    If this is set than the unescaped output will be placed\r\n                    into the execContex with this key.  Can be retrieved from the \r\n                    execContext using the same key.\r\n                    \r\n                    If this is not set then the output will replace the action on the page.\r\n                    ",
                     "name": "key",
                     "type": "xsd:string"
                 },
                 {
                     "use": "required",
-                    "documentation": "<![CDATA[\r\n                  This must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'.     \r\n               ]]>",
+                    "documentation": "\r\n                  This must be set to one of 'html', 'xml', 'java', 'javascript', 'csv'.     \r\n               ",
                     "name": "format",
                     "type": "xsd:string"
                 }
@@ -469,7 +469,7 @@
             }]
         },
         {
-            "documentation": "<![CDATA[\r\n            Logs the content of the ExecContext to output.\r\n         ]]>",
+            "documentation": "\r\n            Logs the content of the ExecContext to output.\r\n         ",
             "name": "log",
             "params": [{
                 "use": "optional",
@@ -479,7 +479,7 @@
             }]
         },
         {
-            "documentation": "<![CDATA[\r\n\t            Creates a Range bean that provides an incremental/decremental index or a random index.\r\n\r\n\t            It uses a from-to as the incremental/decremental range or the random range. If from < to\r\n\t            the number will increment. If from > to the number will decrement.\r\n\r\n\t            THe range will start at \"from\" and increment/decrement until it reaches the \"to\" value. Then\r\n\t            it restarts at the \"from\" continuing the loop. If from=5 and to=12 it will return 5,6,7,8,9,10,11,12\r\n\t            in a continuous loop. If from=12 and to=5 it will return 12,11,10,9,8,7,6,5\r\n\t            in a continuous loop.\r\n\r\n\t            For a random value it randomly picks a number between \"from\" and \"to\" \r\n\r\n            \tExample:<br/>\r\n            \t<axel:range from=\"1\" to=\"10\" name=\"inc_1_10\"/><br/>\r\n            \tTo apply the next range value simply add <b>${inc_1_10}<\/b> to the page. This will be replaced\r\n            \twith the next incremental number in the range 1-10.  Each time the ${inc_1_10} is found it will\r\n            \tbe replaced with the next number. \r\n\r\n         ]]>",
+            "documentation": "\r\n\t            Creates a Range bean that provides an incremental/decremental index or a random index.\r\n\r\n\t            It uses a from-to as the incremental/decremental range or the random range. If from < to\r\n\t            the number will increment. If from > to the number will decrement.\r\n\r\n\t            THe range will start at &quot;from&quot; and increment/decrement until it reaches the &quot;to&quot; value. Then\r\n\t            it restarts at the &quot;from&quot; continuing the loop. If from=5 and to=12 it will return 5,6,7,8,9,10,11,12\r\n\t            in a continuous loop. If from=12 and to=5 it will return 12,11,10,9,8,7,6,5\r\n\t            in a continuous loop.\r\n\r\n\t            For a random value it randomly picks a number between &quot;from&quot; and &quot;to&quot; \r\n\r\n            \tExample:<br/>\r\n            \t<axel:range from=&quot;1&quot; to=&quot;10&quot; name=&quot;inc_1_10&quot;/><br/>\r\n            \tTo apply the next range value simply add <b>${inc_1_10}<\/b> to the page. This will be replaced\r\n            \twith the next incremental number in the range 1-10.  Each time the ${inc_1_10} is found it will\r\n            \tbe replaced with the next number. \r\n\r\n         ",
             "name": "range",
             "params": [
                 {
@@ -490,13 +490,13 @@
                 },
                 {
                     "use": "required",
-                    "documentation": "\r\n                   This is the \"from\" value for the range.\r\n               ",
+                    "documentation": "\r\n                   This is the &quot;from&quot; value for the range.\r\n               ",
                     "name": "from",
                     "type": "xsd:string"
                 },
                 {
                     "use": "required",
-                    "documentation": "\r\n                   This is the \"to\" value for the range.\r\n               ",
+                    "documentation": "\r\n                   This is the &quot;to&quot; value for the range.\r\n               ",
                     "name": "to",
                     "type": "xsd:string"
                 },
@@ -510,7 +510,7 @@
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n            Maps an xml to a java bean.\r\n            \r\n            The mapping is defined in the xml_to_bean.xsd.  See the \"Mapping Xml to Java\" page for more\r\n            information on how the mapping file is constructed.   \r\n         ]]>",
+            "documentation": "\r\n            Maps an xml to a java bean.\r\n            \r\n            The mapping is defined in the xml_to_bean.xsd.  See the &quot;Mapping Xml to Java&quot; page for more\r\n            information on how the mapping file is constructed.   \r\n         ",
             "name": "map_xml_to_bean",
             "params": [
                 {
@@ -521,13 +521,13 @@
                 },
                 {
                     "use": "required",
-                    "documentation": "\r\n                  This is the key used to retrieve the xml from the execContext.\r\n                  This is the xml that will be mapped to an Object using the map_file_name mapping file.\r\n                  The \"xml_file_name\" may be used insead of this attribute;\r\n               ",
+                    "documentation": "\r\n                  This is the key used to retrieve the xml from the execContext.\r\n                  This is the xml that will be mapped to an Object using the map_file_name mapping file.\r\n                  The &quot;xml_file_name&quot; may be used insead of this attribute;\r\n               ",
                     "name": "xml_key",
                     "type": "xsd:string"
                 },
                 {
                     "use": "required",
-                    "documentation": "\r\n                  This is the file containing the xml that will be mapped to an Object using the map_file_name mapping file.\r\n                  The \"xml_key\" may be used instead of this attribute\r\n               ",
+                    "documentation": "\r\n                  This is the file containing the xml that will be mapped to an Object using the map_file_name mapping file.\r\n                  The &quot;xml_key&quot; may be used instead of this attribute\r\n               ",
                     "name": "xml_file_name",
                     "type": "xsd:string"
                 },
@@ -540,7 +540,7 @@
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n            Maps a java bean to xml.\r\n         ]]>",
+            "documentation": "\r\n            Maps a java bean to xml.\r\n         ",
             "name": "map_bean_to_xml",
             "params": [
                 {
@@ -564,22 +564,22 @@
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n\t\t\tThe \"script\" action will execute a javascript.\r\n\t\t\t\r\n\t\t\tThe javascript is written in the content of the \"script\" element and may be wrapped with a\r\n\t\t\tCDATA element.\r\n\t\t\t\r\n\t\t\tReplacement Markers may be added to the script.  These will be injected before execution of the\r\n\t\t\tscript.\r\n\t\t\t\r\n\t\t\tThe \"key\" attribute may be set with a value that will be used to store the result of the executed\r\n\t\t\tjavascript back into the execContext.  You can get at this using the ${key} syntax.\r\n\t\t\t\r\n\t\t\tA scipt action example:\r\n\t\t\t\r\n<pre>\r\n&lt;axel:script key=\"MyScriptResult\"&gt;<br/>\r\n\tvar x = \"My Name is ${user.name}\";<br/>\r\n\tvar y = \"My other name is not ${user.name}\";<br/>\r\n\tvar p = x + y;<br/>\r\n\tp;<br/>\r\n&lt;/axel:script&gt;<br/>\r\n<\/pre> \r\n\t\t\t]]>",
+            "documentation": "\r\n\t\t\tThe &quot;script&quot; action will execute a javascript.\r\n\t\t\t\r\n\t\t\tThe javascript is written in the content of the &quot;script&quot; element and may be wrapped with a\r\n\t\t\tCDATA element.\r\n\t\t\t\r\n\t\t\tReplacement Markers may be added to the script.  These will be injected before execution of the\r\n\t\t\tscript.\r\n\t\t\t\r\n\t\t\tThe &quot;key&quot; attribute may be set with a value that will be used to store the result of the executed\r\n\t\t\tjavascript back into the execContext.  You can get at this using the ${key} syntax.\r\n\t\t\t\r\n\t\t\tA scipt action example:\r\n\t\t\t\r\n<pre>\r\n&lt;axel:script key=&quot;MyScriptResult&quot;&gt;<br/>\r\n\tvar x = &quot;My Name is ${user.name}&quot;;<br/>\r\n\tvar y = &quot;My other name is not ${user.name}&quot;;<br/>\r\n\tvar p = x + y;<br/>\r\n\tp;<br/>\r\n&lt;/axel:script&gt;<br/>\r\n<\/pre> \r\n\t\t\t",
             "name": "script",
             "params": [{
                 "use": "optional",
-                "documentation": "<![CDATA[]\r\n\t\t\t\tThis attribute is used if you want to store the results of the script back into\r\n\t\t\t\tthe execContext.\r\n\t\t\t\t\r\n\t\t\t\tIf you don't use the key attribute the results of the script are returned.\r\n\t\t\t]]>",
+                "documentation": "]\r\n\t\t\t\tThis attribute is used if you want to store the results of the script back into\r\n\t\t\t\tthe execContext.\r\n\t\t\t\t\r\n\t\t\t\tIf you don't use the key attribute the results of the script are returned.\r\n\t\t\t",
                 "name": "key",
                 "type": "xsd:string"
             }]
         },
         {
-            "documentation": "<![CDATA[\r\n\t\t\tMap selected content of an XML to a presentation form.\r\n            \r\n            The ${...} replacement markers are used presenting the data in a form.\r\n         ]]>",
+            "documentation": "\r\n\t\t\tMap selected content of an XML to a presentation form.\r\n            \r\n            The ${...} replacement markers are used presenting the data in a form.\r\n         ",
             "name": "map_xml_to_presentation",
             "params": [
                 {
                     "minOccurs": "0",
-                    "documentation": "\r\n        \t\t\t\tIf this is set then the content of this form (which is html) is used to build the presentation of the data for this action.\r\n        \t\t\t\tThis \"form\" element takes precedence over the \"presentation_form\" attribute. \r\n\t\t            ",
+                    "documentation": "\r\n        \t\t\t\tIf this is set then the content of this form (which is html) is used to build the presentation of the data for this action.\r\n        \t\t\t\tThis &quot;form&quot; element takes precedence over the &quot;presentation_form&quot; attribute. \r\n\t\t            ",
                     "name": "form",
                     "maxOccurs": "1"
                 },
@@ -609,19 +609,19 @@
                 {
                     "default": "row",
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n               \t  The \"row_map_name\" is used by the system to name a java map that contains the data from a single row.\r\n               \t  \r\n               \t  When the \"map_xml_to_presentation\" action performs the query and returns a set of data containing one or more rows.\r\n               \t  Each of these rows is processed in turn and the data (properties) from that row are stored in a java map.  The map\r\n               \t  is then stored in the execContext using the \"row_map_name\".  When you want to access the data from a row you use the\r\n               \t  replacement marker syntax ${row_map_name:property_name} to place the data on the page.\r\n            ]]>",
+                    "documentation": "\r\n               \t  The &quot;row_map_name&quot; is used by the system to name a java map that contains the data from a single row.\r\n               \t  \r\n               \t  When the &quot;map_xml_to_presentation&quot; action performs the query and returns a set of data containing one or more rows.\r\n               \t  Each of these rows is processed in turn and the data (properties) from that row are stored in a java map.  The map\r\n               \t  is then stored in the execContext using the &quot;row_map_name&quot;.  When you want to access the data from a row you use the\r\n               \t  replacement marker syntax ${row_map_name:property_name} to place the data on the page.\r\n            ",
                     "name": "row_map_name",
                     "type": "xsd:string"
                 }
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n\t\t\t\tMap selected content of a JSON object to a presentation form.\r\n         ]]>",
+            "documentation": "\r\n\t\t\t\tMap selected content of a JSON object to a presentation form.\r\n         ",
             "name": "map_json_to_presentation",
             "params": [
                 {
                     "minOccurs": "0",
-                    "documentation": "\r\n        \t\t\t\tIf this is set then the content of this form (which is html) is used to build the presentation of the data for this action.\r\n        \t\t\t\tThis \"form\" element takes precedence over the \"presentation_form\" attribute. \r\n\t\t            ",
+                    "documentation": "\r\n        \t\t\t\tIf this is set then the content of this form (which is html) is used to build the presentation of the data for this action.\r\n        \t\t\t\tThis &quot;form&quot; element takes precedence over the &quot;presentation_form&quot; attribute. \r\n\t\t            ",
                     "name": "form",
                     "maxOccurs": "1"
                 },
@@ -651,7 +651,7 @@
                 {
                     "default": "row",
                     "use": "optional",
-                    "documentation": "<![CDATA[\r\n               \t  The \"row_map_name\" is used by the system to name a java map that contains the data from a single row.\r\n               \t  \r\n               \t  When the \"map_json_to_presentation\" action performs the query and returns a set of data containing one or more rows.\r\n               \t  Each of these rows is processed in turn and the data (properties) from that row are stored in a java map.  The map\r\n               \t  is then stored in the execContext using the \"row_map_name\".  When you want to access the data from a row you use the\r\n               \t  replacement marker syntax ${row_map_name:property_name} to place the data on the page.\r\n            ]]>",
+                    "documentation": "\r\n               \t  The &quot;row_map_name&quot; is used by the system to name a java map that contains the data from a single row.\r\n               \t  \r\n               \t  When the &quot;map_json_to_presentation&quot; action performs the query and returns a set of data containing one or more rows.\r\n               \t  Each of these rows is processed in turn and the data (properties) from that row are stored in a java map.  The map\r\n               \t  is then stored in the execContext using the &quot;row_map_name&quot;.  When you want to access the data from a row you use the\r\n               \t  replacement marker syntax ${row_map_name:property_name} to place the data on the page.\r\n            ",
                     "name": "row_map_name",
                     "type": "xsd:string"
                 }
@@ -694,18 +694,18 @@
                 },
                 {
                     "use": "optional",
-                    "documentation": "\r\n            \tThe xml_path is used to select an element or attribute value.\r\n            \t\r\n            \tThe syntax used for xpath is similar to an xpath parser including path and or attribute.\r\n            \t\r\n\t\t\t\tExample 1\r\n\t\t\t\t\r\n\t\t\t\t   xml = &lt;root&gt;&lt;row index=\"1\" data=\"This is the data\"/&gt;&lt;/root&gt;\r\n\t\t\t\t   \r\n\t\t\t\t   xpath = root/row[@data]\r\n\t\t\t\t   \r\n\t\t\t\t   path = root/row\r\n\t\t\t\t   \r\n\t\t\t\t   attribute = data\r\n\t\t\t\t   \r\n\t\t\t\tExample 2\r\n\t\t\t\t\r\n\t\t\t\t   xml = &lt;root&gt;&lt;row index=\"1\" data=\"This is the data\"/&gt;&lt;/root&gt;\r\n\t\t\t\t   \r\n\t\t\t\t   xpath = root/row\r\n\t\t\t\t   \r\n\t\t\t\t   path = root/row\r\n\t\t\t\t   \r\n\t\t\t\t   attribute = null\r\n\t\t\t\t   \r\n            ",
+                    "documentation": "\r\n            \tThe xml_path is used to select an element or attribute value.\r\n            \t\r\n            \tThe syntax used for xpath is similar to an xpath parser including path and or attribute.\r\n            \t\r\n\t\t\t\tExample 1\r\n\t\t\t\t\r\n\t\t\t\t   xml = &lt;root&gt;&lt;row index=&quot;1&quot; data=&quot;This is the data&quot;/&gt;&lt;/root&gt;\r\n\t\t\t\t   \r\n\t\t\t\t   xpath = root/row[@data]\r\n\t\t\t\t   \r\n\t\t\t\t   path = root/row\r\n\t\t\t\t   \r\n\t\t\t\t   attribute = data\r\n\t\t\t\t   \r\n\t\t\t\tExample 2\r\n\t\t\t\t\r\n\t\t\t\t   xml = &lt;root&gt;&lt;row index=&quot;1&quot; data=&quot;This is the data&quot;/&gt;&lt;/root&gt;\r\n\t\t\t\t   \r\n\t\t\t\t   xpath = root/row\r\n\t\t\t\t   \r\n\t\t\t\t   path = root/row\r\n\t\t\t\t   \r\n\t\t\t\t   attribute = null\r\n\t\t\t\t   \r\n            ",
                     "name": "xml_path",
                     "type": "xsd:string"
                 }
             ]
         },
         {
-            "documentation": "<![CDATA[\r\n\t\t\tThis actions allows the page to change the http request content type.\r\n\t\t\t\r\n\t\t\tRequired when you have one type of page returning a different content type.\r\n\t\t\t\r\n\t\t\tAs an example if a html page is returning json data then you set the value to \"application/json;charset=UTF-8\"\r\n\t\t\t\r\n\t\t\tLooks like this on the page <b>&lt;content_type value=\"application/json;charset=UTF-8\"/&gt;<\/b>\r\n\t\t\t \r\n\t\t\t]]>",
+            "documentation": "\r\n\t\t\tThis actions allows the page to change the http request content type.\r\n\t\t\t\r\n\t\t\tRequired when you have one type of page returning a different content type.\r\n\t\t\t\r\n\t\t\tAs an example if a html page is returning json data then you set the value to &quot;application/json;charset=UTF-8&quot;\r\n\t\t\t\r\n\t\t\tLooks like this on the page <b>&lt;content_type value=&quot;application/json;charset=UTF-8&quot;/&gt;<\/b>\r\n\t\t\t \r\n\t\t\t",
             "name": "content_type",
             "params": [{
                 "use": "required",
-                "documentation": "<![CDATA[\r\n                  The value you want to set in the response content type\r\n\t\t\t\t]]>",
+                "documentation": "\r\n                  The value you want to set in the response content type\r\n\t\t\t\t",
                 "name": "value",
                 "type": "xsd:string"
             }]
